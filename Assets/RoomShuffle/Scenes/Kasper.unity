@@ -108742,5 +108742,30 @@ PrefabInstance:
       propertyPath: Something
       value: 
       objectReference: {fileID: 3460327112367499613, guid: 304b60695d813674788bb2c34548c69b, type: 3}
+    - target: {fileID: 7829438793687919278, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+      propertyPath: DecelerationForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829438793687919278, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+      propertyPath: AirDecelerationForce
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+--- !u!1 &7829438792797427653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7829438793687919276, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+  m_PrefabInstance: {fileID: 7829438792797427652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7829438792797427654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829438792797427653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce91e32f022a8a43a9279ec1f53b275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

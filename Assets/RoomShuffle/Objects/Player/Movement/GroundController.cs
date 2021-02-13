@@ -112,29 +112,7 @@ public class GroundController : MonoBehaviour
         //Horizontal
         _rigid.velocity = _rigid.velocity.SetX(Mathf.Clamp(_rigid.velocity.x, -MaxSpeed, MaxSpeed));
 
-        //Stick to ground when on slope
-        if (onGround)
-        {
-            if (_rigid.velocity.x != 0f)
-            {
-                _rigid.gravityScale = 0f;
-            }
-            else
-            {
-                _rigid.gravityScale = 0f;
-                _rigid.SetVelocityY(currentY => Mathf.Max(currentY, 0f));
-            }
-
-            DebugScreenDrawer.Enable("slopeangle", "slopeang: " + Vector2.Angle(onGround.normal, Vector2.up));
-        }
-        else
-        {
-            _rigid.gravityScale = 1f;
-        }
-
         DebugScreenDrawer.Enable("gravity", "gravity: " + _rigid.gravityScale.ToString("P"));
-
-        
     }
 
     /// <summary>
@@ -150,10 +128,10 @@ public class GroundController : MonoBehaviour
 
         //The player is moving to the right. Apply force to the left
         else if (_rigid.velocity.x > 0)
-            _rigid.SetVelocityX(currentX => Mathf.Max(minimumSpeed, currentX - force));
+            _rigid.SetVelocityX(currentX => Mathf.Max(minimumSpeed, currentX - force * Time.deltaTime));
 
         //The player is moving to the left. Apply force to the right
         else
-            _rigid.SetVelocityX(currentX => Mathf.Min(-minimumSpeed, currentX + force));
+            _rigid.SetVelocityX(currentX => Mathf.Min(-minimumSpeed, currentX + force * Time.deltaTime));
     }
 }

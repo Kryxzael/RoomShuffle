@@ -140,8 +140,8 @@ MonoBehaviour:
   AirAcceleration: 1500
   MaxSpeed: 10
   AirMinimumSpeed: 2.5
-  DecelerationForce: 0.25
-  AirDecelerationForce: 0.1
+  DecelerationForce: 500
+  AirDecelerationForce: 200
   SlopeForce: 0
 --- !u!50 &7829438793687919277
 Rigidbody2D:
