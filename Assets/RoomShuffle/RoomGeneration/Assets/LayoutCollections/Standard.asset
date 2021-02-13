@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4639adb1a29e7594aafa0de386d17bdb, type: 3}
+  m_Name: Standard
+  m_EditorClassIdentifier: 
+  PlatformingRooms:
+  - {fileID: 2250068351428721972, guid: 3b198504a9fa8174891d502ccfe85400, type: 3}
+  - {fileID: 2250068351428721972, guid: ffefdd85989da434cade26200ab11260, type: 3}
+  PuzzleRooms: []
+  EradicationRooms: []
+  BossRooms: []
+  TransitionRooms:
+  - {fileID: 6026251753484923945, guid: bbb1cc9b194400a4d9af707765e9ca3d, type: 3}
+  CrossroadRooms: []
+  RespiteRooms: []
+  ShopRooms: []
+  SecretRooms: []

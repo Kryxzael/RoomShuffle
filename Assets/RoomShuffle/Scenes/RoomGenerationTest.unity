@@ -198,9 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Seed: 0
   UseRandomSeed: 0
-  Layouts:
-  - {fileID: 2250068351428721972, guid: 3b198504a9fa8174891d502ccfe85400, type: 3}
-  - {fileID: 2250068351428721972, guid: ffefdd85989da434cade26200ab11260, type: 3}
+  RoomParameterBuilder: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
 --- !u!4 &1612203610
 Transform:
   m_ObjectHideFlags: 0

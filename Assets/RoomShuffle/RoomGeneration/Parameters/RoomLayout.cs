@@ -11,6 +11,7 @@ using UnityEngine;
 /// </summary>
 public class RoomLayout : MonoBehaviour
 {
+    [Header("Entrances and Exits")]
     public Direction4 EntranceSide;
     public Direction4 ExitSide;
 }
