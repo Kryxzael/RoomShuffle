@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 [ExecuteInEditMode]
 public class DebugScreenDrawer : MonoBehaviour
 {
     Dictionary<string, string> Q = new Dictionary<string, string>();
 
-    private static DebugScreenDrawer Singleton
+    private static DebugScreenDrawer Singleton;
+
+    private void Awake()
     {
-        get
-        {
-            return CommonExtensions.GetGameManager().GetComponent<DebugScreenDrawer>();
-        }
+        Singleton = this;
     }
 
     public static void Enable(string identifier, string text)

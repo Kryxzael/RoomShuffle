@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Represents one of four directions
+/// </summary>
 public enum Direction4
 {
     Up = 0,
@@ -12,6 +15,9 @@ public enum Direction4
     Left = 6,
 }
 
+/// <summary>
+/// Represents one of eight directions
+/// </summary>
 public enum Direction8
 {
     Up = 0,
