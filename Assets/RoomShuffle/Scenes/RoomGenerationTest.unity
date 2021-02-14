@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seed: 0
-  UseRandomSeed: 0
+  UseRandomSeed: 1
   RoomParameterBuilder: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
 --- !u!4 &1612203610
 Transform:

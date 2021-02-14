@@ -1,53 +1,74 @@
-using Assets.RoomShuffle.Debug.DebugMenu;
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
 
+/// <summary>
+/// Renders a debug menu that can be navigated with the arrow keys or D-pad
+/// </summary>
 public class DebugMenu : MonoBehaviour
 {
-    private Stack<DebugPage> NavigationStack = new Stack<DebugPage>();
+    /// <summary>
+    /// Gets the current navigation stack of debug pages
+    /// </summary>
+    public Stack<DebugPage> NavigationStack { get; } = new Stack<DebugPage>();
 
+    //The current run output
+    private List<string> _currentRun = new List<string>();
+
+    /// <summary>
+    /// Gets the current debug page
+    /// </summary>
     public DebugPage CurrentPage
     {
         get => NavigationStack.Peek();
     }
 
-    private void Awake()
-    {
-        NavigationStack.Push(DebugPages.Home); 
-    }
-
+    //Whether a debug button was pressed last frame
     private bool lastFrameHeldButton;
 
     private void Update()
     {
+        //If the navigation stack somehow is empty, return to home
+        if (!NavigationStack.Any())
+            NavigationStack.Push(new HomeDebugPage());
+
+        //Gets the current run page
+        _currentRun = CurrentPage.Run(this, false);
+
+        /*
+         * Input
+         */
+
+        //Click Down
         if (Input.GetAxisRaw("DebugVertical") == -1)
         {
             if (lastFrameHeldButton)
                 return;
 
-            CurrentPage.SelectedIndex = Mathf.Min(CurrentPage.SelectedIndex + 1, CurrentPage.Items.Count - 1);
+            CurrentPage.SelectedIndex = Mathf.Min(++CurrentPage.SelectedIndex, _currentRun.Count - 1);
         }
 
+        //Click Up
         else if (Input.GetAxisRaw("DebugVertical") == 1)
         {
             if (lastFrameHeldButton)
                 return;
 
-            CurrentPage.SelectedIndex = Mathf.Max(CurrentPage.SelectedIndex -1, 0);
+            CurrentPage.SelectedIndex = Mathf.Max(--CurrentPage.SelectedIndex, 0);
         }
 
+        //Click Select (Right)
         else if (Input.GetAxisRaw("DebugHorizontal") == 1)
         {
             if (lastFrameHeldButton)
                 return;
 
-            CurrentPage.Items[CurrentPage.SelectedIndex].OnClick(NavigationStack);
+            _currentRun = CurrentPage.Run(this, true);
         }
 
+        //Click Back (Left)
         else if (Input.GetAxisRaw("DebugHorizontal") == -1)
         {
             if (lastFrameHeldButton)
@@ -55,7 +76,11 @@ public class DebugMenu : MonoBehaviour
 
             if (NavigationStack.Count > 1)
                 NavigationStack.Pop();
+
+            _currentRun = CurrentPage.Run(this, false);
         }
+
+        //No input
         else
         {
             lastFrameHeldButton = false;
@@ -67,24 +92,14 @@ public class DebugMenu : MonoBehaviour
 
     private void OnGUI()
     {
-        List<string> toDraw = new List<string>();
-        toDraw.Add("== DEBUG MODE ==");
-        toDraw.Add(CurrentPage.Header);
-        toDraw.Add("");
-
-        for (int i = 0; i < CurrentPage.Items.Count; i++)
-        {
-            string text = CurrentPage.Items[i].Text;
-
-            if (CurrentPage.SelectedIndex == i)
-                text = ">> " + text + " <<";
-
-            toDraw.Add(text);
-        }
-
-        DrawList(toDraw.ToArray());
+        //Draws the list
+        DrawList(new string[] { "==DEBUG MODE==", CurrentPage.Header, "" }.Concat(_currentRun).ToArray());
     }
 
+    /// <summary>
+    /// Draws a list of strings to the top right corner of the screen
+    /// </summary>
+    /// <param name="texts"></param>
     private void DrawList(string[] texts)
     {
         GUI.color = Color.white;
