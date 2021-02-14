@@ -45,7 +45,7 @@ public class SpotterMovementPattern : MonoBehaviour
         float positiveDistanceX = Math.Abs(distanceX);
         float positiveDistanceY = Math.Abs(distanceY);
 
-        float totalDistance = (float)Math.Sqrt(positiveDistanceX*positiveDistanceX + positiveDistanceY*positiveDistanceY);
+        float totalDistance = (float)Math.Sqrt(positiveDistanceX*positiveDistanceX + positiveDistanceY*positiveDistanceY); //Vector2.Distance()
 
         reactionTimeLeft = Mathf.Clamp(reactionTimeLeft, 0, reactionTime);
         
@@ -80,18 +80,21 @@ public class SpotterMovementPattern : MonoBehaviour
                 if (walk)
                 { //Walking
 
-                    if (_rigid.velocity.x == 0)
+                    if (_rigid.velocity.x == 0) //Enemy is standstill
                     {
                         int direction = Math.Sign(Random.value - 0.5);
                         _rigid.velocity = new Vector2(direction * walkSpeed, _rigid.velocity.y);
                     }
 
+                    //Hit wall or edge on left
                     if (Physics2D.Raycast(_collider.bounds.center, Vector2.left, _collider.bounds.extents.x + 0.02f) ||
                         Physics2D.Raycast(new Vector2(_collider.bounds.center.x, _collider.bounds.center.y + _collider.bounds.extents.y), Vector2.left, _collider.bounds.extents.x + 0.02f) ||
                         !Physics2D.Raycast(new Vector2(_collider.bounds.center.x - _collider.bounds.extents.x, _collider.bounds.center.y), Vector2.down, _collider.bounds.extents.y + 1.5f))
                     {
                         _rigid.velocity = _rigid.velocity = new Vector2(walkSpeed, _rigid.velocity.y);
                     }
+
+                    //Hit wall or edge on right
                     else if (Physics2D.Raycast(_collider.bounds.center, Vector2.right, _collider.bounds.extents.x + 0.02f) ||
                              Physics2D.Raycast(new Vector2(_collider.bounds.center.x, _collider.bounds.center.y + _collider.bounds.extents.y), Vector2.right, _collider.bounds.extents.x + 0.02f) ||
                              !Physics2D.Raycast(new Vector2(_collider.bounds.center.x + _collider.bounds.extents.x, _collider.bounds.center.y), Vector2.down, _collider.bounds.extents.y + 1.5f))

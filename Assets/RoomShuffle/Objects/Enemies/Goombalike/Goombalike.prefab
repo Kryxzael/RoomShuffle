@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8747412442085526248}
   - component: {fileID: 8747412442085526249}
   - component: {fileID: 8747412442085526252}
+  - component: {fileID: 8226572599186924801}
+  - component: {fileID: 5264608193417111028}
   m_Layer: 0
   m_Name: Goombalike
   m_TagString: Untagged
@@ -157,4 +159,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189b06f808fdd45b9a9c1d454b7cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
+  WalkSpeed: 2.5
+--- !u!114 &8226572599186924801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747412442085526250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9196e809110ba2428b0aba9de01fcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingDirection: -1
+--- !u!114 &5264608193417111028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747412442085526250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757b3826746ec934eb52202dc8391183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

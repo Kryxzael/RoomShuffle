@@ -52,10 +52,10 @@ public class CharacterAnimator : MonoBehaviour
          * Set sprite direction
          */
         if (_rigid.velocity.x > MIN_MOTION)
-            _flippable.Direction = Direction1D.RIGHT;
+            _flippable.Direction = Direction1D.Right;
 
         else if (_rigid.velocity.x < -MIN_MOTION)
-            _flippable.Direction = Direction1D.LEFT;
+            _flippable.Direction = Direction1D.Left;
 
         /*
          * Set animation

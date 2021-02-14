@@ -253,12 +253,12 @@ public static class CommonExtensions
     {
         switch (dir)
         {
-            case Direction1D.LEFT:
-                return Direction1D.RIGHT;
-            case Direction1D.RIGHT:
-                return Direction1D.LEFT;
+            case Direction1D.Left:
+                return Direction1D.Right;
+            case Direction1D.Right:
+                return Direction1D.Left;
             default:
-                return Direction1D.NONE;
+                return Direction1D.None;
         }
     }
 
