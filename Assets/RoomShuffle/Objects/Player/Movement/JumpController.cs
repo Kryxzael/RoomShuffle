@@ -33,7 +33,6 @@ public class JumpController : MonoBehaviour
 
     private Rigidbody2D _rigid;
     private Flippable _flippable;
-    private Cheats _cheats;
 
     /// <summary>
     /// Gets or sets the last position of the player when they were last grounded
@@ -49,7 +48,6 @@ public class JumpController : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _flippable = GetComponent<Flippable>();
-        _cheats = GetComponent<Cheats>();
     }
 
     private void Update()
@@ -92,7 +90,7 @@ public class JumpController : MonoBehaviour
     /// <returns></returns>
     public bool MayJump()
     {
-        return (DateTime.Now - _lastGroundedPosition.Time).TotalSeconds <= MercyFramesInSeconds || _cheats?.MoonJump == true;
+        return (DateTime.Now - _lastGroundedPosition.Time).TotalSeconds <= MercyFramesInSeconds || Cheats.MoonJump;
     }
 
     /// <summary>
@@ -108,7 +106,7 @@ public class JumpController : MonoBehaviour
         _rigid.SetVelocityY(JumpForce);
 
         //As long as the player can still hold the button
-        while (seconds < 0.15f || _cheats?.MoonJump == true)
+        while (seconds < 0.15f || Cheats.MoonJump)
         {
             //The player is still holding the jump button, keep adding force
             if (Input.GetButton("Jump"))

@@ -6,25 +6,7 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-public class Cheats : MonoBehaviour
+public static class Cheats
 {
-    [Tooltip("Whether the player can always jump, regardless of their grounded state")]
-    public bool MoonJump;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-            transform.position = default;
-
-        if (Input.GetKeyDown(KeyCode.F2))
-            MoonJump = !MoonJump;
-
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            if (Time.timeScale < 1f)
-                Time.timeScale = 1f;
-            else
-                Time.timeScale = 0.5f;
-        }
-    }
+    public static bool MoonJump;
 }
