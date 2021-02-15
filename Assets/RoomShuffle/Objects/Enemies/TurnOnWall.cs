@@ -21,6 +21,7 @@ public class TurnOnWall : MonoBehaviour
 
     /* *** */
 
+    [Header("Turn on Wall")]
     [Range(0f, 1f)]
     [Tooltip("Adjusts the top and bottom rays during the raycast closer to the center. Increasing this value may fix objects turning around when reaching an upwards slope")]
     public float SlopeDetectionThreshold = 0.25f;
@@ -88,25 +89,31 @@ public class TurnOnWall : MonoBehaviour
         RaycastHit2D hit;
 
         //Checks the top, center and bottom of the of the object's hitbox
-        if (hit = Physics2D.Raycast(new Vector2(vectorX, top), direction, CHECK_DISTANCE))
+        if (hit = RaycastAndDebug(vectorX, top, direction))
         {
             if (HitIsWall(hit))
                 return true;
         }
 
-        if (hit = Physics2D.Raycast(new Vector2(vectorX, center), direction, CHECK_DISTANCE))
+        if (hit = RaycastAndDebug(vectorX, center, direction))
         {
             if (HitIsWall(hit))
                 return true;
         }
 
-        if (hit = Physics2D.Raycast(new Vector2(vectorX, bottom), direction, CHECK_DISTANCE))
+        if (hit = RaycastAndDebug(vectorX, bottom, direction))
         {
             if (HitIsWall(hit))
                 return true;
         }
 
         return false;
+    }
+
+    private static RaycastHit2D RaycastAndDebug(float x, float y, Vector2 direction)
+    {
+        Debug.DrawLine(new Vector2(x, y), new Vector2(x, y) + direction * CHECK_DISTANCE, Color.green);
+        return Physics2D.Raycast(new Vector2(x, y), direction, CHECK_DISTANCE);
     }
 
     /// <summary>

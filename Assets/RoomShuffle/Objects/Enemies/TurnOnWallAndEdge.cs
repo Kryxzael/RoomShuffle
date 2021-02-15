@@ -18,7 +18,7 @@ using UnityEngine;
 public class TurnOnWallAndEdge : TurnOnWall
 {
     [Tooltip("The maximum height the pit can have to be considered a pit")]
-    public float MaxPitHeight = 0.5f;
+    public float MaxPitHeight = 1.5f;
 
     [Tooltip("Adjusts how close the raycast is done to the object. Decreasing this value may fix objects turning around when reaching a downwards slope")]
     public float SlopeDetectionDistance = 0.25f;
@@ -45,7 +45,7 @@ public class TurnOnWallAndEdge : TurnOnWall
          * This is either at the bottom left or bottom right side of the hitbox of the object (plus some padding determined by SlopeDetectionDistance)
          */
         float x;
-        float y = _collider.bounds.min.y;
+        float y = _collider.bounds.center.y;
 
         //Configures the cast to check for pits on the left
         if (_flippable.Direction == Direction1D.Left)
@@ -69,7 +69,10 @@ public class TurnOnWallAndEdge : TurnOnWall
         /*
          * Performs the ray cast and returns the result
          */
+        Vector2 castPos = new Vector2(x, y);
+        float castDistance = MaxPitHeight + _collider.bounds.extents.y;
 
-        return !Physics2D.Raycast(new Vector2(x, y), Vector2.down, MaxPitHeight);
+        Debug.DrawLine(castPos, castPos + Vector2.down * castDistance, Color.green);
+        return !Physics2D.Raycast(castPos, Vector2.down, castDistance);
     }
 }

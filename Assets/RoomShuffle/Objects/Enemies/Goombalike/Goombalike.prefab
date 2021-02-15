@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8747412442085526252}
   - component: {fileID: 8226572599186924801}
   - component: {fileID: 5264608193417111028}
+  - component: {fileID: 1935419456}
   m_Layer: 0
   m_Name: Goombalike
   m_TagString: Untagged
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.6226415, g: 0.3260119, b: 0, a: 1}
+  m_Sprite: {fileID: -7956832237065629149, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -180,8 +181,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8747412442085526250}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 757b3826746ec934eb52202dc8391183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlopeDetectionThreshold: 0.25
+--- !u!114 &1935419456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747412442085526250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e4946e94cc49c4bbaf76993a098291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlopeDetectionThreshold: 0.25
+  MaxPitHeight: 1.5
+  SlopeDetectionDistance: 0.025
