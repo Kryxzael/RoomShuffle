@@ -10,6 +10,7 @@ using UnityEngine;
 /// Turns a flippable around when it walks into a wall
 /// </summary>
 [RequireComponent(typeof(Flippable), typeof(Collider2D))]
+[DisallowMultipleComponent]
 public class TurnOnWall : MonoBehaviour
 {
     //The distance to raycast for wall checks
@@ -26,16 +27,23 @@ public class TurnOnWall : MonoBehaviour
 
     /* *** */
 
-    private Flippable _flippable;
-    private Collider2D _collider;
+    protected Flippable _flippable;
+    protected Collider2D _collider;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _flippable = GetComponent<Flippable>();
         _collider = GetComponent<Collider2D>();
     }
 
     private void Update()
+    {
+        //Flip if on wall
+        if (OnWall())
+            _flippable.Flip();
+    }
+
+    public bool OnWall()
     {
         /*
          * Gets the coordinates of the sides of the object's hit box
@@ -69,7 +77,7 @@ public class TurnOnWall : MonoBehaviour
         else
         {
             Debug.LogWarning("Flippable does not have a valid direction");
-            return;
+            return false;
         }
 
         /*
@@ -81,27 +89,37 @@ public class TurnOnWall : MonoBehaviour
 
         //Checks the top, center and bottom of the of the object's hitbox
         if (hit = Physics2D.Raycast(new Vector2(vectorX, top), direction, CHECK_DISTANCE))
-            FlipIfHitIsWall(hit);
+        {
+            if (HitIsWall(hit))
+                return true;
+        }
 
-        else if (hit = Physics2D.Raycast(new Vector2(vectorX, center), direction, CHECK_DISTANCE))
-            FlipIfHitIsWall(hit);
+        if (hit = Physics2D.Raycast(new Vector2(vectorX, center), direction, CHECK_DISTANCE))
+        {
+            if (HitIsWall(hit))
+                return true;
+        }
 
-        else if (hit = Physics2D.Raycast(new Vector2(vectorX, bottom), direction, CHECK_DISTANCE))
-            FlipIfHitIsWall(hit);
+        if (hit = Physics2D.Raycast(new Vector2(vectorX, bottom), direction, CHECK_DISTANCE))
+        {
+            if (HitIsWall(hit))
+                return true;
+        }
+
+        return false;
     }
 
     /// <summary>
-    /// Flips the object if the provided raycast hit is determined to be a wall
+    /// Checks if the provided raycast hit is determined to be a wall
     /// </summary>
     /// <param name="hit"></param>
-    private void FlipIfHitIsWall(RaycastHit2D hit)
+    private bool HitIsWall(RaycastHit2D hit)
     {
         //Gets the angle from the hit's normal
         float angle = hit.normal.RealAngleBetween(Vector2.up);
         angle = Math.Abs(angle);
 
         //The hit is a wall if it's normal angle is greater than the minimum set wall degree
-        if (angle > MIN_WALL_DEGREE)
-            _flippable.Flip();
+        return angle > MIN_WALL_DEGREE;
     }
 }

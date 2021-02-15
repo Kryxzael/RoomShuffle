@@ -135,6 +135,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5264608193417111028, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264608193417111028, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
       propertyPath: SlopeDetectionThreshold
       value: 0.25
       objectReference: {fileID: 0}
@@ -146,6 +150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goombalike
       objectReference: {fileID: 0}
+    - target: {fileID: 8747412442085526250, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526252, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
       propertyPath: WalkSpeed
       value: 5
@@ -156,11 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.5
+      value: 26.88
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.53
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -194,7 +202,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5264608193417111028, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
 --- !u!1 &272879359
 GameObject:
@@ -774,6 +783,26 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 334.4172
     m_UpperAngle: 390
+--- !u!1 &1296872524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7829438793687919276, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+  m_PrefabInstance: {fileID: 7829438792797427652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1296872538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296872524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e4946e94cc49c4bbaf76993a098291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlopeDetectionThreshold: 0.25
+  MaxPitHeight: 0.5
+  SlopeDetectionDistance: 0.02
 --- !u!1 &1659874882
 GameObject:
   m_ObjectHideFlags: 0
@@ -108657,6 +108686,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1935419447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8747412442085526250, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
+  m_PrefabInstance: {fileID: 134496971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1935419456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935419447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e4946e94cc49c4bbaf76993a098291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlopeDetectionThreshold: 0.25
+  MaxPitHeight: 0.5
+  SlopeDetectionDistance: 0.25
 --- !u!1 &2008952707
 GameObject:
   m_ObjectHideFlags: 0
