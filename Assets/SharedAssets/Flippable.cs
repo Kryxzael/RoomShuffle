@@ -9,17 +9,22 @@ using UnityEngine;
 public class Flippable : MonoBehaviour
 {
     /// <summary>
+    /// Gets the direction the object starts facing;
+    /// </summary>
+    public Direction1D StartingDirection = Direction1D.Right;
+
+    /// <summary>
     /// Gets or sets the flipped state of the object
     /// </summary>
     public Direction1D Direction
     {
         get
         {
-            return GetComponent<SpriteRenderer>().flipX ? Direction1D.LEFT : Direction1D.RIGHT;
+            return GetComponent<SpriteRenderer>().flipX ? Direction1D.Left : Direction1D.Right;
         }
         set
         {
-            GetComponent<SpriteRenderer>().flipX = value == Direction1D.LEFT;
+            GetComponent<SpriteRenderer>().flipX = value == Direction1D.Left;
         }
     }
 
@@ -27,9 +32,25 @@ public class Flippable : MonoBehaviour
     /// Gets the normalized vector that would describe the direction an object in pointed
     /// </summary>
     /// <returns></returns>
-    public Vector2 GetForwardVector()
+    public Vector2 DirectionVector
     {
-        return Direction == Direction1D.LEFT ? Vector2.left : Vector2.right;
+        get
+        {
+            return Direction == Direction1D.Left ? Vector2.left : Vector2.right;
+        }
+    }
+
+    /// <summary>
+    /// Gets the sign of the direction as it would be represented on the X axis as -1, 0 or 1
+    /// </summary>
+    public int DirectionSign
+    {
+        get => (int)Direction;
+    }
+
+    private void Awake()
+    {
+        Direction = StartingDirection;
     }
 
     /// <summary>

@@ -6,15 +6,15 @@ public enum Direction1D
     /// <summary>
     /// No direction. Often invalid
     /// </summary>
-    NONE = 0,
+    None = 0,
 
     /// <summary>
     /// Descending, left or down
     /// </summary>
-    LEFT = -1,
+    Left = -1,
 
     /// <summary>
     /// Ascending, right or up
     /// </summary>
-    RIGHT = 1
+    Right = 1
 }
