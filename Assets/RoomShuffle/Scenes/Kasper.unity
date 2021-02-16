@@ -783,26 +783,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 334.4172
     m_UpperAngle: 390
---- !u!1 &1296872524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7829438793687919276, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
-  m_PrefabInstance: {fileID: 7829438792797427652}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1296872538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296872524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1e4946e94cc49c4bbaf76993a098291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SlopeDetectionThreshold: 0.25
-  MaxPitHeight: 0.5
-  SlopeDetectionDistance: 0.02
 --- !u!1 &1659874882
 GameObject:
   m_ObjectHideFlags: 0
@@ -108686,6 +108666,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1735423259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6055999859972446567, guid: 1eef8bfab3de8e843a48136be3f8696e, type: 3}
+  m_PrefabInstance: {fileID: 1011777092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735423260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735423259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd059775fa4222148aa4717c0bb87d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReactionTime: 1
+  SpottingRadius: 5
+  SpottingRadiusChasingScale: 2
+--- !u!114 &1735423267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735423259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9196e809110ba2428b0aba9de01fcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingDirection: -1
 --- !u!1 &1935419447 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8747412442085526250, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}

@@ -43,7 +43,7 @@ public class Flippable : MonoBehaviour
     /// <summary>
     /// Gets the sign of the direction as it would be represented on the X axis as -1, 0 or 1
     /// </summary>
-    public float DirectionSign
+    public int DirectionSign
     {
         get => (int)Direction;
     }

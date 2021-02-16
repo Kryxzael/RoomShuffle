@@ -2,86 +2,114 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// An enemy pattern that can spot the player and chase them
+/// </summary>
+[RequireComponent(typeof(Flippable), typeof(SpotPlayer), typeof(Rigidbody2D))]
 public class SpotterMovementPattern : MonoBehaviour
 {
-    public float walkSpeed;
-    public float runSpeed;
-    public float minWaitTime;
-    public float maxWaitTime;
+    [Tooltip("The speed the spotter will move at when fumbling")]
+    public float WalkSpeed;
+
+    [Tooltip("The speed the spotter will move at when chasing")]
+    public float RunSpeed;
+
+    [Header("Fumbling Wait Times")]
+    [Tooltip("The minimum amount of time the spotter can move or wait before choosing a new action when fumbling")]
+    public float MinFumbleWaitTime;
+
+    [Tooltip("The maximum amount of time the spotter can move or wait before choosing a new action when fumbling")]
+    public float MaxFumbleWaitTime;
     
+    //The remaining fumble wait time
+    private float _fumbleCurrentWaitTime;
+
+    //If the current fumble mode is walking
+    private bool _fumbleWalk = true;
+
+    /* *** */
+
     private Rigidbody2D _rigid;
     private GameObject _player;
-    private float reactionTimeLeft;
-    private float waitTime;
-    private bool walk = true;
     private Flippable _flippable;
+    private SpotPlayer _spotPlayer;
+
     void Start()
     {
+        _player = this.GetPlayer();
+
         _rigid = GetComponent<Rigidbody2D>();
-        _player = CommonExtensions.GetPlayer();
         _flippable = GetComponent<Flippable>();
+        _spotPlayer = GetComponent<SpotPlayer>();
     }
     
     void Update()
     {
-        int relativePosition = Math.Sign(_player.transform.position.x - transform.position.x);
-        
-        switch (GetComponent<SpotPlayer>().epr)
+        switch (_spotPlayer.State)
         {
-            case EnemyPlayerRelationship.outOfSight:
-            case EnemyPlayerRelationship.inDistance:   
+            case SpotterPlayerRelationship.OutOfRadius:
+            case SpotterPlayerRelationship.HiddenInRadius:   
                 FumbleAround();
                 break;
-            case EnemyPlayerRelationship.inSight:
-                if (Math.Sign(_flippable.DirectionSign) != relativePosition)
-                {
-                    _flippable.Flip();
-                }
-                _rigid.velocity = new Vector2(0, _rigid.velocity.y);
+
+            case SpotterPlayerRelationship.Spotted:
+                FlipToPlayer();
+                _rigid.SetVelocityX(0f);
                 break;
-            case EnemyPlayerRelationship.puzzled:
-                _rigid.velocity = new Vector2(0, _rigid.velocity.y);
+
+            case SpotterPlayerRelationship.Puzzled:
+                _rigid.SetVelocityX(0f);
                 break;
-            case EnemyPlayerRelationship.chasing:
-                if (Math.Sign(_flippable.DirectionSign) != relativePosition)
-                {
-                    _flippable.Flip();
-                }
-                _rigid.SetVelocityX(_flippable.DirectionSign * runSpeed);
+
+            case SpotterPlayerRelationship.Chasing:
+                FlipToPlayer();
+                _rigid.SetVelocityX(_flippable.DirectionSign * RunSpeed);
                 break;
         }
     }
-    
-    void FumbleAround()
+
+    /// <summary>
+    /// Flips the object around to face the player
+    /// </summary>
+    private void FlipToPlayer()
     {
-        if (walk)
-        { //Fumbling
+        int relativePositionSign = Math.Sign(_player.transform.position.x - transform.position.x);
 
-            _rigid.SetVelocityX(_flippable.DirectionSign * walkSpeed);
+        if (_flippable.DirectionSign != relativePositionSign)
+            _flippable.Flip();
+    }
+    
+    /// <summary>
+    /// Makes the object move around randomly
+    /// </summary>
+    private void FumbleAround()
+    {
+        _fumbleCurrentWaitTime -= Time.deltaTime;
 
-            waitTime -= Time.deltaTime;
-            if (waitTime <= 0)
-            {
-                walk = !walk;
-                waitTime = Random.Range(minWaitTime, maxWaitTime);
-            }
+        //Fumbling
+        if (_fumbleWalk)
+        { 
+            _rigid.SetVelocityX(_flippable.DirectionSign * WalkSpeed);
         }
-        else
-        { //Stationary
-            _rigid.velocity = new Vector2(0,_rigid.velocity.y);
-            waitTime -= Time.deltaTime;
-            if (waitTime <= 0)
-            {
-                if (Random.Range(0, 2) == 1)
-                {
-                    _flippable.Flip();
-                }
 
-                walk = !walk;
-                waitTime = Random.Range(minWaitTime, maxWaitTime);
-            }
-        }     
+        //Stationary
+        else
+        {
+            _rigid.SetVelocityX(0f);
+        }
+
+        //Choose a new action
+        if (_fumbleCurrentWaitTime <= 0)
+        {
+            if (!_fumbleWalk && Random.Range(0, 2) == 0)
+                _flippable.Flip();
+
+            _fumbleWalk = !_fumbleWalk;
+            _fumbleCurrentWaitTime = Random.Range(MinFumbleWaitTime, MaxFumbleWaitTime);
+        }
     }
 }
