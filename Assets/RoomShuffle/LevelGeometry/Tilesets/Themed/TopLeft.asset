@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94975398706e294db646ccb23b5c435, type: 3}
+  m_Name: TopLeft
+  m_EditorClassIdentifier: 
+  CollisionType: 2
+  Visuals:
+    DefaultSprite: {fileID: -3866788896051965547, guid: 11154916454401f4e98404e506317092, type: 3}
+    GrassSprite: {fileID: 7223950226953391895, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+    SnowSprite: {fileID: 656030731255835573, guid: 449b1bdcf3b43f2439ca14e54b6653ef, type: 3}
+    DefaultAnimation: {fileID: 0}
+    GrassAnimation: {fileID: 0}
+    SnowAnimation: {fileID: 0}

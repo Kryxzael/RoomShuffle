@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 using SysRandom = System.Random;
 
@@ -36,9 +37,20 @@ public class RoomGenerator : MonoBehaviour
     private GameObject CurrentRoomObject;
 
     /// <summary>
+    /// Gets the current room's parameter
+    /// </summary>
+    public RoomParameters CurrentRoomConfig
+    {
+        get
+        {
+            return History.Last();
+        }
+    }
+
+    /// <summary>
     /// The history of the room generator
     /// </summary>
-    private RoomHistory History = new RoomHistory();
+    public RoomHistory History = new RoomHistory();
  
 
     private void Awake()
@@ -77,5 +89,9 @@ public class RoomGenerator : MonoBehaviour
         History.RegisterHistory(parameters);
 
         DebugScreenDrawer.Enable("roomcount", "room: " + History.Count());
+
+        //Reload tilesets
+        foreach (Tilemap i in FindObjectsOfType<Tilemap>())
+            i.RefreshAllTiles();
     }
 }

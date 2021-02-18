@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
+/// <summary>
+/// The default room parameter room builder
+/// </summary>
 [CreateAssetMenu(menuName = "Room Parameter Builders/Standard")]
 public class StandardParameterBuilder : ParameterBuilder
 {
+    [Tooltip("How many rooms can be generated before a transition room will be generated")]
     public int TransitionFrequency = 5;
 
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    /// <param name="history"></param>
+    /// <param name="random"></param>
+    /// <returns></returns>
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
         RoomParameters output = new RoomParameters();

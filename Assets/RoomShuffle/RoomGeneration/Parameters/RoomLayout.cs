@@ -12,6 +12,9 @@ using UnityEngine;
 public class RoomLayout : MonoBehaviour
 {
     [Header("Entrances and Exits")]
+    [Tooltip("The side of the room where the entrance is")]
     public Direction4 EntranceSide;
+
+    [Tooltip("The side of the room where the exit is")]
     public Direction4 ExitSide;
 }

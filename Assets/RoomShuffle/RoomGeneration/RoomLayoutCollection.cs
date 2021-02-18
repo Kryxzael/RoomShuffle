@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
+/// <summary>
+/// Collection containing and categorizing room layouts
+/// </summary>
 [CreateAssetMenu(menuName = "Room Layout Collection")]
 public class RoomLayoutCollection : ScriptableObject
 {
