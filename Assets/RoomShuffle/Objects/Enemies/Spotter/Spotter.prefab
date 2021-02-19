@@ -16,8 +16,6 @@ GameObject:
   - component: {fileID: 6055999859972446561}
   - component: {fileID: 2007707424}
   - component: {fileID: 2007707425}
-  - component: {fileID: 424728756121709956}
-  - component: {fileID: 478438810001807935}
   m_Layer: 0
   m_Name: Spotter
   m_TagString: Untagged
@@ -181,34 +179,6 @@ MonoBehaviour:
   SpottingRadius: 5
   SpottingRadiusChasingScale: 2
 --- !u!114 &2007707425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6055999859972446567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9196e809110ba2428b0aba9de01fcce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartingDirection: 1
---- !u!114 &424728756121709956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6055999859972446567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd059775fa4222148aa4717c0bb87d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ReactionTime: 1
-  SpottingRadius: 5
-  SpottingRadiusChasingScale: 2
---- !u!114 &478438810001807935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -43,7 +43,7 @@ public class RoomGenerator : MonoBehaviour
     {
         get
         {
-            return History.Last();
+            return History.FirstOrDefault();
         }
     }
 
@@ -78,7 +78,13 @@ public class RoomGenerator : MonoBehaviour
         /*
          * Create the room configuration
          */
-        RoomParameters parameters = RoomParameterBuilder.GetNextParameters(History, RoomRng);
+        RoomParameters parameters;
+
+        if (CurrentRoomConfig == null)
+            parameters = RoomParameterBuilder.GetInitialParameters(RoomRng);
+        else
+            parameters = RoomParameterBuilder.GetNextParameters(History, RoomRng);
+
         CurrentRoomObject = Instantiate(parameters.Layout).gameObject;
 
         //Create generation entry

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.RoomShuffle;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,12 @@ using UnityEngine;
 public class StandardParameterBuilder : ParameterBuilder
 {
     [Tooltip("How many rooms can be generated before a transition room will be generated")]
-    public int TransitionFrequency = 5;
+    public RandomValueBetween TransitionFrequency = new RandomValueBetween(5, 8);
+
+    /// <summary>
+    /// How often the room theme should change
+    /// </summary>
+    public RandomValueBetween ThemeChangeFrequency = new RandomValueBetween(3, 10);
 
     /// <summary>
     /// <inheritdoc />
@@ -24,8 +31,21 @@ public class StandardParameterBuilder : ParameterBuilder
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
         RoomParameters output = new RoomParameters();
+        
+        if (history.RoomsSinceThemeChange() >= ThemeChangeFrequency.PickInt())
+        {
+            do
+            {
+                output.Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length);
+            } while (output.Theme == history.First().Theme);
+        }
+        else
+        {
+            output.Theme = history.First().Theme;
+        }
 
-        if (history.RoomsSinceClass(RoomClass.Transition) >= TransitionFrequency)
+
+        if (history.RoomsSinceClass(RoomClass.Transition) >= TransitionFrequency.PickInt(random))
         {
             output.Class = RoomClass.Transition;
             output.Layout = Rooms.TransitionRooms[random.Next(Rooms.TransitionRooms.Count)];
@@ -37,5 +57,20 @@ public class StandardParameterBuilder : ParameterBuilder
         }
 
         return output;
+    }
+
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    /// <param name="random"></param>
+    /// <returns></returns>
+    public override RoomParameters GetInitialParameters(System.Random random)
+    {
+        return new RoomParameters
+        {
+            Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length),
+            Class = RoomClass.Platforming,
+            Layout = Rooms.PlatformingRooms[random.Next(Rooms.PlatformingRooms.Count)]
+        };
     }
 }

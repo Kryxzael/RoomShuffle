@@ -1,3 +1,5 @@
+using Assets.RoomShuffle;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,12 +20,8 @@ public class SpotterMovementPattern : MonoBehaviour
     [Tooltip("The speed the spotter will move at when chasing")]
     public float RunSpeed;
 
-    [Header("Fumbling Wait Times")]
-    [Tooltip("The minimum amount of time the spotter can move or wait before choosing a new action when fumbling")]
-    public float MinFumbleWaitTime;
-
-    [Tooltip("The maximum amount of time the spotter can move or wait before choosing a new action when fumbling")]
-    public float MaxFumbleWaitTime;
+    [Tooltip("The amount of time the spotter can move or wait before choosing a new action when fumbling")]
+    public RandomValueBetween FumbleWaitTime = new RandomValueBetween(3f, 7f);
     
     //The remaining fumble wait time
     private float _fumbleCurrentWaitTime;
@@ -109,7 +107,7 @@ public class SpotterMovementPattern : MonoBehaviour
                 _flippable.Flip();
 
             _fumbleWalk = !_fumbleWalk;
-            _fumbleCurrentWaitTime = Random.Range(MinFumbleWaitTime, MaxFumbleWaitTime);
+            _fumbleCurrentWaitTime = FumbleWaitTime.Pick();
         }
     }
 }

@@ -32,11 +32,25 @@ public class RoomHistory : IEnumerable<RoomParameters>
     }
 
     /// <summary>
+    /// The amount of rooms there have been since the theme changed
+    /// </summary>
+    /// <returns></returns>
+    public int RoomsSinceThemeChange()
+    {
+        if (!this.Any())
+            return 0;
+
+        RoomParameters last = this.First();
+
+        return RoomsSinceMatchOfPredicate(i => i.Theme != last.Theme);
+    }
+
+    /// <summary>
     /// Counts how many rooms have been generated since the last room that matches the provided predicate
     /// </summary>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    private int RoomsSinceMatchOfPredicate(Func<RoomParameters, bool> predicate)
+    public int RoomsSinceMatchOfPredicate(Func<RoomParameters, bool> predicate)
     {
         return _history.TakeWhile(i => !predicate(i)).Count();
     }
