@@ -27,6 +27,11 @@ public enum SpotterPlayerRelationship
     /// The spotter is chasing down the player
     /// </summary>
     Chasing,
+    
+    /// <summary>
+    /// The spotter is trying to chase the player when the player is out of radius
+    /// </summary>
+    BlindChasing,
 
     /// <summary>
     /// The spotter has seen the player but has not lost them before it could enter chasing mode
@@ -42,6 +47,9 @@ public class SpotPlayer : MonoBehaviour
 {
     [Tooltip("The amount of seconds the state-machine will use to go from spotted to chasing mode.")]
     public float ReactionTime;
+    
+    [Tooltip("The amount of seconds the spotter will BLINDLY chase the player when out of sight.")]
+    public float BlindChaseTime;
 
     [Tooltip("The radius around the object where the player can be spotted.")]
     public float SpottingRadius;
@@ -56,6 +64,12 @@ public class SpotPlayer : MonoBehaviour
 
     //How much time there is left before the spotter goes from spotted mode to chasing mode or how long it will be puzzled for
     private float ReactionTimeLeft;
+    
+    //How much time there is left before the spotter stops chasing blindly the player after loosing sight of the player
+    private float BlindChaseTimeLeft;
+    
+    //The Direction the enemy will blindly chase the player in.
+    public Vector2 BlindChaseDirection { get; private set; }
 
     /* *** */
 
@@ -77,8 +91,17 @@ public class SpotPlayer : MonoBehaviour
         if (distanceToPlayer < SpottingRadius || 
             (State == SpotterPlayerRelationship.Chasing && distanceToPlayer < SpottingRadius * SpottingRadiusChasingScale))
         {
-            State = SpotterPlayerRelationship.HiddenInRadius;
-            
+
+            if (BlindChaseTimeLeft > 0)
+            {
+                State = SpotterPlayerRelationship.BlindChasing;
+                BlindChaseTimeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                State = SpotterPlayerRelationship.HiddenInRadius;
+            }
+
             //Checks vision cone of enemy. If a raycast towards the player hits it, the player is spotted. If not, something's in the way
             if (Physics2D.Raycast(_collider.bounds.center, _player.transform.position - transform.position, distanceToPlayer).collider.gameObject == _player)
             {
@@ -90,6 +113,12 @@ public class SpotPlayer : MonoBehaviour
                 if (ReactionTimeLeft <= 0)
                 {
                     State = SpotterPlayerRelationship.Chasing;
+                    
+                    //resets the blind chasing counter
+                    BlindChaseTimeLeft = BlindChaseTime;
+                    
+                    //update the direction the enemy will blindly chase in.
+                    BlindChaseDirection = (_player.transform.position - transform.position).normalized;
                 }
             }
 
@@ -103,20 +132,31 @@ public class SpotPlayer : MonoBehaviour
         //The player is not in the spotting distance
         else
         {
-            if (ReactionTimeLeft <= 0)
+            // The enemy is blindly chasing the player
+            if (BlindChaseTimeLeft > 0)
             {
-                ReactionTimeLeft = ReactionTime;
+                State = SpotterPlayerRelationship.BlindChasing;
+                BlindChaseTimeLeft -= Time.deltaTime;
             }
-            ReactionTimeLeft += Time.deltaTime;
-
-            if (ReactionTimeLeft >= ReactionTime)
-            {
-                State = SpotterPlayerRelationship.OutOfRadius;
-            }
+            // the enemy is done blindly chasing the player
             else
             {
-                State = SpotterPlayerRelationship.Puzzled;
+                if (ReactionTimeLeft <= 0)
+                {
+                    ReactionTimeLeft = 0;
+                }
+                ReactionTimeLeft += Time.deltaTime;
+                
+                if (ReactionTimeLeft >= ReactionTime)
+                {
+                    State = SpotterPlayerRelationship.OutOfRadius;
+                }
+                else
+                {
+                    State = SpotterPlayerRelationship.Puzzled;
+                }
             }
+            
         }
     }
 

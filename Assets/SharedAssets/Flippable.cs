@@ -8,6 +8,11 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Flippable : MonoBehaviour
 {
+    
+    private SpriteRenderer _spriteRenderer;
+    
+    /* *** */
+    
     /// <summary>
     /// Gets the direction the object starts facing;
     /// </summary>
@@ -20,11 +25,11 @@ public class Flippable : MonoBehaviour
     {
         get
         {
-            return GetComponent<SpriteRenderer>().flipX ? Direction1D.Left : Direction1D.Right;
+            return _spriteRenderer.flipX ? Direction1D.Left : Direction1D.Right;
         }
         set
         {
-            GetComponent<SpriteRenderer>().flipX = value == Direction1D.Left;
+            _spriteRenderer.flipX = value == Direction1D.Left;
         }
     }
 
@@ -50,6 +55,7 @@ public class Flippable : MonoBehaviour
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         Direction = StartingDirection;
     }
 
