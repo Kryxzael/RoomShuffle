@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2007707425}
   m_Layer: 0
   m_Name: Spotter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,8 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkSpeed: 2
   RunSpeed: 5
-  MinFumbleWaitTime: 3
-  MaxFumbleWaitTime: 7
+  FumbleWaitTime:
+    Minimum: 3
+    Maximum: 7
 --- !u!114 &2007707424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,8 +177,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReactionTime: 1
+  BlindChaseTime: 0
   SpottingRadius: 5
   SpottingRadiusChasingScale: 2
+  EnemiescanSeeTroughEnemies: 0
 --- !u!114 &2007707425
 MonoBehaviour:
   m_ObjectHideFlags: 0

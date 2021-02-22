@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -56,6 +57,9 @@ public class SpotPlayer : MonoBehaviour
 
     [Tooltip("The scalar that will be applied to the spotting radius when the spotter is in chase mode.")]
     public float SpottingRadiusChasingScale;
+    
+    [Tooltip("Chooses if the enemy can spot the player trough other enemies")]
+    public bool EnemiescanSeeTroughEnemies;
 
     /// <summary>
     /// The current state of the spotter
@@ -103,7 +107,17 @@ public class SpotPlayer : MonoBehaviour
             }
 
             //Checks vision cone of enemy. If a raycast towards the player hits it, the player is spotted. If not, something's in the way
-            if (Physics2D.Raycast(_collider.bounds.center, _player.transform.position - transform.position, distanceToPlayer).collider.gameObject == _player)
+
+            RaycastHit2D[] hits;
+            hits = Physics2D.RaycastAll(_collider.bounds.center, _player.transform.position - transform.position, distanceToPlayer);
+
+            bool inSight = hits
+                .Where(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && x.transform.gameObject.tag != "Player")
+                .Count() == 0; 
+            
+            Debug.Log(inSight);
+
+            if (inSight)
             {
                 State = SpotterPlayerRelationship.Spotted;
 

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2949534511493290860}
   m_Layer: 0
   m_Name: FlyingSpotter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   BlindChaseTime: 1
   SpottingRadius: 5
   SpottingRadiusChasingScale: 2
+  EnemiescanSeeTroughEnemies: 1
 --- !u!114 &2949534511493290771
 MonoBehaviour:
   m_ObjectHideFlags: 0
