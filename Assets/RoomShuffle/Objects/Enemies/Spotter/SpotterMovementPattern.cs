@@ -35,6 +35,7 @@ public class SpotterMovementPattern : MonoBehaviour
     private GameObject _player;
     private Flippable _flippable;
     private SpotPlayer _spotPlayer;
+    private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
@@ -43,10 +44,13 @@ public class SpotterMovementPattern : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _flippable = GetComponent<Flippable>();
         _spotPlayer = GetComponent<SpotPlayer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     
     void Update()
     {
+        showDebugColors();
+        
         switch (_spotPlayer.State)
         {
             case SpotterPlayerRelationship.OutOfRadius:
@@ -61,6 +65,10 @@ public class SpotterMovementPattern : MonoBehaviour
 
             case SpotterPlayerRelationship.Puzzled:
                 _rigid.SetVelocityX(0f);
+                break;
+            
+            case SpotterPlayerRelationship.BlindChasing:
+                _rigid.SetVelocityX(Math.Sign(_spotPlayer.BlindChaseDirection.x) * RunSpeed);
                 break;
 
             case SpotterPlayerRelationship.Chasing:
@@ -108,6 +116,34 @@ public class SpotterMovementPattern : MonoBehaviour
 
             _fumbleWalk = !_fumbleWalk;
             _fumbleCurrentWaitTime = FumbleWaitTime.Pick();
+        }
+    }
+    
+    private void showDebugColors()
+    {
+        switch (_spotPlayer.State)
+        {
+            case SpotterPlayerRelationship.OutOfRadius:
+                _spriteRenderer.color = Color.green;
+                break;
+            case SpotterPlayerRelationship.HiddenInRadius:
+                _spriteRenderer.color = Color.blue;
+                break;
+            case SpotterPlayerRelationship.Spotted:
+                _spriteRenderer.color = Color.yellow;
+                break;
+            case SpotterPlayerRelationship.Puzzled:
+                _spriteRenderer.color = Color.magenta;
+                break;
+            case SpotterPlayerRelationship.Chasing:
+                _spriteRenderer.color = Color.red;
+                break;
+            case SpotterPlayerRelationship.BlindChasing:
+                _spriteRenderer.color = Color.cyan;
+                break;
+            default:
+                _spriteRenderer.color = Color.black;
+                break;
         }
     }
 }
