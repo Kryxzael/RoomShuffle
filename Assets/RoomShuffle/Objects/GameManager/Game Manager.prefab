@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6447120639103844522}
   - component: {fileID: 6447120639103844523}
+  - component: {fileID: 1172761164}
+  - component: {fileID: 6579476900499517401}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -41,5 +43,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88ad2f689b8490c4b9b3d7f2dc72301b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1172761164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447120639103844524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4dc10f28ac53b44ac61a267870f3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponSlots:
+  - {fileID: 11400000, guid: ad744a1ae3a13174997484699a933c87, type: 2}
+  - {fileID: 11400000, guid: ad744a1ae3a13174997484699a933c87, type: 2}
+  SelectedWeaponSlot: 0
+--- !u!114 &6579476900499517401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447120639103844524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdf65f7856ead343b76e9dbebdf18e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

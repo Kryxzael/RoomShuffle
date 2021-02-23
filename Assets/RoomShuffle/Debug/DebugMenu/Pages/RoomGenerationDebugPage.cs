@@ -25,6 +25,9 @@ public class RoomGenerationDebugPage : DebugPage
 
     protected override void RunItems(DebugMenu caller)
     {
+        if (BufferedRoomGenerator == null)
+            return;
+
         if (Button("Regenerate"))
             BufferedRoomGenerator.GenerateNext();
 

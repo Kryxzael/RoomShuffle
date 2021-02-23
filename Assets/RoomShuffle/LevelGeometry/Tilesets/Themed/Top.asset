@@ -18,5 +18,5 @@ MonoBehaviour:
     GrassSprite: {fileID: -8377130690987618698, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
     SnowSprite: {fileID: 4515061351058419221, guid: 449b1bdcf3b43f2439ca14e54b6653ef, type: 3}
     DefaultAnimation: {fileID: 0}
-    GrassAnimation: {fileID: 0}
+    GrassAnimation: {fileID: 11400000, guid: 44480e628b2a0de45a2a1af5552f9b4f, type: 2}
     SnowAnimation: {fileID: 0}

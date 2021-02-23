@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 1612203610}
   - component: {fileID: 1612203609}
   - component: {fileID: 1612203611}
+  - component: {fileID: 1612203612}
   m_Layer: 0
   m_Name: RoomGenerator
   m_TagString: Untagged
@@ -238,3 +239,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ad2f689b8490c4b9b3d7f2dc72301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1612203612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612203608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4dc10f28ac53b44ac61a267870f3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  SelectedWeaponSlot: 0

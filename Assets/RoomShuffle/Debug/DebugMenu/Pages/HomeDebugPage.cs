@@ -18,5 +18,8 @@ public class HomeDebugPage : DebugPage
 
         if (Button("Room Generation"))
             caller.NavigationStack.Push(new RoomGenerationDebugPage());
+
+        if (Button("Inventory"))
+            caller.NavigationStack.Push(new InventoryDisplayPage());
     }
 }

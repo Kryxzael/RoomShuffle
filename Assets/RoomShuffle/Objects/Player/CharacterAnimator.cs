@@ -62,7 +62,7 @@ public class CharacterAnimator : MonoBehaviour
          */
 
         //Crouching
-        if (Input.GetAxisRaw("Vertical") > 0.25f)
+        if (Input.GetAxisRaw("Vertical") < 0f)
             _spriteAnimator.Animation = Crouch;
 
         //Jumping (Moving up)
@@ -78,7 +78,7 @@ public class CharacterAnimator : MonoBehaviour
             _spriteAnimator.Animation = Walk;
 
         //Looking up
-        else if (Input.GetAxisRaw("Vertical") < -0.25f)
+        else if (Input.GetAxisRaw("Vertical") > 0f)
             _spriteAnimator.Animation = LookUp;
 
         //Idle (Not moving)
