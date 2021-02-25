@@ -8,7 +8,7 @@ public class DVDEnemy : MonoBehaviour
     [Tooltip("How fast the enemy will fly")]
     public float FlySpeed;
     
-    [Tooltip("The angel the enemy will fly in")] [Range(0,90)]
+    [Tooltip("The angle the enemy will fly in")] [Range(0,90)]
     public float Degree;
 
 
@@ -50,22 +50,23 @@ public class DVDEnemy : MonoBehaviour
         _rigidbody.velocity = _rigidbody.velocity.normalized * FlySpeed;
 
         Bounds bounds = _collider.bounds;
+        Vector2 extents = bounds.extents;
         int invertX = 1;
         int invertY = 1;
 
         //Raycasts for checking is a collision has been made in the direction it has momentum
         if (_rigidbody.velocity.x > 0)
         {
-            RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.center.x, bounds.center.y + bounds.extents.y), Vector2.right, bounds.extents.x + 0.03f);
-            RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.center.x, bounds.center.y - bounds.extents.y), Vector2.right, bounds.extents.x + 0.03f);
+            RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.center.x + extents.x, bounds.center.y + extents.y), Vector2.right, 0.03f);
+            RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.center.x + extents.x, bounds.center.y - extents.y), Vector2.right, 0.03f);
 
             if (rightUp || rightDown)
                 invertX = -1;
         }
         else if (_rigidbody.velocity.x < 0)
         {
-            RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.center.x, bounds.center.y + bounds.extents.y), -Vector2.right, bounds.extents.x + 0.03f);
-            RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.center.x, bounds.center.y - bounds.extents.y), -Vector2.right, bounds.extents.x + 0.03f);
+            RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.center.x - extents.x, bounds.center.y + extents.y), -Vector2.right, 0.03f);
+            RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.center.x - extents.x, bounds.center.y - extents.y), -Vector2.right, 0.03f);
             
             if (leftDown || leftUp)
                 invertX = -1;
@@ -73,16 +74,16 @@ public class DVDEnemy : MonoBehaviour
         
         if (_rigidbody.velocity.y > 0)
         {
-            RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.center.x - bounds.extents.x, bounds.center.y), Vector2.up, bounds.extents.y + 0.03f);
-            RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.center.x + bounds.extents.x, bounds.center.y), Vector2.up, bounds.extents.y + 0.03f);
+            RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.center.x - extents.x, bounds.center.y + extents.y), Vector2.up, 0.03f);
+            RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.center.x + extents.x, bounds.center.y + extents.y), Vector2.up, 0.03f);
             
             if (upLeft || upRight)
                 invertY = -1;
         }
         else if (_rigidbody.velocity.y < 0)
         {
-            RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.center.x - bounds.extents.x, bounds.center.y), -Vector2.up, bounds.extents.y + 0.03f);
-            RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.center.x + bounds.extents.x, bounds.center.y), -Vector2.up, bounds.extents.y + 0.03f);
+            RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.center.x - extents.x, bounds.center.y - extents.y), -Vector2.up, 0.03f);
+            RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.center.x + extents.x, bounds.center.y - extents.y), -Vector2.up, 0.03f);
             
             if (downLeft || downRight)
                 invertY = -1;
