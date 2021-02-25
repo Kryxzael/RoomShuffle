@@ -111,9 +111,7 @@ public class SpotPlayer : MonoBehaviour
             RaycastHit2D[] hits;
             hits = Physics2D.RaycastAll(_collider.bounds.center, _player.transform.position - transform.position, distanceToPlayer);
 
-            bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && x.transform.gameObject.tag != "Player"); 
-            
-            Debug.Log(inSight);
+            bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && x.transform.gameObject.tag != "Player");
 
             if (inSight)
             {

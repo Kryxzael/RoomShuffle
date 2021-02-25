@@ -49,7 +49,7 @@ public class SpotterMovementPattern : MonoBehaviour
     
     void Update()
     {
-        showDebugColors();
+        showDebugColors(); //TODO Delete this
         
         switch (_spotPlayer.State)
         {
