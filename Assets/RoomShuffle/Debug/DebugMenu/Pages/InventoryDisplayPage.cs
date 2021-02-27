@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 /// </summary>
 public class InventoryDisplayPage : DebugPage
 {
-    private RenewableLazy<Inventory> _inventory = new RenewableLazy<Inventory>(() => UnityEngine.Object.FindObjectOfType<Inventory>());
+    private readonly RenewableLazy<Inventory> _inventory = new RenewableLazy<Inventory>(() => UnityEngine.Object.FindObjectOfType<Inventory>());
 
     public override string Header { get; } = "Inventory";
 
@@ -17,13 +17,22 @@ public class InventoryDisplayPage : DebugPage
     {
         for (int i = 0; i < _inventory.Value.WeaponSlots.Length; i++)
         {
-            string name = $"{_inventory.Value.WeaponSlots[i].name} [{_inventory.Value.WeaponSlots[i].Durability} / {_inventory.Value.WeaponSlots[i].MaxDurability}]";
+            WeaponInstance instance = _inventory.Value.WeaponSlots[i];
 
-            if (i == _inventory.Value.SelectedWeaponSlot)
-                name = "*" + name + "*";
+            if (instance == null)
+            {
+                ReadOnly("(none)");
+            }
+            else
+            {
+                string name = $"{instance.Template.name} [{instance.Durability} / {instance.MaxDurability}]";
 
-            if (Button(name))
-                _inventory.Value.SelectedWeaponSlot = i;
+                if (i == _inventory.Value.SelectedWeaponSlot)
+                    name = "*" + name + "*";
+
+                if (Button(name))
+                    _inventory.Value.SelectedWeaponSlot = i;
+            }
         }
     }
 }

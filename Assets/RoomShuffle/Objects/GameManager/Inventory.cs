@@ -11,11 +11,12 @@ using UnityEngine;
 /// </summary>
 public class Inventory : MonoBehaviour
 {
+    //The amount of weapons the player can carry
     public const int MAX_WEAPON_SLOTS = 2;
 
     [Header("Weapons")]
     [Tooltip("The weapons the player is carrying")]
-    public WeaponTemplate[] WeaponSlots = new WeaponTemplate[MAX_WEAPON_SLOTS];
+    public WeaponInstance[] WeaponSlots = new WeaponInstance[MAX_WEAPON_SLOTS];
 
     [Tooltip("The currently selected weapon slot")]
     public int SelectedWeaponSlot;
@@ -23,7 +24,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Gets the weapon in the selected weapon slot
     /// </summary>
-    public WeaponTemplate SelectedWeapon
+    public WeaponInstance SelectedWeapon
     {
         get
         {
@@ -32,10 +33,6 @@ public class Inventory : MonoBehaviour
 
             return WeaponSlots[SelectedWeaponSlot];
         }
-    }
-
-    private void Start()
-    {
     }
 
     private void Update()
@@ -51,16 +48,5 @@ public class Inventory : MonoBehaviour
             }
         }
         
-    }
-
-    private void OnValidate()
-    {
-        if (WeaponSlots.Length != MAX_WEAPON_SLOTS)
-        {
-            WeaponTemplate[] truncated = new WeaponTemplate[MAX_WEAPON_SLOTS];
-            Array.Copy(WeaponSlots, truncated, MAX_WEAPON_SLOTS);
-
-            WeaponSlots = truncated;
-        }
     }
 }
