@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 /// </summary>
 public class InventoryDisplayPage : DebugPage
 {
+    private RenewableLazy<Inventory> _inventory = new RenewableLazy<Inventory>(() => UnityEngine.Object.FindObjectOfType<Inventory>());
+
     public override string Header { get; } = "Inventory";
 
     protected override void RunItems(DebugMenu caller)
     {
-        Inventory inventory = UnityEngine.Object.FindObjectOfType<Inventory>();
-
-        for (int i = 0; i < inventory.WeaponSlots.Length; i++)
+        for (int i = 0; i < _inventory.Value.WeaponSlots.Length; i++)
         {
-            string name = $"{inventory.WeaponSlots[i].name} [{inventory.WeaponSlots[i].Durability} / {inventory.WeaponSlots[i].MaxDurability}]";
+            string name = $"{_inventory.Value.WeaponSlots[i].name} [{_inventory.Value.WeaponSlots[i].Durability} / {_inventory.Value.WeaponSlots[i].MaxDurability}]";
 
-            if (i == inventory.SelectedWeaponSlot)
+            if (i == _inventory.Value.SelectedWeaponSlot)
                 name = "*" + name + "*";
 
             if (Button(name))
-                inventory.SelectedWeaponSlot = i;
+                _inventory.Value.SelectedWeaponSlot = i;
         }
     }
 }

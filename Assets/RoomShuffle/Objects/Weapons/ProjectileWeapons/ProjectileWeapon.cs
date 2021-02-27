@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Weapons/Projectile Weapon")]
-public class ProjectileWeapon : Weapon
+public class ProjectileWeapon : WeaponTemplate
 {
     public Projectile Ammunition;
 

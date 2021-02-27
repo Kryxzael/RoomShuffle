@@ -15,7 +15,7 @@ MonoBehaviour:
   Damage:
     Minimum: 0
     Maximum: 0
-  Cooldown: 0
+  Cooldown: 0.1
   MaxDurability: 99999
-  Durability: 99999
+  Durability: 94987
   Ammunition: {fileID: 6321468216601072407, guid: 88a0945ef04ce7e4baab95d3fb941f36, type: 3}

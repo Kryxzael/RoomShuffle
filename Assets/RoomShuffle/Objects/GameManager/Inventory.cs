@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Weapons")]
     [Tooltip("The weapons the player is carrying")]
-    public Weapon[] WeaponSlots = new Weapon[MAX_WEAPON_SLOTS];
+    public WeaponTemplate[] WeaponSlots = new WeaponTemplate[MAX_WEAPON_SLOTS];
 
     [Tooltip("The currently selected weapon slot")]
     public int SelectedWeaponSlot;
@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Gets the weapon in the selected weapon slot
     /// </summary>
-    public Weapon SelectedWeapon
+    public WeaponTemplate SelectedWeapon
     {
         get
         {
@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
     {
         if (WeaponSlots.Length != MAX_WEAPON_SLOTS)
         {
-            Weapon[] truncated = new Weapon[MAX_WEAPON_SLOTS];
+            WeaponTemplate[] truncated = new WeaponTemplate[MAX_WEAPON_SLOTS];
             Array.Copy(WeaponSlots, truncated, MAX_WEAPON_SLOTS);
 
             WeaponSlots = truncated;
