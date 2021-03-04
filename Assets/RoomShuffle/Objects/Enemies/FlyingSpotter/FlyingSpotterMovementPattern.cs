@@ -76,6 +76,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
                 }
                 else
                 {
+                    _goHomeCurrentWaitTime = GoHomeWaitTime;
                     FumbleAround();
                 }
                 break;
@@ -90,6 +91,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
                 break;
             
             case SpotterPlayerRelationship.BlindChasing:
+                
                 _goHomeCurrentWaitTime = GoHomeWaitTime;
                 _rigid.velocity = _spotPlayer.BlindChaseDirection * ChaseSpeed;
                 
@@ -122,7 +124,15 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
     /// </summary>
     private void FlipToPlayer()
     {
-        int relativePositionSign = Math.Sign(_player.transform.position.x - transform.position.x);
+        FlipToVector2(_player.transform.position);
+    }
+    
+    /// <summary>
+    /// Flips the object around to face a relative direction
+    /// </summary>
+    private void FlipToVector2(Vector2 position)
+    {
+        int relativePositionSign = Math.Sign(position.x - transform.position.x);
 
         if (_flippable.DirectionSign != relativePositionSign)
             _flippable.Flip();

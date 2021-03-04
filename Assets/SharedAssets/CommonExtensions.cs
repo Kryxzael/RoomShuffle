@@ -45,7 +45,7 @@ public static class CommonExtensions
     /// <returns></returns>
     public static RaycastHit2D OnGround2D(this GameObject obj, params string[] layers)
     {
-        const float RAY_DISTANCE = 0.1f;
+        const float RAY_DISTANCE = 0.03f;
 
         Collider2D collider = obj.GetComponent<Collider2D>();
 

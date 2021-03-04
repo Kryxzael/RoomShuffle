@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 /// An enemy pattern that can spot the player and chase them
 /// </summary>
 [RequireComponent(typeof(Flippable), typeof(SpotPlayer), typeof(Rigidbody2D))]
+[RequireComponent(typeof(LimitedMovementRadius))]
 public class SpotterMovementPattern : MonoBehaviour
 {
     [Tooltip("The speed the spotter will move at when fumbling")]
@@ -22,6 +23,12 @@ public class SpotterMovementPattern : MonoBehaviour
 
     [Tooltip("The amount of time the spotter can move or wait before choosing a new action when fumbling")]
     public RandomValueBetween FumbleWaitTime = new RandomValueBetween(3f, 7f);
+    
+    [Tooltip("The amount of the in seconds the enemy will attempt to go home after loosing sight of the player")]
+    public float GoHomeTime;
+
+    //how much time is left of the GoHomeTime
+    private float _goHomeTimeLeft;
     
     //The remaining fumble wait time
     private float _fumbleCurrentWaitTime;
@@ -36,6 +43,7 @@ public class SpotterMovementPattern : MonoBehaviour
     private Flippable _flippable;
     private SpotPlayer _spotPlayer;
     private SpriteRenderer _spriteRenderer;
+    private LimitedMovementRadius _limitedMovementRadius;
 
     void Start()
     {
@@ -45,6 +53,7 @@ public class SpotterMovementPattern : MonoBehaviour
         _flippable = GetComponent<Flippable>();
         _spotPlayer = GetComponent<SpotPlayer>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
     }
     
     void Update()
@@ -55,7 +64,14 @@ public class SpotterMovementPattern : MonoBehaviour
         {
             case SpotterPlayerRelationship.OutOfRadius:
             case SpotterPlayerRelationship.HiddenInRadius:   
-                FumbleAround();
+                if (!_limitedMovementRadius.InHomeRadius)
+                {
+                    tryToGoHome();
+                }
+                else
+                {
+                    FumbleAround();
+                }
                 break;
 
             case SpotterPlayerRelationship.Spotted:
@@ -83,7 +99,15 @@ public class SpotterMovementPattern : MonoBehaviour
     /// </summary>
     private void FlipToPlayer()
     {
-        int relativePositionSign = Math.Sign(_player.transform.position.x - transform.position.x);
+        FlipToVector2(_player.transform.position);
+    }
+    
+    /// <summary>
+    /// Flips the object around to face a relative direction
+    /// </summary>
+    private void FlipToVector2(Vector2 position)
+    {
+        int relativePositionSign = Math.Sign(position.x - transform.position.x);
 
         if (_flippable.DirectionSign != relativePositionSign)
             _flippable.Flip();
@@ -116,6 +140,21 @@ public class SpotterMovementPattern : MonoBehaviour
 
             _fumbleWalk = !_fumbleWalk;
             _fumbleCurrentWaitTime = FumbleWaitTime.Pick();
+        }
+    }
+    
+    private void tryToGoHome()
+    {
+        _goHomeTimeLeft -= Time.deltaTime;
+        if (_goHomeTimeLeft <= 0)
+        {
+            _limitedMovementRadius.Home = transform.position;
+            _goHomeTimeLeft = GoHomeTime;
+        }
+        else
+        {
+            FlipToVector2(_limitedMovementRadius.Home);
+            _rigid.SetVelocityX(_flippable.DirectionSign * WalkSpeed);
         }
     }
     

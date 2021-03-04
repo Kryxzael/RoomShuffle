@@ -6,13 +6,14 @@ using UnityEngine;
 public class LimitedMovementRadius : MonoBehaviour
 {
     
-
     public float BoundaryRadius;
+    
     public bool InHomeRadius { get; private set; }
     [NonSerialized] 
     public Vector2 Home;
     private Flippable _flippable;
     private bool _overrideBoundary;
+    
     private void Start()
     {
         Home = transform.position;
@@ -22,6 +23,11 @@ public class LimitedMovementRadius : MonoBehaviour
 
     private void Update()
     {
+        if (BoundaryRadius == 0){
+            InHomeRadius = true;
+            return;
+        }
+
         if (Vector2.Distance(Home, transform.position) >= BoundaryRadius && !_overrideBoundary)
         {
             InHomeRadius = false;
