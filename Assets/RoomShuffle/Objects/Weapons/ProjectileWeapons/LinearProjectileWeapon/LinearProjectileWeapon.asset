@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc4e4819f80133479bf2eb95546e98e, type: 3}
   m_Name: LinearProjectileWeapon
   m_EditorClassIdentifier: 
-  Damage:
-    Minimum: 0
-    Maximum: 0
+  BaseDamage:
+    Candidates: []
+  MaxDurability:
+    Candidates: []
+  Range:
+    Minimum: 1
+    Maximum: 10
   Cooldown: 0.1
-  MaxDurability: 99999
-  Durability: 94987
   Ammunition: {fileID: 6321468216601072407, guid: 88a0945ef04ce7e4baab95d3fb941f36, type: 3}

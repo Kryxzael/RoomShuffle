@@ -25,6 +25,9 @@ public class WeaponInstance
     [Tooltip("The weapon's base damage as chosen from the template upon its creation")]
     public int BaseDamage;
 
+    [Tooltip("The weapon's range as chosen from the template upon its creation")]
+    public float Range;
+
     /*
      * Status
      */

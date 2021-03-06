@@ -14,10 +14,13 @@ public abstract class WeaponTemplate : ScriptableObject
     [Tooltip("The weapon's base damage")]
     public RandomValueFromSet BaseDamage;
 
-    [Tooltip("gets or sets the maximum durability value of the weapon")]
+    [Tooltip("The maximum durability value of the weapon")]
     public RandomValueFromSet MaxDurability;
 
-    [Tooltip("Gets the amount of time (in seconds) the player must wait until they can re-fire the weapon")]
+    [Tooltip("The range of the weapon's firing. The purpose of this value may change from weapon type to weapon type")]
+    public RandomValueBetween Range;
+
+    [Tooltip("The amount of time (in seconds) the player must wait until they can re-fire the weapon")]
     public float Cooldown;
 
     /* *** */
@@ -51,7 +54,8 @@ public abstract class WeaponTemplate : ScriptableObject
         {
             Template = this,
             MaxDurability = (int)MaxDurability.Pick(),
-            BaseDamage = (int)BaseDamage.Pick()
+            BaseDamage = (int)BaseDamage.Pick(),
+            Range = Range.Pick()
         };
 
         weapon.Durability = weapon.MaxDurability;
