@@ -8,39 +8,32 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public class RoomGenerationDebugPage : DebugPage
 {
-    private static RoomGenerator _bufferedRoomGenerator;
-
-    private static RoomGenerator BufferedRoomGenerator
-    {
-        get
-        {
-            if (_bufferedRoomGenerator == null)
-                _bufferedRoomGenerator = Object.FindObjectOfType<RoomGenerator>();
-
-            return _bufferedRoomGenerator;
-        }
-    }
-
     public override string Header { get; } = "Room Generation";
 
     protected override void RunItems(DebugMenu caller)
     {
-        if (BufferedRoomGenerator == null)
+        if (Commons.RoomGenerator == null)
+        {
+            //Exit if there is no generator to manipulate
+            caller.NavigationStack.Pop();
             return;
+        }       
 
         if (Button("Regenerate"))
-            BufferedRoomGenerator.GenerateNext();
+            Commons.RoomGenerator.GenerateNext();
 
-        if (Button("Room Theme [" + BufferedRoomGenerator.CurrentRoomConfig.Theme + "]"))
+        if (Commons.RoomGenerator.CurrentRoomConfig != null)
         {
-            int max = System.Enum.GetValues(typeof(RoomTheme)).Length;
-            int current = (int)BufferedRoomGenerator.CurrentRoomConfig.Theme;
+            if (Button("Room Theme [" + Commons.RoomGenerator.CurrentRoomConfig.Theme + "]"))
+            {
+                int max = System.Enum.GetValues(typeof(RoomTheme)).Length;
+                int current = (int)Commons.RoomGenerator.CurrentRoomConfig.Theme;
 
-            BufferedRoomGenerator.CurrentRoomConfig.Theme = (RoomTheme)((current + 1) % max);
+                Commons.RoomGenerator.CurrentRoomConfig.Theme = (RoomTheme)((current + 1) % max);
 
-            foreach (Tilemap i in Object.FindObjectsOfType<Tilemap>())
-                i.RefreshAllTiles();
+                foreach (Tilemap i in Object.FindObjectsOfType<Tilemap>())
+                    i.RefreshAllTiles();
+            }
         }
-            
     }
 }

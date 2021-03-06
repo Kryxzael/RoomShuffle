@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 /// </summary>
 public class InventoryDisplayPage : DebugPage
 {
-    private readonly RenewableLazy<Inventory> _inventory = new RenewableLazy<Inventory>(() => UnityEngine.Object.FindObjectOfType<Inventory>());
-
     public override string Header { get; } = "Inventory";
 
     protected override void RunItems(DebugMenu caller)
     {
-        for (int i = 0; i < _inventory.Value.WeaponSlots.Length; i++)
+        ReadOnly($"<3: {Commons.PlayerHealth.Health} / {Commons.PlayerHealth.MaximumHealth}");
+
+        for (int i = 0; i < Commons.Inventory.WeaponSlots.Length; i++)
         {
-            WeaponInstance instance = _inventory.Value.WeaponSlots[i];
+            WeaponInstance instance = Commons.Inventory.WeaponSlots[i];
 
             if (instance == null)
             {
@@ -27,11 +27,11 @@ public class InventoryDisplayPage : DebugPage
             {
                 string name = $"{instance.Template.name} [{instance.Durability} / {instance.MaxDurability}]";
 
-                if (i == _inventory.Value.SelectedWeaponSlot)
+                if (i == Commons.Inventory.SelectedWeaponSlot)
                     name = "*" + name + "*";
 
                 if (Button(name))
-                    _inventory.Value.SelectedWeaponSlot = i;
+                    Commons.Inventory.SelectedWeaponSlot = i;
             }
         }
     }

@@ -88,6 +88,13 @@ public class SpotPlayer : MonoBehaviour
 
     void Update()
     {
+        //If the no-target cheat is enabled, the spotter will never see the player
+        if (Cheats.NoTarget)
+        {
+            State = SpotterPlayerRelationship.OutOfRadius;
+            return;
+        }
+
         float distanceToPlayer = Vector2.Distance(_player.transform.position, transform.position);   
         ReactionTimeLeft = Mathf.Clamp(ReactionTimeLeft, 0, ReactionTime);
         

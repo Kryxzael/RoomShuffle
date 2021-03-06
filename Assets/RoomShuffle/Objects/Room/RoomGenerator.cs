@@ -13,11 +13,18 @@ using SysRandom = System.Random;
 /// </summary>
 public class RoomGenerator : MonoBehaviour
 {
+    [Tooltip("Will the generator automatically generate the first room when the it starts?")]
+    public bool AutoGenerateFirstRoom = true;
+
     [Header("Seeding")]
+    [Tooltip("The set seed the generator will use if 'Use Random Seed' is disabled")]
     public int Seed;
+
+    [Tooltip("Whether the generator should set its seed randomly. If this is enabled, the 'Seed' property is ignored")]
     public bool UseRandomSeed;
 
     [Header("Generators")]
+    [Tooltip("The room parameter picker the generator will use")]
     public ParameterBuilder RoomParameterBuilder;
 
     /* *** */
@@ -63,7 +70,8 @@ public class RoomGenerator : MonoBehaviour
 
     private void Start()
     {
-        GenerateNext();
+        if (AutoGenerateFirstRoom)
+            GenerateNext();
     }
 
     /// <summary>
