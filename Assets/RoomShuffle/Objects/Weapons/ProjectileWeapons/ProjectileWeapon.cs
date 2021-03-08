@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.RoomShuffle.Objects.Health.HurtBoxes;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,7 @@ public class ProjectileWeapon : WeaponTemplate
 {
     public Projectile Ammunition;
 
-    protected override void OnFire(WeaponShooter shooter, Vector2 direction)
+    protected override void OnFire(WeaponInstance instance, WeaponShooter shooter, Vector2 direction)
     {
         Projectile newAmmo = Instantiate(
             original: Ammunition,
@@ -20,5 +22,9 @@ public class ProjectileWeapon : WeaponTemplate
       );
 
         newAmmo.Direction = direction;
+
+        WeaponFireHurtbox hurtbox = newAmmo.GetComponent<WeaponFireHurtbox>();
+        hurtbox.Shooter = shooter;
+        hurtbox.Weapon = instance;
     }
 }

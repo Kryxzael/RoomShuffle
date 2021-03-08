@@ -39,7 +39,7 @@ public abstract class WeaponTemplate : ScriptableObject
     /// </summary>
     public void Fire(WeaponInstance instance, WeaponShooter shooter)
     {
-        OnFire(shooter, shooter.CurrentAimingDirection);
+        OnFire(instance, shooter, shooter.CurrentAimingDirection);
         instance.Durability--;
         instance.LastFireTime = DateTime.Now;
     }
@@ -67,5 +67,5 @@ public abstract class WeaponTemplate : ScriptableObject
     /// Fires the weapon from the provided weapon shooter
     /// </summary>
     /// <param name="direction"></param>
-    protected abstract void OnFire(WeaponShooter shooter, Vector2 direction);    
+    protected abstract void OnFire(WeaponInstance instance, WeaponShooter shooter, Vector2 direction);    
 }

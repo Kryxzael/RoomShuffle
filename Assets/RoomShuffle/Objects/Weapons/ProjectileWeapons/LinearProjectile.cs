@@ -11,8 +11,9 @@ public class LinearProjectile : Projectile
 {
     private Rigidbody2D _rigidbody;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 

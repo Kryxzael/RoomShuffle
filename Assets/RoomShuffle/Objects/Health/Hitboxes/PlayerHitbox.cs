@@ -22,6 +22,8 @@ public class PlayerHitbox : Hitbox
     /// <param name="hurtbox"></param>
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
-        //TODO: Do something with _playerHealth
+        GrantInvincibilityFrames();
+
+        Commons.PlayerHealth.DealDamage(hurtbox.GetDamage());
     }
 }

@@ -9,7 +9,6 @@ using UnityEngine;
 /// <summary>
 /// Lets an enemy be hurt by hurtboxes
 /// </summary>
-[RequireComponent(typeof(HealthController))]
 public class EnemyHitbox : Hitbox
 {
     private HealthController _health;
@@ -22,7 +21,7 @@ public class EnemyHitbox : Hitbox
     protected override void Awake()
     {
         base.Awake();
-        _health = GetComponent<HealthController>();
+        _health = GetComponentInParent<HealthController>();
     }
 
     /// <summary>
@@ -31,6 +30,10 @@ public class EnemyHitbox : Hitbox
     /// <param name="hurtbox"></param>
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
-        //TODO: Do something with _health
+        GrantInvincibilityFrames();
+        _health.DealDamage(hurtbox.GetDamage());
+
+        if (_health.Health <= 0)
+            Destroy(transform.parent.gameObject);
     }
 }

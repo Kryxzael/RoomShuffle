@@ -29,7 +29,21 @@ public abstract class Hitbox : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponentInParent<SpriteRenderer>();
+    }
+
+    /// <summary>
+    /// Enabled invincibility time for the object
+    /// </summary>
+    public void GrantInvincibilityFrames()
+    {
+
+        StopAllCoroutines();
+
+        if (Cheats.HealthCheat == Cheats.HealthCheatType.Godmode)
+            return;
+
+        StartCoroutine(CoIFrames());
     }
 
     /// <summary>
@@ -43,6 +57,7 @@ public abstract class Hitbox : MonoBehaviour
         //Store elapsed time of I-frames, and whether the object is currently blinking
         bool isBlinking = false;
         float elapsedTime = 0f;
+        const float BLINK_RATE = 0.1f;
 
         while (elapsedTime < InvincibilityFramesInSeconds)
         {
@@ -54,24 +69,24 @@ public abstract class Hitbox : MonoBehaviour
                 _renderer.color = new Color(_renderer.color.r, _renderer.color.g, _renderer.color.b, isBlinking ? 0f : 1f);
 
             //Wait for frame to end and increase counter
-            yield return new WaitForEndOfFrame();
-            elapsedTime += Time.deltaTime;
+            yield return new WaitForSecondsRealtime(BLINK_RATE);
+            elapsedTime += BLINK_RATE;
         }
 
         //Make sure the sprite is visible again when the blinking ends
         if (_renderer != null)
-            _renderer.color = new Color(_renderer.color.r, _renderer.color.g, _renderer.color.b, isBlinking ? 0f : 1f);
+            _renderer.color = new Color(_renderer.color.r, _renderer.color.g, _renderer.color.b, 1f);
 
         //Set mortal
         HasInvincibilityFrames = false;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (HasInvincibilityFrames)
             return;
 
-        if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt.Type.HasFlag(SusceptibleTo))
+        if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt.GetTargets().HasFlag(SusceptibleTo))
             OnReceiveDamage(hurt);
     }
 

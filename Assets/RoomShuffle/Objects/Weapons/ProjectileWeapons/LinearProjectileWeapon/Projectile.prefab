@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7368311338294829143}
   - component: {fileID: 407416125362773916}
   - component: {fileID: 6321468216601072407}
-  - component: {fileID: 3855615508421531600}
-  - component: {fileID: 4436443249149010920}
-  m_Layer: 0
+  - component: {fileID: -5169948911812074434}
+  - component: {fileID: 8457458393265559942}
+  m_Layer: 6
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
---- !u!114 &3855615508421531600
+--- !u!114 &-5169948911812074434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,20 +129,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1216896434439131481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28af3867073c4284eae174c294fbbba4, type: 3}
+  m_Script: {fileID: 11500000, guid: 007f8d437d6aa8e429cdca8c0c93225d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
---- !u!114 &4436443249149010920
-MonoBehaviour:
+--- !u!58 &8457458393265559942
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216896434439131481}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28af3867073c4284eae174c294fbbba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 2
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
