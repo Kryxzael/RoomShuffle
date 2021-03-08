@@ -178,5 +178,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: RoomParameterBuilder
+      value: 
+      objectReference: {fileID: 11400000, guid: fb5715dfd79e4e44383859f00c88884d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36caeee739765844bcf00cd2fea136b, type: 3}

@@ -30,15 +30,13 @@ public class SpotterMovementPattern : MonoBehaviour
     /* *** */
 
     private Rigidbody2D _rigid;
-    private GameObject _player;
+    private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
     private Flippable _flippable;
     private SpotPlayer _spotPlayer;
     private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
-        _player = this.GetPlayer();
-
         _rigid = GetComponent<Rigidbody2D>();
         _flippable = GetComponent<Flippable>();
         _spotPlayer = GetComponent<SpotPlayer>();
@@ -81,7 +79,7 @@ public class SpotterMovementPattern : MonoBehaviour
     /// </summary>
     private void FlipToPlayer()
     {
-        int relativePositionSign = Math.Sign(_player.transform.position.x - transform.position.x);
+        int relativePositionSign = Math.Sign(_player.Value.transform.position.x - transform.position.x);
 
         if (_flippable.DirectionSign != relativePositionSign)
             _flippable.Flip();
