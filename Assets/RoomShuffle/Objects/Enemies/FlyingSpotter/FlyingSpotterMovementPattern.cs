@@ -38,7 +38,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
     /* *** */
 
     private Rigidbody2D _rigid;
-    private GameObject _player;
+    private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
     private Flippable _flippable;
     private SpotPlayer _spotPlayer;
     private Vector2 _flyDirection;
@@ -48,8 +48,6 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _player = this.GetPlayer();
-
         _rigid = GetComponent<Rigidbody2D>();
         _flippable = GetComponent<Flippable>();
         _spotPlayer = GetComponent<SpotPlayer>();
@@ -59,7 +57,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
     private void Update()
     {
         //TODO Delete this function
-        showDebugColors();
+        ShowDebugColors();
 
 
         switch (_spotPlayer.State)
@@ -106,7 +104,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
             case SpotterPlayerRelationship.Chasing:
                 FlipToPlayer();
                 _goHomeCurrentWaitTime = GoHomeWaitTime;
-                _rigid.velocity = (_player.transform.position - transform.position).normalized * ChaseSpeed;
+                _rigid.velocity = (_player.Value.transform.position - transform.position).normalized * ChaseSpeed;
                 break;
             
         }
@@ -120,7 +118,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
     /// </summary>
     private void FlipToPlayer()
     {
-        int relativePositionSign = Math.Sign(_player.transform.position.x - transform.position.x);
+        int relativePositionSign = Math.Sign(_player.Value.transform.position.x - transform.position.x);
 
         if (_flippable.DirectionSign != relativePositionSign)
             _flippable.Flip();
@@ -174,7 +172,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
         }
     }
 
-    private void showDebugColors()
+    private void ShowDebugColors()
     {
         switch (_spotPlayer.State)
         {

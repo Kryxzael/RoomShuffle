@@ -1,6 +1,4 @@
-﻿using TMPro.EditorUtilities;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>

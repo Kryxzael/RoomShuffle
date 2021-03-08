@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: LinearProjectileWeapon
   m_EditorClassIdentifier: 
   BaseDamage:
-    Candidates: []
+    Candidates:
+    - Item: 10
+      Pickrate: 1
+    - Item: 15
+      Pickrate: 1
+    - Item: 20
+      Pickrate: 0.5
   MaxDurability:
-    Candidates: []
+    Candidates:
+    - Item: 50
+      Pickrate: 1
+    - Item: 75
+      Pickrate: 0.25
   Range:
     Minimum: 1
     Maximum: 10

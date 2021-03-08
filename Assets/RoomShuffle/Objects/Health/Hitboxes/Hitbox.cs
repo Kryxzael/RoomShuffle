@@ -76,6 +76,4 @@ public abstract class Hitbox : MonoBehaviour
     }
 
     protected abstract void OnReceiveDamage(HurtBox hurtbox);
-
-
 }

@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 7829438793687919285}
   - component: {fileID: 857590341}
   - component: {fileID: 42982651476837635}
+  - component: {fileID: 3028985893428249927}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -309,6 +310,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InvincibilityFramesInSeconds: 5
+--- !u!114 &3028985893428249927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829438793687919276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47056b07ed953564e8a77f770da51a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileSpawningBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 1, y: 1, z: 1}
 --- !u!1 &8999811931387121829
 GameObject:
   m_ObjectHideFlags: 0
