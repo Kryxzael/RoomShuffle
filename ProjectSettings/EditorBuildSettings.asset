@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/RoomShuffle/Scenes/Kasper.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/RoomShuffle/Scenes/RoomGenerationTest.unity
+    guid: 1f46d57b0f9de284a93e02cd29cea032
   m_configObjects: {}

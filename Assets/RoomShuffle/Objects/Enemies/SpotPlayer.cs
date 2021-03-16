@@ -77,18 +77,24 @@ public class SpotPlayer : MonoBehaviour
 
     /* *** */
 
-    private GameObject _player;
+    private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
     private Collider2D _collider;
 
     void Awake()
     {
-        _player = CommonExtensions.GetPlayer();
         _collider = GetComponent<Collider2D>();
     }
 
     void Update()
     {
-        float distanceToPlayer = Vector2.Distance(_player.transform.position, transform.position);   
+        //If the no-target cheat is enabled, the spotter will never see the player
+        if (Cheats.NoTarget)
+        {
+            State = SpotterPlayerRelationship.OutOfRadius;
+            return;
+        }
+
+        float distanceToPlayer = Vector2.Distance(_player.Value.transform.position, transform.position);   
         ReactionTimeLeft = Mathf.Clamp(ReactionTimeLeft, 0, ReactionTime);
         
         //The player is in the enemy's spotting distance (or chasing spotting distance)
@@ -109,7 +115,7 @@ public class SpotPlayer : MonoBehaviour
             //Checks vision cone of enemy. If a raycast towards the player hits it, the player is spotted. If not, something's in the way
 
             RaycastHit2D[] hits;
-            hits = Physics2D.RaycastAll(_collider.bounds.center, _player.transform.position - transform.position, distanceToPlayer);
+            hits = Physics2D.RaycastAll(_collider.bounds.center, _player.Value.transform.position - transform.position, distanceToPlayer);
 
             bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && x.transform.gameObject.tag != "Player");
 
@@ -128,7 +134,7 @@ public class SpotPlayer : MonoBehaviour
                     BlindChaseTimeLeft = BlindChaseTime;
                     
                     //update the direction the enemy will blindly chase in.
-                    BlindChaseDirection = (_player.transform.position - transform.position).normalized;
+                    BlindChaseDirection = (_player.Value.transform.position - transform.position).normalized;
                 }
             }
 

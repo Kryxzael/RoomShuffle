@@ -142,7 +142,7 @@ public static class CommonExtensions
     /// <returns></returns>
     public static bool IsPlayer(this GameObject obj)
     {
-        return obj.tag == "Player";
+        return obj.CompareTag("Player");
     }
 
     /// <summary>

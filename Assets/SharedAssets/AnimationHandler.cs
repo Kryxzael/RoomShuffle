@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
+[Obsolete]
 [RequireComponent(typeof(SpriteRenderer))]
 public class AnimationHandler : MonoBehaviour
 {
