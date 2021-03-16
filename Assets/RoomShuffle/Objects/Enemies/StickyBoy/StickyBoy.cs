@@ -32,7 +32,7 @@ public class StickyBoy : MonoBehaviour
     private Rigidbody2D _rigid;
     
     //The time the enemy will try to connect to the ground after going around a corner
-    private float _connectTorGroundTime = 0.07f;
+    private float _connectToGroundTime = 0.07f;
 
     void Start()
     {
@@ -96,7 +96,7 @@ public class StickyBoy : MonoBehaviour
         else
         {
             //The enemy is on the edge of a platform (Rounding a corner)
-            if (_freeFall <= 0.07f)
+            if (_freeFall <= _connectToGroundTime)
             {
                 _freeFall += Time.deltaTime;
                 _rigid.velocity = Vector2.zero;
@@ -135,7 +135,7 @@ public class StickyBoy : MonoBehaviour
                 }
             }
             //Freefalling. Not really supposed to happen normally
-            else if (_freeFall > 0.07f)
+            else if (_freeFall > _connectToGroundTime)
             {
                 transform.eulerAngles = Vector3.zero;
                 _freeFall += Time.deltaTime;

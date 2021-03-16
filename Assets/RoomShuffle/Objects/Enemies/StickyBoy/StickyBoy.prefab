@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6055999859972446562}
   - component: {fileID: 6055999859972446564}
   - component: {fileID: 2007707425}
+  - component: {fileID: 1657605950}
   m_Layer: 0
   m_Name: StickyBoy
   m_TagString: Enemy
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 8976018127306389262, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,3 +146,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingDirection: 1
+--- !u!114 &1657605950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6055999859972446567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e0ff41b7e92e4489dfbffd59e9329f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkSpeed: 3
+  ClockWiseRotation: 0
