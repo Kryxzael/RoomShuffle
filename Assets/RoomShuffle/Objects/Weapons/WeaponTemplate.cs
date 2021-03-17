@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// The template of a weapon that defines its base stats and firing mechanics
@@ -23,6 +24,9 @@ public abstract class WeaponTemplate : ScriptableObject
     [Tooltip("The amount of time (in seconds) the player must wait until they can re-fire the weapon")]
     public float Cooldown;
 
+    [Tooltip("The Weapon Icon")]
+    public Sprite Icon;
+    
     /* *** */
 
     /// <summary>

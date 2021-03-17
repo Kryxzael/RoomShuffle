@@ -26,14 +26,21 @@ public class HealthUIManager : MonoBehaviour
     void Start()
     {
         _heartList = new List<Tuple<GameObject, Heart>>();
-        AddHeart(10);
+        AddHeart(30);
         SetHealth(560);
         RemoveHeart();
+
+        RectTransform rt = transform.GetComponent (typeof (RectTransform)) as RectTransform;
+        rt.sizeDelta = new Vector2 (HeartsPerRow * HeartDistanceX * 2, 500);
     }
 
     private void Update()
     {
-        
+        if (_lastHealth == Commons.PlayerHealth.Health)
+            return;
+
+        _lastHealth = Commons.PlayerHealth.Health;
+        SetHealth(_lastHealth);
     }
 
     public void SetHealth(int health)

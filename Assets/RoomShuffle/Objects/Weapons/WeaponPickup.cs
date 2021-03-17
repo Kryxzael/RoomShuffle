@@ -39,7 +39,20 @@ public class WeaponPickup : MonoBehaviour
         if (collision.gameObject.IsPlayer())
         {
             Inventory inventory = FindObjectOfType<Inventory>();
-            inventory.WeaponSlots[inventory.SelectedWeaponSlot] = Instance;
+
+            bool SuccessfullyPickesUp = false;
+            for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
+            {
+                if (inventory.WeaponSlots[i] == null)
+                {
+                    inventory.WeaponSlots[i] = Instance;
+                    SuccessfullyPickesUp = true;
+                    break;
+                }
+            }
+            
+            if (!SuccessfullyPickesUp)
+                inventory.WeaponSlots[inventory.SelectedWeaponSlot] = Instance;
 
             Destroy(gameObject);
         }

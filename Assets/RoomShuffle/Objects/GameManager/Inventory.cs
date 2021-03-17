@@ -47,6 +47,26 @@ public class Inventory : MonoBehaviour
                 SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooter>());
             }
         }
+        /*
+         * Switch weapon with button
+         */
+        if (Input.GetButtonDown("QuickSwitchWeapon"))
+        {
+            SelectedWeaponSlot++;
+            if (SelectedWeaponSlot >= MAX_WEAPON_SLOTS)
+            {
+                SelectedWeaponSlot -= MAX_WEAPON_SLOTS;
+            }
+        }
+        if (Input.GetButtonDown("SwitchToWeapon1"))
+        {
+            SelectedWeaponSlot = 0;
+        }
+        if (Input.GetButtonDown("SwitchToWeapon2"))
+        {
+            SelectedWeaponSlot = 1;
+        }
+
         
     }
 }
