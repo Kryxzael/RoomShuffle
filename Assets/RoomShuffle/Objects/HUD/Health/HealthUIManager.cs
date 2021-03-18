@@ -26,9 +26,7 @@ public class HealthUIManager : MonoBehaviour
     void Start()
     {
         _heartList = new List<Tuple<GameObject, Heart>>();
-        AddHeart(30);
-        SetHealth(560);
-        RemoveHeart();
+        SetHearts(3);
 
         RectTransform rt = transform.GetComponent (typeof (RectTransform)) as RectTransform;
         rt.sizeDelta = new Vector2 (HeartsPerRow * HeartDistanceX * 2, 500);
@@ -43,6 +41,10 @@ public class HealthUIManager : MonoBehaviour
         SetHealth(_lastHealth);
     }
 
+    /// <summary>
+    /// Displays the health of the player
+    /// </summary>
+    /// <param name="health"></param>
     public void SetHealth(int health)
     {
         foreach (Tuple<GameObject, Heart> heart in _heartList)
@@ -60,6 +62,10 @@ public class HealthUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds a heart(s) to the player. Hearts gets added to the last index
+    /// </summary>
+    /// <param name="numberOfHearts"></param>
     public void AddHeart(int numberOfHearts = 1)
     {
         for (int i = 0; i < numberOfHearts; i++)
@@ -67,12 +73,20 @@ public class HealthUIManager : MonoBehaviour
             int row = (_heartList.Count / HeartsPerRow) + 1;
             int column = (_heartList.Count % HeartsPerRow) + 1;
             
-            GameObject newHeart = Instantiate(HeartPrefab, new Vector3(HeartDistanceX * column, HeartDistanceY * -row, 0) + transform.position, Quaternion.identity, transform);
+            GameObject newHeart = Instantiate(
+                original: HeartPrefab, 
+                position: new Vector3(HeartDistanceX * column, HeartDistanceY * -row, 0) + transform.position, 
+                rotation: Quaternion.identity, 
+                parent: transform);
 
             _heartList.Add(new Tuple<GameObject, Heart>(newHeart, newHeart.GetComponent<Heart>()));
         }
     }
 
+    /// <summary>
+    /// Destroys the last heart(s) of the player. This is the heart(s) that gets filled last
+    /// </summary>
+    /// <param name="numberOfHearts"></param>
     public void RemoveHeart(int numberOfHearts = 1)
     {
         for (int i = 0; i < numberOfHearts; i++)
@@ -81,6 +95,28 @@ public class HealthUIManager : MonoBehaviour
             Destroy(heartTuple.Item1);
             _heartList.Remove(heartTuple);
         }
-        
+    }
+
+    /// <summary>
+    /// Sets the number of hearts for the player. Add/removes last hearts. Doesn't add health
+    /// </summary>
+    /// <param name="numberOfHearts"></param>
+    public void SetHearts(int desiredNumberOfHearts)
+    {
+        int currentNumberOfHearts = 0;
+        foreach (var child in transform)
+        {
+            currentNumberOfHearts++;
+        }
+        int difference = desiredNumberOfHearts - currentNumberOfHearts;
+
+        if (difference >= 0)
+        {
+            AddHeart(difference);
+        } 
+        else
+        {
+            RemoveHeart(-difference);
+        }
     }
 }
