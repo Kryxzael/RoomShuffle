@@ -22,5 +22,20 @@ public enum RoomTheme
     /// <summary>
     /// A snowy version of the grass theme
     /// </summary>
-    Snow
+    Snow,
+
+    /// <summary>
+    /// A version of the grass theme with fallen leaves and red grass
+    /// </summary>
+    Autumn,
+
+    /// <summary>
+    /// An underground area with a rocky tileset
+    /// </summary>
+    Cave,
+
+    /// <summary>
+    /// An area with red volcanic stone
+    /// </summary>
+    Volcano
 }

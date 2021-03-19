@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionType: 2
   Visuals:
-    DefaultSprite: {fileID: -1159832775871095999, guid: 11154916454401f4e98404e506317092, type: 3}
-    GrassSprite: {fileID: -7326330765846486680, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-    SnowSprite: {fileID: -1065958867007316703, guid: 449b1bdcf3b43f2439ca14e54b6653ef, type: 3}
+    DefaultSprite: {fileID: 4021988680343528768, guid: 11154916454401f4e98404e506317092, type: 3}
+    GrassSprite: {fileID: 3123766704050763852, guid: 9b370985d895c554db958dbe91c81840, type: 3}
+    SnowSprite: {fileID: -3321196436731473878, guid: 60f3618b70a2e834794e7725aea22a71, type: 3}
+    AutumnSprite: {fileID: -6139185809142026597, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+    CaveSprite: {fileID: 3648317675610061473, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
+    VolcanoSprite: {fileID: 5739326615861638823, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
+    AutumnAnimation: {fileID: 0}
+    CaveAnimation: {fileID: 0}
+    VolcanoAnimation: {fileID: 0}

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e94975398706e294db646ccb23b5c435, type: 3}
-  m_Name: Left
+  m_Name: Cover
   m_EditorClassIdentifier: 
   CollisionType: 2
   Visuals:
-    DefaultSprite: {fileID: -7961999476411382874, guid: 11154916454401f4e98404e506317092, type: 3}
-    GrassSprite: {fileID: 8577017789959637929, guid: 9b370985d895c554db958dbe91c81840, type: 3}
-    SnowSprite: {fileID: 8235637959329656600, guid: 60f3618b70a2e834794e7725aea22a71, type: 3}
-    AutumnSprite: {fileID: 533043775816010848, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
-    CaveSprite: {fileID: 5951026009885636841, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
-    VolcanoSprite: {fileID: 2287430067347338573, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
+    DefaultSprite: {fileID: -3915548693316687154, guid: 11154916454401f4e98404e506317092, type: 3}
+    GrassSprite: {fileID: -7645372005702169758, guid: 9b370985d895c554db958dbe91c81840, type: 3}
+    SnowSprite: {fileID: -700802387755607878, guid: 60f3618b70a2e834794e7725aea22a71, type: 3}
+    AutumnSprite: {fileID: 3054086091017653696, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+    CaveSprite: {fileID: 5613625410805641350, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
+    VolcanoSprite: {fileID: -65353184162297358, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
