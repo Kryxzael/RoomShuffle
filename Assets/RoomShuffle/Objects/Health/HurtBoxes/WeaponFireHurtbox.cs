@@ -8,7 +8,7 @@ namespace Assets.RoomShuffle.Objects.Health.HurtBoxes
 {
     public class WeaponFireHurtbox : HurtBox
     {
-        public WeaponShooter Shooter { get; set; }
+        public WeaponShooterBase Shooter { get; set; }
         public WeaponInstance Weapon { get; set; }
 
         public override int GetDamage()

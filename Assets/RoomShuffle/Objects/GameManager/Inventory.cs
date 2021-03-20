@@ -33,6 +33,19 @@ public class Inventory : MonoBehaviour
 
             return WeaponSlots[SelectedWeaponSlot];
         }
+        set
+        {
+            for (int i = 0; i < WeaponSlots.Length; i++)
+            {
+                if (WeaponSlots[i] == value)
+                {
+                    SelectedWeaponSlot = i;
+                    return;
+                }    
+            }
+
+            throw new ArgumentException("The provided weapon is not in the player's inventory and can therefore not be selected");
+        }
     }
 
     private void Update()
@@ -42,9 +55,9 @@ public class Inventory : MonoBehaviour
          */
         if (SelectedWeapon != null)
         {
-            if (Input.GetButton("Fire") && SelectedWeapon.CanFire())
+            if (Input.GetButton("Fire") && SelectedWeapon.CanFire(ignoreDurability: false))
             {
-                SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooter>());
+                SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
             }
         }
         /*

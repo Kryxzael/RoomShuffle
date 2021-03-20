@@ -69,20 +69,16 @@ public class WeaponInstance
     /// Gets whether the weapon can currently be fired
     /// </summary>
     /// <returns></returns>
-    public bool CanFire()
+    public bool CanFire(bool ignoreDurability)
     {
-        //Weapon can always be fired when cheat is enabled
-        if (Cheats.InfiniteAmmo)
-            return true;
-
-        return Template.CanFire(this);
+        return Template.CanFire(this, ignoreDurability || Cheats.InfiniteAmmo);
     }
 
     /// <summary>
     /// Fires the weapon from the provided weapon shooter
     /// </summary>
     /// <param name="shooter"></param>
-    public void Fire(WeaponShooter shooter)
+    public void Fire(WeaponShooterBase shooter)
     {
         Template.Fire(this, shooter);
     }

@@ -33,17 +33,17 @@ public abstract class WeaponTemplate : ScriptableObject
     /// Gets whether the weapon can currently be fired
     /// </summary>
     /// <returns></returns>
-    public virtual bool CanFire(WeaponInstance instance)
+    public virtual bool CanFire(WeaponInstance instance, bool ignoreDurability)
     {
-        return instance.RemainingCooldown == 0f && instance.Durability > 0;
+        return instance.RemainingCooldown == 0f && (instance.Durability > 0 || ignoreDurability);
     } 
 
     /// <summary>
     /// Fires the weapon from the provided weapon shooter
     /// </summary>
-    public void Fire(WeaponInstance instance, WeaponShooter shooter)
+    public void Fire(WeaponInstance instance, WeaponShooterBase shooter)
     {
-        OnFire(instance, shooter, shooter.CurrentAimingDirection);
+        OnFire(instance, shooter, shooter.GetCurrentAimingDirection());
 
         if (!Cheats.InfiniteAmmo)
             instance.Durability--;
@@ -74,5 +74,5 @@ public abstract class WeaponTemplate : ScriptableObject
     /// Fires the weapon from the provided weapon shooter
     /// </summary>
     /// <param name="direction"></param>
-    protected abstract void OnFire(WeaponInstance instance, WeaponShooter shooter, Vector2 direction);    
+    protected abstract void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction);    
 }

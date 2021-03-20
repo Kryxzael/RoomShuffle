@@ -13,7 +13,7 @@ public class ProjectileWeapon : WeaponTemplate
 {
     public Projectile Ammunition;
 
-    protected override void OnFire(WeaponInstance instance, WeaponShooter shooter, Vector2 direction)
+    protected override void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction)
     {
         Projectile newAmmo = Instantiate(
             original: Ammunition,
