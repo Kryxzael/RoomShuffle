@@ -2,13 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages an object's health
+/// </summary>
 public class HealthController : MonoBehaviour
 {
+    /// <summary>
+    /// The amount of health points a full heart represents
+    /// </summary>
+    public const int HP_PER_HEART = 100;
+
     [Tooltip("The maximum health of the health controller")]
     public int MaximumHealth;
 
     [Tooltip("The current health of the health controller")]
     public int Health;
+
+    /// <summary>
+    /// Gets the controller's health as an amount of hearts
+    /// </summary>
+    public float HealthAsHearts
+    {
+        get
+        {
+            return Health / HP_PER_HEART;
+        }
+    }
 
     /*
      * Healing

@@ -128303,6 +128303,10 @@ PrefabInstance:
       value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 5762634946995582040, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
+      propertyPath: HeartPrefab
+      value: 
+      objectReference: {fileID: 2367785750767489625, guid: e8ef13d9ef636de4da477c88e38e2f1c, type: 3}
+    - target: {fileID: 5762634946995582040, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: HeartsPerRow
       value: 5
       objectReference: {fileID: 0}

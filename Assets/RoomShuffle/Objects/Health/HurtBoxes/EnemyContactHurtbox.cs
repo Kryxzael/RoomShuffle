@@ -4,20 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.RoomShuffle.Objects.Health.HurtBoxes
+/// <summary>
+/// A hurtbox that deals damage to the player when it comes in contact with it
+/// </summary>
+public class EnemyContactHurtbox : HurtBox
 {
-    public class EnemyContactHurtbox : HurtBox
+    /// <summary>
+    /// The base damage the hurtbox will deal
+    /// </summary>
+    public int ContactBaseDamage;
+
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    /// <returns></returns>
+    public override int GetDamage()
     {
-        public int ContactBaseDamage;
+        return Commons.EnemyProgression.GetScaledDamage(ContactBaseDamage);
+    }
 
-        public override int GetDamage()
-        {
-            return Commons.EnemyProgression.GetScaledDamage(ContactBaseDamage);
-        }
-
-        public override HurtBoxTypes GetTargets()
-        {
-            return HurtBoxTypes.HurtfulToPlayer;
-        }
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    /// <returns></returns>
+    public override HurtBoxTypes GetTargets()
+    {
+        return HurtBoxTypes.HurtfulToPlayer;
     }
 }

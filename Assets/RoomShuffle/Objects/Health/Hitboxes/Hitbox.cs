@@ -33,14 +33,14 @@ public abstract class Hitbox : MonoBehaviour
     }
 
     /// <summary>
-    /// Enabled invincibility time for the object
+    /// Enables invincibility time for the object
     /// </summary>
     public void GrantInvincibilityFrames()
     {
-
         StopAllCoroutines();
 
-        if (Cheats.HealthCheat == Cheats.HealthCheatType.Godmode)
+        //God players do not have invincibility frames
+        if (Cheats.HealthCheat == Cheats.HealthCheatType.Godmode && this is PlayerHitbox)
             return;
 
         StartCoroutine(CoIFrames());

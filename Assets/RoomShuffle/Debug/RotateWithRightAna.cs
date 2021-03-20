@@ -7,19 +7,16 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-namespace Assets.Scripts
+/// <summary>
+/// Rotates the object with the right analog stick
+/// </summary>
+public class RotateWithRightAna : MonoBehaviour
 {
-    /// <summary>
-    /// Rotates the object with the right analog stick
-    /// </summary>
-    public class RotateWithRightAna : MonoBehaviour
-    {
-        [Tooltip("The amount of degrees to move rotate per frame")]
-        public float Speed = 1f;
+    [Tooltip("The amount of degrees to move rotate per frame")]
+    public float Speed = 1f;
 
-        private void Update()
-        {
-            transform.Rotate(Input.GetAxisRaw("HorizontalAlt") * Speed);
-        }
+    private void Update()
+    {
+        transform.Rotate(Input.GetAxisRaw("HorizontalAlt") * Speed);
     }
 }

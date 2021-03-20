@@ -4,59 +4,62 @@ using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using UnityEngine;
-using System.Collections.Generic;
 
+/// <summary>
+/// Manages the Health (Heart-like) user interface
+/// </summary>
 public class HealthUIManager : MonoBehaviour
 {
-    
-    [Tooltip("The heart that represents health")]
-    public GameObject HeartPrefab;
-    
-    [Tooltip("The distance between each heart horizontally")]
-    public float HeartDistanceX;
-    
-    [Tooltip("The distance between each heart vertically")]
-    public float HeartDistanceY;
+    [Tooltip("The heart that represents 100 health")]
+    public Heart HeartPrefab;
+
+    [Tooltip("The distance between each heart")]
+    public Vector2 HeartMargin = new Vector2(30f, 25f);
     
     [Tooltip("The number of hearts per row")]
-    public int HeartsPerRow;
+    public int HeartsPerRow = 5;
 
-    private List<Tuple<GameObject, Heart>> _heartList;
+    //Holds the heart objects 
+    private Stack<Heart> _heartStack = new Stack<Heart>();
+
+    //The owner's last known health
     private int _lastHealth;
+
     void Start()
     {
-        _heartList = new List<Tuple<GameObject, Heart>>();
-        SetHearts(3);
+        SetHeartUIElementCount(3);
 
-        RectTransform rt = transform.GetComponent (typeof (RectTransform)) as RectTransform;
-        rt.sizeDelta = new Vector2 (HeartsPerRow * HeartDistanceX * 2, 500);
+        RectTransform rectTransform = transform.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2 (HeartsPerRow * HeartMargin.x * 2, 500); //Where does this number come from?
     }
 
     private void Update()
     {
+        //The player's health hasn't changed
         if (_lastHealth == Commons.PlayerHealth.Health)
             return;
 
+        //Update health
         _lastHealth = Commons.PlayerHealth.Health;
-        SetHealth(_lastHealth);
+        SetDisplayedHealth(_lastHealth);
     }
 
     /// <summary>
-    /// Displays the health of the player
+    /// Sets the amount of health to display
     /// </summary>
     /// <param name="health"></param>
-    public void SetHealth(int health)
+    public void SetDisplayedHealth(int health)
     {
-        foreach (Tuple<GameObject, Heart> heart in _heartList)
+        foreach (Heart heart in _heartStack.Reverse())
         {
-            if (health - 100 >= 0)
+            if (health - HealthController.HP_PER_HEART >= 0)
             {
-                heart.Item2.setHealth(1f);
-                health -= 100;
+                heart.SetHeartFillPercentage(1f);
+                health -= HealthController.HP_PER_HEART;
             }
             else
             {
-                heart.Item2.setHealth(health/100f);
+                heart.SetHeartFillPercentage(health / HealthController.HP_PER_HEART);
                 health = 0;
             }
         }
@@ -66,20 +69,21 @@ public class HealthUIManager : MonoBehaviour
     /// Adds a heart(s) to the player. Hearts gets added to the last index
     /// </summary>
     /// <param name="numberOfHearts"></param>
-    public void AddHeart(int numberOfHearts = 1)
+    public void CreateHeartUIElement(int numberOfHearts = 1)
     {
         for (int i = 0; i < numberOfHearts; i++)
         {
-            int row = (_heartList.Count / HeartsPerRow) + 1;
-            int column = (_heartList.Count % HeartsPerRow) + 1;
+            int row = (_heartStack.Count / HeartsPerRow) + 1;
+            int column = (_heartStack.Count % HeartsPerRow) + 1;
             
-            GameObject newHeart = Instantiate(
+            Heart newHeart = Instantiate(
                 original: HeartPrefab, 
-                position: new Vector3(HeartDistanceX * column, HeartDistanceY * -row, 0) + transform.position, 
+                position: new Vector3(HeartMargin.x * column, HeartMargin.y * -row, 0) + transform.position, 
                 rotation: Quaternion.identity, 
-                parent: transform);
+                parent: transform
+            );
 
-            _heartList.Add(new Tuple<GameObject, Heart>(newHeart, newHeart.GetComponent<Heart>()));
+            _heartStack.Push(newHeart);
         }
     }
 
@@ -87,13 +91,12 @@ public class HealthUIManager : MonoBehaviour
     /// Destroys the last heart(s) of the player. This is the heart(s) that gets filled last
     /// </summary>
     /// <param name="numberOfHearts"></param>
-    public void RemoveHeart(int numberOfHearts = 1)
+    public void RemoveHeartUIElement(int numberOfHearts = 1)
     {
         for (int i = 0; i < numberOfHearts; i++)
         {
-            Tuple<GameObject, Heart> heartTuple = _heartList.Last();
-            Destroy(heartTuple.Item1);
-            _heartList.Remove(heartTuple);
+            Heart heartTuple = _heartStack.Pop();
+            Destroy(heartTuple);
         }
     }
 
@@ -101,22 +104,18 @@ public class HealthUIManager : MonoBehaviour
     /// Sets the number of hearts for the player. Add/removes last hearts. Doesn't add health
     /// </summary>
     /// <param name="numberOfHearts"></param>
-    public void SetHearts(int desiredNumberOfHearts)
+    public void SetHeartUIElementCount(int desiredNumberOfHearts)
     {
-        int currentNumberOfHearts = 0;
-        foreach (var child in transform)
-        {
-            currentNumberOfHearts++;
-        }
+        int currentNumberOfHearts = transform.GetChildren().Count();
         int difference = desiredNumberOfHearts - currentNumberOfHearts;
 
         if (difference >= 0)
         {
-            AddHeart(difference);
+            CreateHeartUIElement(difference);
         } 
         else
         {
-            RemoveHeart(-difference);
+            RemoveHeartUIElement(-difference);
         }
     }
 }

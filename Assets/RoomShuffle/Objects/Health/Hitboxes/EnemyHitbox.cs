@@ -33,6 +33,7 @@ public class EnemyHitbox : Hitbox
         GrantInvincibilityFrames();
         _health.DealDamage(hurtbox.GetDamage());
 
+        //TODO: Temporary. Health controller should probably handle deaths
         if (_health.Health <= 0)
             Destroy(transform.parent.gameObject);
     }
