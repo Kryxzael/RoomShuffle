@@ -11,14 +11,13 @@ public class LinearProjectile : Projectile
 {
     private Rigidbody2D _rigidbody;
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        _rigidbody.velocity = Direction * Speed;
+        _rigidbody.velocity = transform.up * Speed;
     }
 }

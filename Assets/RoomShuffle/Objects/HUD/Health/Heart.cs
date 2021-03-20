@@ -26,9 +26,4 @@ public class Heart : MonoBehaviour
     {
         cakeImage.fillAmount = percentage;
     }
-
-    internal void setHealth(object p)
-    {
-        throw new NotImplementedException();
-    }
 }

@@ -17,7 +17,7 @@ public class ProjectileWeapon : WeaponTemplate
             original: Ammunition,
             position: shooter.GetProjectilesSpawnPoint(),
             rotation: Quaternion.identity
-      );
+        );
 
         newAmmo.Direction = direction;
 

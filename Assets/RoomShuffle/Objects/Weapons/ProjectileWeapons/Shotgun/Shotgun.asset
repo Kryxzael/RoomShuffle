@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  BaseDamage:
+    Candidates:
+    - Item: 10
+      Pickrate: 1
+  MaxDurability:
+    Candidates:
+    - Item: 99
+      Pickrate: 1
+  Range:
+    Minimum: 10
+    Maximum: 10
+  Cooldown: 0.5
+  Icon: {fileID: 0}
+  Ammunition: {fileID: 6321468216601072407, guid: 88a0945ef04ce7e4baab95d3fb941f36, type: 3}
+  MaxAngle: 10
+  BlastCount: 6
