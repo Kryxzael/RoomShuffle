@@ -71,6 +71,10 @@ public class WeaponInstance
     /// <returns></returns>
     public bool CanFire()
     {
+        //Weapon can always be fired when cheat is enabled
+        if (Cheats.InfiniteAmmo)
+            return true;
+
         return Template.CanFire(this);
     }
 

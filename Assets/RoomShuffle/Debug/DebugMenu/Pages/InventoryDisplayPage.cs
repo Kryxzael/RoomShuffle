@@ -27,6 +27,9 @@ public class InventoryDisplayPage : DebugPage
             {
                 string name = $"{instance.Template.name} [{instance.Durability} / {instance.MaxDurability}]";
 
+                if (Cheats.InfiniteAmmo)
+                    name = $"{instance.Template.name} [∞ / ∞]";
+
                 if (i == Commons.Inventory.SelectedWeaponSlot)
                     name = "*" + name + "*";
 

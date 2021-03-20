@@ -19,12 +19,17 @@ public static class Cheats
     /// <summary>
     /// If enabled, the player will not have any physics or collision
     /// </summary>
-    public static bool Noclip { get; set; } = true;
+    public static bool Noclip { get; set; }
 
     /// <summary>
     /// If enabled, targeting enemies will not see the player
     /// </summary>
     public static bool NoTarget { get; set; }
+
+    /// <summary>
+    /// If enabled, ammunition will not be depleted when weapons are fired, and you can fire with zero ammo
+    /// </summary>
+    public static bool InfiniteAmmo { get; set; }
 
     /// <summary>
     /// Sets the health cheat of the player

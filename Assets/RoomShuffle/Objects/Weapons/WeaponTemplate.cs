@@ -44,7 +44,10 @@ public abstract class WeaponTemplate : ScriptableObject
     public void Fire(WeaponInstance instance, WeaponShooter shooter)
     {
         OnFire(instance, shooter, shooter.CurrentAimingDirection);
-        instance.Durability--;
+
+        if (!Cheats.InfiniteAmmo)
+            instance.Durability--;
+
         instance.LastFireTime = DateTime.Now;
     }
 
