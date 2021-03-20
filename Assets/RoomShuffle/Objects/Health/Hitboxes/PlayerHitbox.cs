@@ -22,8 +22,11 @@ public class PlayerHitbox : Hitbox
     /// <param name="hurtbox"></param>
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
-        GrantInvincibilityFrames();
+        //Hitboxes are not active when noclip is enabled
+        if (Cheats.Noclip)
+            return;
 
+        GrantInvincibilityFrames();
         Commons.PlayerHealth.DealDamage(hurtbox.GetDamage());
     }
 }

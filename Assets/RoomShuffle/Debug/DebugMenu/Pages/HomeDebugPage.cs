@@ -16,6 +16,9 @@ public class HomeDebugPage : DebugPage
         if (Toggle("Moon Jump", Cheats.MoonJump))
             Cheats.MoonJump = !Cheats.MoonJump;
 
+        if (Toggle("Noclip", Cheats.Noclip))
+            Cheats.Noclip = !Cheats.Noclip;
+
         if (Toggle("No Target", Cheats.NoTarget))
             Cheats.NoTarget = !Cheats.NoTarget;
 

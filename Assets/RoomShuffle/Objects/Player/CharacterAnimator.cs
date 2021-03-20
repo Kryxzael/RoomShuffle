@@ -49,6 +49,16 @@ public class CharacterAnimator : MonoBehaviour
         const float MIN_MOTION = 0.5f;
 
         /*
+         * Override animation is noclip is enabled
+         */
+        if (Cheats.Noclip)
+        {
+            _flippable.Direction = Direction1D.Right;
+            _spriteAnimator.Animation = Idle;
+            return;
+        }
+
+        /*
          * Set sprite direction
          */
         if (_rigid.velocity.x > MIN_MOTION)

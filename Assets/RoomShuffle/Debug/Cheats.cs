@@ -17,6 +17,11 @@ public static class Cheats
     public static bool MoonJump { get; set; }
 
     /// <summary>
+    /// If enabled, the player will not have any physics or collision
+    /// </summary>
+    public static bool Noclip { get; set; } = true;
+
+    /// <summary>
     /// If enabled, targeting enemies will not see the player
     /// </summary>
     public static bool NoTarget { get; set; }
