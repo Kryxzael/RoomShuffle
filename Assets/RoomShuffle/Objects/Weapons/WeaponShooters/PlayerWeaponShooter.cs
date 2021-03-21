@@ -25,7 +25,7 @@ public class PlayerWeaponShooter : WeaponShooterBase
     /// <returns></returns>
     public override Vector2 GetCurrentAimingDirection()
     {
-        float verticalAxis = Input.GetAxis("Vertical");
+        float verticalAxis = Input.GetAxisRaw("Vertical");
 
         if (verticalAxis > 0f)
             return Vector2.up;
