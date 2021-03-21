@@ -9,8 +9,8 @@ using UnityEngine;
 /// <summary>
 /// A weapon that shoots multiple bullets forwards in a cone
 /// </summary>
-[CreateAssetMenu(menuName = "Weapons/Shotgun")]
-public class ShotgunWeapon : WeaponTemplate
+[CreateAssetMenu(menuName = "Weapons/Cone Shot")]
+public class ConeShotWeapon : WeaponTemplate
 {
     [Tooltip("The ammunition to use when firing")]
     public Projectile Ammunition;

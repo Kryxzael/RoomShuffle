@@ -190,7 +190,7 @@ public class WeaponUIManager : MonoBehaviour
         bool weaponsWithDurability = false;
         for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
         {
-            if (inventory.WeaponSlots[i].Durability > 0)
+            if (inventory.WeaponSlots[i]?.Durability > 0)
             {
                 weaponsWithDurability = true;
                 break;
