@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
+using UnityEngine.VFX;
 
 /// <summary>
 /// Handles most of the room effect 
@@ -19,17 +20,6 @@ public class RoomEffectController : MonoBehaviour
     //The default gravity level as defined by the physics settings
     private Vector2 DefaultGravity;
 
-    /// <summary>
-    /// Gets the current room effects
-    /// </summary>
-    public RoomEffects CurrentEffects
-    {
-        get
-        {
-            return Commons.RoomGenerator.CurrentRoomConfig?.Effect ?? RoomEffects.None;
-        }
-    }
-
     private void Awake()
     {
         DefaultGravity = Physics2D.gravity;
@@ -43,6 +33,7 @@ public class RoomEffectController : MonoBehaviour
         RoomEffects fx = room.Effect;
 
         LowGravity(fx.HasFlag(RoomEffects.LowGravity));
+        Darkness(fx.HasFlag(RoomEffects.Darkness));
     }
 
     /// <summary>
@@ -56,5 +47,19 @@ public class RoomEffectController : MonoBehaviour
 
         else
             Physics2D.gravity = DefaultGravity;
+    }
+
+    private void Darkness(bool enabled)
+    {
+        if (enabled)
+        {
+            foreach (Light i in FindObjectsOfType<Light>())
+            {
+                if (i.type != LightType.Directional)
+                    continue;
+
+                i.enabled = false;
+            }
+        }
     }
 }

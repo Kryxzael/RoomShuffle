@@ -49,6 +49,20 @@ public static class Commons
      */
 
     /// <summary>
+    /// Gets the current room effects if a room effect controller is present
+    /// </summary>
+    public static RoomEffects CurrentRoomEffects
+    {
+        get
+        {
+            if (RoomGenerator != null)
+                return RoomGenerator.CurrentRoomConfig?.Effect ?? RoomEffects.None;
+
+            return RoomEffects.None;
+        }
+    }
+
+    /// <summary>
     /// Gets the room generator of the scene
     /// </summary>
     public static RoomGenerator RoomGenerator => _roomGenerator.Value;

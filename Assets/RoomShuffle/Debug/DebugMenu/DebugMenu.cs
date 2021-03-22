@@ -102,12 +102,14 @@ public class DebugMenu : MonoBehaviour
     /// <param name="texts"></param>
     private void DrawList(string[] texts)
     {
-        GUI.color = Color.white;
-
         for (int i = 0; i < texts.Length; i++)
         {
             const float VERTICAL_PADDING = 20f;
-            GUI.Label(new Rect(0f, i * VERTICAL_PADDING, Screen.width, VERTICAL_PADDING), texts[i], new GUIStyle() { alignment = TextAnchor.UpperRight });
+            GUIStyle style = new GUIStyle();
+            style.alignment = TextAnchor.UpperRight;
+            style.normal.textColor = Color.white;
+
+            GUI.Label(new Rect(0f, i * VERTICAL_PADDING, Screen.width, VERTICAL_PADDING), texts[i], style);
         }
     }
 }

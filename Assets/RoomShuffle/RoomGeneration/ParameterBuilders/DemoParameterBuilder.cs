@@ -29,7 +29,7 @@ public class DemoParameterBuilder : ParameterBuilder
             Class = RoomClass.Platforming,
             Layout = _currentRoom.Current,
             Theme = RoomTheme.Grass,
-            Effect = RoomEffects.LowGravity
+            Effect = RoomEffects.Darkness | RoomEffects.LowGravity
         };
     }
 }

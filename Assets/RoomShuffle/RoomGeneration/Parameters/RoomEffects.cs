@@ -17,5 +17,10 @@ public enum RoomEffects
     /// <summary>
     /// The room will have lower-than-normal gravity
     /// </summary>
-    LowGravity = 0x1
+    LowGravity = 0x1,
+
+    /// <summary>
+    /// The room will not have ambient lights
+    /// </summary>
+    Darkness,
 }

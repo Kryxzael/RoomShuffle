@@ -91,7 +91,7 @@ public class JumpController : MonoBehaviour
          */
         float maxFallSpeed = MaxFallSpeed;
 
-        if (Commons.RoomEffectController.CurrentEffects.HasFlag(RoomEffects.LowGravity))
+        if (Commons.CurrentRoomEffects.HasFlag(RoomEffects.LowGravity))
             maxFallSpeed *= Commons.RoomEffectController.LowGravityMultiplier;
 
         _rigid.SetVelocityY(currentY => Math.Max(-maxFallSpeed, currentY));
