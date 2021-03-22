@@ -25,5 +25,5 @@ MonoBehaviour:
     Maximum: 0
   Cooldown: 1
   Icon: {fileID: -5481814538712004923, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-  Ammunition: {fileID: 2656575055763673109, guid: cc04f9f3c093c07409956b9bddda8d1c, type: 3}
+  Ammunition: {fileID: 1070543446437057366, guid: 5e006b36577cd374689270f65f33d497, type: 3}
   ClusterCount: 5

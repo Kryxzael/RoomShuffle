@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class LinearProjectile : Projectile
@@ -18,6 +12,7 @@ public class LinearProjectile : Projectile
 
     private void Update()
     {
+        //sets the speed in the facing direction
         _rigidbody.velocity = transform.up * Speed;
     }
 }

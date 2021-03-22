@@ -325,10 +325,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goombalike
       objectReference: {fileID: 0}
-    - target: {fileID: 8747412442085526250, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
       propertyPath: m_RootOrder
       value: 5
