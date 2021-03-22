@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6035588219306569391}
   - component: {fileID: 891206494723399114}
   - component: {fileID: 5664426653101838213}
-  - component: {fileID: 1070543446437057366}
+  - component: {fileID: -7414601960220533311}
   m_Layer: 0
-  m_Name: SinewaveProjectile
+  m_Name: BoomerangProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +135,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1070543446437057366
+--- !u!114 &-7414601960220533311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8966685628463208876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd72fe7bfd2b4734cb872d5ceb2f1df3, type: 3}
+  m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
