@@ -23,7 +23,7 @@ public class HomingProjectile : Projectile
         _nearestEnemy = null;
         
         //If there are no enemies: return
-        if (_enemyList == null)
+        if (_enemyList == null || !_enemyList.Any())
             return;
         
         _nearestEnemy = _enemyList[0];
