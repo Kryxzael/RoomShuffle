@@ -128235,7 +128235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbed5218dda7a744fab929e5674e247b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Template: {fileID: 11400000, guid: 0e585b0afe4399e47bac5373487d6680, type: 2}
+  Template: {fileID: 11400000, guid: 7e7d8dead0594514dabd4e4d6d705bde, type: 2}
   ShouldCreateWeaponFromTemplate: 1
 --- !u!61 &1923571249
 BoxCollider2D:
