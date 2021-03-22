@@ -12,6 +12,10 @@ public static class Commons
         () => Object.FindObjectOfType<RoomGenerator>()
     );
 
+    private static RenewableLazy<RoomEffectController> _roomEffectController { get; } = new RenewableLazy<RoomEffectController>(
+        () => Object.FindObjectOfType<RoomEffectController>()
+    );
+
     /* *** */
 
     private static RenewableLazy<GameObject> _playerManager { get; } = new RenewableLazy<GameObject>(
@@ -48,6 +52,11 @@ public static class Commons
     /// Gets the room generator of the scene
     /// </summary>
     public static RoomGenerator RoomGenerator => _roomGenerator.Value;
+
+    /// <summary>
+    /// Gets the room effect controller of the scene
+    /// </summary>
+    public static RoomEffectController RoomEffectController => _roomEffectController.Value;
 
     /*
      * Player

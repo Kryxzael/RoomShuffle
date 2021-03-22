@@ -107,5 +107,8 @@ public class RoomGenerator : MonoBehaviour
         //Reload tilesets
         foreach (Tilemap i in FindObjectsOfType<Tilemap>())
             i.RefreshAllTiles();
+
+        //Set up room effects
+        Commons.RoomEffectController.OnRoomStart(parameters);
     }
 }

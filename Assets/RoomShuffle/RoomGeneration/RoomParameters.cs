@@ -11,4 +11,5 @@ public class RoomParameters
     public RoomClass Class;
     public RoomLayout Layout;
     public RoomTheme Theme;
+    public RoomEffects Effect;
 }

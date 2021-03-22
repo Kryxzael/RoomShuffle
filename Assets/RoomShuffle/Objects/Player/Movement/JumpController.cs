@@ -18,8 +18,12 @@ public class JumpController : MonoBehaviour
     [Header("Force")]
     [Tooltip("The upwards force that will be applied when jumping")]
     public float JumpForce = 8f;
+
     [Tooltip("The upwards force that will be when the user lets go of the jump button")]
     public float JumpReleaseForce = 8f;
+
+    [Tooltip("The maximum downwards velocity the player can have")]
+    public float MaxFallSpeed = 10f;
 
     [Header("Game Feel")]
     [Tooltip("The amount of time the player can stay off the ground before they won't be allowed to jump")]
@@ -81,6 +85,16 @@ public class JumpController : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(CoJump());
         }
+
+        /*
+         * Limit falling speed
+         */
+        float maxFallSpeed = MaxFallSpeed;
+
+        if (Commons.RoomEffectController.CurrentEffects.HasFlag(RoomEffects.LowGravity))
+            maxFallSpeed *= Commons.RoomEffectController.LowGravityMultiplier;
+
+        _rigid.SetVelocityY(currentY => Math.Max(-maxFallSpeed, currentY));
     }
 
     /// <summary>
