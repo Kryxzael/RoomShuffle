@@ -19,6 +19,9 @@ public class BoomerangProjectile : Projectile
 
     private void Update()
     {
+        if (_rigidbody.velocity.magnitude > 20f)
+            return;
+        
         const float PUSHBACKFORCE = 1000f; // recommended 1000
         _rigidbody.AddForce(-transform.up * (Time.deltaTime * PUSHBACKFORCE));
     }
