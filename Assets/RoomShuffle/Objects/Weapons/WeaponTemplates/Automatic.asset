@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb66489907f4dd4e8b0355dc000dd64, type: 3}
+  m_Name: Automatic
+  m_EditorClassIdentifier: 
+  BaseDamage:
+    Candidates:
+    - Item: 5
+      Pickrate: 1
+  MaxDurability:
+    Candidates:
+    - Item: 99
+      Pickrate: 1
+  Range:
+    Minimum: 0
+    Maximum: 0
+  Cooldown: 1
+  Icon: {fileID: -5481814538712004923, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+  Ammunition: {fileID: 1070543446437057366, guid: 5e006b36577cd374689270f65f33d497, type: 3}
+  ClusterCount: 5

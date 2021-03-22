@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8589112447560475696}
   - component: {fileID: 6035588219306569391}
   - component: {fileID: 891206494723399114}
-  - component: {fileID: 953221075348106010}
   - component: {fileID: 5664426653101838213}
+  - component: {fileID: 1070543446437057366}
   m_Layer: 0
-  m_Name: LinearProjectile
+  m_Name: SinewaveProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.06282711, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,19 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007f8d437d6aa8e429cdca8c0c93225d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &953221075348106010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8966685628463208876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb8e72a50489ae4fb3a44a2adcd2408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
 --- !u!58 &5664426653101838213
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1070543446437057366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966685628463208876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c442f59f0f84edb409adaf4206134621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
