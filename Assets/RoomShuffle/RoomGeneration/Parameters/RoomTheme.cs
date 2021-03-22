@@ -37,5 +37,10 @@ public enum RoomTheme
     /// <summary>
     /// An area with red volcanic stone
     /// </summary>
-    Volcano
+    Volcano,
+
+    /// <summary>
+    /// A grassy are with tall grass and grass
+    /// </summary>
+    Jungle
 }

@@ -20,9 +20,11 @@ MonoBehaviour:
     AutumnSprite: {fileID: 553586947252041090, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
     CaveSprite: {fileID: -1858677311074798011, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
     VolcanoSprite: {fileID: -6616189737343879761, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
+    JungleSprite: {fileID: -1069825682435246474, guid: 2a6fa6cb829cdb743bf4cbc41f6750b6, type: 3}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
     AutumnAnimation: {fileID: 0}
     CaveAnimation: {fileID: 0}
     VolcanoAnimation: {fileID: 0}
+    JungleAnimation: {fileID: 0}
