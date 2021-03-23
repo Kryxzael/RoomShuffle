@@ -48,6 +48,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    [Tooltip("The amount of spendable currency the player has")]
+    public int Currency;
+
     private void Update()
     { 
         /*

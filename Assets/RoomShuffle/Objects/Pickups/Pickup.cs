@@ -19,7 +19,7 @@ public abstract class Pickup : MonoBehaviour
     public PickupActivationMode ActivationMode;
 
     /// <summary>
-    /// Intiates the pick-up of the item
+    /// Initiates the pick-up of the item
     /// </summary>
     public void PickUp()
     {
