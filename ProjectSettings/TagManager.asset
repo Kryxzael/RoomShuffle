@@ -47,9 +47,9 @@ TagManager:
   - name: Tiles
     uniqueID: 2002978951
     locked: 0
-  - name: OverlayTiles
-    uniqueID: 3214619913
-    locked: 0
   - name: Player
     uniqueID: 1703004959
+    locked: 0
+  - name: OverlayTiles
+    uniqueID: 3214619913
     locked: 0

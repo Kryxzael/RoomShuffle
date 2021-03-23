@@ -97,9 +97,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.039503217}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.3295673
 --- !u!114 &3651557842203316177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbed5218dda7a744fab929e5674e247b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivationMode: 1
   Template: {fileID: 11400000, guid: 7e7d8dead0594514dabd4e4d6d705bde, type: 2}
   ShouldCreateWeaponFromTemplate: 1
 --- !u!1001 &1118335002342231182

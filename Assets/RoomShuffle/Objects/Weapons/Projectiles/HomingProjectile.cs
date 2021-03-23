@@ -1,15 +1,15 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class HomingProjectile : Projectile
 {
+    [Tooltip("The force the bullet will be pushed with.")]
+    public float DragForce = 300;
+
+    [Tooltip("Maximum speed for the bullet")]
+    public float MaxSpeed = 20;
+
     private Rigidbody2D _rigidbody;
     private GameObject[] _enemyList;
     private GameObject _nearestEnemy;
@@ -46,12 +46,6 @@ public class HomingProjectile : Projectile
 
     private void Update()
     {
-        //The force the bullet will be pushed with.
-        const float DRAGFORCE = 300;
-        
-        //Maximum speed for the bullet
-        const float MAXSPEED = 20;
-
         //If there is no enemies: act as a linear bullet
         if (!_nearestEnemy)
         {
@@ -60,12 +54,12 @@ public class HomingProjectile : Projectile
         }
         
         //Pushes the bullet towards the enemy.
-        _rigidbody.AddForce((_nearestEnemy.transform.position - transform.position).normalized * (Speed * Time.deltaTime * DRAGFORCE));
+        _rigidbody.AddForce((_nearestEnemy.transform.position - transform.position).normalized * (Speed * Time.deltaTime * DragForce));
 
         //Caps the speed
-        if (_rigidbody.velocity.magnitude > MAXSPEED)
+        if (_rigidbody.velocity.magnitude > MaxSpeed)
         {
-            _rigidbody.velocity = _rigidbody.velocity.normalized * MAXSPEED;
+            _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
         }
 
     }

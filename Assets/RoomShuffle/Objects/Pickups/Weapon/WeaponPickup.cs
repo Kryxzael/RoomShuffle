@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// A weapon object that can be picked up by the player
 /// </summary>
-public class WeaponPickup : MonoBehaviour
+public class WeaponPickup : Pickup
 {
     [Tooltip("The weapon that will be created for this pickup if enabled")]
     public WeaponTemplate Template;
@@ -34,27 +34,23 @@ public class WeaponPickup : MonoBehaviour
             Instance = Template.CreateWeaponInstance();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    protected override void OnPickup()
     {
-        if (collision.gameObject.IsPlayer())
+        //Attempt to place weapon in a free slot
+        for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
         {
-            Inventory inventory = FindObjectOfType<Inventory>();
-
-            bool SuccessfullyPickesUp = false;
-            for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
+            if (Commons.Inventory.WeaponSlots[i] == null)
             {
-                if (inventory.WeaponSlots[i] == null)
-                {
-                    inventory.WeaponSlots[i] = Instance;
-                    SuccessfullyPickesUp = true;
-                    break;
-                }
+                Commons.Inventory.WeaponSlots[i] = Instance;
+                return;
             }
-            
-            if (!SuccessfullyPickesUp)
-                inventory.WeaponSlots[inventory.SelectedWeaponSlot] = Instance;
-
-            Destroy(gameObject);
         }
+    
+        //If no free slots are found, overwrite the existing one
+        Commons.Inventory.WeaponSlots[Commons.Inventory.SelectedWeaponSlot] = Instance;
+        //TODO: Drop the current weapon in this case
     }
 }

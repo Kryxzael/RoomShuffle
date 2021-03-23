@@ -1,14 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BoomerangProjectile : Projectile
 {
+    [Tooltip("The force the boomerang will be pushed back with when thrown")]
+    public float Pushbackforce = 1000f;
+    
+    [Tooltip("The force the boomerang will be pushed back with when thrown")]
+    public float SpeedCap = 20f;
+    
     private Rigidbody2D _rigidbody;
 
     protected void Start()
@@ -19,10 +19,11 @@ public class BoomerangProjectile : Projectile
 
     private void Update()
     {
-        if (_rigidbody.velocity.magnitude > 20f)
+        //Caps the speed to SpeedCap
+        if (_rigidbody.velocity.magnitude > SpeedCap)
             return;
         
-        const float PUSHBACKFORCE = 1000f; // recommended 1000
-        _rigidbody.AddForce(-transform.up * (Time.deltaTime * PUSHBACKFORCE));
+        //add force to the bullet in the opposite direction of the throw
+        _rigidbody.AddForce(-transform.up * (Time.deltaTime * Pushbackforce));
     }
 }
