@@ -150,7 +150,7 @@ public class JumpingSpotterMovementPattern : MonoBehaviour
             else
             {
                 //resets all counters
-                _groundTimeLeft = GroundTime.Pick();
+                _groundTimeLeft = Commons.GetEffectValue(GroundTime.Pick(), EffectValueType.EnemyWaitTime);
                 _fumbleJumpsLeft = FumbleJumps.PickInt() + 1;
                 _flipTime = _groundTimeLeft / 2;
             }
@@ -212,7 +212,7 @@ public class JumpingSpotterMovementPattern : MonoBehaviour
         if (!grounded || sign == 0)
             return;
         
-        _rigid.velocity = _direction * JumpForce;
+        _rigid.velocity = _direction * Commons.GetEffectValue(JumpForce, EffectValueType.EnemySpeed);
         _rigid.SetVelocityX(_rigid.velocity.x * sign);
 
         _fumbleJumpsLeft--;
@@ -229,7 +229,7 @@ public class JumpingSpotterMovementPattern : MonoBehaviour
         if (_goHomeTimeLeft <= 0)
         {
             _limitedMovementRadius.Home = transform.position;
-            _goHomeTimeLeft = GoHomeTime;
+            _goHomeTimeLeft = Commons.GetEffectValue(GoHomeTime, EffectValueType.EnemyWaitTime);
         }
         //else jump home
         else

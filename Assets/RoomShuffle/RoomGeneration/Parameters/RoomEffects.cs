@@ -27,5 +27,10 @@ public enum RoomEffects
     /// <summary>
     /// The currency pickups in the room will be worth more than usual
     /// </summary>
-    ValuePickups = 0x4
+    ValuePickups = 0x4,
+
+    /// <summary>
+    /// The enemies will move faster than normal
+    /// </summary>
+    FastFoe = 0x8
 }

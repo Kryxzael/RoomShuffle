@@ -51,7 +51,8 @@ public class StickyBoy : MonoBehaviour
     
     void Update()
     {
-        
+        float walkSpeed = Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed);
+
         //Make sure the directions is between 1 and 4
         if (_enemyDirection == 5)
             _enemyDirection = 1;
@@ -59,33 +60,33 @@ public class StickyBoy : MonoBehaviour
             _enemyDirection = 4;
         
         // check if enemy is on relative ground
-        if (checkCollision(ClockWiseRotation ? _enemyDirection+1 : _enemyDirection-1))
+        if (CheckCollision(ClockWiseRotation ? _enemyDirection+1 : _enemyDirection-1))
         {
             _freeFall = 0;
             _grounded = true;
             _rigid.gravityScale = 0;
-            
+
             //Walk relatively forward + towards the relative ground
             switch (_enemyDirection)
             {
-                case 1: _rigid.velocity = Vector2.right * WalkSpeed + (ClockWiseRotation ? Vector2.down : Vector2.up); break;
-                case 2: _rigid.velocity = Vector2.down * WalkSpeed  + (ClockWiseRotation ? Vector2.left : Vector2.right); break;
-                case 3: _rigid.velocity = Vector2.left * WalkSpeed  + (ClockWiseRotation ? Vector2.up : Vector2.down); break;
-                case 4: _rigid.velocity = Vector2.up * WalkSpeed    + (ClockWiseRotation ? Vector2.right : Vector2.left); break;
+                case 1: _rigid.velocity = Vector2.right * walkSpeed + (ClockWiseRotation ? Vector2.down : Vector2.up); break;
+                case 2: _rigid.velocity = Vector2.down * walkSpeed + (ClockWiseRotation ? Vector2.left : Vector2.right); break;
+                case 3: _rigid.velocity = Vector2.left * walkSpeed + (ClockWiseRotation ? Vector2.up : Vector2.down); break;
+                case 4: _rigid.velocity = Vector2.up * walkSpeed + (ClockWiseRotation ? Vector2.right : Vector2.left); break;
             }
             
             // If enemy crash into wall
-            if (checkCollision(_enemyDirection))
+            if (CheckCollision(_enemyDirection))
             {
                 if (ClockWiseRotation)
                 {
                     _enemyDirection--;
-                    rotateDegrees(-90);
+                    RotateDegrees(-90);
                 }
                 else
                 {
                     _enemyDirection++;
-                    rotateDegrees(90);
+                    RotateDegrees(90);
                 }
 
             }
@@ -106,29 +107,29 @@ public class StickyBoy : MonoBehaviour
                     if (!ClockWiseRotation)
                     {
                         _enemyDirection--;
-                        rotateDegrees(-90);
+                        RotateDegrees(-90);
                     }
                     else
                     {
                         _enemyDirection++;
-                        rotateDegrees(90);
+                        RotateDegrees(90);
                     }
                 }
                 
                 //Walk in the direction the enemy is facing
                 switch (_enemyDirection)
                 {
-                    case 0: _rigid.velocity = Vector2.up * WalkSpeed; 
+                    case 0: _rigid.velocity = Vector2.up * walkSpeed; 
                         break;
-                    case 1: _rigid.velocity = Vector2.right * WalkSpeed; 
+                    case 1: _rigid.velocity = Vector2.right * walkSpeed; 
                         break;
-                    case 2: _rigid.velocity = Vector2.down * WalkSpeed; 
+                    case 2: _rigid.velocity = Vector2.down * walkSpeed; 
                         break;
-                    case 3: _rigid.velocity = Vector2.left * WalkSpeed; 
+                    case 3: _rigid.velocity = Vector2.left * walkSpeed; 
                         break;
-                    case 4: _rigid.velocity = Vector2.up * WalkSpeed; 
+                    case 4: _rigid.velocity = Vector2.up * walkSpeed; 
                         break;
-                    case 5: _rigid.velocity = Vector2.right * WalkSpeed; 
+                    case 5: _rigid.velocity = Vector2.right * walkSpeed; 
                         break;
                 }
             }
@@ -145,13 +146,13 @@ public class StickyBoy : MonoBehaviour
     }
 
     //Rotates the enemy the number of degrees clockwise
-    private void rotateDegrees(int degrees)
+    private void RotateDegrees(int degrees)
     {
         transform.eulerAngles += Vector3.forward * -degrees;
     }
 
     //Checks if the enemy is very near a solid abject at a given direction
-    private bool checkCollision(int checkDirection)
+    private bool CheckCollision(int checkDirection)
     {
         float RAYCAST_DISTANCE = 0.2f;
         Bounds bounds = _collider.bounds;

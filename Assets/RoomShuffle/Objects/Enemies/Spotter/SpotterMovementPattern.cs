@@ -80,12 +80,12 @@ public class SpotterMovementPattern : MonoBehaviour
                 break;
             
             case SpotterPlayerRelationship.BlindChasing:
-                _rigid.SetVelocityX(Math.Sign(_spotPlayer.BlindChaseDirection.x) * RunSpeed);
+                _rigid.SetVelocityX(Math.Sign(_spotPlayer.BlindChaseDirection.x) * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
                 break;
 
             case SpotterPlayerRelationship.Chasing:
                 FlipToPlayer();
-                _rigid.SetVelocityX(_flippable.DirectionSign * RunSpeed);
+                _rigid.SetVelocityX(_flippable.DirectionSign * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
                 break;
         }
     }
@@ -119,7 +119,7 @@ public class SpotterMovementPattern : MonoBehaviour
         //Fumbling
         if (_fumbleWalk)
         { 
-            _rigid.SetVelocityX(_flippable.DirectionSign * WalkSpeed);
+            _rigid.SetVelocityX(_flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
         }
 
         //Stationary
@@ -135,7 +135,7 @@ public class SpotterMovementPattern : MonoBehaviour
                 _flippable.Flip();
 
             _fumbleWalk = !_fumbleWalk;
-            _fumbleCurrentWaitTime = FumbleWaitTime.Pick();
+            _fumbleCurrentWaitTime = Commons.GetEffectValue(FumbleWaitTime.Pick(), EffectValueType.EnemyWaitTime);
         }
     }
     
@@ -145,12 +145,12 @@ public class SpotterMovementPattern : MonoBehaviour
         if (_goHomeTimeLeft <= 0)
         {
             _limitedMovementRadius.Home = transform.position;
-            _goHomeTimeLeft = GoHomeTime;
+            _goHomeTimeLeft = Commons.GetEffectValue(GoHomeTime, EffectValueType.EnemyWaitTime);
         }
         else
         {
             FlipToVector2(_limitedMovementRadius.Home);
-            _rigid.SetVelocityX(_flippable.DirectionSign * WalkSpeed);
+            _rigid.SetVelocityX(_flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
         }
     }
     

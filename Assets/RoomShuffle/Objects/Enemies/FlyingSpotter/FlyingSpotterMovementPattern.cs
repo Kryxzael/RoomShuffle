@@ -68,11 +68,11 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
                 if (!_limitedMovementRadius.InHomeRadius)
                 {
                     _flyDirection = (_limitedMovementRadius.Home - (Vector2) transform.position).normalized;
-                    tryToGoHome();
+                    TryToGoHome();
                 }
                 else
                 {
-                    _goHomeCurrentWaitTime = GoHomeWaitTime;
+                    _goHomeCurrentWaitTime = Commons.GetEffectValue(GoHomeWaitTime, EffectValueType.EnemyWaitTime);
                     FumbleAround();
                 }
                 break;
@@ -88,8 +88,8 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
             
             case SpotterPlayerRelationship.BlindChasing:
                 
-                _goHomeCurrentWaitTime = GoHomeWaitTime;
-                _rigid.velocity = _spotPlayer.BlindChaseDirection * ChaseSpeed;
+                _goHomeCurrentWaitTime = Commons.GetEffectValue(GoHomeWaitTime, EffectValueType.EnemyWaitTime);
+                _rigid.velocity = _spotPlayer.BlindChaseDirection * Commons.GetEffectValue(ChaseSpeed, EffectValueType.EnemySpeed);
                 
                 //Flip the sprite to face the last place the player was
                 if (_spotPlayer.BlindChaseDirection.x <= 0)
@@ -106,7 +106,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
             case SpotterPlayerRelationship.Chasing:
                 FlipToPlayer();
                 _goHomeCurrentWaitTime = GoHomeWaitTime;
-                _rigid.velocity = (_player.Value.transform.position - transform.position).normalized * ChaseSpeed;
+                _rigid.velocity = (_player.Value.transform.position - transform.position).normalized * Commons.GetEffectValue(ChaseSpeed, EffectValueType.EnemySpeed);
                 break;
             
         }
@@ -149,7 +149,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
                 _flippable.Flip();
             }
 
-            _rigid.velocity = _flyDirection * FlyingSpeed;
+            _rigid.velocity = _flyDirection * Commons.GetEffectValue(FlyingSpeed, EffectValueType.EnemySpeed);
         }
 
         //Stationary
@@ -163,11 +163,11 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
         {
             _flyDirection = Random.insideUnitCircle.normalized;
             _fumbleFly = !_fumbleFly;
-            _fumbleCurrentWaitTime = FumbleWaitTime.Pick();
+            _fumbleCurrentWaitTime = Commons.GetEffectValue(FumbleWaitTime.Pick(), EffectValueType.EnemyWaitTime);
         }
     }
 
-    private void tryToGoHome()
+    private void TryToGoHome()
     {
 
         _goHomeCurrentWaitTime -= Time.deltaTime;
@@ -178,7 +178,7 @@ public class FlyingSpotterMovementPattern : MonoBehaviour
         }
         else
         {
-            _rigid.velocity = (_limitedMovementRadius.Home - (Vector2)transform.position).normalized * FlyingSpeed;
+            _rigid.velocity = (_limitedMovementRadius.Home - (Vector2)transform.position).normalized * Commons.GetEffectValue(FlyingSpeed, EffectValueType.EnemySpeed);
         }
     }
 

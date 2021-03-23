@@ -17,9 +17,9 @@ public class LimitedMovementRadius : MonoBehaviour
     
     //True if the enemy is in its home radius
     public bool InHomeRadius { get; private set; }
-    [NonSerialized] 
-    
+
     //The spawn point of the enemy. May be updated
+    [NonSerialized] 
     public Vector2 Home;
     
     //If true: InHomeRadius is always true

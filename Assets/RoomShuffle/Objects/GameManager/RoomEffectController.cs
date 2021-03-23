@@ -21,6 +21,12 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("By how much currency will be multiples (rounded to the closes int) when value pickups is enabled")]
     public float ValuePickupsMultiplier = 2f;
 
+    [Header("Fast Foe")]
+    [Tooltip("How much faster enemies will move when fast-foe is enabled")]
+    public float FastFoeSpeedMultiplier = 1.5f;
+
+    /* *** */
+
     //The default gravity level as defined by the physics settings
     private Vector2 _defaultGravity;
 

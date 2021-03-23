@@ -110,4 +110,51 @@ public static class Commons
     /// Gets the enemy progression controller of the scene
     /// </summary>
     public static EnemyProgression EnemyProgression => _enemyProgression.Value;
+
+    /// <summary>
+    /// Scales a float variable to its required value using the provided mode if applicable
+    /// </summary>
+    /// <returns></returns>
+    public static float GetEffectValue(float originalValue, EffectValueType inputType)
+    {
+        RoomEffects fxs = CurrentRoomEffects;
+        RoomEffectController controller = RoomEffectController;
+
+        if (controller == null)
+            return originalValue;
+
+        switch (inputType)
+        {
+            case EffectValueType.EnemySpeed:
+                if (fxs.HasFlag(RoomEffects.FastFoe))
+                    return originalValue * controller.FastFoeSpeedMultiplier;
+                break;
+            case EffectValueType.EnemyWaitTime:
+                if (fxs.HasFlag(RoomEffects.FastFoe))
+                    return originalValue / controller.FastFoeSpeedMultiplier;
+
+                break;
+                
+        }
+
+        return originalValue;
+    }
+}
+
+/// <summary>
+/// The type of scaling that will be applied to a value (if the associated effect is enabled)
+/// </summary>
+public enum EffectValueType
+{
+    /// <summary>
+    /// The value describes the speed of an enemy.
+    /// * The value is upscaled when fast-foe is enabled
+    /// </summary>
+    EnemySpeed,
+
+    /// <summary>
+    /// The value describes how long an enemy waits for something
+    /// * The value is downscaled when fast-foe is enabled
+    /// </summary>
+    EnemyWaitTime
 }
