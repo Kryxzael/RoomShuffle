@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7281883675035295175}
   - component: {fileID: 7281883675035295176}
   - component: {fileID: 5851215487512236249}
+  - component: {fileID: 32454398198838716}
   m_Layer: 0
   m_Name: CurrencyValue1
   m_TagString: Untagged
@@ -130,6 +131,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BobHeight: 0.25
   BobSpeed: 2
+--- !u!114 &32454398198838716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281883675035295177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 934f3a52264621f40b46550efbba9ced, type: 2}
 --- !u!1001 &7281883676403902309
 PrefabInstance:
   m_ObjectHideFlags: 0

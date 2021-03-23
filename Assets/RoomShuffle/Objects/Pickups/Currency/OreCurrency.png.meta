@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 8443716852133858240
     second: OreCurrency_3
+  - first:
+      213: 4015476655238648777
+    second: OreCurrency_4
+  - first:
+      213: -6201140497531890844
+    second: OreCurrency_5
+  - first:
+      213: -935110864231157654
+    second: OreCurrency_6
+  - first:
+      213: 4437131476272445641
+    second: OreCurrency_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,7 +131,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11
-        y: 11
+        y: 43
         width: 10
         height: 10
       alignment: 0
@@ -140,7 +152,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 42
-        y: 8
+        y: 40
         width: 14
         height: 14
       alignment: 0
@@ -161,7 +173,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 6
+        y: 38
         width: 20
         height: 18
       alignment: 0
@@ -182,7 +194,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 6
+        y: 38
         width: 22
         height: 21
       alignment: 0
@@ -194,6 +206,90 @@ TextureImporter:
       bones: []
       spriteID: 0cb0b638dbb1e2570800000000000000
       internalID: 8443716852133858240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OreCurrency_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 10
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c39f573eb6d9b730800000000000000
+      internalID: 4015476655238648777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OreCurrency_5
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 7
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4639252929f11f9a0800000000000000
+      internalID: -6201140497531890844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OreCurrency_6
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 4
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60b4e79f91d503f0800000000000000
+      internalID: -935110864231157654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OreCurrency_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 4
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c87ce8919bd39d30800000000000000
+      internalID: 4437131476272445641
       vertices: []
       indices: 
       edges: []

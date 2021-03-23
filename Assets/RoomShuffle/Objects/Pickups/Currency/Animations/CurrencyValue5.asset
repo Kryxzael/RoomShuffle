@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adef74459c54efe4da176991c19c4aed, type: 3}
+  m_Name: CurrencyValue5
+  m_EditorClassIdentifier: 
+  Frames:
+  - Sprite: {fileID: 7165829907280497069, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -935110864231157654, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+    FrameTimeMultiplier: 1
+  FrameTime: 1
+  FrameTimeDivider: 2
