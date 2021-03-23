@@ -14,6 +14,7 @@ public class InventoryDisplayPage : DebugPage
     protected override void RunItems(DebugMenu caller)
     {
         ReadOnly($"<3: {Commons.PlayerHealth.Health} / {Commons.PlayerHealth.MaximumHealth}");
+        ReadOnly($"${Commons.Inventory.Currency}");
 
         for (int i = 0; i < Commons.Inventory.WeaponSlots.Length; i++)
         {

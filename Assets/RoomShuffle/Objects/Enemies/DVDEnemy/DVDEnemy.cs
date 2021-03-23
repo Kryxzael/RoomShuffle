@@ -52,7 +52,7 @@ public class DVDEnemy : MonoBehaviour
         _rigidbody.SetVelocityY(Math.Sign(_rigidbody.velocity.y) * _direction.y);
         
         //set the right speed for the enemy
-        _rigidbody.velocity = _rigidbody.velocity.normalized * FlySpeed;
+        _rigidbody.velocity = _rigidbody.velocity.normalized * Commons.GetEffectValue(FlySpeed, EffectValueType.EnemySpeed);
 
         Bounds bounds = _collider.bounds;
 

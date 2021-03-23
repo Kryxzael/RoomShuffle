@@ -21,7 +21,10 @@ namespace Assets.RoomShuffle.Objects.Pickups.Currency
         /// </summary>
         protected override void OnPickup()
         {
-            Commons.Inventory.Currency += Value;
+            if (Commons.CurrentRoomEffects.HasFlag(RoomEffects.ValuePickups))
+                Commons.Inventory.Currency += (int)Math.Round(Value * Commons.RoomEffectController.ValuePickupsMultiplier);
+            else
+                Commons.Inventory.Currency += Value;
         }
     }
 }

@@ -24,6 +24,9 @@ namespace Assets.RoomShuffle.Objects.Pickups
 
         /* *** */
 
+        [Tooltip("If enabled, the bobbing will be horizontal")]
+        public bool Horizontal;
+
         [Tooltip("How far (up and down) the item will bob")]
         public float BobHeight = 0.25f;
 
@@ -38,7 +41,9 @@ namespace Assets.RoomShuffle.Objects.Pickups
 
         private void Update()
         {
-            transform.position = _startingPosition + (Vector3.up * Mathf.Sin((_time + _randomPhaseOffset) * BobSpeed) * BobHeight);
+            Vector3 direction = Horizontal ? Vector2.right : Vector2.up;
+
+            transform.position = _startingPosition + (direction * Mathf.Sin((_time + _randomPhaseOffset) * BobSpeed) * BobHeight);
             _time += Time.deltaTime;
         }
     }

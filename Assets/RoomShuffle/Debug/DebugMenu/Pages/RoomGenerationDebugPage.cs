@@ -32,6 +32,9 @@ public class RoomGenerationDebugPage : DebugPage
                 foreach (Tilemap i in Object.FindObjectsOfType<Tilemap>())
                     i.RefreshAllTiles();
             }
+
+            if (Button("Room Effects"))
+                caller.NavigationStack.Push(new RoomEffectsDebugPage());
         }
     }
 }

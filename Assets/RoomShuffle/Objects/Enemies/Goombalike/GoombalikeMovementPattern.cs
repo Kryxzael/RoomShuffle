@@ -20,6 +20,6 @@ public class GoombalikeMovementPattern : MonoBehaviour
 
     void Update()
     {
-        _rigidbody.SetVelocityX(_flippable.DirectionSign * WalkSpeed);
+        _rigidbody.SetVelocityX(_flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
     }
 }

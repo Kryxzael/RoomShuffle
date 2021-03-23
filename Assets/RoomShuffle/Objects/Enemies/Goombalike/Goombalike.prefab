@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 8747412442085526252}
   - component: {fileID: 8226572599186924801}
   - component: {fileID: 1935419456}
-  - component: {fileID: 4268966695608998292}
   - component: {fileID: 6996791921242205475}
   - component: {fileID: 6415470374224383131}
   - component: {fileID: 1155752736639757091}
@@ -279,20 +278,6 @@ MonoBehaviour:
   SlopeDetectionThreshold: 0.25
   MaxPitHeight: 1.5
   SlopeDetectionDistance: 0.05
---- !u!114 &4268966695608998292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8747412442085526250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2705ca2c37e0ea24d83c36a9f8403c39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaximumHealth: 300
-  Health: 300
 --- !u!114 &6996791921242205475
 MonoBehaviour:
   m_ObjectHideFlags: 0

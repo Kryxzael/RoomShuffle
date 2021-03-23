@@ -22,5 +22,20 @@ public enum RoomEffects
     /// <summary>
     /// The room will not have ambient lights
     /// </summary>
-    Darkness,
+    Darkness = 0x2,
+
+    /// <summary>
+    /// The currency pickups in the room will be worth more than usual
+    /// </summary>
+    ValuePickups = 0x4,
+
+    /// <summary>
+    /// The enemies will move faster than normal
+    /// </summary>
+    FastFoe = 0x8,
+
+    /// <summary>
+    /// The enemies will be larger than normal
+    /// </summary>
+    LargeEnemies = 0x10,
 }
