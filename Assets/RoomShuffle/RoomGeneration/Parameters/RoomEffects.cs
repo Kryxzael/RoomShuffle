@@ -22,5 +22,5 @@ public enum RoomEffects
     /// <summary>
     /// The room will not have ambient lights
     /// </summary>
-    Darkness,
+    Darkness = 0x2,
 }
