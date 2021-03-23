@@ -23,4 +23,9 @@ public enum RoomEffects
     /// The room will not have ambient lights
     /// </summary>
     Darkness = 0x2,
+
+    /// <summary>
+    /// The currency pickups in the room will be worth more than usual
+    /// </summary>
+    ValuePickups = 0x4
 }

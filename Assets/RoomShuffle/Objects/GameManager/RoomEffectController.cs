@@ -17,12 +17,20 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("The percentage of normal gravity that will be applied when low gravity is enabled")]
     public float LowGravityMultiplier = 0.5f;
 
+    [Header("Value Pickups")]
+    [Tooltip("By how much currency will be multiples (rounded to the closes int) when value pickups is enabled")]
+    public float ValuePickupsMultiplier = 2f;
+
     //The default gravity level as defined by the physics settings
-    private Vector2 DefaultGravity;
+    private Vector2 _defaultGravity;
+
+    //The 'sun' sources in the generator that are disabled when dark mode is enabled
+    private IEnumerable<Light> _suns;
 
     private void Awake()
     {
-        DefaultGravity = Physics2D.gravity;
+        _defaultGravity = Physics2D.gravity;
+        _suns = FindObjectsOfType<Light>().Where(i => i.type == LightType.Directional);
     }
 
     /// <summary>
@@ -43,23 +51,19 @@ public class RoomEffectController : MonoBehaviour
     private void LowGravity(bool enabled)
     {
         if (enabled)
-            Physics2D.gravity = DefaultGravity * LowGravityMultiplier;
+            Physics2D.gravity = _defaultGravity * LowGravityMultiplier;
 
         else
-            Physics2D.gravity = DefaultGravity;
+            Physics2D.gravity = _defaultGravity;
     }
 
+    /// <summary>
+    /// Sets the darkness effect
+    /// </summary>
+    /// <param name="enabled"></param>
     private void Darkness(bool enabled)
     {
-        if (enabled)
-        {
-            foreach (Light i in FindObjectsOfType<Light>())
-            {
-                if (i.type != LightType.Directional)
-                    continue;
-
-                i.enabled = false;
-            }
-        }
+        foreach (Light i in _suns)
+            i.enabled = !enabled;
     }
 }
