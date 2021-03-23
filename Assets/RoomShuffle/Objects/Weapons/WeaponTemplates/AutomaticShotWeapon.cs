@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// A weapon that shoots bullets in a circle around the player
+/// A weapon that shoots mulitple bullets in burst linearly
 /// </summary>
 [CreateAssetMenu(menuName = "Weapons/Automatic Shot")]
 public class AutomaticShotWeapon : WeaponTemplate
@@ -19,6 +19,9 @@ public class AutomaticShotWeapon : WeaponTemplate
 
     [Tooltip("How many bullets will be fired in one blast")]
     public int ClusterCount;
+    
+    [Tooltip("Tiem between each shot")]
+    public float WaitTime = 0.05f;
 
     protected override void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction)
     {
@@ -49,7 +52,7 @@ public class AutomaticShotWeapon : WeaponTemplate
             hurtbox.Weapon = instance;
             
             //Waiting for next bullet
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(WaitTime);
         }
     }
 

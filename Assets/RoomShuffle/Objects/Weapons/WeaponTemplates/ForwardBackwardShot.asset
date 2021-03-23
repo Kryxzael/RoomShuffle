@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: CircleShot
+  m_Name: ForwardBackwardShot
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
@@ -26,4 +26,4 @@ MonoBehaviour:
   Cooldown: 1
   Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
   Ammunition: {fileID: 953221075348106010, guid: 7066bdf1fed911242a55eaf1f153c38e, type: 3}
-  BlastCount: 30
+  BlastCount: 2
