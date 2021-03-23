@@ -23,12 +23,19 @@ public class SlashWeapon : WeaponTemplate
     
     [Tooltip("Tiem between each shot")]
     public float WaitTime = 0.03f;
+    
+    [Tooltip("Forces the bullets to appear after each other")]
+    public bool ForceLinear = false;
 
+    private Vector2 fireingPointOrigin = Vector2.zero;
+    private Vector2 fireingDirectionOrigin = Vector2.zero;
     private Direction1D horizontalDirection;
 
     protected override void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction)
     {
+        fireingPointOrigin = shooter.gameObject.transform.position;
         horizontalDirection = shooter.gameObject.GetComponent<Flippable>().Direction;
+        fireingDirectionOrigin = shooter.GetCurrentAimingDirection();
         shooter.StartCoroutine(CoShootBullets(instance, shooter));
     }
 
@@ -43,13 +50,17 @@ public class SlashWeapon : WeaponTemplate
     {
         for (int i = 0; i < ClusterCount; i++)
         {
+            //Decide the origin of each bullet
+            Vector2 position = ForceLinear ? fireingPointOrigin : shooter.GetProjectilesSpawnPoint();
+            
             Projectile newAmmo = Instantiate(
                 original: Ammunition,
-                position: shooter.GetProjectilesSpawnPoint(),
+                position: position,
                 rotation: Quaternion.identity
             );
 
-            Vector2 Aim = shooter.GetCurrentAimingDirection();
+            
+            Vector2 Aim = ForceLinear ? fireingDirectionOrigin : shooter.GetCurrentAimingDirection();
             
             
             // Decides how much each bullet should ne rotated

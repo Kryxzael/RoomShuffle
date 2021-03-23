@@ -148,4 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  SplitterProjectile: {fileID: 953221075348106010, guid: 7066bdf1fed911242a55eaf1f153c38e, type: 3}
+  SplitterProjectile: {fileID: 2656575055763673109, guid: cc04f9f3c093c07409956b9bddda8d1c, type: 3}
+  timeBeforeSplitting: 1
+  blastCount: 20

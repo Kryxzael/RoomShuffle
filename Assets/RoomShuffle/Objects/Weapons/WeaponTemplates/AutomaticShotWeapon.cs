@@ -20,11 +20,19 @@ public class AutomaticShotWeapon : WeaponTemplate
     [Tooltip("How many bullets will be fired in one blast")]
     public int ClusterCount;
     
-    [Tooltip("Tiem between each shot")]
+    [Tooltip("Time between each shot")]
     public float WaitTime = 0.05f;
+    
+    [Tooltip("Forces the bullets to appear after each other")]
+    public bool ForceLinear = false;
+
+    private Vector2 fireingPoint = Vector2.zero;
+    private Vector2 fireingDirectionOrigin = Vector2.zero;
 
     protected override void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction)
     {
+        fireingPoint = shooter.gameObject.transform.position;
+        fireingDirectionOrigin = shooter.GetCurrentAimingDirection();
         shooter.StartCoroutine(CoShootBullets(instance, shooter));
     }
 
@@ -39,13 +47,16 @@ public class AutomaticShotWeapon : WeaponTemplate
     {
         for (int i = 0; i < ClusterCount; i++)
         {
+            //Decide the origin of each bullet
+            Vector2 position = ForceLinear ? fireingPoint : shooter.GetProjectilesSpawnPoint();
+            
             Projectile newAmmo = Instantiate(
                 original: Ammunition,
-                position: shooter.GetProjectilesSpawnPoint(),
+                position: position,
                 rotation: Quaternion.identity
             );
 
-            newAmmo.Direction = shooter.GetCurrentAimingDirection();
+            newAmmo.Direction = ForceLinear ? fireingDirectionOrigin : shooter.GetCurrentAimingDirection();
 
             WeaponFireHurtbox hurtbox = newAmmo.GetComponent<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
