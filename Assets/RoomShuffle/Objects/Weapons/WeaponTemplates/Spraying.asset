@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
-  m_Name: Linear
+  m_Script: {fileID: 11500000, guid: 190032dc69c858343afe685456516461, type: 3}
+  m_Name: Spraying
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 25
+    - Item: 5
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 100
+    - Item: 99
       Pickrate: 1
   Range:
     Minimum: 0
-    Maximum: 1
-  Cooldown: 0.1
-  Icon: {fileID: -1182408495049320820, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-  Ammunition: {fileID: 3930129160101756386, guid: 75d5e5dbd14928940b76c49639fdfd70, type: 3}
+    Maximum: 0
+  Cooldown: 0.05
+  Icon: {fileID: -4637987512465366153, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+  Ammunition: {fileID: -5825253824957948962, guid: eced16baeaf6b5149aa1854f0e9068fc, type: 3}
   MaxAngle: 0
-  BlastCount: 1
+  BlastCount: 2
