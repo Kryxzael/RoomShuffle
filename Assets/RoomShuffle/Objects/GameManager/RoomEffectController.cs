@@ -25,6 +25,10 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("How much faster enemies will move when fast-foe is enabled")]
     public float FastFoeSpeedMultiplier = 1.5f;
 
+    [Header("Large Enemies")]
+    [Tooltip("By how much enemies will grow when large enemies are enabled")]
+    public float LargeEnemiesGrowMultiplier = 2f;
+
     /* *** */
 
     //The default gravity level as defined by the physics settings
@@ -48,6 +52,7 @@ public class RoomEffectController : MonoBehaviour
 
         LowGravity(fx.HasFlag(RoomEffects.LowGravity));
         Darkness(fx.HasFlag(RoomEffects.Darkness));
+        LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
     }
 
     /// <summary>
@@ -71,5 +76,34 @@ public class RoomEffectController : MonoBehaviour
     {
         foreach (Light i in _suns)
             i.enabled = !enabled;
+    }
+
+    /// <summary>
+    /// Sets the larger enemies effect
+    /// </summary>
+    /// <param name="enabled"></param>
+    private void LargeEnemies(bool enabled)
+    {
+        //TODO: This might not be the best way to find enemies
+        foreach (HealthController i in FindObjectsOfType<HealthController>())
+        {
+            //LOL
+            if (i == Commons.PlayerHealth)
+                continue;
+
+            if (i.GetComponent<Collider2D>() is Collider2D collider)
+            {
+                float height = collider.bounds.size.y;
+
+                //TODO: This assumes that the object is pivoted at its center
+                if (enabled)
+                {
+                    i.transform.TranslateY(height / 2);
+                    i.transform.localScale *= LargeEnemiesGrowMultiplier;
+                }
+
+                //TODO: Disabling this effect does nothing
+            }
+        }
     }
 }

@@ -32,5 +32,10 @@ public enum RoomEffects
     /// <summary>
     /// The enemies will move faster than normal
     /// </summary>
-    FastFoe = 0x8
+    FastFoe = 0x8,
+
+    /// <summary>
+    /// The enemies will be larger than normal
+    /// </summary>
+    LargeEnemies = 0x10,
 }
