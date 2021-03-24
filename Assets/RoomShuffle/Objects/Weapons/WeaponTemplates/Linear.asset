@@ -25,6 +25,6 @@ MonoBehaviour:
     Maximum: 1
   Cooldown: 0.1
   Icon: {fileID: -1182408495049320820, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-  Ammunition: {fileID: -5825253824957948962, guid: eced16baeaf6b5149aa1854f0e9068fc, type: 3}
+  Ammunition: {fileID: 953221075348106010, guid: 7066bdf1fed911242a55eaf1f153c38e, type: 3}
   MaxAngle: 0
   BlastCount: 1
