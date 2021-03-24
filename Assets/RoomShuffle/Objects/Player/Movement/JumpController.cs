@@ -37,15 +37,23 @@ public class JumpController : MonoBehaviour
     private Rigidbody2D _rigid;
     private Flippable _flippable;
 
+    //The amount of milliseconds the player must have been airborne before mercy frames and buffered inputs will be counted
+    private const float DOUBLE_JUMP_PREVENTION_MILLIS = 250f;
+
     /// <summary>
     /// Gets or sets the last position of the player when they were last grounded
     /// </summary>
     private PositionSnapshot _lastGroundedPosition;
 
     /// <summary>
-    /// Gets or sets the last position of the player when they tried to jump (pressed the jump button)
+    /// Gets or sets the last position of the player when they tried to jump. Whether they failed or not (pressed the jump button)
     /// </summary>
     private PositionSnapshot _lastAttemptedJumpPosition;
+
+    /// <summary>
+    /// Gets or sets the last position of the player when they successfully to jump
+    /// </summary>
+    private PositionSnapshot _lastSuccessfulJumpPosition;
 
     private void Awake()
     {
@@ -72,18 +80,26 @@ public class JumpController : MonoBehaviour
          */
         if (Input.GetButtonDown("Jump"))
         {
+            _lastAttemptedJumpPosition = PositionSnapshot.FromObject(_flippable);
+
             if (MayJump())
             {
                 StopAllCoroutines();
                 StartCoroutine(CoJump());
+
+                _lastSuccessfulJumpPosition = _lastAttemptedJumpPosition;
             }
 
-            _lastAttemptedJumpPosition = PositionSnapshot.FromObject(_flippable);
         }
-        else if (onGround && (DateTime.Now - _lastAttemptedJumpPosition.Time).TotalSeconds <= BufferedJumpFramesInSeconds)
+        else if (onGround && (DateTime.Now - _lastSuccessfulJumpPosition.Time).TotalSeconds <= BufferedJumpFramesInSeconds)
         {
-            StopAllCoroutines();
-            StartCoroutine(CoJump());
+            if ((DateTime.Now - _lastAttemptedJumpPosition.Time).TotalMilliseconds > DOUBLE_JUMP_PREVENTION_MILLIS)
+            {
+                StopAllCoroutines();
+                StartCoroutine(CoJump());
+
+                _lastSuccessfulJumpPosition = _lastAttemptedJumpPosition;
+            }
         }
 
         /*
@@ -100,10 +116,23 @@ public class JumpController : MonoBehaviour
     /// <summary>
     /// Can the player jump at this time?
     /// </summary>
-    /// <returns></returns>
+    /// <returns></returns> 
     public bool MayJump()
     {
-        return (DateTime.Now - _lastGroundedPosition.Time).TotalSeconds <= MercyFramesInSeconds || Cheats.MoonJump;
+        if (Cheats.MoonJump)
+            return true;
+
+        //The player has mercy frames
+        if ((DateTime.Now - _lastGroundedPosition.Time).TotalSeconds <= MercyFramesInSeconds)
+        {
+            //Do not give mercy frames if the player just jumped
+            if ((DateTime.Now - _lastSuccessfulJumpPosition.Time).TotalMilliseconds < DOUBLE_JUMP_PREVENTION_MILLIS)
+                return false;
+
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -117,6 +146,10 @@ public class JumpController : MonoBehaviour
 
         //Set the initial jump velocity
         _rigid.SetVelocityY(JumpForce);
+
+        //Switches solidity of JumpSwitchBlocks
+        foreach (var i in FindObjectsOfType<JumpSwitchBlock>())
+            i.Switch();
 
         //As long as the player can still hold the button
         while (seconds < 0.15f || Cheats.MoonJump)
