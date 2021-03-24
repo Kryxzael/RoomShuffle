@@ -15,7 +15,7 @@ MonoBehaviour:
   Frames:
   - Sprite: {fileID: -8842718166308634392, guid: fe155579bcac71c4fa75bcfff22ed2ab, type: 3}
     FrameTimeMultiplier: 1
-  - Sprite: {fileID: -8203359249063628386, guid: fe155579bcac71c4fa75bcfff22ed2ab, type: 3}
+  - Sprite: {fileID: -3336598591814707247, guid: fe155579bcac71c4fa75bcfff22ed2ab, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
   FrameTimeDivider: 2

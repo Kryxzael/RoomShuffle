@@ -13,7 +13,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteAnimator))]
 public class JumpSwitchBlock : MonoBehaviour
 {
-    private Collider2D _collider;
+    protected Collider2D Collider;
     private SpriteAnimator _animator;
 
     /* *** */
@@ -28,30 +28,30 @@ public class JumpSwitchBlock : MonoBehaviour
     [Tooltip("The animation to use when the block is non-solid")]
     public SpriteAnimation OffAnimation;
 
-    private void Start()
+    protected virtual void Start()
     {
-        _collider = GetComponent<Collider2D>();
+        Collider = GetComponent<Collider2D>();
         _animator = GetComponent<SpriteAnimator>();
 
-        _collider.enabled = InitiallyOn;
+        Collider.enabled = InitiallyOn;
         SetSprite();
     }
 
     /// <summary>
     /// Switches the solidity of the block
     /// </summary>
-    public void Switch()
+    public virtual void Switch()
     {
-        _collider.enabled = !_collider.enabled;
+        Collider.enabled = !Collider.enabled;
         SetSprite();
     }
 
     /// <summary>
     /// Updates the sprite of the jump switch block
     /// </summary>
-    private void SetSprite()
+    protected void SetSprite()
     {
-        if (_collider.enabled)
+        if (Collider.enabled)
         {
             _animator.Animation = OnAnimation;
         }

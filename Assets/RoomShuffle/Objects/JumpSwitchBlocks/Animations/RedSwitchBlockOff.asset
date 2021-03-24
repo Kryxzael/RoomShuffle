@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedSwitchBlockOff
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: -464510155253934989, guid: fe155579bcac71c4fa75bcfff22ed2ab, type: 3}
+  - Sprite: {fileID: 3581894835786520243, guid: fe155579bcac71c4fa75bcfff22ed2ab, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
   FrameTimeDivider: 2

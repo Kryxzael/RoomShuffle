@@ -29,6 +29,15 @@ TextureImporter:
   - first:
       213: 5070246908057735804
     second: Switchblocks_8
+  - first:
+      213: 3581894835786520243
+    second: Switchblocks_9
+  - first:
+      213: 860192073385694258
+    second: Switchblocks_10
+  - first:
+      213: 2193660301694730254
+    second: Switchblocks_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -196,8 +205,8 @@ TextureImporter:
       name: Switchblocks_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -217,7 +226,7 @@ TextureImporter:
       name: Switchblocks_4
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -238,7 +247,7 @@ TextureImporter:
       name: Switchblocks_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 32
         width: 32
         height: 32
@@ -259,8 +268,8 @@ TextureImporter:
       name: Switchblocks_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 64
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -280,8 +289,8 @@ TextureImporter:
       name: Switchblocks_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -301,7 +310,7 @@ TextureImporter:
       name: Switchblocks_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -314,6 +323,69 @@ TextureImporter:
       bones: []
       spriteID: c72dd4613b22d5640800000000000000
       internalID: 5070246908057735804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Switchblocks_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b69cdd106275b130800000000000000
+      internalID: 3581894835786520243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Switchblocks_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 234d2cc122400fb00800000000000000
+      internalID: 860192073385694258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Switchblocks_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0004600c62717e10800000000000000
+      internalID: 2193660301694730254
       vertices: []
       indices: 
       edges: []
