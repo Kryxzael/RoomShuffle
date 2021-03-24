@@ -14,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
-  - NoSelfCollision
+  - Ground
+  - Player
+  - Enemy
+  - Projectile
+  - Item
   - RepellingWall
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Hitbox Hurtbox
   - 
   - 
   - 

@@ -21,9 +21,9 @@ MonoBehaviour:
     - Item: 99
       Pickrate: 1
   Range:
-    Minimum: 0
-    Maximum: 0
+    Minimum: 5
+    Maximum: 15
   Cooldown: 0.1
   Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: 953221075348106010, guid: 7066bdf1fed911242a55eaf1f153c38e, type: 3}
+  Ammunition: {fileID: 2993959103662649049, guid: eb9f35f1daf220d42b31d5c11ccb9a1a, type: 3}
   BlastCount: 4

@@ -11,7 +11,7 @@ public class FallingProjectile : Projectile
     {
         base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _shooter = GetComponent<WeaponFireHurtbox>().Shooter.gameObject;
+        _shooter = GetComponentInChildren<WeaponFireHurtbox>().Shooter.gameObject;
         
         //Makes the bullet affected by gravity
         _rigidbody.gravityScale = 1;

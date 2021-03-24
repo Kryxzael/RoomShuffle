@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1430132917840779658}
   - component: {fileID: 1430132917840779670}
   - component: {fileID: 1430132917840779671}
-  m_Layer: 0
-  m_Name: Square
+  m_Layer: 6
+  m_Name: BobbingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

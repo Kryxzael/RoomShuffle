@@ -28,7 +28,7 @@ public class ConeShotWeapon : WeaponTemplate
             newAmmo.Direction = direction;
             newAmmo.transform.Rotate((i - BlastCount / 2) * MaxAngle);
 
-            WeaponFireHurtbox hurtbox = newAmmo.GetComponent<WeaponFireHurtbox>();
+            WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
             hurtbox.Weapon = instance;
         }

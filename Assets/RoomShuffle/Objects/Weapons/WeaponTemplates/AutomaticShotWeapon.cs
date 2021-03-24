@@ -58,7 +58,7 @@ public class AutomaticShotWeapon : WeaponTemplate
 
             newAmmo.Direction = ForceLinear ? fireingDirectionOrigin : shooter.GetCurrentAimingDirection();
 
-            WeaponFireHurtbox hurtbox = newAmmo.GetComponent<WeaponFireHurtbox>();
+            WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
             hurtbox.Weapon = instance;
             

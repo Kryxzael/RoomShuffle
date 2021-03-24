@@ -34,7 +34,7 @@ public class SprayingWeapon : WeaponTemplate
             newAmmo.Direction = direction;
             newAmmo.transform.Rotate(angle);
 
-            WeaponFireHurtbox hurtbox = newAmmo.GetComponent<WeaponFireHurtbox>();
+            WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
             hurtbox.Weapon = instance;
         }

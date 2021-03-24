@@ -42,7 +42,6 @@ public class HomingProjectile : Projectile
                 _nearestEnemy = enemy;
             }
         }
-        
     }
 
     protected override void Update()

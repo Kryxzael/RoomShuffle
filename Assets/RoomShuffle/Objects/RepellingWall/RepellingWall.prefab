@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1246828547724021540}
   - component: {fileID: 2732462062333693396}
   - component: {fileID: 5056268372210394576}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: RepellingWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

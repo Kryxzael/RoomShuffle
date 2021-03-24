@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656464022226297948}
   - component: {fileID: 7167450115620952271}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 857590341}
   - component: {fileID: 680402638022792320}
   - component: {fileID: 4280482282808589427}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7829438793687919276}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 183
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 4682636288040449590}
   - component: {fileID: 666715296166345627}
   - component: {fileID: 3065580280250307300}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 6268606986172907682}
   - component: {fileID: 3846992089104092957}
   - component: {fileID: 2167313868686999627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

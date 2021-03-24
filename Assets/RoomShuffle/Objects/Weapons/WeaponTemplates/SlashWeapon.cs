@@ -95,7 +95,7 @@ public class SlashWeapon : WeaponTemplate
                 }
             }
 
-            WeaponFireHurtbox hurtbox = newAmmo.GetComponent<WeaponFireHurtbox>();
+            WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
             hurtbox.Weapon = instance;
             
