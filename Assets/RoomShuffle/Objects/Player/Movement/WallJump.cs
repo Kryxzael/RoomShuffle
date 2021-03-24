@@ -31,6 +31,10 @@ public class WallJump : MonoBehaviour
 
     private void Update()
     {
+        //The player cannot wall jump at a repelling wall
+        if (RepellingWall.PlayerIsInRepellingArea)
+            return;
+
         ///Gets the normal of the adjacent wall (if there is one)
         Vector2? wallNormal = GetWallNormal();
 
@@ -67,11 +71,11 @@ public class WallJump : MonoBehaviour
         RaycastHit2D hit;
 
         //Checks for right wall
-        if (hit = Physics2D.Raycast(transform.position, Vector2.right, _collider.bounds.size.x / 2f + CHECK_DISTANCE))
+        if (hit = Physics2D.Raycast(transform.position, Vector2.right, _collider.bounds.size.x / 2f + CHECK_DISTANCE, ~LayerMask.GetMask("RepellingWall")))
             return hit.normal;
 
         //Checks for left wall
-        if (hit = Physics2D.Raycast(transform.position, Vector2.left, _collider.bounds.size.x / 2f + CHECK_DISTANCE))
+        if (hit = Physics2D.Raycast(transform.position, Vector2.left, _collider.bounds.size.x / 2f + CHECK_DISTANCE, ~LayerMask.GetMask("RepellingWall")))
             return hit.normal;
 
         //No wall found
