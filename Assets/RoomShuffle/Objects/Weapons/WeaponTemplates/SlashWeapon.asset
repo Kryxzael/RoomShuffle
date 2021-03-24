@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: SlashWeapon
   m_EditorClassIdentifier: 
   BaseDamage:
-    Candidates: []
+    Candidates:
+    - Item: 5
+      Pickrate: 1
   MaxDurability:
-    Candidates: []
+    Candidates:
+    - Item: 99
+      Pickrate: 1
   Range:
     Minimum: 0
     Maximum: 0
-  Cooldown: 0
-  Icon: {fileID: 0}
-  Ammunition: {fileID: 0}
-  ClusterCount: 0
-  WaitTime: 0.03
+  Cooldown: 1
+  Icon: {fileID: -2063685462047807512, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
+  Ammunition: {fileID: 953221075348106010, guid: 7066bdf1fed911242a55eaf1f153c38e, type: 3}
+  ClusterCount: 20
+  WaitTime: 0.01
+  ForceLinear: 1
