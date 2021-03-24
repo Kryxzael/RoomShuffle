@@ -10,13 +10,17 @@ public class SinewaveProjectile : Projectile
     private Vector3 linearPosition;
     private float time;
     
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
+        
         linearPosition = transform.position;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+        
         time += Time.deltaTime;
         
         //Update position in firing direction

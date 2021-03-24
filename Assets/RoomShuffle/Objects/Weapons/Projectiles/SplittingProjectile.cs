@@ -18,14 +18,17 @@ public class SplittingProjectile : Projectile
     private WeaponFireHurtbox _weaponFireHurtBox;
     
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
         _weaponFireHurtBox = GetComponent<WeaponFireHurtbox>();
     }
     
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+        
         //add time to timer
         _time += Time.deltaTime;
         

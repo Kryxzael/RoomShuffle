@@ -7,8 +7,9 @@ public class FallingProjectile : Projectile
     private Rigidbody2D _rigidbody;
     private GameObject _shooter;
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
         _shooter = GetComponent<WeaponFireHurtbox>().Shooter.gameObject;
         
@@ -19,8 +20,9 @@ public class FallingProjectile : Projectile
         _rigidbody.velocity = transform.up * Speed;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
     }
 
     private void OnCollisionEnter(Collision other)

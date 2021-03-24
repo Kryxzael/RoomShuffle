@@ -14,8 +14,9 @@ public class HomingProjectile : Projectile
     private GameObject[] _enemyList;
     private GameObject _nearestEnemy;
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.velocity = transform.up * Speed;
         _enemyList = GameObject.FindGameObjectsWithTag("Enemy");
@@ -44,8 +45,9 @@ public class HomingProjectile : Projectile
         
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         //If there is no enemies: act as a linear bullet
         if (!_nearestEnemy)
         {

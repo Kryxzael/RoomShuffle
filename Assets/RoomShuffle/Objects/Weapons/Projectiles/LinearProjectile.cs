@@ -5,13 +5,15 @@ public class LinearProjectile : Projectile
 {
     private Rigidbody2D _rigidbody;
 
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         //sets the speed in the facing direction
         _rigidbody.velocity = transform.up * Speed;
     }
