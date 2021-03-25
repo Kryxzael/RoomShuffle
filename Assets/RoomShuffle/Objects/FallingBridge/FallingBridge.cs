@@ -20,6 +20,14 @@ public class FallingBridge : MonoBehaviour
     /// </summary>
     public bool Fallen { get; private set; }
 
+    /* *** */
+
+    [Tooltip("The amount of seconds the object will wait before collapsing")]
+    public float FallDelay = 0.25f;
+
+    [Tooltip("The amount of seconds the object will wait before respawning")]
+    public float RespawnDelay = 5f;
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -33,7 +41,7 @@ public class FallingBridge : MonoBehaviour
             return;
 
         Fallen = true;
-        Invoke(nameof(MakeFall), 0.25f);
+        Invoke(nameof(MakeFall), FallDelay);
     }
 
     public void MakeFall()
@@ -46,7 +54,7 @@ public class FallingBridge : MonoBehaviour
         _rigidbody.bodyType = RigidbodyType2D.Dynamic;
         _rigidbody.AddTorque(randomTorque);
 
-        Invoke(nameof(Respawn), 5f);
+        Invoke(nameof(Respawn), RespawnDelay);
     }
 
     public void Respawn()
