@@ -148,8 +148,8 @@ public class JumpController : MonoBehaviour
         _rigid.SetVelocityY(JumpForce);
 
         //Switches solidity of JumpSwitchBlocks
-        foreach (var i in FindObjectsOfType<JumpSwitchBlock>())
-            i.Switch();
+        foreach (var i in FindObjectsOfType<JumpSwitchBase>())
+            i.OnJump();
 
         //As long as the player can still hold the button
         while (seconds < 0.15f || Cheats.MoonJump)

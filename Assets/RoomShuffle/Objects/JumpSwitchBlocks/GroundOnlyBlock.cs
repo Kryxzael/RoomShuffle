@@ -31,7 +31,7 @@ public class GroundOnlyBlock : JumpSwitchBlock
         }
     }
 
-    public override void Switch()
+    public override void OnJump()
     {
         //This block does not need manual switching
     }

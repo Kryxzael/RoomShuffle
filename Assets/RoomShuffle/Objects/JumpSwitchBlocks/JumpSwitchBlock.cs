@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteAnimator))]
-public class JumpSwitchBlock : MonoBehaviour
+public class JumpSwitchBlock : JumpSwitchBase
 {
     protected Collider2D Collider;
     private SpriteAnimator _animator;
@@ -40,7 +40,7 @@ public class JumpSwitchBlock : MonoBehaviour
     /// <summary>
     /// Switches the solidity of the block
     /// </summary>
-    public virtual void Switch()
+    public override void OnJump()
     {
         Collider.enabled = !Collider.enabled;
         SetSprite();
