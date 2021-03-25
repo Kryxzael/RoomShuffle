@@ -51,6 +51,9 @@ public class Inventory : MonoBehaviour
     [Tooltip("The amount of spendable currency the player has")]
     public int Currency;
 
+    [Tooltip("The amount of puzzle keys the player is holding. This value is reset each room")]
+    public int PuzzleKeys;
+
     private void Update()
     { 
         /*

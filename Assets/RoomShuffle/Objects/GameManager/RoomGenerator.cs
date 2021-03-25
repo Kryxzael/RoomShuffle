@@ -108,6 +108,9 @@ public class RoomGenerator : MonoBehaviour
         foreach (Tilemap i in FindObjectsOfType<Tilemap>())
             i.RefreshAllTiles();
 
+        //Clear puzzle keys
+        Commons.Inventory.PuzzleKeys = 0;
+
         //Set up room effects
         Commons.RoomEffectController.OnRoomStart(parameters);
     }
