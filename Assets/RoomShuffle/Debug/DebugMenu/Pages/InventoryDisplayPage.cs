@@ -15,6 +15,7 @@ public class InventoryDisplayPage : DebugPage
     {
         ReadOnly($"<3: {Commons.PlayerHealth.Health} / {Commons.PlayerHealth.MaximumHealth}");
         ReadOnly($"${Commons.Inventory.Currency}");
+        ReadOnly($"{Commons.Inventory.GeneralKeys} general keys");
         ReadOnly($"{Commons.Inventory.PuzzleKeys} puzzle keys");
 
         for (int i = 0; i < Commons.Inventory.WeaponSlots.Length; i++)
