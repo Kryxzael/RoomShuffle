@@ -87,7 +87,7 @@ public class JumpController : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(CoJump());
 
-                _lastSuccessfulJumpPosition = _lastAttemptedJumpPosition;
+                CaptureSuccessfulJumpSnapshot();
             }
 
         }
@@ -98,7 +98,7 @@ public class JumpController : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(CoJump());
 
-                _lastSuccessfulJumpPosition = _lastAttemptedJumpPosition;
+                CaptureSuccessfulJumpSnapshot();
             }
         }
 
@@ -173,6 +173,11 @@ public class JumpController : MonoBehaviour
             seconds += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        
+    }
+    
+    public void CaptureSuccessfulJumpSnapshot()
+    {
+        _lastSuccessfulJumpPosition = PositionSnapshot.FromObject(_flippable);
+        _lastAttemptedJumpPosition = _lastSuccessfulJumpPosition;
     }
 }
