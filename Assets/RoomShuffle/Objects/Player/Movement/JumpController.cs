@@ -82,7 +82,7 @@ public class JumpController : MonoBehaviour
         {
             _lastAttemptedJumpPosition = PositionSnapshot.FromObject(_flippable);
 
-            if (MayJump())
+            if (mayJump)
             {
                 StopAllCoroutines();
                 StartCoroutine(CoJump());
@@ -91,9 +91,12 @@ public class JumpController : MonoBehaviour
             }
 
         }
-        else if (onGround && (DateTime.Now - _lastSuccessfulJumpPosition.Time).TotalSeconds <= BufferedJumpFramesInSeconds)
+
+        //If the player has buffered a jump (in the last 'BufferedJumpFramesInSeconds' seconds) and is grounded
+        else if (onGround && (DateTime.Now - _lastAttemptedJumpPosition.Time).TotalSeconds <= BufferedJumpFramesInSeconds)
         {
-            if ((DateTime.Now - _lastAttemptedJumpPosition.Time).TotalMilliseconds > DOUBLE_JUMP_PREVENTION_MILLIS)
+            //If the player didn't just leave the ground in a jump (Don't want double jumps)
+            if ((DateTime.Now - _lastSuccessfulJumpPosition.Time).TotalMilliseconds > DOUBLE_JUMP_PREVENTION_MILLIS)
             {
                 StopAllCoroutines();
                 StartCoroutine(CoJump());
