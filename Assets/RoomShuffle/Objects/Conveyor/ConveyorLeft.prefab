@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3311324612324620690, guid: 99b54029a0ace6d43906d17a4091fddc, type: 3}
+      propertyPath: StartingDirection
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1268755808513571464, guid: 99b54029a0ace6d43906d17a4091fddc, type: 3}
       propertyPath: m_FlipX
       value: 1

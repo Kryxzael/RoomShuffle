@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1268755808513571464}
   - component: {fileID: 1268755808513571465}
   - component: {fileID: 1268755808513571470}
+  - component: {fileID: -3311324612324620690}
   m_Layer: 6
   m_Name: ConveyorBase
   m_TagString: Untagged
@@ -124,3 +125,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Directionality: 0
   Speed: 0
+--- !u!114 &-3311324612324620690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268755808513571471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9196e809110ba2428b0aba9de01fcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingDirection: 0

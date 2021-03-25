@@ -9,19 +9,24 @@ using UnityEngine;
 /// <summary>
 /// An object that pushes objects on it in a direction
 /// </summary>
+[RequireComponent(typeof(Flippable))]
 public class Conveyor : DetectObjectsOn
 {
-    [Tooltip("The direction the conveyor will move its objects")]
-    public Direction1D Directionality;
+    private Flippable _flippable;
 
     [Tooltip("The speed the conveyor will move at")]
     public float Speed;
+
+    private void Awake()
+    {
+        _flippable = GetComponent<Flippable>();
+    }
 
     private void LateUpdate()
     {
         foreach (Transform i in ObjectsOn)
         {
-            i.Translate(new Vector3((int)Directionality * Commons.GetEffectValue(Speed, EffectValueType.EnemySpeed), 0f));
+            i.Translate(_flippable.DirectionVector * Commons.GetEffectValue(Speed, EffectValueType.EnemySpeed));
         }
     }
 }
