@@ -160,6 +160,13 @@ public class JumpController : MonoBehaviour
             //The player is still holding the jump button, keep adding force
             if (Input.GetButton("Jump"))
             {
+                //The player has hit a ceiling. Stop
+                if (_rigid.velocity.y < JumpForce / 2f && !Cheats.MoonJump)
+                {
+                    yield break;
+                }
+
+                //Keep the players jump
                 _rigid.SetVelocityY(JumpForce);
             }
 
