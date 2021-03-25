@@ -14,7 +14,10 @@ public class ConveyorJumpSwitcher : JumpSwitchBase
 {
     private Flippable _flippable;
 
-    protected void Start()
+    [Tooltip("Is this script enabled")]
+    public bool IsEnabled;
+
+    protected void Awake()
     {
         _flippable = GetComponent<Flippable>();
     }
@@ -24,6 +27,9 @@ public class ConveyorJumpSwitcher : JumpSwitchBase
     /// </summary>
     public override void OnJump()
     {
+        if (!IsEnabled)
+            return;
+
         //Switches the directionality of the conveyor
         _flippable.Flip();
     }
