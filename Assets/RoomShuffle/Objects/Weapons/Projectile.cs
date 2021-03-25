@@ -54,7 +54,7 @@ public abstract class Projectile : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.GetComponentInParent<WeaponShooterBase>() == _hurtBox.Shooter)
             return; 

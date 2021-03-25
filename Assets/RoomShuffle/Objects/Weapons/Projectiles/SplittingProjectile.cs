@@ -11,7 +11,6 @@ public class SplittingProjectile : Projectile
     public int blastCount = 20;
     
     private Rigidbody2D _rigidbody;
-    private bool _doneSplitting = false;
     private WeaponFireHurtbox _weaponFireHurtBox;
     
 
