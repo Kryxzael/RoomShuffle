@@ -34,7 +34,6 @@ public class RoomCounter : MonoBehaviour
         
         
         _textMeshProUGUI.text = roomNumber.ToString();
-        StartCoroutine(_textSmack.Smack());
-        
+        _textSmack.Smack();
     }
 }

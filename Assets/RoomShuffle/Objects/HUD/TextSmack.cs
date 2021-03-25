@@ -8,7 +8,12 @@ public class TextSmack : MonoBehaviour
     public Vector3 SmackMaxSize = Vector3.one * 2;
     public AnimationCurve SmackCurve;
     
-    public IEnumerator Smack()
+    public void Smack()
+    {
+        StartCoroutine(CoSmack());
+    }
+
+    private IEnumerator CoSmack()
     {
         float lerpTime = 0f;
         while (lerpTime < 1f)
