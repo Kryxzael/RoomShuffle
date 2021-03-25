@@ -40,6 +40,10 @@ public class TurnOnWallAndEdge : TurnOnWall
 
     public bool OnEdge()
     {
+        //If the object is not grounded, it should not care about edges (there will be edges on all sides and it will freak out)
+        if (!this.OnGround2D())
+            return false;
+
         /*
          * Gets the position to start the raycast from
          * This is either at the bottom left or bottom right side of the hitbox of the object (plus some padding determined by SlopeDetectionDistance)
