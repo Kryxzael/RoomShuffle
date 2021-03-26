@@ -44,10 +44,10 @@ public class HomeDebugPage : DebugPage
         }
         
 
-        if (Button("Room Generation"))
+        if (Button("Room Generation ..."))
             caller.NavigationStack.Push(new RoomGenerationDebugPage());
 
-        if (Button("Inventory"))
+        if (Button("Inventory ..."))
             caller.NavigationStack.Push(new InventoryDisplayPage());
     }
 }

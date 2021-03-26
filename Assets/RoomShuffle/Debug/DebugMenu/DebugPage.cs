@@ -97,4 +97,12 @@ public abstract class DebugPage
         else
             _currentRunOutput.Add(label);
     }
+
+    /// <summary>
+    /// Creates a one-line separator in a run
+    /// </summary>
+    protected void Separator()
+    {
+        ReadOnly(" ");
+    }
 }

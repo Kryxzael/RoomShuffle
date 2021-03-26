@@ -18,6 +18,15 @@ public class InventoryDisplayPage : DebugPage
         ReadOnly($"{Commons.Inventory.GeneralKeys} general keys");
         ReadOnly($"{Commons.Inventory.PuzzleKeys} puzzle keys");
 
+        Separator();
+
+        if (Button("Levels and Health ..."))
+        {
+            caller.NavigationStack.Push(new LevelsDebugPage());
+        }
+
+        Separator();
+
         for (int i = 0; i < Commons.Inventory.WeaponSlots.Length; i++)
         {
             WeaponInstance instance = Commons.Inventory.WeaponSlots[i];
