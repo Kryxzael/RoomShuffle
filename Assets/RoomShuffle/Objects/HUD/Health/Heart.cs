@@ -13,9 +13,20 @@ public class Heart : MonoBehaviour
     //The image that will be the cake or pie of the heart, representing the fullness of the heart
     private Image cakeImage;
 
+    //The smack component
+    private TextSmack _smack;
+
+    private float _lastFillAmount = 0;
+
     void Awake()
     {
         cakeImage = transform.Find("Cake").GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        _smack = GetComponent<TextSmack>();
+        _smack.Smack();
     }
 
     /// <summary>
@@ -25,5 +36,7 @@ public class Heart : MonoBehaviour
     public void SetHeartFillPercentage(float percentage)
     {
         cakeImage.fillAmount = percentage;
+
+        _lastFillAmount = percentage;
     }
 }
