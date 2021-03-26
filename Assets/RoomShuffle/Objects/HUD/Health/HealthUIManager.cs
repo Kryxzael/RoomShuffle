@@ -24,10 +24,14 @@ public class HealthUIManager : MonoBehaviour
 
     //The owner's last known health
     private int _lastHealth;
+    
+    //The owner's last known health
+    private int _lastHealthLevel;
 
     void Start()
     {
-        SetHeartUIElementCount(3);
+        _lastHealthLevel = Commons.PlayerProgression.HealthLevel;
+        SetHeartUIElementCount(_lastHealthLevel+3);
 
         RectTransform rectTransform = transform.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2 (HeartsPerRow * HeartMargin.x * 2, 500); //Where does this number come from?
@@ -36,12 +40,25 @@ public class HealthUIManager : MonoBehaviour
     private void Update()
     {
         //The player's health hasn't changed
-        if (_lastHealth == Commons.PlayerHealth.Health)
-            return;
+        if (_lastHealth != Commons.PlayerHealth.Health)
+        {
+            //Update health
+            _lastHealth = Commons.PlayerHealth.Health;
+            SetDisplayedHealth(_lastHealth);
+        }
 
-        //Update health
-        _lastHealth = Commons.PlayerHealth.Health;
-        SetDisplayedHealth(_lastHealth);
+        //if the players healthlevel has changed
+        if (_lastHealthLevel != Commons.PlayerProgression.HealthLevel)
+        {
+            //Update healthlevel UI
+            _lastHealthLevel = Commons.PlayerProgression.HealthLevel;
+            SetHeartUIElementCount(_lastHealthLevel+3);
+            
+            //Udate health
+            _lastHealth = Commons.PlayerHealth.Health;
+            SetDisplayedHealth(_lastHealth);
+        }
+
     }
 
     /// <summary>

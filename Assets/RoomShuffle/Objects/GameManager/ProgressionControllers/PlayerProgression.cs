@@ -32,4 +32,11 @@ public class PlayerProgression : ProgressionController
     {
         return baseDamage; //TODO
     }
+
+    public override void LevelUpHealth()
+    {
+        base.LevelUpHealth();
+        Commons.PlayerHealth.MaximumHealth = GetMaximumHealth();
+        Commons.PlayerHealth.FullyHeal();
+    }
 }

@@ -19,4 +19,14 @@ public abstract class ProgressionController : MonoBehaviour
     /// <param name="baseDamage"></param>
     /// <returns></returns>
     public abstract int GetScaledDamage(int baseDamage);
+
+    public virtual void LevelUpHealth()
+    {
+        HealthLevel++;
+    }
+    
+    public virtual void LevelUpDamage()
+    {
+        DamageLevel++;
+    }
 }
