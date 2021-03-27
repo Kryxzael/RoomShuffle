@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Standard
   m_EditorClassIdentifier: 
   Rooms: {fileID: 11400000, guid: baff7d1c45fd74343b6f1fd25840f934, type: 2}
+  EnemySets: []
   TransitionFrequency:
     Minimum: 5
     Maximum: 8

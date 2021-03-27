@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Demo
   m_EditorClassIdentifier: 
   Rooms: {fileID: 0}
+  EnemySets:
+  - {fileID: 11400000, guid: 4c7baf1e546ef9c45ba154e5c5a465ea, type: 2}
   DemoRoomProgression:
   - {fileID: 1206057589842866618, guid: 68e668b4c2135ab4892a65c664aeeb7d, type: 3}
   - {fileID: 1206057589842866618, guid: 5f142e67c865fbf46a30f3b2d1bf9e88, type: 3}
