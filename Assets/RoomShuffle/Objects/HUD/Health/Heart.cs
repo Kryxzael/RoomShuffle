@@ -25,6 +25,7 @@ public class Heart : MonoBehaviour
 
     private void Start()
     {
+        //start smack animation on start
         _smack = GetComponent<TextSmack>();
         _smack.Smack();
     }
@@ -35,8 +36,14 @@ public class Heart : MonoBehaviour
     /// <param name="percentage"></param>
     public void SetHeartFillPercentage(float percentage)
     {
+        //return if the health hasn't changed
+        if (cakeImage.fillAmount == percentage)
+            return;
+        
+        //set fill amount
         cakeImage.fillAmount = percentage;
 
+        //update last fill amount
         _lastFillAmount = percentage;
     }
 }

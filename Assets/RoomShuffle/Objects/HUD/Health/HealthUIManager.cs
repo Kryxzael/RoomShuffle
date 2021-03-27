@@ -40,6 +40,20 @@ public class HealthUIManager : MonoBehaviour
     private void Update()
     {
         int playerHealth = Commons.PlayerHealth.Health;
+
+        //If health has changed. Update health display
+        if (_lastHealth > playerHealth)
+        {
+            //Gradual lowering
+            _lastHealth--;
+            SetDisplayedHealth(_lastHealth);
+        }
+        else if (_lastHealth < playerHealth)
+        {
+            //Gradual highering
+            _lastHealth++;
+            SetDisplayedHealth(_lastHealth);
+        }
         
         //if the players healthlevel has changed
         if (_lastHealthLevel != Commons.PlayerProgression.HealthLevel)
@@ -47,16 +61,9 @@ public class HealthUIManager : MonoBehaviour
             //Update healthlevel
             _lastHealthLevel = Commons.PlayerProgression.HealthLevel;
             SetHeartUIElementCount(_lastHealthLevel+3);
-
+            
+            SetDisplayedHealth(playerHealth);
         }
-        
-        //The player's health has changed
-        if (_lastHealth != playerHealth)
-        {
-            _lastHealth = playerHealth;
-            SetDisplayedHealth(_lastHealth);
-        }
-
     }
 
     /// <summary>
@@ -78,7 +85,7 @@ public class HealthUIManager : MonoBehaviour
             else
             {
                 //fill heart partly
-                heart.SetHeartFillPercentage(health / HealthController.HP_PER_HEART);
+                heart.SetHeartFillPercentage((float)health / (float)HealthController.HP_PER_HEART);
                 health = 0;
             }
         }
