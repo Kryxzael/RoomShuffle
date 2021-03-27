@@ -47,16 +47,16 @@ public enum SpotterPlayerRelationship
 public class SpotPlayer : MonoBehaviour
 {
     [Tooltip("The amount of seconds the state-machine will use to go from spotted to chasing mode.")]
-    public float ReactionTime;
+    public float ReactionTime = 1f;
     
     [Tooltip("The amount of seconds the spotter will BLINDLY chase the player when out of sight.")]
-    public float BlindChaseTime;
+    public float BlindChaseTime = 1f;
 
     [Tooltip("The radius around the object where the player can be spotted.")]
-    public float SpottingRadius;
+    public float SpottingRadius = 5f;
 
     [Tooltip("The scalar that will be applied to the spotting radius when the spotter is in chase mode.")]
-    public float SpottingRadiusChasingScale;
+    public float SpottingRadiusChasingScale = 2f;
     
     [Tooltip("Chooses if the enemy can spot the player trough other enemies")]
     public bool EnemiescanSeeTroughEnemies;
@@ -74,6 +74,17 @@ public class SpotPlayer : MonoBehaviour
     
     //The Direction the enemy will blindly chase the player in.
     public Vector2 BlindChaseDirection { get; private set; }
+
+    /// <summary>
+    /// Is the spotter currently chasing something
+    /// </summary>
+    public bool InPursuit
+    {
+        get
+        {
+            return State == SpotterPlayerRelationship.Chasing || State == SpotterPlayerRelationship.BlindChasing;
+        }
+    }
 
     /* *** */
 
