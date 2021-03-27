@@ -10,9 +10,6 @@ using UnityRandom = UnityEngine.Random;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
-    [Tooltip("The set to spawn enemies from")]
-    public EnemySet SpawnSet;
-
     [Tooltip("The radius around the spawn point the enemy can be spawned at")]
     public float SpawningRadius = 1f;
 
@@ -25,6 +22,7 @@ public class EnemySpawnPoint : MonoBehaviour
 
     private void Start()
     {
+        //Spawn the enemy on startup
         SpawnEnemy();
     }
 
@@ -36,7 +34,7 @@ public class EnemySpawnPoint : MonoBehaviour
         /*
          * Pick spawn location
          */
-        Vector2 spawnPosition = transform.position;
+        var spawnPosition = transform.Position2D();
 
         //Airborne enemies spawn in a circle around the spawn point
         if (SpawnAirborne)
@@ -51,26 +49,32 @@ public class EnemySpawnPoint : MonoBehaviour
          * Instantiate the enemy
          */
 
-        //Chose enemy to spawn
+        //No generated room == no enemy sets
+        if (Commons.RoomGenerator.CurrentRoomConfig == null)
+            throw new InvalidOperationException("Enemy Spawn Points cannot be used outside a generated room");
+
+        var spawnSet = Commons.RoomGenerator.CurrentRoomConfig.EnemySet;
         GameObject prefab;
 
+        //Chose enemy to spawn based on settings
         if (SpawnAirborne)
         {
             if (SpawnSecondaryEnemy)
-                prefab = SpawnSet.SecondaryAir;
+                prefab = spawnSet.SecondaryAir;
 
             else
-                prefab = SpawnSet.PrimaryAir;
+                prefab = spawnSet.PrimaryAir;
         }
         else
         {
             if (SpawnSecondaryEnemy)
-                prefab = SpawnSet.SecondaryGround;
+                prefab = spawnSet.SecondaryGround;
 
             else
-                prefab = SpawnSet.PrimaryGround;
+                prefab = spawnSet.PrimaryGround;
         }
 
+        //Spawn and return the enemy
         return Commons.InstantiateInCurrentLevel(prefab, spawnPosition);
     }
 

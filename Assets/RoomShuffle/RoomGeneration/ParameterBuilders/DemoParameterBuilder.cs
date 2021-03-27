@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Room Parameter Builders/Demo")]
@@ -29,7 +31,8 @@ public class DemoParameterBuilder : ParameterBuilder
             Class = RoomClass.Platforming,
             Layout = _currentRoom.Current,
             Theme = RoomTheme.Grass,
-            Effect = RoomEffects.None
+            Effect = RoomEffects.None,
+            EnemySet = EnemySets[random.Next(EnemySets.Count)]
         };
     }
 }

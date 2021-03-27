@@ -13,10 +13,11 @@ using SysRandom = System.Random;
 /// </summary>
 public abstract class ParameterBuilder : ScriptableObject
 {
-    /// <summary>
-    /// The generator's available rooms
-    /// </summary>
+    [Tooltip("The generators available rooms")]
     public RoomLayoutCollection Rooms;
+
+    [Tooltip("The generators available enemy sets")]
+    public List<EnemySet> EnemySets;
 
     /// <summary>
     /// Gets the next room parameters to use when generating a room

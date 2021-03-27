@@ -29,7 +29,8 @@ public class StandardParameterBuilder : ParameterBuilder
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
         RoomParameters output = new RoomParameters();
-        
+        output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
+
         if (history.RoomsSinceThemeChange() >= ThemeChangeFrequency.PickInt())
         {
             do

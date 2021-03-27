@@ -12,4 +12,5 @@ public class RoomParameters
     public RoomLayout Layout;
     public RoomTheme Theme;
     public RoomEffects Effect;
+    public EnemySet EnemySet;
 }
