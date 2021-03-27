@@ -131206,11 +131206,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020141557, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2021762659, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449554985318018071, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4726903743079174262, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_RootOrder
@@ -132136,6 +132140,10 @@ PrefabInstance:
     - target: {fileID: 6447120639103844524, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704837311204019, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: AutoGenerateFirstRoom
