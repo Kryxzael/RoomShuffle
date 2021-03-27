@@ -112,6 +112,20 @@ public static class Commons
     public static EnemyProgression EnemyProgression => _enemyProgression.Value;
 
     /// <summary>
+    /// Spawns the provided object and parents it to the currently loaded level
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="original"></param>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
+    public static T InstantiateInCurrentLevel<T>(T original, Vector3 position, Quaternion? rotation = null) where T : Object
+    {
+        GeneratedRoom parent = Object.FindObjectOfType<GeneratedRoom>();
+        return Object.Instantiate(original, position, rotation ?? Quaternion.identity, parent.transform);
+    }
+
+    /// <summary>
     /// Scales a float variable to its required value using the provided mode if applicable
     /// </summary>
     /// <returns></returns>
