@@ -17,11 +17,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class TurnOnWallAndEdge : TurnOnWall
 {
-    [Tooltip("The maximum height the pit can have to be considered a pit")]
-    public float MaxPitHeight = 1.5f;
-
-    [Tooltip("Adjusts how close the raycast is done to the object. Decreasing this value may fix objects turning around when reaching a downwards slope")]
-    public float SlopeDetectionDistance = 0.25f;
+    [Tooltip("The depth to check for pits")]
+    public float CheckDepth = 0.75f;
 
     protected override void Awake()
     {
@@ -31,7 +28,7 @@ public class TurnOnWallAndEdge : TurnOnWall
         base.Awake();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         //Flip if on wall or edge
         if (OnWall() || OnEdge())
@@ -54,13 +51,13 @@ public class TurnOnWallAndEdge : TurnOnWall
         //Configures the cast to check for pits on the left
         if (_flippable.Direction == Direction1D.Left)
         {
-            x = _collider.bounds.min.x - SlopeDetectionDistance;
+            x = _collider.bounds.min.x;
         }
 
         //Configures the cast to check for pits on the right
         else if (_flippable.Direction == Direction1D.Right)
         {
-            x = _collider.bounds.max.x + SlopeDetectionDistance;
+            x = _collider.bounds.max.x;
         }
 
         //Invalid
@@ -74,7 +71,7 @@ public class TurnOnWallAndEdge : TurnOnWall
          * Performs the ray cast and returns the result
          */
         Vector2 castPos = new Vector2(x, y);
-        float castDistance = MaxPitHeight + _collider.bounds.extents.y;
+        float castDistance = CheckDepth + _collider.bounds.extents.y;
 
         Debug.DrawLine(castPos, castPos + Vector2.down * castDistance, Color.green);
         return !Physics2D.Raycast(castPos, Vector2.down, castDistance);

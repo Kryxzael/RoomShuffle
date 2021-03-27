@@ -37,7 +37,7 @@ public class TurnOnWall : MonoBehaviour
         _collider = GetComponent<Collider2D>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         //Flip if on wall
         if (OnWall())

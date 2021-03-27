@@ -18,7 +18,7 @@ public class GoombalikeMovementPattern : MonoBehaviour
         _flippable = GetComponent<Flippable>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _rigidbody.SetVelocityX(_flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
     }
