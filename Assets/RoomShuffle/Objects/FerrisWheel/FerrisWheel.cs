@@ -21,14 +21,14 @@ public class FerrisWheel : MonoBehaviour
         for (int i = 0; i < NumberOfPlatforms; i++)
         {
             //instantiate the object and get circulat motion
-            CircularMotion cm = Instantiate(Platform, transform.Position2D(), Quaternion.identity, transform).GetComponent<CircularMotion>();
+            CircularMotion circularMotion = Instantiate(Platform, transform.Position2D(), Quaternion.identity, transform).GetComponent<CircularMotion>();
             
             //sets the angle
-            cm.SetAngle(360 / NumberOfPlatforms * i);
+            circularMotion.SetAngle(360 / NumberOfPlatforms * i);
             
             //Set speed and radius for each ferris wheel object
-            cm.Radius = Radius;
-            cm.Speed = Speed;
+            circularMotion.Radius = Radius;
+            circularMotion.Speed = Speed;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum EndOfLineOption
@@ -16,7 +17,7 @@ public class ElevatorManager : MonoBehaviour
     public float Frequency;
 
     [Tooltip("The elevator object")]
-    public GameObject Elevator;
+    public Elevator ElevatorObject;
 
     [Tooltip("Sets the number of elevators that should spawn. 0 if infinite")]
     public int NumberOfElevators;
@@ -34,6 +35,7 @@ public class ElevatorManager : MonoBehaviour
     private float _time;
     private List<Vector2> _checkpointList = new List<Vector2>();
     private bool _closeLoop = false;
+    private float _totalLoopDistance;
     private void Start()
     {
         StartPoint = transform.Position2D();
@@ -54,6 +56,16 @@ public class ElevatorManager : MonoBehaviour
         }
         
         _checkpointList.Add(EndPoint);
+
+        //adds the closing loop distance 
+        _totalLoopDistance += Vector2.Distance(_checkpointList.First(), _checkpointList.Last());
+
+        //Add space between checkpoints to total length.
+        for (int i = 0; i < _checkpointList.Count-1; i++)
+        {
+            _totalLoopDistance += Vector2.Distance(_checkpointList[i], _checkpointList[i + 1]);
+        }
+
     }
 
     void Update()
@@ -61,13 +73,30 @@ public class ElevatorManager : MonoBehaviour
         if ((_numberOfElevatorsSpwaned >= NumberOfElevators && NumberOfElevators != 0) || _closeLoop)
             return;
 
+
         _time += Time.deltaTime;
+        
+        //Dynamic spacing between 
+        if (EOLOption == EndOfLineOption.Loop && NumberOfElevators != 0)
+        {
+            float speed = ElevatorObject.Speed;
+            
+            Debug.Log(_totalLoopDistance / speed / NumberOfElevators * _numberOfElevatorsSpwaned);
+
+            if (_totalLoopDistance / speed / NumberOfElevators * _numberOfElevatorsSpwaned < _time)
+            {
+                Instantiate(ElevatorObject, StartPoint, Quaternion.identity, transform);
+                _numberOfElevatorsSpwaned++;
+                Debug.Log(Time.time);
+                return;
+            }
+        } 
 
         if (_time > Frequency)
         {
             _time = 0;
 
-            Instantiate(Elevator, StartPoint, Quaternion.identity, transform);
+            Instantiate(ElevatorObject, StartPoint, Quaternion.identity, transform);
             _numberOfElevatorsSpwaned++;
         }
     }
