@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EndOfLineOption
+{
+    Destroy,
+    Loop,
+    Return
+}
+
 public class ElevatorManager : MonoBehaviour
 {
     [Tooltip("Number of secounds between each elevator")]
@@ -11,12 +18,12 @@ public class ElevatorManager : MonoBehaviour
     [Tooltip("The elevator object")]
     public GameObject Elevator;
 
-    [Tooltip("Should the blocks return when hitting the endpoint")]
-    public bool ShouldReturn;
-
     [Tooltip("Sets the number of elevators that should spawn. 0 if infinite")]
     public int NumberOfElevators;
     
+    [Tooltip("What the elevator should do at the end of the line")]
+    public EndOfLineOption EOLOption;
+
     [NonSerialized]
     public Vector2 StartPoint;
     
@@ -25,9 +32,13 @@ public class ElevatorManager : MonoBehaviour
 
     private int _numberOfElevatorsSpwaned;
     private float _time;
+    private List<Vector2> _checkpointList = new List<Vector2>();
+    private bool _closeLoop = false;
     private void Start()
     {
         StartPoint = transform.Position2D();
+        
+        _checkpointList.Add(StartPoint);
         
         foreach (Transform child in transform)
         {
@@ -35,14 +46,19 @@ public class ElevatorManager : MonoBehaviour
             if (child.name.Equals("ElevatorEnd"))
             {
                 EndPoint = child.Position2D();
-                break;
+            } 
+            else if (child.name.Contains("Checkpoint"))
+            {
+                _checkpointList.Add(child.Position2D());
             }
         }
+        
+        _checkpointList.Add(EndPoint);
     }
 
     void Update()
     {
-        if (_numberOfElevatorsSpwaned >= NumberOfElevators && NumberOfElevators != 0)
+        if ((_numberOfElevatorsSpwaned >= NumberOfElevators && NumberOfElevators != 0) || _closeLoop)
             return;
 
         _time += Time.deltaTime;
@@ -54,5 +70,18 @@ public class ElevatorManager : MonoBehaviour
             Instantiate(Elevator, StartPoint, Quaternion.identity, transform);
             _numberOfElevatorsSpwaned++;
         }
+    }
+
+    public List<Vector2> GetCheckpointList()
+    {
+        return _checkpointList;
+    }
+
+    /// <summary>
+    /// Stops the manager from making more objects.
+    /// </summary>
+    public void CloseLoop()
+    {
+        _closeLoop = true;
     }
 }
