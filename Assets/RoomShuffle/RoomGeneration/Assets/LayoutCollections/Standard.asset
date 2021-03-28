@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Standard
   m_EditorClassIdentifier: 
   PlatformingRooms:
-  - {fileID: 2250068351428721972, guid: 3b198504a9fa8174891d502ccfe85400, type: 3}
-  - {fileID: 2250068351428721972, guid: ffefdd85989da434cade26200ab11260, type: 3}
+  - {fileID: 4262918373525479744, guid: 5136aae58fff64c4db7649a4b7749731, type: 3}
   PuzzleRooms: []
   EradicationRooms: []
   BossRooms: []
   TransitionRooms:
-  - {fileID: 6026251753484923945, guid: bbb1cc9b194400a4d9af707765e9ca3d, type: 3}
+  - {fileID: 4262918373525479744, guid: 5136aae58fff64c4db7649a4b7749731, type: 3}
   CrossroadRooms: []
   RespiteRooms: []
   ShopRooms: []

@@ -15,9 +15,4 @@ MonoBehaviour:
   Rooms: {fileID: 0}
   EnemySets:
   - {fileID: 11400000, guid: 4c7baf1e546ef9c45ba154e5c5a465ea, type: 2}
-  DemoRoomProgression:
-  - {fileID: 1206057589842866618, guid: 68e668b4c2135ab4892a65c664aeeb7d, type: 3}
-  - {fileID: 1206057589842866618, guid: 5f142e67c865fbf46a30f3b2d1bf9e88, type: 3}
-  - {fileID: 1206057589842866618, guid: 0c1bcb25b28d47f47b167e6cd3bbc919, type: 3}
-  - {fileID: 1206057589842866618, guid: 987f7ecd81d95604a949c429f6d2f347, type: 3}
-  - {fileID: 1206057589842866618, guid: e866b41a9f00d0b4690744f74e3f3535, type: 3}
+  DemoRoomProgression: []

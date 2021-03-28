@@ -67,6 +67,7 @@ public class StandardParameterBuilder : ParameterBuilder
     {
         return new RoomParameters
         {
+            EnemySet = EnemySets[random.Next(EnemySets.Count)],
             Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length),
             Class = RoomClass.Platforming,
             Layout = Rooms.PlatformingRooms[random.Next(Rooms.PlatformingRooms.Count)]
