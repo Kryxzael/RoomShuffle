@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -110,6 +107,35 @@ public class RoomGenerator : MonoBehaviour
 
         //Clear puzzle keys
         Commons.Inventory.PuzzleKeys = 0;
+
+        /*
+         * Set optional objects
+         */
+        //Go over every spawn group
+        foreach (var spawnGroup in CurrentRoomObject.GetComponentsInChildren<OptionalRoomObject>().GroupBy(i => i.SpawnGroup))
+        {
+            //No accessible candidates found in group
+            if (spawnGroup.All(i => i.SpawnChance == 0f))
+                throw new System.InvalidOperationException($"Spawn group {spawnGroup.Key} has no accessible candidates");
+
+            //Choose a random object to spawn from the group
+            OptionalRoomObject candidate;
+            var rooms = spawnGroup.ToArray();
+
+            do
+            {
+                candidate = rooms[RoomRng.Next(rooms.Length)];
+            } while (RoomRng.NextDouble() > candidate.SpawnChance);
+
+            //Disable all other objects
+            foreach (var optionalObject in spawnGroup)
+            {
+                if (optionalObject == candidate)
+                    continue;
+
+                optionalObject.gameObject.SetActive(false);
+            }
+        }
 
         //Set up room effects
         Commons.RoomEffectController.OnRoomStart(parameters);
