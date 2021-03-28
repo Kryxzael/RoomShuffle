@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1442834684512984649}
   - component: {fileID: 2435849258105600429}
   m_Layer: 0
-  m_Name: ExitBase
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5eb3d6fdb19f2ac4297fce790ead83c2, type: 3}
+  m_Sprite: {fileID: -2802326904184730411, guid: 0530fed7695971d4f8262d816fae6aef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -282,7 +282,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590704837311204018, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704837311204019, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: RoomParameterBuilder
+      value: 
+      objectReference: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
