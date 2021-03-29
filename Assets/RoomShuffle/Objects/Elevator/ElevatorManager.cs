@@ -80,14 +80,11 @@ public class ElevatorManager : MonoBehaviour
         if (EOLOption == EndOfLineOption.Loop && NumberOfElevators != 0)
         {
             float speed = ElevatorObject.Speed;
-            
-            Debug.Log(_totalLoopDistance / speed / NumberOfElevators * _numberOfElevatorsSpwaned);
 
             if (_totalLoopDistance / speed / NumberOfElevators * _numberOfElevatorsSpwaned < _time)
             {
                 Instantiate(ElevatorObject, StartPoint, Quaternion.identity, transform);
                 _numberOfElevatorsSpwaned++;
-                Debug.Log(Time.time);
                 return;
             }
         } 
