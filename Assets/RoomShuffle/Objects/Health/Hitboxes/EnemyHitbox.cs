@@ -31,7 +31,7 @@ public class EnemyHitbox : Hitbox
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
         GrantInvincibilityFrames();
-        _health.DealDamage(hurtbox.GetDamage());
+        _health.DealDamage(hurtbox.GetDamage(this));
 
         //TODO: Temporary. Health controller should probably handle deaths
         if (_health.Health <= 0)

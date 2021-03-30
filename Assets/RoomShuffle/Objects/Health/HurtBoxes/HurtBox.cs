@@ -19,5 +19,12 @@ public abstract class HurtBox : MonoBehaviour
     /// <summary>
     /// Gets how much damage the hurtbox carries
     /// </summary>
-    public abstract int GetDamage();
+    public abstract int GetDamage(Hitbox target);
+
+    /// <summary>
+    /// Called before the hurtbox gives damage to a hitbox
+    /// </summary>
+    /// <param name="hitbox"></param>
+    public virtual void OnDealDamage(Hitbox hitbox)
+    {  }
 }

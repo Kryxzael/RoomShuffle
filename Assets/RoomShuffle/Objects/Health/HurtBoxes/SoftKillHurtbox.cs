@@ -4,23 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using UnityEngine;
-
 /// <summary>
-/// A simple hurtbox that damages all types of objects
+/// A hurtbox that soft-kills the player and kills anything else
 /// </summary>
-public class GlobalHurtbox : HurtBox
+public class SoftKillHurtbox : HurtBox
 {
-    [Tooltip("The amount of damage the hurtbox will do")]
-    public int Damage;
-
     /// <summary>
     /// <inheritdoc />
     /// </summary>
+    /// <param name="target"></param>
     /// <returns></returns>
     public override int GetDamage(Hitbox target)
     {
-        return Damage;
+        //Players should be soft-killed
+        if (target is PlayerHitbox)
+        {
+            return Commons.PlayerHealth.GetSoftDeathDamage();
+        }
+
+        //Anything else should just be killed
+        return int.MaxValue;
     }
 
     /// <summary>

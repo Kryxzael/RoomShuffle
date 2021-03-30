@@ -27,6 +27,6 @@ public class PlayerHitbox : Hitbox
             return;
 
         GrantInvincibilityFrames();
-        Commons.PlayerHealth.DealDamage(hurtbox.GetDamage());
+        Commons.PlayerHealth.DealDamage(hurtbox.GetDamage(this));
     }
 }

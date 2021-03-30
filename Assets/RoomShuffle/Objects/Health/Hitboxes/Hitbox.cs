@@ -87,7 +87,11 @@ public abstract class Hitbox : MonoBehaviour
             return;
 
         if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt.GetTargets().HasFlag(SusceptibleTo))
+        {
+            hurt.OnDealDamage(this);
             OnReceiveDamage(hurt);
+        }
+            
     }
 
     protected abstract void OnReceiveDamage(HurtBox hurtbox);

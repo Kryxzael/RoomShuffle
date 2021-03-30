@@ -18,7 +18,7 @@ public class EnemyContactHurtbox : HurtBox
     /// <inheritdoc />
     /// </summary>
     /// <returns></returns>
-    public override int GetDamage()
+    public override int GetDamage(Hitbox target)
     {
         return Commons.EnemyProgression.GetScaledDamage(ContactBaseDamage);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,6 +85,14 @@ public class HealthController : MonoBehaviour
     }
 
     /// <summary>
+    /// Deal a third of the health controller's maximum health as damage
+    /// </summary>
+    public void SoftKill()
+    {
+        DealDamage(GetSoftDeathDamage());
+    }
+
+    /// <summary>
     /// Deals enough damage to kill the owner of the health 
     /// </summary>
     /// <returns></returns>
@@ -93,5 +102,14 @@ public class HealthController : MonoBehaviour
             return;
 
         Health = 0;
+    }
+
+    /// <summary>
+    /// Gets the amount of damage that a soft kill of this manager will deal
+    /// </summary>
+    /// <returns></returns>
+    public int GetSoftDeathDamage()
+    {
+        return MaximumHealth / 3;
     }
 }

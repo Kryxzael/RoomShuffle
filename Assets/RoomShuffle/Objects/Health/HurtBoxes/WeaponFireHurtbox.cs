@@ -23,7 +23,7 @@ public class WeaponFireHurtbox : HurtBox
     /// <inheritdoc />
     /// </summary>
     /// <returns></returns>
-    public override int GetDamage()
+    public override int GetDamage(Hitbox target)
     {
         ProgressionController controller;
 
