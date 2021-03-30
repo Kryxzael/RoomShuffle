@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6688698707513797249}
   - component: {fileID: 1802823253410598518}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReactionSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

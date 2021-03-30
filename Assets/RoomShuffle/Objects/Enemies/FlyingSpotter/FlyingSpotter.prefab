@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3965444290415009461}
   - component: {fileID: 2032071145223627021}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReactionSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
