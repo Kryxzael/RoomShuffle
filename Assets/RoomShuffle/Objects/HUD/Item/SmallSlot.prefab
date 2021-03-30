@@ -159,6 +159,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7894060839586140190, guid: ce35cdf55924847428926c286617dc22, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894060839710382871, guid: ce35cdf55924847428926c286617dc22, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8772336172320459677, guid: ce35cdf55924847428926c286617dc22, type: 3}
       propertyPath: m_text
       value: 
