@@ -39,8 +39,10 @@ public class FallingProjectile : Projectile
         //if the collision is not with ground layer: destroy projectile
         if(false)
         {
+#pragma warning disable
             base.OnCollisionEnter2D(collision);
             return;
+#pragma warning restore
         }
         
         Vector2 normal = collision.GetContact(0).normal;
