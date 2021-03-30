@@ -17,6 +17,11 @@ public class EnemyContactHurtbox : HurtBox
     /// <summary>
     /// <inheritdoc />
     /// </summary>
+    public override bool IgnoresInvincibilityFrames => false;
+
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
     /// <returns></returns>
     public override int GetDamage(Hitbox target)
     {

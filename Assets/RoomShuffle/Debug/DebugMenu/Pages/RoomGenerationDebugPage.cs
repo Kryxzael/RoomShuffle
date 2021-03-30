@@ -20,6 +20,9 @@ public class RoomGenerationDebugPage : DebugPage
         if (Button("Regenerate"))
             Commons.RoomGenerator.GenerateNext();
 
+        if (Button("Respawn"))
+            Commons.RespawnPlayer();
+
         if (Commons.RoomGenerator.CurrentRoomConfig != null)
         {
             if (Button("Room Theme [" + Commons.RoomGenerator.CurrentRoomConfig.Theme + "]"))

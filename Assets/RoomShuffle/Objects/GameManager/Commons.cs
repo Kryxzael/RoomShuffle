@@ -126,6 +126,21 @@ public static class Commons
     }
 
     /// <summary>
+    /// Respawns the player at the start of the room
+    /// </summary>
+    public static void RespawnPlayer()
+    {
+        var player = CommonExtensions.GetPlayer();
+        var spawnPoint = Vector2.zero;
+
+        if (Object.FindObjectOfType<Entrance>() is Entrance entr)
+            spawnPoint = entr.transform.position;
+
+        player.transform.position = spawnPoint;
+        player.GetComponent<Rigidbody2D>().velocity = default;
+    }
+
+    /// <summary>
     /// Scales a float variable to its required value using the provided mode if applicable
     /// </summary>
     /// <returns></returns>

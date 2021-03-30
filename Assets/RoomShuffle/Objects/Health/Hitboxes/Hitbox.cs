@@ -83,11 +83,11 @@ public abstract class Hitbox : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (HasInvincibilityFrames)
-            return;
-
         if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt.GetTargets().HasFlag(SusceptibleTo))
         {
+            if (HasInvincibilityFrames && !hurt.IgnoresInvincibilityFrames)
+                return;
+
             hurt.OnDealDamage(this);
             OnReceiveDamage(hurt);
         }

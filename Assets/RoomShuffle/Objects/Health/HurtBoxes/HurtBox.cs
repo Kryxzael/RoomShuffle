@@ -12,6 +12,11 @@ using UnityEngine;
 public abstract class HurtBox : MonoBehaviour
 {
     /// <summary>
+    /// Whether this hurtbox will ignore a hitbox's invisibility frames
+    /// </summary>
+    public abstract bool IgnoresInvincibilityFrames { get; }
+
+    /// <summary>
     /// The type of the hurtbox. Who it will hurt
     /// </summary>
     public abstract HurtBoxTypes GetTargets();

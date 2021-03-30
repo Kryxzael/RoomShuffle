@@ -17,6 +17,11 @@ public class GlobalHurtbox : HurtBox
     /// <summary>
     /// <inheritdoc />
     /// </summary>
+    public override bool IgnoresInvincibilityFrames => true;
+
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
     /// <returns></returns>
     public override int GetDamage(Hitbox target)
     {

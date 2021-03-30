@@ -11,6 +11,14 @@ public class Entrance : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(Player, transform.position, Quaternion.identity, transform.parent);
+        SpawnPlayer();
+    }
+
+    /// <summary>
+    /// Spawns a player at the entrance's position
+    /// </summary>
+    public void SpawnPlayer()
+    {
+        Commons.InstantiateInCurrentLevel(Player, transform.position);
     }
 }
