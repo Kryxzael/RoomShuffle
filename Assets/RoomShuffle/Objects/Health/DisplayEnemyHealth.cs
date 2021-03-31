@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class DisplayEnemyHealth : MonoBehaviour
 {
+    [Tooltip("The numbers that will pop up when hit")]
+    public TextMeshPro PopNumbers;
+    
     private HealthController _healthController;
     private int _lastHealth;
-    private TextMeshPro TMP;
+    private TextMeshPro _healthBarText;
     private Transform _healthBar;
     private float _healthBarLoaclScaleX;
     private TextSmack _textSmack;
@@ -18,15 +21,16 @@ public class DisplayEnemyHealth : MonoBehaviour
     {
         _healthController = transform.parent.GetComponentInChildren<HealthController>();
         _healthBar = transform.Find("HealthSlider");
-        TMP = transform.Find("HealthText").GetComponent<TextMeshPro>();
-        _textSmack = TMP.GetComponent<TextSmack>();
+        _healthBarText = transform.Find("HealthText").GetComponent<TextMeshPro>();
+        _textSmack = _healthBarText.GetComponent<TextSmack>();
         
         if (!_healthController || !_healthBar)
             throw new Exception("Healthbar or HealthController not found");
 
         _healthBarLoaclScaleX = _healthBar.localScale.x;
-        
 
+        _lastHealth = _healthController.Health;
+        SetDisplayHealth(_lastHealth);
     }
 
     void Update()
@@ -35,8 +39,18 @@ public class DisplayEnemyHealth : MonoBehaviour
         
         if (_lastHealth != health)
         {
-            _lastHealth = health;
             
+            TextMeshPro instance = Instantiate(
+                original: PopNumbers, 
+                position: transform.position,
+                rotation: Quaternion.identity,
+                parent: transform
+            );
+
+            instance.text = (_healthController.Health - _lastHealth).ToString();
+            
+            
+            _lastHealth = health;
             SetDisplayHealth(health);
         }
     }
@@ -57,7 +71,7 @@ public class DisplayEnemyHealth : MonoBehaviour
     /// <param name="health"></param>
     private void SetHealthText(int health)
     {
-        TMP.text = health.ToString();
+        _healthBarText.text = health.ToString();
         _textSmack.Smack();
     }
 

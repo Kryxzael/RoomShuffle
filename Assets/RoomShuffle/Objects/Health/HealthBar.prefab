@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0590e8cca7a14c24f996d091bf0586ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PopNumbers: {fileID: 521378033056875349, guid: 9239f1f5db9b7fa4e99d4d995034caca, type: 3}
 --- !u!1 &8278413467374876555
 GameObject:
   m_ObjectHideFlags: 0
