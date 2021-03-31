@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using UnityEngine;
+
 /// <summary>
 /// A hurtbox that soft-kills the player and kills anything else
 /// </summary>
@@ -13,6 +15,9 @@ public class SoftKillHurtbox : HurtBox
     /// <inheritdoc />
     /// </summary>
     public override bool IgnoresInvincibilityFrames => true;
+
+    [Tooltip("Does the respawning logic of this hurtbox ignore god mode")]
+    public bool RespawnIgnoresGodMode;
 
     /// <summary>
     /// <inheritdoc />
@@ -24,7 +29,6 @@ public class SoftKillHurtbox : HurtBox
         //Players should be soft-killed
         if (target is PlayerHitbox)
         {
-            Commons.RespawnPlayer();
             return Commons.PlayerHealth.GetSoftDeathDamage();
         }
 
@@ -39,5 +43,13 @@ public class SoftKillHurtbox : HurtBox
     public override HurtBoxTypes GetTargets()
     {
         return HurtBoxTypes.HurtfulToEnemies | HurtBoxTypes.HurtfulToPlayer;
+    }
+
+    public override void OnDealDamage(Hitbox hitbox)
+    {
+        if (hitbox is PlayerHitbox && (Cheats.HealthCheat != Cheats.HealthCheatType.Godmode || !RespawnIgnoresGodMode))
+        {
+            Commons.RespawnPlayer();
+        }
     }
 }
