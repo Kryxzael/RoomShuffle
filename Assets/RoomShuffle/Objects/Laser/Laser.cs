@@ -61,7 +61,29 @@ public class Laser : MonoBehaviour
         //The laser is on if the cycle is less than the duty cycle of the laser
         IsOn = cycleProgress < DutyCycle;
 
-        //Sets the visibility of the laser
+        /*
+         * Set laser start and end point
+         */
+        const float MAX_DISTANCE = 200f;
+
+        //Start is at the emitter's position
+        var start = transform.position;
+
+        //End is by default MAX_DISTANCE units away from the emitter
+        var end = start + transform.up * MAX_DISTANCE;
+
+        //If the laser is obstructed by something, that thing will be the end point
+        var raycastHit = Physics2D.Raycast(transform.position, transform.up, MAX_DISTANCE, Commons.Masks.GroundOnly);
+
+        if (raycastHit)
+            end = raycastHit.point;
+
+        //Update positions
+        _lineRenderer.SetPositions(new[] { start, end });
+
+        /*
+         * Sets the visibility of the laser
+         */
         _lineRenderer.forceRenderingOff = !(cycleProgress < DutyCycle || cycleProgress > 1f - DutyCycle / 2f);
 
 #if UNITY_EDITOR
@@ -71,34 +93,12 @@ public class Laser : MonoBehaviour
             IsOn = DutyCycle != 0f;
             _lineRenderer.forceRenderingOff = !IsOn;
         }
-            
+
 #endif
 
         //Laser is firing
         if (IsOn)
         {
-
-            const float MAX_DISTANCE = 200f;
-
-            /*
-             * Set laser visuals as a line from the emitter, raycast upwards relative to the transform (stopping after MAX_DISTANCE units)
-             */
-
-            //Start is at the emitter's position
-            var start = transform.position;
-
-            //End is by default MAX_DISTANCE units away from the emitter
-            var end = start + transform.up * MAX_DISTANCE;
-
-            //If the laser is obstructed by something, that thing will be the end point
-            var raycastHit = Physics2D.Raycast(transform.position, transform.up, MAX_DISTANCE, Commons.Masks.GroundOnly);
-
-            if (true)
-                end = raycastHit.point;
-
-            //Update positions
-            _lineRenderer.SetPositions(new[] { start, end });
-
             /*
              * Apply hurtbox
              */
