@@ -15,6 +15,15 @@ public class Laser : MonoBehaviour
 
     /* *** */
 
+
+    [Header("Appearance")]
+    [Tooltip("The material to use on the laser when it's charging")]
+    public Material ChargingMaterial;
+
+    [Tooltip("The material to use on the laser when it's firing")]
+    public Material FiringMaterial;
+
+    [Header("Times")]
     [Tooltip("The duration of a cycle. This value can be ignored if Duty Cycle is 0 or 1")]
     public float CycleTime = 2f;
 
@@ -52,17 +61,23 @@ public class Laser : MonoBehaviour
         //The laser is on if the cycle is less than the duty cycle of the laser
         IsOn = cycleProgress < DutyCycle;
 
+        //Sets the visibility of the laser
+        _lineRenderer.forceRenderingOff = !(cycleProgress < DutyCycle || cycleProgress > 1f - DutyCycle / 2f);
+
 #if UNITY_EDITOR
         //In the editor, the laser is always on (Time is weird in edit mode) unless the laser is set to always be off
         if (!Application.isPlaying)
+        {
             IsOn = DutyCycle != 0f;
+            _lineRenderer.forceRenderingOff = !IsOn;
+        }
+            
 #endif
 
-        //Sets the visibility of the laser
-        _lineRenderer.forceRenderingOff = !IsOn;
-
+        //Laser is firing
         if (IsOn)
         {
+
             const float MAX_DISTANCE = 200f;
 
             /*
@@ -99,6 +114,16 @@ public class Laser : MonoBehaviour
 
                 hitbox.TryDealDamageBy(_hurtbox);
             }
+
+            //Set firing material
+            _lineRenderer.material = FiringMaterial;
+        }
+
+        //Laser is not firing
+        else
+        {
+            //Set charge-up material
+            _lineRenderer.material = ChargingMaterial;
         }
     }
 }

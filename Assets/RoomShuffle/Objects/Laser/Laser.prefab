@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bf7dfadc15b214492df06890f0d8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CycleTime: 2
+  ChargingMaterial: {fileID: 2100000, guid: c0c4c7f3d34e1bc4b8a95cc8ae8450a4, type: 2}
+  FiringMaterial: {fileID: 2100000, guid: 12d861709a857504f9f21d30fcf9f786, type: 2}
+  CycleTime: 5
   DutyCycle: 0.5
   CycleOffset: 0
 --- !u!120 &69657648604158471
@@ -142,7 +144,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 40.5, y: 1.5, z: 0}
-  - {x: 40.5, y: 2, z: 0}
+  - {x: 40.499996, y: -3.9999998, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
