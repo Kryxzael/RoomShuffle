@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class FerrisWheel : MonoBehaviour
 {
-
     [Tooltip("The platform(s) that circles around")]
-    public CircularMotion Platform;
+    public GameObject Platform;
 
     [Tooltip("Number of platforms to be spawned")]
     public int NumberOfPlatforms;
@@ -16,13 +15,18 @@ public class FerrisWheel : MonoBehaviour
 
     [Tooltip("The radius of the ferris wheel")] 
     public float Radius;
+
     void Start()
     {
         for (int i = 0; i < NumberOfPlatforms; i++)
         {
-            //instantiate the object and get circulat motion
-            CircularMotion circularMotion = Instantiate(Platform, transform.Position2D(), Quaternion.identity, transform).GetComponent<CircularMotion>();
-            
+            //instantiate the object and get circular motion
+            GameObject obj = Instantiate(Platform, transform.Position2D(), Quaternion.identity, transform);
+            CircularMotion circularMotion = obj.GetComponent<CircularMotion>();
+
+            if (circularMotion == null)
+                circularMotion = obj.AddComponent<CircularMotion>();
+
             //sets the angle
             circularMotion.SetAngle(360 / NumberOfPlatforms * i);
             
