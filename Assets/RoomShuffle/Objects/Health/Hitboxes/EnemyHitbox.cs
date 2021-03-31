@@ -31,10 +31,15 @@ public class EnemyHitbox : Hitbox
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
         GrantInvincibilityFrames();
-        _health.DealDamage(hurtbox.GetDamage(this));
+
 
         //TODO: Temporary. Health controller should probably handle deaths
         if (_health.Health <= 0)
             Destroy(transform.parent.gameObject);
+    }
+
+    private void CreatePopNumber(int damage)
+    {
+        
     }
 }

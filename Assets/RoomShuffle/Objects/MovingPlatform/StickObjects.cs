@@ -14,8 +14,6 @@ public class StickObjects : DetectObjectsOn
 {
     private Vector3 _lastPosition;
 
-    
-
     private void Start()
     {
         _lastPosition = transform.position;
@@ -25,6 +23,8 @@ public class StickObjects : DetectObjectsOn
     {
         if (transform.position != _lastPosition)
         {
+            ObjectsOn.RemoveWhere(i => i == null);
+
             foreach (Transform i in ObjectsOn)
                 i.Translate(transform.position - _lastPosition);
 

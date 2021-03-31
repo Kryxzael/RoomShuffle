@@ -13,7 +13,7 @@ public class Exit : MonoBehaviour
         if (collision.gameObject.IsPlayer())
         {
             //Generate a new room
-            FindObjectOfType<RoomGenerator>().GenerateNext();
+            Commons.RoomGenerator.GenerateNext();
         }
     }
 }
