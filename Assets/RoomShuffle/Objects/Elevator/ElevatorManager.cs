@@ -13,101 +13,129 @@ public enum EndOfLineOption
 
 public class ElevatorManager : MonoBehaviour
 {
-    [Tooltip("Number of secounds between each elevator")]
+    private static int INFINITE_ELEVATORS = 0;
+
+    [Tooltip("Number of seconds between each elevator")]
     public float Frequency;
 
     [Tooltip("The elevator object")]
     public Elevator ElevatorObject;
 
-    [Tooltip("Sets the number of elevators that should spawn. 0 if infinite")]
+    [Tooltip("Sets the number of elevators that should spawn. 0 or less = infinite")]
     public int NumberOfElevators;
     
     [Tooltip("What the elevator should do at the end of the line")]
     public EndOfLineOption EOLOption;
 
-    [NonSerialized]
-    public Vector2 StartPoint;
-    
-    [NonSerialized]
-    public Vector2 EndPoint;
-
-    private int _numberOfElevatorsSpwaned;
-    private float _time;
-    private List<Vector2> _checkpointList = new List<Vector2>();
-    private bool _closeLoop = false;
-    private float _totalLoopDistance;
-    private void Start()
+    /// <summary>
+    /// Gets all the checkpoints of the elevator
+    /// </summary>
+    public IEnumerable<Transform> Checkpoints
     {
-        StartPoint = transform.Position2D();
-        
-        _checkpointList.Add(StartPoint);
-        
-        foreach (Transform child in transform)
+        get
         {
-            //Maybe find a better way to get endpoint
-            if (child.name.Equals("ElevatorEnd"))
+            //Gets all children (except elevators)
+            foreach (Transform i in transform)
             {
-                EndPoint = child.Position2D();
-            } 
-            else if (child.name.Contains("Checkpoint"))
-            {
-                _checkpointList.Add(child.Position2D());
-            }
+                if (i.GetComponent<Elevator>())
+                    continue;
+
+                yield return i;
+            }   
         }
-        
-        _checkpointList.Add(EndPoint);
-
-        //adds the closing loop distance 
-        _totalLoopDistance += Vector2.Distance(_checkpointList.First(), _checkpointList.Last());
-
-        //Add space between checkpoints to total length.
-        for (int i = 0; i < _checkpointList.Count-1; i++)
-        {
-            _totalLoopDistance += Vector2.Distance(_checkpointList[i], _checkpointList[i + 1]);
-        }
-
-    }
-
-    void Update()
-    {
-        if ((_numberOfElevatorsSpwaned >= NumberOfElevators && NumberOfElevators != 0) || _closeLoop)
-            return;
-
-
-        _time += Time.deltaTime;
-        
-        //Dynamic spacing between 
-        if (EOLOption == EndOfLineOption.Loop && NumberOfElevators != 0)
-        {
-            float speed = ElevatorObject.Speed;
-
-            if (_totalLoopDistance / speed / NumberOfElevators * _numberOfElevatorsSpwaned < _time)
-            {
-                Instantiate(ElevatorObject, StartPoint, Quaternion.identity, transform);
-                _numberOfElevatorsSpwaned++;
-                return;
-            }
-        } 
-
-        if (_time > Frequency)
-        {
-            _time = 0;
-
-            Instantiate(ElevatorObject, StartPoint, Quaternion.identity, transform);
-            _numberOfElevatorsSpwaned++;
-        }
-    }
-
-    public List<Vector2> GetCheckpointList()
-    {
-        return _checkpointList;
     }
 
     /// <summary>
-    /// Stops the manager from making more objects.
+    /// Gets the transform that acts as the starting point for platforms
     /// </summary>
-    public void CloseLoop()
+    public Transform StartPoint
     {
-        _closeLoop = true;
+        get
+        {
+            return Checkpoints.First();
+        }
+    }
+
+    /// <summary>
+    /// Gets the transform that acts as the ending point for platforms
+    /// </summary>
+    public Transform EndPoint
+    {
+        get
+        {
+            return Checkpoints.Last();
+        }
+    }
+
+    /// <summary>
+    /// Gets the total length of the elevator
+    /// </summary>
+    public float TrackLength
+    {
+        get
+        {
+            Transform last = StartPoint;
+            float distance = 0f;
+
+            foreach (Transform i in Checkpoints.Skip(1))
+            {
+                distance += Vector2.Distance(i.position, last.position);
+                last = i;
+            }
+
+            if (EOLOption == EndOfLineOption.Loop)
+                distance += Vector2.Distance(StartPoint.position, last.position);
+
+            return distance;
+        }
+    }
+
+    private IEnumerator Start()
+    {
+        //Sets the amount of elevators to spawn
+        float numberOfElevators = NumberOfElevators;
+
+        if (numberOfElevators <= INFINITE_ELEVATORS)
+            numberOfElevators = float.PositiveInfinity;
+
+        //Elevator set to loop mode. Carts should be spawned with equal spacing
+        if (EOLOption == EndOfLineOption.Loop)
+        {
+            if (float.IsInfinity(numberOfElevators))
+            {
+                Debug.LogWarning("Looping elevator cannot have infinite carts");
+                yield break;
+            }
+
+            for (int i = 0; i < numberOfElevators; i++)
+            {
+                Instantiate(ElevatorObject, StartPoint.position, Quaternion.identity, transform);
+                yield return new WaitForSeconds(TrackLength / ElevatorObject.Speed / NumberOfElevators);
+            }
+        }
+
+        //Elevator does not dynamically space carts
+        else
+        {
+            for (int i = 0; i < numberOfElevators; i++)
+            {
+                Instantiate(ElevatorObject, StartPoint.position, Quaternion.identity, transform);
+                yield return new WaitForSeconds(Frequency);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        var lastPoint = StartPoint;
+
+        foreach (var i in Checkpoints)
+        {
+            Gizmos.DrawLine(lastPoint.position, i.position);
+            lastPoint = i;
+        }
+
+        if (EOLOption == EndOfLineOption.Loop)
+            Gizmos.DrawLine(EndPoint.position, StartPoint.position);
     }
 }

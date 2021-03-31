@@ -1,88 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+
+using JetBrains.Annotations;
+
 using NUnit.Framework;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-
+    [Tooltip("The speed of the elevator cart")]
     public float Speed;
-    
-    //The elevators current goal
-    private Vector2 _endPoint;
-    
-    //the elevators current start position
-    private Vector2 _startPoint;
-    
-    //The elevators elevator manager
-    private ElevatorManager _elevatorManager;
-    private float _journeyPercentage = 0;
-    private EndOfLineOption _endOfLineOption;
-    private List<Vector2> _checkPointList = new List<Vector2>();
-    private int _stage = 0;
-    private int _maxStage;
-    private float _journeyDistance;
-    void Start()
+
+    private IEnumerator Start()
     {
-        _elevatorManager = transform.GetComponentInParent<ElevatorManager>();
-        _elevatorManager.GetCheckpointList().ForEach(x => _checkPointList.Add(x));
-        _maxStage = _checkPointList.Count - 1;
-        _endOfLineOption = _elevatorManager.EOLOption;
-            
-        _startPoint = _checkPointList[0];
-        _endPoint = _checkPointList[1];
-        _journeyDistance = Vector2.Distance(_startPoint, _endPoint);
-    }
-    
-    void Update()
-    {
-        _journeyPercentage += (Time.deltaTime * Speed) / _journeyDistance;
-        transform.position = Vector2.Lerp(_startPoint, _endPoint, _journeyPercentage);
-        
-        //The elevator has reached its goal
-        if (_journeyPercentage >= 1f)
+        var manager = GetComponentInParent<ElevatorManager>();
+        Transform lastCheckpoint = null;
+
+        //Repeat the process as long as there are checkpoints to reach
+        foreach (var destination in GetCheckpointProgression(manager))
         {
-            if (_stage == -1)
+            float travelPercentage = 0f;
+
+            if (lastCheckpoint == null)
+                travelPercentage = 1f;
+
+            while (travelPercentage < 1f)
             {
-                _elevatorManager.CloseLoop();
+                travelPercentage += (Time.deltaTime * Speed) / Vector2.Distance(lastCheckpoint.position, destination.position);
+                transform.position = Vector2.Lerp(lastCheckpoint.position, destination.position, travelPercentage);
+
+                yield return new WaitForEndOfFrame();
             }
 
-            _stage++;
-            _journeyPercentage = 0;
-            
-            //If there is still more checkpoints
-            if (_stage < _maxStage)
-            {
-                _startPoint = _checkPointList[_stage];
-                _endPoint = _checkPointList[_stage+1];
-            }
-            //End of line
-            else
-            {
-                //Return journey
-                switch (_endOfLineOption)
-                {
-                    case EndOfLineOption.Destroy: 
-                        Destroy(gameObject);
-                        return;
-                        break;
-                    case EndOfLineOption.Loop: 
-                        _stage = -1;
-                        _startPoint = _checkPointList.Last();
-                        _endPoint = _checkPointList.First();
-                        break;
-                    case EndOfLineOption.Return: 
-                        _stage = 0;
-                        _checkPointList.Reverse();
-                        _startPoint = _checkPointList[_stage];
-                        _endPoint = _checkPointList[_stage+1];
-                        break;
-                }
-            }
-
-            _journeyDistance = Vector2.Distance(_startPoint, _endPoint);
+            lastCheckpoint = destination;
         }
-        
+
+        //Reached the end of the track. Destroy self
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Creates an enumerator that yields the checkpoint progression for the elevator
+    /// WARNING: This enumerator may never stop yielding and could end in permanent loops
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<Transform> GetCheckpointProgression(ElevatorManager manager)
+    {
+        switch (manager.EOLOption)
+        {
+            case EndOfLineOption.Destroy:
+                //Get every checkpoint...
+                foreach (var i in manager.Checkpoints)
+                    yield return i;
+
+                //...Then stop
+                yield break;
+            case EndOfLineOption.Loop:
+                while (true)
+                {
+                    //Get every checkpoint, then loop
+                    foreach (var i in manager.Checkpoints)
+                        yield return i;
+                }
+
+            case EndOfLineOption.Return:
+
+                //Get every checkpoint....
+                foreach (var i in manager.Checkpoints)
+                    yield return i;
+
+                while (true)
+                {
+                    //...Then get the same checkpoints backwards (skipping the one we're already at)...
+                    foreach (var i in manager.Checkpoints.Reverse().Skip(1))
+                        yield return i;
+
+                    //...Then get the same checkpoints forwards (skipping the one we're already at), and loop
+                    foreach (var i in manager.Checkpoints.Skip(1))
+                        yield return i;
+                }
+        }
     }
 }
