@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+
 using UnityEngine;
 
 /// <summary>
@@ -138,6 +140,15 @@ public static class Commons
         }
 
         return originalValue;
+    }
+
+    /// <summary>
+    /// Holds various collider masks
+    /// </summary>
+    public static class Masks
+    {
+        public static readonly LayerMask GroundOnly = LayerMask.GetMask("Ground");
+        public static readonly LayerMask HitboxesHurtboxes = LayerMask.GetMask("Hitbox Hurtbox");
     }
 }
 

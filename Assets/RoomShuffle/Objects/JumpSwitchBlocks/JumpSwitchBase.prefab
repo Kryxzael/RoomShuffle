@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6097705518436948423}
   - component: {fileID: 6097705518436948472}
   - component: {fileID: 126851332857963355}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JumpSwitchBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
