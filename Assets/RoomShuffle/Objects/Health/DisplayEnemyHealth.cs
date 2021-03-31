@@ -43,8 +43,7 @@ public class DisplayEnemyHealth : MonoBehaviour
             TextMeshPro instance = Instantiate(
                 original: PopNumbers, 
                 position: transform.position,
-                rotation: Quaternion.identity,
-                parent: transform
+                rotation: Quaternion.identity
             );
 
             instance.text = (_healthController.Health - _lastHealth).ToString();

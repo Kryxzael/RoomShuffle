@@ -17,10 +17,6 @@ public class StickyBoy : MonoBehaviour
 
     [Tooltip("The direction the enemy will rotate and move in")]
     public bool ClockWiseRotation;
-    private enum direction
-    {
-        up,down,left,right
-    }
 
     private Collider2D _collider;
     private int _enemyDirection;
@@ -28,7 +24,8 @@ public class StickyBoy : MonoBehaviour
     private float _freeFall;
     private bool _grounded;
     private Rigidbody2D _rigid;
-    
+    private bool rotating;
+
     //The time the enemy will try to connect to the ground after going around a corner
     private float _connectToGroundTime = 0.07f;
 
@@ -51,6 +48,11 @@ public class StickyBoy : MonoBehaviour
     
     void Update()
     {
+        //if the stickyboy is in rotating motion. return;
+        if (rotating)
+            return;
+        
+
         float walkSpeed = Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed);
 
         //Make sure the directions is between 1 and 4
@@ -81,12 +83,12 @@ public class StickyBoy : MonoBehaviour
                 if (ClockWiseRotation)
                 {
                     _enemyDirection--;
-                    RotateDegrees(-90);
+                    StartCoroutine(RotateDegrees(-1));
                 }
                 else
                 {
                     _enemyDirection++;
-                    RotateDegrees(90);
+                    StartCoroutine(RotateDegrees(1));
                 }
 
             }
@@ -107,12 +109,12 @@ public class StickyBoy : MonoBehaviour
                     if (!ClockWiseRotation)
                     {
                         _enemyDirection--;
-                        RotateDegrees(-90);
+                        StartCoroutine(RotateDegrees(-1));
                     }
                     else
                     {
                         _enemyDirection++;
-                        RotateDegrees(90);
+                        StartCoroutine(RotateDegrees(1));
                     }
                 }
                 
@@ -146,9 +148,29 @@ public class StickyBoy : MonoBehaviour
     }
 
     //Rotates the enemy the number of degrees clockwise
-    private void RotateDegrees(int degrees)
+    private IEnumerator RotateDegrees(int degreesTarget)
     {
-        transform.eulerAngles += Vector3.forward * -degrees;
+        rotating = true;
+
+        int degrees = 0;
+
+        _collider.enabled = false;
+
+        while (rotating)
+        {
+            _rigid.velocity = Vector2.zero;
+            transform.eulerAngles += Vector3.forward * (-degreesTarget*3);
+            degrees += degreesTarget*3;
+
+            yield return new WaitForSeconds(0.01f);
+
+            if (degrees == degreesTarget * 90)
+            {
+                rotating = false;
+                _collider.enabled = true;
+                break;
+            }
+        }
     }
 
     //Checks if the enemy is very near a solid abject at a given direction
