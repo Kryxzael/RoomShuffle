@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 776669453}
   - component: {fileID: 776669455}
   - component: {fileID: 776669458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FerrisWheelPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

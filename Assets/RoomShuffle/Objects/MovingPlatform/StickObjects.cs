@@ -23,7 +23,7 @@ public class StickObjects : DetectObjectsOn
     {
         if (transform.position != _lastPosition)
         {
-            ObjectsOn.RemoveWhere(i => i == null);
+            ObjectsOn.RemoveWhere(i => i == null || i.gameObject.layer == Commons.Masks.GroundOnly);
 
             foreach (Transform i in ObjectsOn)
                 i.Translate(transform.position - _lastPosition);

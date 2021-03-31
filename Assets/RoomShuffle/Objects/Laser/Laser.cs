@@ -93,6 +93,10 @@ public class Laser : MonoBehaviour
             foreach (var i in hits)
             {
                 var hitbox = i.collider.GetComponent<Hitbox>();
+
+                if (hitbox == null)
+                    continue;
+
                 hitbox.TryDealDamageBy(_hurtbox);
             }
         }
