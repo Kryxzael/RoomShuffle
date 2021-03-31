@@ -42,7 +42,7 @@ public class DisplayEnemyHealth : MonoBehaviour
             
             TextMeshPro instance = Instantiate(
                 original: PopNumbers, 
-                position: transform.position,
+                position: transform.position + Vector3.up * 1f,
                 rotation: Quaternion.identity
             );
 

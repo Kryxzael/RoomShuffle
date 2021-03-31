@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 6645097769926533686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -182,28 +182,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8dde45fc1ca3244bef4c932895a512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FallSpeed: 0.004
-  SmackMaxSize: {x: 2, y: 2, z: 2}
-  SmackCurve:
+  EndSize: {x: 2, y: 2, z: 2}
+  RelativeStartPosition: {x: 0, y: 1, z: 0}
+  RelativeEndPosition: {x: 0, y: 2.5, z: 0}
+  StartColor: {r: 1, g: 0, b: 0, a: 1}
+  EndColor: {r: 1, g: 0, b: 0, a: 0}
+  AnimationLength: 5
+  AnimationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -1.002687
-      outSlope: -1.002687
+      value: 0
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.9987793
-      value: -0.0014629364
-      inSlope: -1.002687
-      outSlope: -1.002687
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

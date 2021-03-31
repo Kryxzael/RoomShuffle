@@ -4,41 +4,62 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Creates a label that moves, changes color and scale before being destroyed
+/// </summary>
 public class PopNumbers : MonoBehaviour
 {
-    public float FallSpeed;
-    public Vector3 SmackMaxSize = Vector3.one * 2;
-    public AnimationCurve SmackCurve;
 
-    private TextMeshPro TMP;
+    [Header("End Values")]
+    [Tooltip("The scale the label with have at the end of its lifetime")]
+    public Vector3 EndSize = Vector3.one * 2f;
 
+    [Tooltip("The positional offset relative to its spawn point the label will have at the end of its lifetime")]
+    public Vector3 RelativeEndPosition;
+
+    [Tooltip("The color the label will have at the end of its lifetime")]
+    public Color EndColor;
+
+    [Header("Animation")]
+    [Tooltip("How long the animation will last for")]
+    public float AnimationLength = 5f;
+
+    [Tooltip("The curve used to lerp the values")]
+    public AnimationCurve AnimationCurve;
+
+    /* *** */
+
+    private TextMeshPro _textMeshPro;
     private Vector3 _originalPosition;
 
     private void Start()
     {
         _originalPosition = transform.position;
-        TMP = GetComponent<TextMeshPro>();
-        PopNumber();
+        _textMeshPro = GetComponent<TextMeshPro>();
+
+        StartCoroutine(CoPopNumber(transform.position, transform.localScale, _textMeshPro.color));
     }
 
-    public void PopNumber(float originalScale = 1)
+    private IEnumerator CoPopNumber(Vector3 startPosition, Vector3 startSize, Color startColor)
     {
-        Vector2 originalScaleVector = new Vector2(originalScale, originalScale);
-        StartCoroutine(CoPopNumber(originalScaleVector));
-    }
-
-    private IEnumerator CoPopNumber(Vector2 originalScaleVector)
-    {
-        float lerpTime = 1f;
-        while (lerpTime > 0f)
+        float lerpTime = 0f;
+        while (lerpTime < AnimationLength)
         {
-            transform.localScale = Vector3.Lerp(originalScaleVector/2, SmackMaxSize, SmackCurve.Evaluate(lerpTime));
-            transform.position = Vector3.Lerp(_originalPosition + Vector3.up, _originalPosition + (Vector3.up*2.5f),
-                SmackCurve.Evaluate(lerpTime));
+            transform.localScale = Vector3.Lerp(
+                a: startSize, 
+                b: EndSize, 
+                t: AnimationCurve.Evaluate(lerpTime)
+            );
 
-            TMP.color = Color.Lerp(Color.red, new Color(255, 0, 0, 0), SmackCurve.Evaluate(lerpTime));
+            transform.position = Vector3.Lerp(
+                a: startPosition, 
+                b: _originalPosition + RelativeEndPosition,
+                t: AnimationCurve.Evaluate(lerpTime)
+            );
 
-            lerpTime -= FallSpeed;
+            _textMeshPro.color = Color.Lerp(startColor, EndColor, AnimationCurve.Evaluate(lerpTime));
+
+            lerpTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
         
