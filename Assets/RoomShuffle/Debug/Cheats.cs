@@ -32,6 +32,11 @@ public static class Cheats
     public static bool InfiniteAmmo { get; set; }
 
     /// <summary>
+    /// If enabled, any projectile fired by the player will deal virtually infinite damage
+    /// </summary>
+    public static bool MassiveDamage { get; set; }
+
+    /// <summary>
     /// Sets the health cheat of the player
     /// </summary>
     public static HealthCheatType HealthCheat { get; set; }

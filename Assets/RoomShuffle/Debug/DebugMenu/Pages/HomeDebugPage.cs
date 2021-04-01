@@ -22,6 +22,9 @@ public class HomeDebugPage : DebugPage
         if (Toggle("No Target", Cheats.NoTarget))
             Cheats.NoTarget = !Cheats.NoTarget;
 
+        if (Toggle("Massive Damage", Cheats.MassiveDamage))
+            Cheats.MassiveDamage = !Cheats.MassiveDamage;
+
         if (Toggle("Infinite Ammo", Cheats.InfiniteAmmo))
             Cheats.InfiniteAmmo = !Cheats.InfiniteAmmo;
 

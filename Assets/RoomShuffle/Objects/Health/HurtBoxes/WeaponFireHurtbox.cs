@@ -34,9 +34,19 @@ public class WeaponFireHurtbox : HurtBox
 
         //Determine who to scale damage by based on who fired the weapon
         if (Shooter.IsPlayer())
+        {
             controller = Commons.PlayerProgression;
+
+            //Override damage if cheat is enabled
+            if (Cheats.MassiveDamage)
+                return 9_999_999;
+        }
+            
         else
+        {
             controller = Commons.EnemyProgression;
+        }
+            
 
         //Upscale damage
         return controller.GetScaledDamage(Weapon.BaseDamage);
