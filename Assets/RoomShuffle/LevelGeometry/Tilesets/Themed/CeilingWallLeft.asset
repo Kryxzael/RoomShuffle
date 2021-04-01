@@ -21,6 +21,7 @@ MonoBehaviour:
     CaveSprite: {fileID: -4845170792244362475, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
     VolcanoSprite: {fileID: -8226293114896351607, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
     JungleSprite: {fileID: 4041632164955953161, guid: 2a6fa6cb829cdb743bf4cbc41f6750b6, type: 3}
+    CloudSprite: {fileID: -2072218771446267342, guid: b1ecbbc622d60904abe8c48243dc5e4a, type: 3}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
@@ -28,3 +29,4 @@ MonoBehaviour:
     CaveAnimation: {fileID: 0}
     VolcanoAnimation: {fileID: 0}
     JungleAnimation: {fileID: 0}
+    CloudAnimation: {fileID: 0}

@@ -40,7 +40,12 @@ public enum RoomTheme
     Volcano,
 
     /// <summary>
-    /// A grassy are with tall grass and grass
+    /// A grassy area with tall grass and grass
     /// </summary>
-    Jungle
+    Jungle,
+
+    /// <summary>
+    /// Takes place in the sky, walking on clouds
+    /// </summary>
+    Cloud
 }

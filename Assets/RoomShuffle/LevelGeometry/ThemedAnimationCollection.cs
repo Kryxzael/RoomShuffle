@@ -41,6 +41,7 @@ public class ThemedAnimationCollection
     public Sprite CaveSprite;
     public Sprite VolcanoSprite;
     public Sprite JungleSprite;
+    public Sprite CloudSprite;
 
     [Header("Animations")]
     [Tooltip("The fallback animation that is used when no recognized theme is found")]
@@ -52,6 +53,7 @@ public class ThemedAnimationCollection
     public SpriteAnimation CaveAnimation;
     public SpriteAnimation VolcanoAnimation;
     public SpriteAnimation JungleAnimation;
+    public SpriteAnimation CloudAnimation;
 
     /// <summary>
     /// Gets the sprite for the current tileset according to the room generator
@@ -93,6 +95,8 @@ public class ThemedAnimationCollection
                     return (VolcanoSprite, VolcanoAnimation);
                 case RoomTheme.Jungle:
                     return (JungleSprite, JungleAnimation);
+                case RoomTheme.Cloud:
+                    return (CloudSprite, CloudAnimation);
             }
         }
 
