@@ -5,6 +5,9 @@ public class LinearProjectile : Projectile
 {
     private Rigidbody2D _rigidbody;
 
+    public override bool DestroyOnHitboxContact => true;
+    public override bool DestroyOnGroundImpact => true;
+
     protected override void Start()
     {
         base.Start();

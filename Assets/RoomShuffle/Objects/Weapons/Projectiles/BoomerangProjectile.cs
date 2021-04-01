@@ -11,6 +11,9 @@ public class BoomerangProjectile : Projectile
     
     private Rigidbody2D _rigidbody;
 
+    public override bool DestroyOnGroundImpact => true;
+    public override bool DestroyOnHitboxContact => false;
+
     protected override void Start()
     {
         base.Start();
@@ -21,6 +24,7 @@ public class BoomerangProjectile : Projectile
     protected override void Update()
     {
         base.Update();
+
         //Caps the speed to SpeedCap
         if (_rigidbody.velocity.magnitude > SpeedCap)
             return;

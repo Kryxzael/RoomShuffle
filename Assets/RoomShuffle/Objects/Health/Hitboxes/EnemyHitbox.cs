@@ -41,7 +41,7 @@ public class EnemyHitbox : Hitbox
             foreach (var i in GetComponentsInChildren<DropLootTableOnDeath>())
                 i.DropItem();
 
-            //Destory the object
+            //Destroy the object
             Destroy(transform.parent.gameObject);
         }
             

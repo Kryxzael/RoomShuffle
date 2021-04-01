@@ -22,6 +22,11 @@ public class EnemyContactHurtbox : HurtBox
     /// <summary>
     /// <inheritdoc />
     /// </summary>
+    public override bool ContinuousDamage => true;
+
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
     /// <returns></returns>
     public override int GetDamage(Hitbox target)
     {

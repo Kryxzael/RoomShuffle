@@ -14,6 +14,9 @@ public class HomingProjectile : Projectile
     private GameObject[] _enemyList;
     private GameObject _nearestEnemy;
 
+    public override bool DestroyOnHitboxContact => true;
+    public override bool DestroyOnGroundImpact => true;
+
     protected override void Start()
     {
         base.Start();

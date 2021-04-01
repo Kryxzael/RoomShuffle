@@ -10,6 +10,10 @@ public class FallingProjectile : Projectile
     private const float JUMP_HEIGHT = 12;
     private Flippable _shooterFlippable;
     private float _horizontalSpeed;
+
+    public override bool DestroyOnGroundImpact => false;
+    public override bool DestroyOnHitboxContact => true;
+
     protected override void Start()
     {
         base.Start();
@@ -33,18 +37,8 @@ public class FallingProjectile : Projectile
         _horizontalSpeed = _rigidbody.velocity.x;
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO make this statemant work. Check layer or whatever
-        //if the collision is not with ground layer: destroy projectile
-        if(false)
-        {
-#pragma warning disable
-            base.OnCollisionEnter2D(collision);
-            return;
-#pragma warning restore
-        }
-        
         Vector2 normal = collision.GetContact(0).normal;
 
         // If the collision is with a wall: destroy object

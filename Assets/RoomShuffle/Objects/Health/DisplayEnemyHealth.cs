@@ -81,10 +81,10 @@ public class DisplayEnemyHealth : MonoBehaviour
     private void SetFillAmount(int health)
     {
         _healthBar.localScale = new Vector3(
-            _healthController.Health * _healthBarLoaclScaleX / _healthController.MaximumHealth,
+            health * _healthBarLoaclScaleX / _healthController.MaximumHealth,
             _healthBar.localScale.y, 
             _healthBar.localScale.z
-            );
+        );
         
     }
 }

@@ -12,7 +12,10 @@ public class SplittingProjectile : Projectile
     
     private Rigidbody2D _rigidbody;
     private WeaponFireHurtbox _weaponFireHurtBox;
-    
+
+    public override bool DestroyOnHitboxContact => true;
+    public override bool DestroyOnGroundImpact => true;
+
 
     protected override void Start()
     {

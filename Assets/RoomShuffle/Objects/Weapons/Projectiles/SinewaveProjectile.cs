@@ -9,7 +9,10 @@ public class SinewaveProjectile : Projectile
     
     private Vector3 linearPosition;
     private float time;
-    
+
+    public override bool DestroyOnHitboxContact => false;
+    public override bool DestroyOnGroundImpact => false;
+
     protected override void Start()
     {
         base.Start();

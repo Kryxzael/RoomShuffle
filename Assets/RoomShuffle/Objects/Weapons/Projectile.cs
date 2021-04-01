@@ -30,6 +30,20 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets whether the projectile should be destroyed when it hits a solid object
+    /// </summary>
+    public abstract bool DestroyOnGroundImpact { get; }
+
+    /// <summary>
+    /// Gets whether the projectile should be destroyed when it hits and deals damage to a hitbox
+    /// </summary>
+    public abstract bool DestroyOnHitboxContact { get; }
+
+    /// <summary>
+    /// Gets whether the projectile is outside its range and should be destroyed
+    /// </summary>
+    /// <returns></returns>
     protected virtual bool IsOutOfRange()
     {
         return Vector2.Distance(transform.position, _projectileSpwanPoint) > _weaponInstance.Range;
@@ -54,11 +68,31 @@ public abstract class Projectile : MonoBehaviour
     }
 
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.GetComponentInParent<WeaponShooterBase>() == _hurtBox.Shooter)
-            return; 
-        
-        Destroy(gameObject); 
+        //The bullet collided with its shooter: Ignore.
+        if (collision.gameObject.GetComponentInParent<WeaponShooterBase>() == _hurtBox.Shooter)
+            return;
+
+        //The bullet collided with another bullet of the same shooter
+        if (collision.gameObject.GetComponentInChildren<WeaponFireHurtbox>() is WeaponFireHurtbox hurtbox && hurtbox.Shooter == _hurtBox.Shooter)
+            return;
+
+        //The bullet has hit a hitbox
+        if (collision.gameObject.GetComponentInParent<Hitbox>())
+        {
+            //The bullet should destroy itself
+            if (DestroyOnHitboxContact)
+                Destroy(gameObject);
+
+            return;
+        }
+
+        //The bullet has hit a wall
+        if (DestroyOnGroundImpact)
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 }

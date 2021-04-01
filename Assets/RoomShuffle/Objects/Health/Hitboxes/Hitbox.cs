@@ -81,9 +81,15 @@ public abstract class Hitbox : MonoBehaviour
         HasInvincibilityFrames = false;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<HurtBox>() is HurtBox hurt)
+            TryDealDamageBy(hurt);
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<HurtBox>() is HurtBox hurt)
+        if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt.ContinuousDamage)
             TryDealDamageBy(hurt);
     }
 

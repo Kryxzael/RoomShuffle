@@ -17,6 +17,11 @@ public abstract class HurtBox : MonoBehaviour
     public abstract bool IgnoresInvincibilityFrames { get; }
 
     /// <summary>
+    /// Gets whether this hurtbox will deal damage every frame it's in contact with a hitbox. If false, the damage will only happen for one frame
+    /// </summary>
+    public abstract bool ContinuousDamage { get; }
+
+    /// <summary>
     /// The type of the hurtbox. Who it will hurt
     /// </summary>
     public abstract HurtBoxTypes GetTargets();

@@ -16,6 +16,12 @@ public class SoftKillHurtbox : HurtBox
     /// </summary>
     public override bool IgnoresInvincibilityFrames => true;
 
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
+    public override bool ContinuousDamage => true;
+
+
     [Tooltip("Does the respawning logic of this hurtbox ignore god mode")]
     public bool RespawnIgnoresGodMode;
 
