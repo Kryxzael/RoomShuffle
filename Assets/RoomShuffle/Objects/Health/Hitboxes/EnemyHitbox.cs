@@ -38,7 +38,7 @@ public class EnemyHitbox : Hitbox
         if (_health.Health <= 0)
         {
             //Drop items
-            foreach (var i in GetComponentsInChildren<DropItemOnDeath>())
+            foreach (var i in GetComponentsInChildren<DropLootTableOnDeath>())
                 i.DropItem();
 
             //Destory the object

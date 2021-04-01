@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2921229736865980391}
   - component: {fileID: 8382716333055676293}
   - component: {fileID: 1753502011685967144}
-  - component: {fileID: 4924411125756761967}
+  - component: {fileID: 2442591829127350674}
   m_Layer: 12
   m_Name: EnemyHitAndHurtBox
   m_TagString: Untagged
@@ -86,7 +86,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4924411125756761967
+--- !u!114 &2442591829127350674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,4 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd1120266de0043896d813f8926f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DroppedItemPrefab: {fileID: 1928808644788903941, guid: 65a92325549e57c4680786b3c5583c47, type: 3}
+  LootTables:
+  - Spawnrate: 1
+    Table: {fileID: 11400000, guid: b8d4939b2bec78f4f8aaa33278166be0, type: 2}
