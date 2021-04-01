@@ -132151,6 +132151,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 1462672731374668415, guid: 1eef8bfab3de8e843a48136be3f8696e, type: 3}
+      propertyPath: DropSpeed.Maximum
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462672731374668415, guid: 1eef8bfab3de8e843a48136be3f8696e, type: 3}
+      propertyPath: DropSpeed.Minimum
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3118515021001013771, guid: 1eef8bfab3de8e843a48136be3f8696e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0

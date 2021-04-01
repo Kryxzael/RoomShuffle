@@ -124,7 +124,12 @@ public static class Commons
     public static T InstantiateInCurrentLevel<T>(T original, Vector3 position, Quaternion? rotation = null) where T : Object
     {
         GeneratedRoom parent = Object.FindObjectOfType<GeneratedRoom>();
-        return Object.Instantiate(original, position, rotation ?? Quaternion.identity, parent.transform);
+        Transform transform = null;
+
+        if (parent != null)
+            transform = parent.transform;
+
+        return Object.Instantiate(original, position, rotation ?? Quaternion.identity, transform);
     }
 
     /// <summary>
