@@ -67,6 +67,15 @@ public abstract class Projectile : MonoBehaviour
         // _projectileSpwanPoint = hurtBox.Shooter.GetProjectilesSpawnPoint();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //The bullet has hit a wall
+        if (DestroyOnGroundImpact)
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -85,13 +94,6 @@ public abstract class Projectile : MonoBehaviour
             if (DestroyOnHitboxContact)
                 Destroy(gameObject);
 
-            return;
-        }
-
-        //The bullet has hit a wall
-        if (DestroyOnGroundImpact)
-        {
-            Destroy(gameObject);
             return;
         }
     }
