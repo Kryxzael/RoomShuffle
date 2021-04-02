@@ -69,7 +69,7 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
                     count++;
                 }
 
-                _label.text = "$" + count;
+                _label.text = count.ToString();
 
                 if (_smack != null)
                     _smack.Smack();

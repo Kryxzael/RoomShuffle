@@ -159,8 +159,8 @@ public class StickyBoy : MonoBehaviour
         while (rotating)
         {
             _rigid.velocity = Vector2.zero;
-            transform.eulerAngles += Vector3.forward * (-degreesTarget*3);
-            degrees += degreesTarget*3;
+            transform.eulerAngles += Vector3.forward * (-degreesTarget*2);
+            degrees += degreesTarget*2;
 
             yield return new WaitForSeconds(0.01f);
 

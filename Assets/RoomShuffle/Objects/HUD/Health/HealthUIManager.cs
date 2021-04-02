@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the Health (Heart-like) user interface
@@ -13,12 +15,19 @@ public class HealthUIManager : MonoBehaviour
     [Tooltip("The heart that represents 100 health")]
     public Heart HeartPrefab;
 
-    [Tooltip("The distance between each heart")]
-    public Vector2 HeartMargin = new Vector2(30f, 25f);
+    [Tooltip("The maximum number of hearts that can be shown individually")]
+    public int MaxIndividualHearts = 15;
     
-    [Tooltip("The number of hearts per row")]
-    public int HeartsPerRow = 5;
-
+    [Tooltip("The number of filled hearts text for the Heart Counter")]
+    public FilledHeartsCounter filledHeartsCounter;
+    
+    [Tooltip("The maximum number of hearts text for the Heart Counter")]
+    public TextMeshProUGUI MaxHeartsCount;
+    
+    [Tooltip("The heart used as heart counter icon")]
+    public Heart HeartCounterHeart;
+    
+    
     //Holds the heart objects 
     private Stack<Heart> _heartStack = new Stack<Heart>();
 
@@ -26,42 +35,131 @@ public class HealthUIManager : MonoBehaviour
     private int _lastHealth;
     
     //The owner's last known health
+    private float _lastHealthFloat;
+    
+    //The owner's last known health
     private int _lastHealthLevel;
 
     //Is the health changing animation currently running?
     private bool _healthChangeAnimationRunning;
+    
+    //the grid that the hearts get put into.
+    private Transform _heartGrid;
+
+    //the heartcounter parent
+    private Transform _heartCounter;
+
 
     void Start()
     {
+        foreach (Transform child in transform)
+        {
+            if (child.name.Equals("HeartGrid"))
+            {
+                _heartGrid = child;
+            }
+            else if (child.name.Equals("HeartCounter"))
+            {
+                _heartCounter = child;
+            }
+        }
+        
         _lastHealthLevel = Commons.PlayerProgression.HealthLevel;
         SetHeartUIElementCount(_lastHealthLevel+3);
 
-        RectTransform rectTransform = (RectTransform)transform;
-        rectTransform.sizeDelta = new Vector2 (HeartsPerRow * HeartMargin.x * 2, 500); //Where does this number come from?
     }
 
     private void Update()
     {
+        int currentHealthLevel = Commons.PlayerProgression.HealthLevel;
         int playerHealth = Commons.PlayerHealth.Health;
-        
-        //if the players healthlevel has changed
-        if (_lastHealthLevel != Commons.PlayerProgression.HealthLevel)
+
+        //The hearts should be put neatly into a GRID
+        if (currentHealthLevel + 3 <= MaxIndividualHearts)
         {
-            //Update healthlevel
-            _lastHealthLevel = Commons.PlayerProgression.HealthLevel;
-            SetHeartUIElementCount(Commons.PlayerProgression.GetMaximumHealth() / HealthController.HP_PER_HEART);
+            //hide heart counter
+            _heartCounter.localScale = Vector3.zero;
+            _heartGrid.localScale = Vector3.one;
+
+            _lastHealthFloat = playerHealth;
+
+            //if the players healthlevel has changed
+            if (_lastHealthLevel != currentHealthLevel)
+            {
+                //Update healthlevel
+                _lastHealthLevel = currentHealthLevel;
+                SetHeartUIElementCount(Commons.PlayerProgression.GetMaximumHealth() / HealthController.HP_PER_HEART);
+            }
+
+            //The player's health has changed
+            if (_lastHealth != playerHealth)
+            {
+                int animationInitialHealth = _lastHealth;
+                _lastHealth = playerHealth;
+                AnimateHeartsToCurrentHealth(animationInitialHealth);
+            }
+        }
+        //the hearts should be put into a COUNTER
+        else
+        {
+            //hide heart grid
+            _heartCounter.localScale = Vector3.one;
+            _heartGrid.localScale = Vector3.zero;
+            
+            if (_lastHealthLevel != currentHealthLevel)
+            {
+                _lastHealthLevel = currentHealthLevel;
+                
+                //Set correct text
+                MaxHeartsCount.text = "/ " +  (currentHealthLevel + 3);
+            }
+
+            //if the player health is not the displayed health
+            if (_lastHealth != playerHealth)
+            {
+
+                //make heart bigger
+                HeartCounterHeart.transform.localScale = Vector3.one * 1.5f;
+
+                //if the player has gained health
+                if (_lastHealth < playerHealth)
+                {
+                    _lastHealthFloat += (Time.deltaTime * ((playerHealth - _lastHealthFloat)) + 0.5f);
+                    _lastHealth = (int) _lastHealthFloat;
+                }
+
+                //if the player has lost health
+                else if (_lastHealth > playerHealth)
+                {
+                    _lastHealthFloat -= (Time.deltaTime * ((_lastHealthFloat - playerHealth)) + 0.5f);
+                    _lastHealth = (int) _lastHealthFloat;
+                }
+                
+                //set display value
+                SetSingleHeartFill(_lastHealth);
+
+            }
+            else
+            {
+                HeartCounterHeart.transform.localScale = Vector3.one * 1f;
+            }
 
         }
-        
-        //The player's health has changed
-        if (_lastHealth != playerHealth)
-        {
-            int animationInitialHealth = _lastHealth;
-            _lastHealth = playerHealth;
-            AnimateHeartsToCurrentHealth(animationInitialHealth);
-        }
-
     }
+
+    /// <summary>
+    /// Sets the single heart fill amount and the counter of filled hearts.
+    /// </summary>
+    private void SetSingleHeartFill(int health)
+    {
+        float fillAmount = (health % (float) HealthController.HP_PER_HEART) /
+                           HealthController.HP_PER_HEART;
+        fillAmount = fillAmount == 0 ? 1 : fillAmount;
+        
+        HeartCounterHeart.SetHeartFillPercentage(fillAmount);
+        filledHeartsCounter.setCounter((health / HealthController.HP_PER_HEART) - (int)fillAmount);
+    }
+
 
     /// <summary>
     /// Starts or continues an animation of loosing or gaining health from the provided starting health to the current health value
@@ -179,16 +277,14 @@ public class HealthUIManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfHearts; i++)
         {
-            int row = (_heartStack.Count / HeartsPerRow) + 1;
-            int column = (_heartStack.Count % HeartsPerRow) + 1;
-            
+
             Heart newHeart = Instantiate(
                 original: HeartPrefab, 
-                position: new Vector3(HeartMargin.x * column, HeartMargin.y * -row, 0) + transform.position, 
+                position: Vector3.zero, 
                 rotation: Quaternion.identity, 
-                parent: transform
+                parent: _heartGrid
             );
-
+            
             _heartStack.Push(newHeart);
             newHeart.SetHeartFillPercentage(0f);
         }
@@ -213,7 +309,7 @@ public class HealthUIManager : MonoBehaviour
     /// <param name="numberOfHearts"></param>
     public void SetHeartUIElementCount(int desiredNumberOfHearts)
     {
-        int currentNumberOfHearts = transform.GetChildren().Count();
+        int currentNumberOfHearts = _heartGrid.GetChildren().Count();
         int difference = desiredNumberOfHearts - currentNumberOfHearts;
 
         if (difference >= 0)

@@ -46,4 +46,13 @@ public class Heart : MonoBehaviour
         //update last fill amount
         _lastFillAmount = percentage;
     }
+
+    /// <summary>
+    /// Return the fillamount of the heart
+    /// </summary>
+    /// <returns></returns>
+    public float GetFillAmount()
+    {
+        return cakeImage.fillAmount;
+    }
 }

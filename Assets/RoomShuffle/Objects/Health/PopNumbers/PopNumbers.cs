@@ -30,6 +30,7 @@ public class PopNumbers : MonoBehaviour
     /* *** */
 
     private TextMeshPro _textMeshPro;
+    private TextMeshProUGUI _textMeshProUGUI;
     private Vector3 _originalPosition;
 
     private void Start()
@@ -37,7 +38,15 @@ public class PopNumbers : MonoBehaviour
         _originalPosition = transform.position;
         _textMeshPro = GetComponent<TextMeshPro>();
 
-        StartCoroutine(CoPopNumber(transform.position, transform.localScale, _textMeshPro.color));
+        if (!_textMeshPro)
+        {
+            _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+            StartCoroutine(CoPopNumber(transform.position, transform.localScale, _textMeshProUGUI.color));
+        }
+        else
+        {
+            StartCoroutine(CoPopNumber(transform.position, transform.localScale, _textMeshPro.color));
+        }
     }
 
     private IEnumerator CoPopNumber(Vector3 startPosition, Vector3 startSize, Color startColor)
@@ -57,7 +66,15 @@ public class PopNumbers : MonoBehaviour
                 t: AnimationCurve.Evaluate(lerpTime)
             );
 
-            _textMeshPro.color = Color.Lerp(startColor, EndColor, AnimationCurve.Evaluate(lerpTime));
+            if (!_textMeshPro)
+            {
+                _textMeshProUGUI.color = Color.Lerp(startColor, EndColor, AnimationCurve.Evaluate(lerpTime));
+            }
+            else
+            {
+                _textMeshPro.color = Color.Lerp(startColor, EndColor, AnimationCurve.Evaluate(lerpTime));
+            }
+            
 
             lerpTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
