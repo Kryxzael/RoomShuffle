@@ -48,6 +48,9 @@ public class HealthUIManager : MonoBehaviour
 
     //the heartcounter parent
     private Transform _heartCounter;
+    
+    //The healthlevel the player starts at
+    private int _playerInitialHealthLevel;
 
 
     void Start()
@@ -64,8 +67,10 @@ public class HealthUIManager : MonoBehaviour
             }
         }
 
+        _playerInitialHealthLevel = Commons.PlayerProgression.StartingHealth / HealthController.HP_PER_HEART;
+
         _lastHealthLevel = Commons.PlayerProgression.HealthLevel;
-        SetHeartUIElementCount(_lastHealthLevel + 3);
+        SetHeartUIElementCount(_lastHealthLevel + _playerInitialHealthLevel);
 
     }
 
@@ -75,7 +80,7 @@ public class HealthUIManager : MonoBehaviour
         int playerHealth = Commons.PlayerHealth.Health;
 
         //The hearts should be put neatly into a GRID
-        if (currentHealthLevel + 3 <= MaxIndividualHearts)
+        if (currentHealthLevel + _playerInitialHealthLevel <= MaxIndividualHearts)
         {
             //hide heart counter
             _heartCounter.localScale = Vector3.zero;
@@ -111,7 +116,7 @@ public class HealthUIManager : MonoBehaviour
                 _lastHealthLevel = currentHealthLevel;
 
                 //Set correct text
-                MaxHeartsCount.text = "/ " + (currentHealthLevel + 3);
+                MaxHeartsCount.text = "/ " + (currentHealthLevel + _playerInitialHealthLevel);
             }
 
             //if the player health is not the displayed health
@@ -129,25 +134,25 @@ public class HealthUIManager : MonoBehaviour
     /// <summary>
     /// Animates the fillamount of the heart-counter-heart and the heart counter
     /// </summary>
-    /// <param name="goal"></param>
+    /// <param name="target"></param>
     /// <returns></returns>
-    private IEnumerator CoAnimateSingleHeart(int goal)
+    private IEnumerator CoAnimateSingleHeart(int target)
     {
         //Upsize the scale of the heart
         HeartCounterHeart.transform.localScale = Vector3.one * 1.5f;
         
-        while ((int)_lastHealthFloat != goal)
+        while ((int)_lastHealthFloat != target)
         {
             //if the fillAmount of the heart and counter is lower than actual health
-            if ((int)_lastHealthFloat < goal)
+            if ((int)_lastHealthFloat < target)
             {
-                _lastHealthFloat += (Time.deltaTime * ((goal - _lastHealthFloat)) + 0.5f);
+                _lastHealthFloat += Time.deltaTime * (target - _lastHealthFloat) + 0.5f;
             }
 
             //if the fillAmount of the heart and counter is higher than actual health
-            else if ((int)_lastHealthFloat > goal)
+            else if ((int)_lastHealthFloat > target)
             {
-                _lastHealthFloat -= (Time.deltaTime * ((_lastHealthFloat - goal)) + 0.5f);
+                _lastHealthFloat -= Time.deltaTime * (_lastHealthFloat - target) + 0.5f;
             }
                 
             //set display value
@@ -161,6 +166,8 @@ public class HealthUIManager : MonoBehaviour
         HeartCounterHeart.transform.localScale = Vector3.one * 1f;
     }
 
+    
+    
     /// <summary>
     /// Sets the single heart fill amount and the counter of filled hearts.
     /// </summary>

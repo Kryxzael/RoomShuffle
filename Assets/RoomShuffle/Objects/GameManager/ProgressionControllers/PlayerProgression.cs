@@ -15,7 +15,7 @@ public class PlayerProgression : ProgressionController
     /// </summary>
     public int GetMaximumHealth()
     {
-        return StartingHealth + 100 * HealthLevel;
+        return StartingHealth + HealthController.HP_PER_HEART * HealthLevel;
     }
 
     private void Start()

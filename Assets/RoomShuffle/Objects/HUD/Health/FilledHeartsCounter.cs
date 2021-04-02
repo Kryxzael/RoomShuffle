@@ -28,7 +28,7 @@ public class FilledHeartsCounter : MonoBehaviour
         //int difference = number - _lastFilledHearts;
         //popNumber(difference);
 
-        TMP.text = number.ToString();
+        TMP.text = number + "+";
         _lastFilledHearts = number;
     }
 
