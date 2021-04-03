@@ -12,8 +12,7 @@ public class SpotterReactionSprite : MonoBehaviour
     public Sprite ChasingSprite;
     
     public Sprite BlindChasingSprite;
-
-
+    
     public SpriteRenderer ReactionSpriteRenderer;
 
     private SpotterPlayerRelationship _lastState;
@@ -22,6 +21,7 @@ public class SpotterReactionSprite : MonoBehaviour
     {
         _spotPlayer = GetComponent<SpotPlayer>();
         _lastState = _spotPlayer.State;
+        ReactionSpriteRenderer.transform.localPosition = Vector3.zero + (Vector3.up * 1.4f);
     }
     
     void Update()
