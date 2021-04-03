@@ -7,6 +7,14 @@ using UnityEngine;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class Timer : MonoBehaviour
 {
+    [Tooltip("The number that represents the added time on time added")]
+    public TextMeshProUGUI PositivePopNumber;
+    
+    [Tooltip("The number that represents the added time on time subtracted")]
+    public TextMeshProUGUI NegativePopNumber;
+
+    [Tooltip("How much time is left before the text starts blinking and ticking")]
+    public float BlinkingTime = 10;
 
     /// <summary>
     /// The displayed timer value in seconds
@@ -32,7 +40,23 @@ public class Timer : MonoBehaviour
     {
         //Get textmeshpro component
         TMP = GetComponent<TextMeshProUGUI>();
-        StartTimer();
+        
+        //TODO remove this counter
+        StartCountdown(60);
+    }
+
+    //TODO Remove this nonsense in update
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            AddTime(10);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SubtractTime(5);
+        }
     }
 
     /// <summary>
@@ -98,6 +122,46 @@ public class Timer : MonoBehaviour
     }
 
     /// <summary>
+    /// Adds time to the Timer or Countdown
+    /// </summary>
+    public void AddTime(float seconds)
+    {
+        CurrentSeconds += seconds;
+
+        if (PositivePopNumber)
+        {
+            TextMeshProUGUI instance = Instantiate(
+                original: PositivePopNumber, 
+                position: transform.position,
+                rotation: Quaternion.identity,
+                parent: transform
+            );
+                
+            instance.text = "+" + seconds;
+        }
+    }
+    
+    /// <summary>
+    /// Adds time to the Timer or Countdown
+    /// </summary>
+    public void SubtractTime(float seconds)
+    {
+        CurrentSeconds -= seconds;
+
+        if (NegativePopNumber)
+        {
+            TextMeshProUGUI instance = Instantiate(
+                original: NegativePopNumber, 
+                position: transform.position,
+                rotation: Quaternion.identity,
+                parent: transform
+            );
+                
+            instance.text = "-" + seconds;
+        }
+    }
+
+    /// <summary>
     /// Timer coroutine adding deltatime to the secounds variable
     /// </summary>
     /// <returns></returns>
@@ -118,17 +182,37 @@ public class Timer : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CoStartCountdown(float seconds)
     {
+        TMP.color = Color.white;
+        transform.localScale = Vector3.one * 1f;
         CurrentSeconds = seconds;
+        bool blinking = false;
 
         while (CurrentSeconds > 0)
         {
             TMP.text = formatNumber(CurrentSeconds);
             CurrentSeconds -= Time.deltaTime;
-            
+
+            //Should the timer start blinking
+            if (CurrentSeconds < BlinkingTime)
+            {
+                if (!blinking)
+                {
+                    StartCoroutine(CoStartBlinking());
+                    blinking = true;
+                }
+            }
+            else
+            {
+                TMP.color = Color.white;
+                transform.localScale = Vector3.one * 1f;
+                blinking = false;
+            }
+
             yield return new WaitForEndOfFrame();
         }
 
-        TMP.text = formatNumber(0);
+        CurrentSeconds = 0;
+        TMP.text = formatNumber(CurrentSeconds);
     }
 
     private string formatNumber(float number)
@@ -144,4 +228,35 @@ public class Timer : MonoBehaviour
         return formattedString;
 
     }
+
+    
+    private IEnumerator CoStartBlinking()
+    {
+        transform.localScale = Vector3.one * 1.5f;
+        
+        bool alternate = true;
+
+        //While the timer is between 0 and max blinking time
+        while ( CurrentSeconds > 0 && CurrentSeconds < BlinkingTime)
+        {
+            if (alternate)
+            {
+                TMP.color = Color.red;
+                //TODO Tick
+            }
+            else
+            {
+                TMP.color = Color.white;
+                //TODO Tock
+            }
+
+            yield return new WaitForSeconds((CurrentSeconds < 1.5f ? 1.5f : CurrentSeconds)/BlinkingTime);
+            alternate = !alternate;
+        }
+        
+        TMP.color = Color.red;
+        
+        transform.localScale = Vector3.one * 1f;
+    }
+    
 }
