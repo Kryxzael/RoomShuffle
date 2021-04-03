@@ -5,6 +5,7 @@ using System.IO.IsolatedStorage;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 /// <summary>
@@ -146,13 +147,13 @@ public class HealthUIManager : MonoBehaviour
             //if the fillAmount of the heart and counter is lower than actual health
             if ((int)_lastHealthFloat < target)
             {
-                _lastHealthFloat += Time.deltaTime * (target - _lastHealthFloat) + 0.5f;
+                _lastHealthFloat += Time.deltaTime * (target - _lastHealthFloat + 0.5f);
             }
 
             //if the fillAmount of the heart and counter is higher than actual health
             else if ((int)_lastHealthFloat > target)
             {
-                _lastHealthFloat -= Time.deltaTime * (_lastHealthFloat - target) + 0.5f;
+                _lastHealthFloat -= Time.deltaTime * (_lastHealthFloat - target + 0.5f);
             }
                 
             //set display value
@@ -160,6 +161,8 @@ public class HealthUIManager : MonoBehaviour
 
             //Wait for the next frame
             yield return new WaitForEndOfFrame();
+
+            Debug.Log(Time.deltaTime);
         }
         
         //Downsize the scale of the heart

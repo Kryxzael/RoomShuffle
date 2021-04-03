@@ -104,12 +104,27 @@ public class DebugMenu : MonoBehaviour
     {
         for (int i = 0; i < texts.Length; i++)
         {
+            const int VERTICAL_OFFSET = 100;
             const float VERTICAL_PADDING = 20f;
-            GUIStyle style = new GUIStyle();
-            style.alignment = TextAnchor.UpperRight;
-            style.normal.textColor = Color.white;
+            const float SHADOW_OFFSET = 2.5f;
 
-            GUI.Label(new Rect(0f, i * VERTICAL_PADDING, Screen.width, VERTICAL_PADDING), texts[i], style);
+            //Shadow
+            {
+                GUIStyle style = new GUIStyle();
+                style.alignment = TextAnchor.UpperLeft;
+                style.normal.textColor = Color.black;
+
+                GUI.Label(new Rect(SHADOW_OFFSET, i * VERTICAL_PADDING + SHADOW_OFFSET + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[i], style);
+            }
+
+            //Text
+            {
+                GUIStyle style = new GUIStyle();
+                style.alignment = TextAnchor.UpperLeft;
+                style.normal.textColor = Color.white;
+
+                GUI.Label(new Rect(0f, i * VERTICAL_PADDING + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[i], style);
+            }
         }
     }
 }

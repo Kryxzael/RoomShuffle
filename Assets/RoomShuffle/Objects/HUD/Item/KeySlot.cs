@@ -37,8 +37,8 @@ public class KeySlot : ItemUIManager
             case KeyTypeUI.Puzzle:
                 _currentNumberOfKeys = _inventory.PuzzleKeys;
                 break;
-            default: throw new Exception();
-                break;
+            default: 
+                throw new InvalidOperationException();
         }
 
         //if the number of keys hasn't changed
