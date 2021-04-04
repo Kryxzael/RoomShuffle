@@ -11,6 +11,9 @@ using UnityEngine;
 /// </summary>
 public abstract class Pickup : MonoBehaviour
 {
+    [Tooltip("The price of the pickup")]
+    public int Price;
+    
     private bool _inPickupRange;
 
     /* *** */
@@ -27,11 +30,25 @@ public abstract class Pickup : MonoBehaviour
         Destroy(gameObject);
     }
 
+    protected virtual void Start()
+    {
+        if (Price > 0 && ActivationMode == PickupActivationMode.OnContact)
+        {
+            Debug.Log("Pickup has price and price and has OnContact activation mode");
+        }
+    }
+
     protected virtual void Update()
     {
         //The player interacts with the item
         if (_inPickupRange && ActivationMode == PickupActivationMode.OnInteraction && Input.GetButtonDown("Interact"))
-            PickUp();
+        {
+            if (Commons.Inventory.Currency >= Price)
+            {
+                 PickUp();
+                 Commons.Inventory.Currency -= Price;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
