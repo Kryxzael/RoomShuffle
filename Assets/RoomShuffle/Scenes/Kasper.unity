@@ -374,6 +374,181 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b13a09d74b48774280c51aa3f602258, type: 3}
+--- !u!1 &132359140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6135621, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
+  m_PrefabInstance: {fileID: 1232592153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &132359141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132359140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11607b81fd34c924ea85569847f3f52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LerpSpeed: 0.007
+  swayingLength: 20
+  SwayCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0010643005
+      value: 0.49528122
+      inSlope: 3.182785
+      outSlope: 3.182785
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.14057507
+      value: 0.939314
+      inSlope: -1.5580976
+      outSlope: -1.5580976
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2716959
+      value: 0.11338639
+      inSlope: 0.030825615
+      outSlope: 0.030825615
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.39654788
+      value: 0.90752375
+      inSlope: 0.04697609
+      outSlope: 0.04697609
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.51997447
+      value: 0.13404891
+      inSlope: -0.4561336
+      outSlope: -0.4561336
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6653437
+      value: 0.91241574
+      inSlope: 0.36561584
+      outSlope: 0.36561584
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8046606
+      value: 0.2683285
+      inSlope: -1.7053328
+      outSlope: -1.7053328
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99572754
+      value: 0.5
+      inSlope: 1.212515
+      outSlope: 1.212515
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  SmackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0010643005
+      value: 0.0047187805
+      inSlope: 4.5242324
+      outSlope: 4.5242324
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.17701374
+      value: 0.8007549
+      inSlope: 3.1417837
+      outSlope: 3.1417837
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25788417
+      value: 0.9430331
+      inSlope: 0.95539635
+      outSlope: 0.95539635
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.41768357
+      value: 0.9672359
+      inSlope: 0.076201566
+      outSlope: 0.076201566
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5703524
+      value: 0.9673803
+      inSlope: 0.031194739
+      outSlope: 0.031194739
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6913439
+      value: 0.9748145
+      inSlope: -0.46578664
+      outSlope: -0.46578664
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7807742
+      value: 0.8860087
+      inSlope: -2.531731
+      outSlope: -2.531731
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99786377
+      value: 0.002357483
+      inSlope: -4.0704446
+      outSlope: -4.0704446
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &134787205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3799657371942781478, guid: cb0ca13b71eb99541a758bb2c4bb5c89, type: 3}
@@ -106377,26 +106552,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1644877334973637421, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_text
-      value: Timer yo
-      objectReference: {fileID: 0}
-    - target: {fileID: 1644877334973637421, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_fontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1644877334973637421, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1644877334973637421, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_enableKerning
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1644877334973637421, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5762634945889648185, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -106484,46 +106639,6 @@ PrefabInstance:
     - target: {fileID: 5762634945889648190, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 6070971484161786360, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: BlinkingTime
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6070971484161786360, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: NegativePopNumber
-      value: 
-      objectReference: {fileID: 3469888029550492065, guid: c277c3cd5441e934baa18704011cb14e, type: 3}
-    - target: {fileID: 6070971484161786360, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: PositivePopNumber
-      value: 
-      objectReference: {fileID: 9204857899976595522, guid: a6d37de52caa3104ea40982eb460939a, type: 3}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 377.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.00084686
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389085983412033583, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000038147
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}

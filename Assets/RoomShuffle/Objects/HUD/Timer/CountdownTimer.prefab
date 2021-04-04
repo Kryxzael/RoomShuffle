@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6025376850504547555}
   - component: {fileID: 1228879121097154102}
   m_Layer: 0
-  m_Name: SpeedrunTimer
+  m_Name: CountdownTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,3 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae9c09021998314081ddff1c40b1d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PositivePopNumber: {fileID: 9204857899976595522, guid: a6d37de52caa3104ea40982eb460939a, type: 3}
+  NegativePopNumber: {fileID: 3469888029550492065, guid: c277c3cd5441e934baa18704011cb14e, type: 3}
+  BlinkingTime: 10

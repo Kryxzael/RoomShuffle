@@ -45,6 +45,16 @@ public static class Commons
     private static RenewableLazy<EnemyProgression> _enemyProgression { get; } = new RenewableLazy<EnemyProgression>(
         () => EnemyManager.GetComponent<EnemyProgression>()
     );
+    
+    /* *** */
+    
+    private static RenewableLazy<GameObject> _countdownTimerUI { get; } = new RenewableLazy<GameObject>(
+        () => GameObject.FindWithTag("CountdownTimer")
+    );
+    
+    private static RenewableLazy<GameObject> _currencyUI { get; } = new RenewableLazy<GameObject>(
+        () => GameObject.FindWithTag("CurrencyText")
+    );
 
     /*
      * Room Generation
@@ -98,6 +108,20 @@ public static class Commons
     /// </summary>
     public static Inventory Inventory => _inventory.Value;
 
+    /*
+     * HUD
+     */
+    
+    /// <summary>
+    /// Gets the CountdownTimer in UI
+    /// </summary>
+    public static GameObject CountdownTimer => _countdownTimerUI.Value;
+    
+    /// <summary>
+    /// Gets the currency UI element
+    /// </summary>
+    public static GameObject CurrencyUI => _currencyUI.Value;
+    
 
     /*
      * Enemies
