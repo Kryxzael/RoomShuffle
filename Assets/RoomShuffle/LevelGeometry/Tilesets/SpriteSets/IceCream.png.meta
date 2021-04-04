@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f37dc8b1fb1cab419fc75ea793690e4
+guid: b1ecbbc622d60904abe8c48243dc5e4a
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -77,6 +77,81 @@ TextureImporter:
   - first:
       213: 1420974022360276891
     second: Cloud_24
+  - first:
+      213: 5018473283827622026
+    second: IceCream_0
+  - first:
+      213: -5728154864309698128
+    second: IceCream_1
+  - first:
+      213: -4784787873072807158
+    second: IceCream_2
+  - first:
+      213: -4151797034016028301
+    second: IceCream_3
+  - first:
+      213: 5567160698913612094
+    second: IceCream_4
+  - first:
+      213: 1956628153276275421
+    second: IceCream_5
+  - first:
+      213: -6963742509451378171
+    second: IceCream_6
+  - first:
+      213: -4461179704559047107
+    second: IceCream_7
+  - first:
+      213: 8619376239064098766
+    second: IceCream_8
+  - first:
+      213: -793990475581676551
+    second: IceCream_9
+  - first:
+      213: -5494940895198376260
+    second: IceCream_10
+  - first:
+      213: -4112933598507690028
+    second: IceCream_11
+  - first:
+      213: 1192779500788478012
+    second: IceCream_12
+  - first:
+      213: -7213772456418855234
+    second: IceCream_13
+  - first:
+      213: -878327163148386973
+    second: IceCream_14
+  - first:
+      213: 7966927478200017763
+    second: IceCream_15
+  - first:
+      213: -3933846034689293273
+    second: IceCream_16
+  - first:
+      213: -5663120570370287214
+    second: IceCream_17
+  - first:
+      213: -1269174359616586776
+    second: IceCream_18
+  - first:
+      213: -5860538651569546227
+    second: IceCream_19
+  - first:
+      213: 7562737300859430841
+    second: IceCream_20
+  - first:
+      213: 997356402708112667
+    second: IceCream_21
+  - first:
+      213: -6048744672102965169
+    second: IceCream_22
+  - first:
+      213: 1666111160872865085
+    second: IceCream_23
+  - first:
+      213: -453107676248031222
+    second: IceCream_24
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -178,7 +253,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cloud_0
+      name: IceCream_0
       rect:
         serializedVersion: 2
         x: 0
@@ -192,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66cda90f98d6b7e20800000000000000
-      internalID: 3349391187094723686
+      spriteID: a806555dcd235a540800000000000000
+      internalID: 5018473283827622026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_1
+      name: IceCream_1
       rect:
         serializedVersion: 2
         x: 32
@@ -213,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98153dad68c077ae0800000000000000
-      internalID: -1551757773269413495
+      spriteID: 0b1056eff718180b0800000000000000
+      internalID: -5728154864309698128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_2
+      name: IceCream_2
       rect:
         serializedVersion: 2
         x: 64
@@ -234,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb52fee3c8f293850800000000000000
-      internalID: 6357164628407952830
+      spriteID: a0306e3c7c4099db0800000000000000
+      internalID: -4784787873072807158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_3
+      name: IceCream_3
       rect:
         serializedVersion: 2
         x: 96
@@ -255,14 +330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36b7434c59bc094b0800000000000000
-      internalID: -5435620906133849245
+      spriteID: 37944ff389ad166c0800000000000000
+      internalID: -4151797034016028301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_4
+      name: IceCream_4
       rect:
         serializedVersion: 2
         x: 128
@@ -276,14 +351,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1b55b2ad0faa9ff0800000000000000
-      internalID: -28517974525256933
+      spriteID: e31e24ad827824d40800000000000000
+      internalID: 5567160698913612094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_5
+      name: IceCream_5
       rect:
         serializedVersion: 2
         x: 0
@@ -297,14 +372,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80af5964b8ce08290800000000000000
-      internalID: -7890046464224265720
+      spriteID: dda9f8150f6572b10800000000000000
+      internalID: 1956628153276275421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_6
+      name: IceCream_6
       rect:
         serializedVersion: 2
         x: 32
@@ -318,14 +393,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9f78f74bcf70d8c0800000000000000
-      internalID: -3976537959905591395
+      spriteID: 5020dd84511db5f90800000000000000
+      internalID: -6963742509451378171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_7
+      name: IceCream_7
       rect:
         serializedVersion: 2
         x: 64
@@ -339,14 +414,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d62674347accd8f90800000000000000
-      internalID: -6949673631202450835
+      spriteID: d3e639ee1b4b612c0800000000000000
+      internalID: -4461179704559047107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_8
+      name: IceCream_8
       rect:
         serializedVersion: 2
         x: 96
@@ -360,14 +435,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c331e74dab88675e0800000000000000
-      internalID: -1912190655761870020
+      spriteID: ec7abd2a50d2e9770800000000000000
+      internalID: 8619376239064098766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_9
+      name: IceCream_9
       rect:
         serializedVersion: 2
         x: 128
@@ -381,14 +456,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2328c07a1000e33e0800000000000000
-      internalID: -2072218771446267342
+      spriteID: 9f329e38edd2bf4f0800000000000000
+      internalID: -793990475581676551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_10
+      name: IceCream_10
       rect:
         serializedVersion: 2
         x: 0
@@ -402,14 +477,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a3b78d89d1405e10800000000000000
-      internalID: 2184318221912880041
+      spriteID: cbe0fe78e5c0eb3b0800000000000000
+      internalID: -5494940895198376260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_11
+      name: IceCream_11
       rect:
         serializedVersion: 2
         x: 32
@@ -423,14 +498,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02be080017c5fe080800000000000000
-      internalID: -9155997877011420384
+      spriteID: 4d71e24feacebe6c0800000000000000
+      internalID: -4112933598507690028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_12
+      name: IceCream_12
       rect:
         serializedVersion: 2
         x: 64
@@ -444,14 +519,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33297bda6e99b1930800000000000000
-      internalID: 4115051900569096755
+      spriteID: c307dd7e2aa9d8010800000000000000
+      internalID: 1192779500788478012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_13
+      name: IceCream_13
       rect:
         serializedVersion: 2
         x: 96
@@ -465,14 +540,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fd1a3ba0642621c0800000000000000
-      internalID: -4528892377666281993
+      spriteID: eb638accb2883eb90800000000000000
+      internalID: -7213772456418855234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_14
+      name: IceCream_14
       rect:
         serializedVersion: 2
         x: 128
@@ -486,14 +561,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88b760c86a7c92ca0800000000000000
-      internalID: -6041077907013076088
+      spriteID: 36db6f3491e8fc3f0800000000000000
+      internalID: -878327163148386973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_15
+      name: IceCream_15
       rect:
         serializedVersion: 2
         x: 0
@@ -507,14 +582,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18d6cdfbb8891fbd0800000000000000
-      internalID: -2598127784029295231
+      spriteID: 3632961b456309e60800000000000000
+      internalID: 7966927478200017763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_16
+      name: IceCream_16
       rect:
         serializedVersion: 2
         x: 32
@@ -528,14 +603,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da637bfe1bf22da10800000000000000
-      internalID: 1932659631372842669
+      spriteID: 7240445bfdb2869c0800000000000000
+      internalID: -3933846034689293273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_17
+      name: IceCream_17
       rect:
         serializedVersion: 2
         x: 64
@@ -549,14 +624,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1901845e2ee7c8840800000000000000
-      internalID: 5227692780444717201
+      spriteID: 2991fd288dd8861b0800000000000000
+      internalID: -5663120570370287214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_18
+      name: IceCream_18
       rect:
         serializedVersion: 2
         x: 96
@@ -570,14 +645,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72ed853ee786a9b30800000000000000
-      internalID: 4294860088840609319
+      spriteID: 8ebf401f4acf26ee0800000000000000
+      internalID: -1269174359616586776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_19
+      name: IceCream_19
       rect:
         serializedVersion: 2
         x: 128
@@ -591,14 +666,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fc8a995e6529da30800000000000000
-      internalID: 4240461680025963760
+      spriteID: d0c10c8952f2baea0800000000000000
+      internalID: -5860538651569546227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_20
+      name: IceCream_20
       rect:
         serializedVersion: 2
         x: 0
@@ -612,14 +687,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 350de9acc5fcab8b0800000000000000
-      internalID: -5135564427619282861
+      spriteID: 9b7a25b818d34f860800000000000000
+      internalID: 7562737300859430841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_21
+      name: IceCream_21
       rect:
         serializedVersion: 2
         x: 32
@@ -633,14 +708,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b847821a8e278740800000000000000
-      internalID: 5154139469100042419
+      spriteID: b15e0e13d5257dd00800000000000000
+      internalID: 997356402708112667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_22
+      name: IceCream_22
       rect:
         serializedVersion: 2
         x: 64
@@ -654,14 +729,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 586840fe8d2345ac0800000000000000
-      internalID: -3867410272700037499
+      spriteID: f402442b4ca8e0ca0800000000000000
+      internalID: -6048744672102965169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_23
+      name: IceCream_23
       rect:
         serializedVersion: 2
         x: 96
@@ -675,14 +750,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f346634ac904900e0800000000000000
-      internalID: -2303238692909194177
+      spriteID: d3d042cf5473f1710800000000000000
+      internalID: 1666111160872865085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_24
+      name: IceCream_24
       rect:
         serializedVersion: 2
         x: 128
@@ -696,8 +771,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9f97dd385058b310800000000000000
-      internalID: 1420974022360276891
+      spriteID: a00cb3818fc36b9f0800000000000000
+      internalID: -453107676248031222
       vertices: []
       indices: 
       edges: []
