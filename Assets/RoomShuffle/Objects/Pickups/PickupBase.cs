@@ -1,85 +1,47 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// Base class for anything that can be picked up by the player
+/// Base manager for the root object of pickups
 /// </summary>
-public abstract class Pickup : MonoBehaviour
+public sealed class PickupBase : MonoBehaviour
 {
-    [Tooltip("The price of the pickup")]
-    public int Price;
-
-    [Tooltip("The text displaying the price")]
-    public PriceTag PriceTagPrefab;
-
-    private PriceTag _priceTagInstance;
-    
+    //Whether the player is currently in range of the pickup
     private bool _inPickupRange;
 
     /* *** */
 
+    [Header("Initialization")]
+    [Tooltip("The price of the pickup")]
+    public int Price;
+
     [Tooltip("How the player is able to pick up this pickup")]
     public PickupActivationMode ActivationMode;
 
-    /// <summary>
-    /// Initiates the pick-up of the item
-    /// </summary>
-    public void PickUp()
-    {
-        OnPickup();
-        Destroy(gameObject);
-    }
-
-    protected virtual void Start()
+    void Start()
     {
         if (Price > 0 && ActivationMode == PickupActivationMode.OnContact)
-        {
-            Debug.Log("Pickup has price and price and has OnContact activation mode");
-        }
+            Debug.LogWarning("Purchasable pickups will not work properly if ActivationMode is set to OnContact");
     }
 
-    protected virtual void Update()
+    private void Update()
     {
         //The player is in range
         if (_inPickupRange)
         {
-            //If the pricetag instance is null: create a pricetag
-            if (!_priceTagInstance)
-            {
-                _priceTagInstance = Instantiate(
-                    original: PriceTagPrefab, 
-                    position: transform.position + Vector3.up * 1, 
-                    rotation: Quaternion.identity, 
-                    parent: transform
-                );
-                _priceTagInstance.SetPrice(Price);
-            }
-
             //The player interacts with the item
             if (ActivationMode == PickupActivationMode.OnInteraction && Input.GetButtonDown("Interact"))
             {
                 //The player has enough money to buy the item
                 if (Commons.Inventory.Currency >= Price)
                 {
-                     PickUp();
-                     Commons.Inventory.Currency -= Price;
+                    PickUp();
+                    Commons.Inventory.Currency -= Price;
                 }
             }
+                
         }
-        else
-        {
-            if (_priceTagInstance)
-            {
-                Destroy(_priceTagInstance.gameObject);
-            }
-        }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -109,9 +71,15 @@ public abstract class Pickup : MonoBehaviour
     }
 
     /// <summary>
-    /// Fired when the object is picked up, before its destroyed
+    /// Picks up the object
     /// </summary>
-    protected abstract void OnPickup();
+    public void PickUp()
+    {
+        foreach (PickupScript i in GetComponentsInChildren<PickupScript>())
+            i.OnPickup();
+
+        Destroy(gameObject);
+    }
 
     /// <summary>
     /// Represents the way an object can be picked up

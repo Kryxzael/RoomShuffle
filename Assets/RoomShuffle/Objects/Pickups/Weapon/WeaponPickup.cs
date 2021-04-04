@@ -9,7 +9,8 @@ using UnityEngine;
 /// <summary>
 /// A weapon object that can be picked up by the player
 /// </summary>
-public class WeaponPickup : Pickup
+[RequireComponent(typeof(SpriteRenderer))]
+public class WeaponPickup : PickupScript
 {
     [Tooltip("The weapon that will be created for this pickup if enabled")]
     public WeaponTemplate Template;
@@ -28,16 +29,20 @@ public class WeaponPickup : Pickup
     /// </summary>
     public WeaponInstance Instance { get; set; }
 
-    protected override void Start()
+    private void Start()
     {
         if (ShouldCreateWeaponFromTemplate)
             Instance = Template.CreateWeaponInstance();
+
+        var renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = Instance.Template.Icon;
+        renderer.color = Color.white;
     }
 
     /// <summary>
     /// <inheritdoc />
     /// </summary>
-    protected override void OnPickup()
+    public override void OnPickup()
     {
         //Attempt to place weapon in a free slot
         for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)

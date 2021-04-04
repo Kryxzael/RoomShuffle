@@ -1,18 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &8933939773864453323
+--- !u!114 &5911633666651577447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7082815413603659669}
+  m_GameObject: {fileID: 8719743466327126708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 801d44de64356c240aa746f7792973ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 36b4c1dc215dc42448096b179f2931fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &6939671995791864229
+  Restoration: 0
+--- !u!1001 &8865157221165673604
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -21,11 +22,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 382140331158365946, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Name
-      value: PuzzleKey
-      objectReference: {fileID: 0}
-    - target: {fileID: 2433889289742187677, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
-      propertyPath: m_Radius
-      value: 0.5
+      value: HeartBase
       objectReference: {fileID: 0}
     - target: {fileID: 3138563393531745931, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_RootOrder
@@ -71,14 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4769035365267631880, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 8012390946470698828, guid: b42562a756e001f459a1fd0ad3bd178c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
---- !u!1 &7082815413603659669 stripped
+--- !u!1 &8719743466327126708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 145696277867765296, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
-  m_PrefabInstance: {fileID: 6939671995791864229}
+  m_PrefabInstance: {fileID: 8865157221165673604}
   m_PrefabAsset: {fileID: 0}

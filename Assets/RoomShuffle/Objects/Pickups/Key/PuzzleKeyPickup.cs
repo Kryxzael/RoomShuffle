@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 /// <summary>
 /// A pickup that grants the player a puzzle key
 /// </summary>
-public class PuzzleKeyPickup : Pickup
+public class PuzzleKeyPickup : PickupScript
 {
-    protected override void OnPickup()
+    public override void OnPickup()
     {
         Commons.Inventory.PuzzleKeys++;
     }

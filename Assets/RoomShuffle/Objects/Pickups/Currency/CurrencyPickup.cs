@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.RoomShuffle.Objects.Pickups.Currency
-{
+{ 
     /// <summary>
     /// A pickup that gives the player currency
     /// </summary>
-    public class CurrencyPickup : Pickup
+    public class CurrencyPickup : PickupScript
     {
         [Tooltip("The worth of the pickup in currency")]
         public int Value;
@@ -19,7 +19,7 @@ namespace Assets.RoomShuffle.Objects.Pickups.Currency
         /// <summary>
         /// <inheritdoc />
         /// </summary>
-        protected override void OnPickup()
+        public override void OnPickup()
         {
             if (Commons.CurrentRoomEffects.HasFlag(RoomEffects.ValuePickups))
                 Commons.Inventory.Currency += (int)Math.Round(Value * Commons.RoomEffectController.ValuePickupsMultiplier);

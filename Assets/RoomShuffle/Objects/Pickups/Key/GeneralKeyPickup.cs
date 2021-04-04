@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 /// <summary>
 /// A pickup that grants the player a general key
 /// </summary>
-public class GeneralKeyPickup : Pickup
+public class GeneralKeyPickup : PickupScript
 {
-    protected override void OnPickup()
+    public override void OnPickup()
     {
         Commons.Inventory.GeneralKeys++;
     }
