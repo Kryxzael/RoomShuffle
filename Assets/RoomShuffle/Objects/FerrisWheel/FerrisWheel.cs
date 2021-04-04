@@ -10,6 +10,9 @@ public class FerrisWheel : MonoBehaviour
     [Tooltip("Number of platforms to be spawned")]
     public int NumberOfPlatforms;
     
+    [Tooltip("Number of blank space that should take place. (absence of platforms)")]
+    public int NumberOfBlankSpace;
+    
     [Tooltip("The speed of the ferris wheel object")] 
     public float Speed;
 
@@ -28,11 +31,12 @@ public class FerrisWheel : MonoBehaviour
                 circularMotion = obj.AddComponent<CircularMotion>();
 
             //sets the angle
-            circularMotion.SetAngle(360 / NumberOfPlatforms * i);
+            circularMotion.SetAngle(360 / (NumberOfPlatforms + NumberOfBlankSpace) * i);
             
             //Set speed and radius for each ferris wheel object
             circularMotion.Radius = Radius;
             circularMotion.Speed = Speed;
+            
         }
     }
 }
