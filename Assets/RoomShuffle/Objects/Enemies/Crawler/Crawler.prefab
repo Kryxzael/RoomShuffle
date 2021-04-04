@@ -1,54 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1354812528253412575
+--- !u!114 &5306031883731810353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2575500466702762593}
+  m_GameObject: {fileID: 1128540765930643550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd059775fa4222148aa4717c0bb87d22, type: 3}
+  m_Script: {fileID: 11500000, guid: 54e0ff41b7e92e4489dfbffd59e9329f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReactionTime: 1
-  BlindChaseTime: 1
-  SpottingRadius: 5
-  SpottingRadiusChasingScale: 2
-  EnemiescanSeeTroughEnemies: 0
---- !u!114 &3407753712575172271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2575500466702762593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1af8560d37d093348bb921f21715cf83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WalkSpeed: 2
-  RunSpeed: 5
-  FumbleWaitTime:
-    Minimum: 3
-    Maximum: 7
-  GoHomeTime: 5
---- !u!114 &8556061120516981653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2575500466702762593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f693f8f43b0ebf4ca19f3a1544f635d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoundaryRadius: 0
---- !u!1001 &7135639875568948596
+  WalkSpeed: 3
+  ClockwiseRotation: 0
+--- !u!1001 &5697483946944264011
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -58,18 +24,18 @@ PrefabInstance:
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8976018127306389262, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+      objectReference: {fileID: -1182408495049320820, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: StartingDirection
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: RigidbodyStarupMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526250, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Name
-      value: Spotter
+      value: Crawler
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_RootOrder
@@ -117,8 +83,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629be960b28b727418def72be1739e90, type: 3}
---- !u!1 &2575500466702762593 stripped
+--- !u!1 &1128540765930643550 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4663731051167586069, guid: 629be960b28b727418def72be1739e90, type: 3}
-  m_PrefabInstance: {fileID: 7135639875568948596}
+  m_PrefabInstance: {fileID: 5697483946944264011}
   m_PrefabAsset: {fileID: 0}

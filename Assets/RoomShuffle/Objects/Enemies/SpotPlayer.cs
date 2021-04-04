@@ -43,8 +43,7 @@ public enum SpotterPlayerRelationship
 /// <summary>
 /// State machine that allows an object to spot the player
 /// </summary>
-[RequireComponent(typeof(Collider2D))]
-public class SpotPlayer : MonoBehaviour
+public class SpotPlayer : EnemyScript
 {
     [Tooltip("The amount of seconds the state-machine will use to go from spotted to chasing mode.")]
     public float ReactionTime = 1f;
@@ -89,12 +88,6 @@ public class SpotPlayer : MonoBehaviour
     /* *** */
 
     private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
-    private Collider2D _collider;
-
-    void Awake()
-    {
-        _collider = GetComponent<Collider2D>();
-    }
 
     void Update()
     {
@@ -126,8 +119,9 @@ public class SpotPlayer : MonoBehaviour
             //Checks vision cone of enemy. If a raycast towards the player hits it, the player is spotted. If not, something's in the way
 
             RaycastHit2D[] hits;
-            hits = Physics2D.RaycastAll(_collider.bounds.center, _player.Value.transform.position - transform.position, distanceToPlayer);
+            hits = Physics2D.RaycastAll(Enemy.Collider.bounds.center, _player.Value.transform.position - transform.position, distanceToPlayer);
 
+            //TODO: Should probably detect using layers, not tags
             bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && (x.transform.gameObject.tag != "Projectile") && x.transform.gameObject.tag != "Player");
 
             if (inSight)
@@ -190,7 +184,7 @@ public class SpotPlayer : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (_collider == null)
+        if (!Enemy.Collider)
             return;
 
         switch (State)
@@ -214,11 +208,11 @@ public class SpotPlayer : MonoBehaviour
                 break;
         }
 
-        Gizmos.DrawWireCube(_collider.bounds.center, _collider.bounds.size * 1.1f);
+        Gizmos.DrawWireCube(Enemy.Collider.bounds.center, Enemy.Collider.bounds.size * 1.1f);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_collider.bounds.center, SpottingRadius);
+        Gizmos.DrawWireSphere(Enemy.Collider.bounds.center, SpottingRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_collider.bounds.center, SpottingRadius * SpottingRadiusChasingScale);
+        Gizmos.DrawWireSphere(Enemy.Collider.bounds.center, SpottingRadius * SpottingRadiusChasingScale);
     }
 }

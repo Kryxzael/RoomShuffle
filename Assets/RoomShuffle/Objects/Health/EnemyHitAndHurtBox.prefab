@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd1120266de0043896d813f8926f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawningRadius: 1
   LootTables:
   - Spawnrate: 1
     Table: {fileID: 11400000, guid: b8d4939b2bec78f4f8aaa33278166be0, type: 2}

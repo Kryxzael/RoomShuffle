@@ -1,75 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1354812528253412575
+--- !u!114 &3159267359176967993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2575500466702762593}
+  m_GameObject: {fileID: 3332340997247347791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd059775fa4222148aa4717c0bb87d22, type: 3}
+  m_Script: {fileID: 11500000, guid: b1e4946e94cc49c4bbaf76993a098291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReactionTime: 1
-  BlindChaseTime: 1
-  SpottingRadius: 5
-  SpottingRadiusChasingScale: 2
-  EnemiescanSeeTroughEnemies: 0
---- !u!114 &3407753712575172271
+  SlopeDetectionThreshold: 0.25
+  CheckDepth: 0.75
+--- !u!114 &5251578927172920796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2575500466702762593}
+  m_GameObject: {fileID: 3332340997247347791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1af8560d37d093348bb921f21715cf83, type: 3}
+  m_Script: {fileID: 11500000, guid: b0189b06f808fdd45b9a9c1d454b7cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 2
-  RunSpeed: 5
-  FumbleWaitTime:
-    Minimum: 3
-    Maximum: 7
-  GoHomeTime: 5
---- !u!114 &8556061120516981653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2575500466702762593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f693f8f43b0ebf4ca19f3a1544f635d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoundaryRadius: 0
---- !u!1001 &7135639875568948596
+  WalkSpeed: 5
+--- !u!1001 &7964119877578111834
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3681573580406778509, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Name
+      value: Behavior
+      objectReference: {fileID: 0}
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8976018127306389262, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+      objectReference: {fileID: -7369953315678303813, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: StartingDirection
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
-      propertyPath: RigidbodyStarupMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526250, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Name
-      value: Spotter
+      value: Smart Walker
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_RootOrder
@@ -93,15 +72,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -117,8 +96,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629be960b28b727418def72be1739e90, type: 3}
---- !u!1 &2575500466702762593 stripped
+--- !u!1 &3332340997247347791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4663731051167586069, guid: 629be960b28b727418def72be1739e90, type: 3}
-  m_PrefabInstance: {fileID: 7135639875568948596}
+  m_PrefabInstance: {fileID: 7964119877578111834}
   m_PrefabAsset: {fileID: 0}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,78 +11,102 @@ using Random = UnityEngine.Random;
 /// An enemy pattern that can spot the player and chase them
 /// </summary>
 [RequireComponent(typeof(LimitedMovementRadius))]
-public class SpotterMovementPattern : EnemyScript
+public class FlyingSpotterMovementPattern : EnemyScript
 {
-    [Tooltip("The speed the spotter will move at when fumbling")]
-    public float WalkSpeed;
+    [Tooltip("The speed the spotter will fly at when fumbling")]
+    public float FlyingSpeed;
 
-    [Tooltip("The speed the spotter will move at when chasing")]
-    public float RunSpeed;
+    [Tooltip("The speed the spotter will fly at when chasing")]
+    public float ChaseSpeed;
 
     [Tooltip("The amount of time the spotter can move or wait before choosing a new action when fumbling")]
     public RandomValueBetween FumbleWaitTime = new RandomValueBetween(3f, 7f);
     
-    [Tooltip("The amount of the in seconds the enemy will attempt to go home after loosing sight of the player")]
-    public float GoHomeTime;
+    [Tooltip("The amount of time the enemy will use to try to get to the home zone")]
+    public float GoHomeWaitTime;
 
-    //how much time is left of the GoHomeTime
-    private float _goHomeTimeLeft;
-    
     //The remaining fumble wait time
     private float _fumbleCurrentWaitTime;
+    
+    //The remaning time the enemy will attempt to go into the home zone
+    private float _goHomeCurrentWaitTime;
 
-    //If the current fumble mode is walking
-    private bool _fumbleWalk = true;
+    //If the current fumble mode is flying
+    private bool _fumbleFly = true;
 
     /* *** */
 
     private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
     private SpotPlayer _spotPlayer;
+    private Vector2 _flyDirection;
     private LimitedMovementRadius _limitedMovementRadius;
 
-    void Start()
+    private void Start()
     {
         _spotPlayer = GetComponent<SpotPlayer>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
     }
     
-    void Update()
+    private void Update()
     {
-        ShowDebugColors(); //TODO Delete this
-        
+        //TODO Delete this function
+        ShowDebugColors();
+
+
         switch (_spotPlayer.State)
         {
             case SpotterPlayerRelationship.OutOfRadius:
-            case SpotterPlayerRelationship.HiddenInRadius:   
+            case SpotterPlayerRelationship.HiddenInRadius:
+
                 if (!_limitedMovementRadius.InHomeRadius)
                 {
-                    tryToGoHome();
+                    _flyDirection = (_limitedMovementRadius.Home - (Vector2) transform.position).normalized;
+                    TryToGoHome();
                 }
                 else
                 {
+                    _goHomeCurrentWaitTime = Commons.GetEffectValue(GoHomeWaitTime, EffectValueType.EnemyWaitTime);
                     FumbleAround();
                 }
                 break;
 
             case SpotterPlayerRelationship.Spotted:
                 FlipToPlayer();
-                Enemy.Rigidbody.SetVelocityX(0f);
+                Enemy.Rigidbody.velocity = default;
                 break;
 
             case SpotterPlayerRelationship.Puzzled:
-                Enemy.Rigidbody.SetVelocityX(0f);
+                Enemy.Rigidbody.velocity = default;
                 break;
             
             case SpotterPlayerRelationship.BlindChasing:
-                Enemy.Rigidbody.SetVelocityX(Math.Sign(_spotPlayer.BlindChaseDirection.x) * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
+                
+                _goHomeCurrentWaitTime = Commons.GetEffectValue(GoHomeWaitTime, EffectValueType.EnemyWaitTime);
+                Enemy.Rigidbody.velocity = _spotPlayer.BlindChaseDirection * Commons.GetEffectValue(ChaseSpeed, EffectValueType.EnemySpeed);
+                
+                //Flip the sprite to face the last place the player was
+                if (_spotPlayer.BlindChaseDirection.x <= 0)
+                {
+                    Enemy.Flippable.Direction = Direction1D.Left;
+                }
+                else
+                {
+                    Enemy.Flippable.Direction = Direction1D.Right;
+                }
+
                 break;
 
             case SpotterPlayerRelationship.Chasing:
                 FlipToPlayer();
-                Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
+                _goHomeCurrentWaitTime = GoHomeWaitTime;
+                Enemy.Rigidbody.velocity = (_player.Value.transform.position - transform.position).normalized * Commons.GetEffectValue(ChaseSpeed, EffectValueType.EnemySpeed);
                 break;
+            
         }
+        
     }
+
+
 
     /// <summary>
     /// Flips the object around to face the player
@@ -101,7 +126,7 @@ public class SpotterMovementPattern : EnemyScript
         if (Enemy.Flippable.DirectionSign != relativePositionSign)
             Enemy.Flippable.Flip();
     }
-    
+
     /// <summary>
     /// Makes the object move around randomly
     /// </summary>
@@ -110,43 +135,46 @@ public class SpotterMovementPattern : EnemyScript
         _fumbleCurrentWaitTime -= Time.deltaTime;
 
         //Fumbling
-        if (_fumbleWalk)
-        { 
-            Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
+        if (_fumbleFly)
+        {
+            if (Math.Sign(_flyDirection.x) != Enemy.Flippable.DirectionSign)
+            {
+                Enemy.Flippable.Flip();
+            }
+
+            Enemy.Rigidbody.velocity = _flyDirection * Commons.GetEffectValue(FlyingSpeed, EffectValueType.EnemySpeed);
         }
 
         //Stationary
         else
         {
-            Enemy.Rigidbody.SetVelocityX(0f);
+            Enemy.Rigidbody.velocity = default;
         }
 
         //Choose a new action
         if (_fumbleCurrentWaitTime <= 0)
         {
-            if (!_fumbleWalk && Random.Range(0, 2) == 0)
-                Enemy.Flippable.Flip();
-
-            _fumbleWalk = !_fumbleWalk;
+            _flyDirection = Random.insideUnitCircle.normalized;
+            _fumbleFly = !_fumbleFly;
             _fumbleCurrentWaitTime = Commons.GetEffectValue(FumbleWaitTime.Pick(), EffectValueType.EnemyWaitTime);
         }
     }
-    
-    private void tryToGoHome()
+
+    private void TryToGoHome()
     {
-        _goHomeTimeLeft -= Time.deltaTime;
-        if (_goHomeTimeLeft <= 0)
+
+        _goHomeCurrentWaitTime -= Time.deltaTime;
+        if (_goHomeCurrentWaitTime <= 0)
         {
             _limitedMovementRadius.Home = transform.position;
-            _goHomeTimeLeft = Commons.GetEffectValue(GoHomeTime, EffectValueType.EnemyWaitTime);
+            _goHomeCurrentWaitTime = GoHomeWaitTime;
         }
         else
         {
-            FlipToVector2(_limitedMovementRadius.Home);
-            Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
+            Enemy.Rigidbody.velocity = (_limitedMovementRadius.Home - (Vector2)transform.position).normalized * Commons.GetEffectValue(FlyingSpeed, EffectValueType.EnemySpeed);
         }
     }
-    
+
     private void ShowDebugColors()
     {
         Enemy.SpriteRenderer.color = _spotPlayer.State switch
