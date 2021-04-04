@@ -28,7 +28,7 @@ public class WeaponPickup : Pickup
     /// </summary>
     public WeaponInstance Instance { get; set; }
 
-    private void Start()
+    protected override void Start()
     {
         if (ShouldCreateWeaponFromTemplate)
             Instance = Template.CreateWeaponInstance();
