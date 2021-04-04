@@ -26,7 +26,7 @@ public class TextError : MonoBehaviour
         }
     }
 
-    public void Start()
+    public void Awake()
     {
         TMP = GetComponent<TextMeshProUGUI>();
     }

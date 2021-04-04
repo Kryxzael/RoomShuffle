@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using UnityEngine;
 
 /// <summary>
@@ -14,11 +8,18 @@ public class AddTimePickup : PickupScript
     [Tooltip("The amount of seconds to add to the timer")]
     public float AddTime;
 
-    [Tooltip("The timer to add seconds to")]
-    public Timer CountdownTimer; //TODO: This REALLY shouldn't be a reference here!
+    //The countdowntimer in UI
+    private Timer _countdownTimer;
+
+    private void Awake()
+    {
+        //Find countdowntimer
+        _countdownTimer = Commons.CountdownTimer.GetComponent<Timer>();
+    }
 
     public override void OnPickup()
     {
-        CountdownTimer.AddTime(AddTime);
+        //Add time to the count down timer
+        _countdownTimer.AddTime(AddTime);
     }
 }

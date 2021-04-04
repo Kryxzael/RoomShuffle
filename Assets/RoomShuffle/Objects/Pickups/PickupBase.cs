@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -19,8 +17,13 @@ public sealed class PickupBase : MonoBehaviour
     [Tooltip("How the player is able to pick up this pickup")]
     public PickupActivationMode ActivationMode;
 
+    //The currency counter in UI
+    private TextError _currencyText;
+
     void Start()
     {
+        _currencyText = Commons.CurrencyUI.GetComponent<TextError>();
+        
         if (Price > 0 && ActivationMode == PickupActivationMode.OnContact)
             Debug.LogWarning("Purchasable pickups will not work properly if ActivationMode is set to OnContact");
     }
@@ -38,6 +41,11 @@ public sealed class PickupBase : MonoBehaviour
                 {
                     PickUp();
                     Commons.Inventory.Currency -= Price;
+                }
+                //the player has not enough money 
+                else
+                {
+                    _currencyText.ErrorLerp();
                 }
             }
                 
