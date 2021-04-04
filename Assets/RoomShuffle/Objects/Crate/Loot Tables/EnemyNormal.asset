@@ -16,7 +16,7 @@ MonoBehaviour:
     Minimum: 2
     Maximum: 5
   Currencies:
-  - {fileID: 7281883675035295176, guid: 5997b4a94dc4907479b7113ae7ad5034, type: 3}
-  - {fileID: 1928808644788903940, guid: 65a92325549e57c4680786b3c5583c47, type: 3}
-  - {fileID: 1928808644788903940, guid: a8f4750574aad44488b1bbdabfcd95af, type: 3}
-  - {fileID: 1928808644788903940, guid: 5c8baee9dba85e041aea60cdbeade0ab, type: 3}
+  - {fileID: 2771847308459883309, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
+  - {fileID: 2771847308459883309, guid: 1e44836a1ffaea1418697ec5a4ecad60, type: 3}
+  - {fileID: 2771847308459883309, guid: d9d29f21ba9139441a275f1fd6eacbde, type: 3}
+  - {fileID: 2771847308459883309, guid: 6b13a09d74b48774280c51aa3f602258, type: 3}

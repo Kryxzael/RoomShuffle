@@ -132293,7 +132293,7 @@ PrefabInstance:
     - target: {fileID: 8745711018509690392, guid: 222a61de25ba34f4eab163f2aa5c6849, type: 3}
       propertyPath: Platform
       value: 
-      objectReference: {fileID: 7281883675035295177, guid: 5997b4a94dc4907479b7113ae7ad5034, type: 3}
+      objectReference: {fileID: 6671356171363614601, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
     - target: {fileID: 8745711018509690393, guid: 222a61de25ba34f4eab163f2aa5c6849, type: 3}
       propertyPath: m_Name
       value: Currency Ferriswheel

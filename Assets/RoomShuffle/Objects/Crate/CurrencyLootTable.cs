@@ -18,7 +18,7 @@ public class CurrencyLootTable : LootTable
     public RandomValueBetween Value;
 
     [Tooltip("The available currency pickups")]
-    public List<CurrencyPickup> Currencies = new List<CurrencyPickup>();
+    public List<PickupBase> Currencies = new List<PickupBase>();
 
     /// <summary>
     /// <inheritdoc />
@@ -30,7 +30,7 @@ public class CurrencyLootTable : LootTable
         int sum = 0;
 
         //Sorts the currencies by their value so that higher denominations are prioritized
-        var currenciesByValue = Currencies.OrderByDescending(i => i.Value);
+        var currenciesByValue = Currencies.OrderByDescending(i => i.GetComponentInChildren<CurrencyPickup>().Value);
 
         //Keep yielding pickups until we've reached our sum
         while (sum < target)
@@ -38,10 +38,12 @@ public class CurrencyLootTable : LootTable
             //Browse the currency items
             foreach (var i in currenciesByValue)
             {
+                CurrencyPickup iCurrency = i.GetComponentInChildren<CurrencyPickup>();
+
                 //If the current currency object's value does not exceed the remaining value to yield, then yield it
-                if (sum + i.Value <= target)
+                if (sum + iCurrency.Value <= target)
                 {
-                    sum += i.Value;
+                    sum += iCurrency.Value;
                     yield return i.gameObject;
                     break;
                 }
