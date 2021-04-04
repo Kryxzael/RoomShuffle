@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +13,11 @@ public abstract class Pickup : MonoBehaviour
 {
     [Tooltip("The price of the pickup")]
     public int Price;
+
+    [Tooltip("The text displaying the price")]
+    public PriceTag PriceTagPrefab;
+
+    private PriceTag _priceTagInstance;
     
     private bool _inPickupRange;
 
@@ -40,15 +45,41 @@ public abstract class Pickup : MonoBehaviour
 
     protected virtual void Update()
     {
-        //The player interacts with the item
-        if (_inPickupRange && ActivationMode == PickupActivationMode.OnInteraction && Input.GetButtonDown("Interact"))
+        //The player is in range
+        if (_inPickupRange)
         {
-            if (Commons.Inventory.Currency >= Price)
+            //If the pricetag instance is null: create a pricetag
+            if (!_priceTagInstance)
             {
-                 PickUp();
-                 Commons.Inventory.Currency -= Price;
+                _priceTagInstance = Instantiate(
+                    original: PriceTagPrefab, 
+                    position: transform.position + Vector3.up * 1, 
+                    rotation: Quaternion.identity, 
+                    parent: transform
+                );
+                _priceTagInstance.SetPrice(Price);
+            }
+
+            //The player interacts with the item
+            if (ActivationMode == PickupActivationMode.OnInteraction && Input.GetButtonDown("Interact"))
+            {
+                //The player has enough money to buy the item
+                if (Commons.Inventory.Currency >= Price)
+                {
+                     PickUp();
+                     Commons.Inventory.Currency -= Price;
+                }
             }
         }
+        else
+        {
+            if (_priceTagInstance)
+            {
+                Destroy(_priceTagInstance.gameObject);
+            }
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

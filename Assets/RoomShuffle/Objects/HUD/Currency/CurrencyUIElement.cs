@@ -69,7 +69,7 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
                     count++;
                 }
 
-                _label.text = count.ToString();
+                SetLabel(count.ToString());
 
                 if (_smack != null)
                     _smack.Smack();
@@ -79,5 +79,17 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
 
             _counterRunning = false;
         }
+        
+        /// <summary>
+        /// Sets the label for curreny and adds the desired sprite
+        /// </summary>
+        /// <param name="text"></param>
+        private void SetLabel(string text)
+        {
+            _label.text = text + "<sprite=4>";
+        }
     }
+    
+    
+    
 }
