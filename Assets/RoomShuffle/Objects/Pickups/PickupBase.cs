@@ -6,7 +6,7 @@ using UnityEngine;
 public sealed class PickupBase : MonoBehaviour
 {
     //Whether the player is currently in range of the pickup
-    private bool _inPickupRange;
+    public bool InPickupRange { get; private set; }
 
     /* *** */
 
@@ -31,7 +31,7 @@ public sealed class PickupBase : MonoBehaviour
     private void Update()
     {
         //The player is in range
-        if (_inPickupRange)
+        if (InPickupRange)
         {
             //The player interacts with the item
             if (ActivationMode == PickupActivationMode.OnInteraction && Input.GetButtonDown("Interact"))
@@ -66,7 +66,7 @@ public sealed class PickupBase : MonoBehaviour
             //The item must be manually picked up. Prime it
             else
             {
-                _inPickupRange = true;
+                InPickupRange = true;
             }
         }
     }
@@ -75,7 +75,7 @@ public sealed class PickupBase : MonoBehaviour
     {
         //The player leaves the item. Unprime it
         if (collision.gameObject.IsPlayer())
-            _inPickupRange = false;
+            InPickupRange = false;
     }
 
     /// <summary>
