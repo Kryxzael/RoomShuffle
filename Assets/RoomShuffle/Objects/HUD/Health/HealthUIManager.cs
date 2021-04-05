@@ -139,6 +139,9 @@ public class HealthUIManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CoAnimateSingleHeart(int target)
     {
+        //the minimum speed the heart will fill up
+        const float MINIMUM_FILL_SPEED = 120;
+        
         //Upsize the scale of the heart
         HeartCounterHeart.transform.localScale = Vector3.one * 1.5f;
         
@@ -147,13 +150,13 @@ public class HealthUIManager : MonoBehaviour
             //if the fillAmount of the heart and counter is lower than actual health
             if ((int)_lastHealthFloat < target)
             {
-                _lastHealthFloat += Time.deltaTime * (target - _lastHealthFloat + 0.5f);
+                _lastHealthFloat += Time.deltaTime * (target - _lastHealthFloat + MINIMUM_FILL_SPEED);
             }
 
             //if the fillAmount of the heart and counter is higher than actual health
             else if ((int)_lastHealthFloat > target)
             {
-                _lastHealthFloat -= Time.deltaTime * (_lastHealthFloat - target + 0.5f);
+                _lastHealthFloat -= Time.deltaTime * (_lastHealthFloat - target + MINIMUM_FILL_SPEED);
             }
                 
             //set display value
