@@ -41,25 +41,25 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
-    m_Scale: 1
+    m_Scale: 2
     m_Name: ButtonPrompts_0
     m_HashCode: 942872686
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 1
-    m_Scale: 1
+    m_Scale: 2
     m_Name: ButtonPrompts_1
     m_HashCode: 942872687
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 2
-    m_Scale: 1
+    m_Scale: 2
     m_Name: ButtonPrompts_2
     m_HashCode: 942872684
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 3
-    m_Scale: 1
+    m_Scale: 2
     m_Name: ButtonPrompts_3
     m_HashCode: 942872685
   m_SpriteGlyphTable:
@@ -82,8 +82,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 16
       m_Height: 16
-      m_HorizontalBearingX: -8
-      m_HorizontalBearingY: 8
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 12
       m_HorizontalAdvance: 16
     m_GlyphRect:
       m_X: 16
@@ -97,8 +97,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 16
       m_Height: 16
-      m_HorizontalBearingX: -8
-      m_HorizontalBearingY: 8
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 12
       m_HorizontalAdvance: 16
     m_GlyphRect:
       m_X: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 16
       m_Height: 16
-      m_HorizontalBearingX: -8
-      m_HorizontalBearingY: 8
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 12
       m_HorizontalAdvance: 16
     m_GlyphRect:
       m_X: 16
