@@ -29,6 +29,10 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("By how much enemies will grow when large enemies are enabled")]
     public float LargeEnemiesGrowMultiplier = 2f;
 
+    [Header("Large Projectiles")]
+    [Tooltip("By how much enemies will grow when large enemies are enabled")]
+    public float LargeProjectilesGrowMultiplier = 3f;
+
     /* *** */
 
     //The default gravity level as defined by the physics settings

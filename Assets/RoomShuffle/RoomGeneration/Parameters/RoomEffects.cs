@@ -38,4 +38,9 @@ public enum RoomEffects
     /// The enemies will be larger than normal
     /// </summary>
     LargeEnemies = 0x10,
+
+    /// <summary>
+    /// The projectiles will be larger than normal
+    /// </summary>
+    LargeProjectiles = 0x20,
 }

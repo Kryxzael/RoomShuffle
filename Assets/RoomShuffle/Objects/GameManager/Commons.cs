@@ -192,9 +192,11 @@ public static class Commons
             case EffectValueType.EnemyWaitTime:
                 if (fxs.HasFlag(RoomEffects.FastFoe))
                     return originalValue / controller.FastFoeSpeedMultiplier;
-
                 break;
-                
+            case EffectValueType.ProjectileSize:
+                if (fxs.HasFlag(RoomEffects.LargeProjectiles))
+                    return originalValue * controller.LargeProjectilesGrowMultiplier;
+                break;
         }
 
         return originalValue;
@@ -225,5 +227,11 @@ public enum EffectValueType
     /// The value describes how long an enemy waits for something
     /// * The value is downscaled when fast-foe is enabled
     /// </summary>
-    EnemyWaitTime
+    EnemyWaitTime,
+
+    /// <summary>
+    /// The value describes a component of a projectile's size
+    /// * The value will be upscaled when larger projectiles is enabled
+    /// </summary>
+    ProjectileSize
 }

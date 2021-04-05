@@ -59,6 +59,12 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Start()
     {
+        transform.localScale = new Vector3(
+            x: Commons.GetEffectValue(transform.localScale.x, EffectValueType.ProjectileSize),
+            y: Commons.GetEffectValue(transform.localScale.y, EffectValueType.ProjectileSize),
+            z: Commons.GetEffectValue(transform.localScale.z, EffectValueType.ProjectileSize)
+        );
+
         _hurtBox = GetComponentInChildren<WeaponFireHurtbox>();
         _weaponInstance = _hurtBox.Weapon;
         _projectileSpwanPoint = transform.position;
