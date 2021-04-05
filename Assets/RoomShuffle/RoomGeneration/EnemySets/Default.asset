@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   EnabledInEradication: 1
-  PrimaryGround: {fileID: 8747412442085526250, guid: 7cf3e8fc74362c34a8ee2ef4004f37f8, type: 3}
-  SecondaryGround: {fileID: 9088345387371795486, guid: def3a07b5d3edd94297dfe98c7756798, type: 3}
-  PrimaryAir: {fileID: 2949534511493290772, guid: 30a01cc4b4b14b54f8ffffda5e3227ac, type: 3}
+  PrimaryGround: {fileID: 1721273977298268592, guid: bb0c81d80cb49ee488808cd292f11443, type: 3}
+  SecondaryGround: {fileID: 1721273977298268592, guid: bb0c81d80cb49ee488808cd292f11443, type: 3}
+  PrimaryAir: {fileID: 7509006015119567173, guid: a555910c90707b14d8054e4e3a3adce3, type: 3}
   SecondaryAir: {fileID: 6216344175140331170, guid: 4ee0444a07cc1cc439dd4e59780b65f4, type: 3}
