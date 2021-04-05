@@ -35,7 +35,7 @@ namespace Assets.RoomShuffle.Objects.Pickups
 
         private void Start()
         {
-            _startingPosition = transform.position;
+            _startingPosition = transform.localPosition;
             _randomPhaseOffset = UnityEngine.Random.Range(0, Mathf.PI * 2f);
         }
 
@@ -43,7 +43,7 @@ namespace Assets.RoomShuffle.Objects.Pickups
         {
             Vector3 direction = Horizontal ? Vector2.right : Vector2.up;
 
-            transform.position = _startingPosition + (direction * Mathf.Sin((_time + _randomPhaseOffset) * BobSpeed) * BobHeight);
+            transform.localPosition = _startingPosition + (direction * Mathf.Sin((_time + _randomPhaseOffset) * BobSpeed) * BobHeight);
             _time += Time.deltaTime;
         }
     }
