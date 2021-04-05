@@ -42,6 +42,7 @@ public class EnemyHitbox : Hitbox
                 i.DropItem();
 
             //Destroy the object
+            enabled = false;
             Destroy(transform.parent.gameObject);
         }
             
