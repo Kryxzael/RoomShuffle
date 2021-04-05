@@ -12,10 +12,10 @@ public class InteractionText : MonoBehaviour
     private PickupBase _pickupBase;
     
     //TODO chenge all of these to the correct sprites
-    private const string KEYBOARD_SPRITE_DOWN = "<sprite=4>";
-    private const string KEYBOARD_SPRITE_UP = "<sprite=5>";
-    private const string CONTROLLER_SPRITE_DOWN = "<sprite=4>";
-    private const string CONTROLLER_SPRITE_UP = "<sprite=5>";
+    private const string KEYBOARD_SPRITE_DOWN = "<sprite=1>";
+    private const string KEYBOARD_SPRITE_UP = "<sprite=0>";
+    private const string CONTROLLER_SPRITE_DOWN = "<sprite=3>";
+    private const string CONTROLLER_SPRITE_UP = "<sprite=2>";
     void Start()
     {
         _pickupBase = GetComponentInParent<PickupBase>();
