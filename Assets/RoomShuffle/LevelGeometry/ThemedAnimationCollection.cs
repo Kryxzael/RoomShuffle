@@ -42,6 +42,7 @@ public class ThemedAnimationCollection
     public Sprite VolcanoSprite;
     public Sprite JungleSprite;
     public Sprite CloudSprite;
+    public Sprite FactorySprite;
 
     [Header("Animations")]
     [Tooltip("The fallback animation that is used when no recognized theme is found")]
@@ -54,6 +55,7 @@ public class ThemedAnimationCollection
     public SpriteAnimation VolcanoAnimation;
     public SpriteAnimation JungleAnimation;
     public SpriteAnimation CloudAnimation;
+    public SpriteAnimation FactoryAnimation;
 
     /// <summary>
     /// Gets the sprite for the current tileset according to the room generator
@@ -81,23 +83,18 @@ public class ThemedAnimationCollection
     {
         if (RoomGenerator != null && RoomGenerator.History.Any())
         {
-            switch (RoomGenerator.CurrentRoomConfig.Theme)
+            return RoomGenerator.CurrentRoomConfig.Theme switch
             {
-                case RoomTheme.Grass:
-                    return (GrassSprite, GrassAnimation);
-                case RoomTheme.Snow:
-                    return (SnowSprite, SnowAnimation);
-                case RoomTheme.Autumn:
-                    return (AutumnSprite, AutumnAnimation);
-                case RoomTheme.Cave:
-                    return (CaveSprite, CaveAnimation);
-                case RoomTheme.Volcano:
-                    return (VolcanoSprite, VolcanoAnimation);
-                case RoomTheme.Jungle:
-                    return (JungleSprite, JungleAnimation);
-                case RoomTheme.Cloud:
-                    return (CloudSprite, CloudAnimation);
-            }
+                RoomTheme.Grass => (GrassSprite, GrassAnimation),
+                RoomTheme.Snow => (SnowSprite, SnowAnimation),
+                RoomTheme.Autumn => (AutumnSprite, AutumnAnimation),
+                RoomTheme.Cave => (CaveSprite, CaveAnimation),
+                RoomTheme.Volcano => (VolcanoSprite, VolcanoAnimation),
+                RoomTheme.Jungle => (JungleSprite, JungleAnimation),
+                RoomTheme.Cloud => (CloudSprite, CloudAnimation),
+                RoomTheme.Factory => (FactorySprite, FactoryAnimation),
+                _ => (DefaultSprite, DefaultAnimation)
+            };
         }
 
         return (DefaultSprite, DefaultAnimation);

@@ -47,5 +47,10 @@ public enum RoomTheme
     /// <summary>
     /// Takes place in the sky, walking on clouds
     /// </summary>
-    Cloud
+    Cloud,
+
+    /// <summary>
+    /// A mechanical factory area
+    /// </summary>
+    Factory
 }

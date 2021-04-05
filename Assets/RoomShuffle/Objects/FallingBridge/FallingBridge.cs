@@ -106,5 +106,4 @@ public class FallingBridge : MonoBehaviour
             target.localScale = Scale;
         }
     }
-
 }
