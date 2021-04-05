@@ -34,13 +34,14 @@ public class DisplayEnemyHealth : EnemyScript
     void Update()
     {
         int health = Enemy.HealthController.Health;
+        const float POP_NUMBER_RANDOM_X_OFFSET = 1f;
         
         if (_lastHealth != health)
         {
             
             TextMeshPro instance = Instantiate(
                 original: PopNumbers, 
-                position: transform.position + Vector3.up * 1f,
+                position: transform.position + Vector3.up * 1f + Vector3.right * UnityEngine.Random.Range(-POP_NUMBER_RANDOM_X_OFFSET, POP_NUMBER_RANDOM_X_OFFSET),
                 rotation: Quaternion.identity
             );
 
@@ -80,7 +81,7 @@ public class DisplayEnemyHealth : EnemyScript
     {
 
         _healthBar.localScale = new Vector3(
-            health * _healthBarLoaclScaleX / Enemy.HealthController.MaximumHealth,
+            health * _healthBarLoaclScaleX / Mathf.Max(1f, Enemy.HealthController.MaximumHealth), //Max-ing to prevent DIV/0
             _healthBar.localScale.y, 
             _healthBar.localScale.z
         );

@@ -8,17 +8,16 @@ using Image = UnityEngine.UI.Image;
 
 public class ItemUIManager : MonoBehaviour
 {
-    public Image _image;
-    public Image _imageCopy;
-    public TextMeshProUGUI _text;
-    
+    public Image Image;
+    public Image ImageCopy;
+    public TextMeshProUGUI Text;
 
     /// <summary>
-    /// Sets the "durability left on the item. From 0 to 1"
+    /// Sets the progress (cooldown, power-up timer, etc.) displayed on the item. From 0 to 1
     /// </summary>
     public void SetItemImageFill(float fillAmount)
     {
-        _imageCopy.fillAmount = fillAmount;
+        ImageCopy.fillAmount = fillAmount;
     }
 
     /// <summary>
@@ -27,6 +26,6 @@ public class ItemUIManager : MonoBehaviour
     /// <param name="text"></param>
     public void SetText(string text)
     {
-        _text.text = text;
+        Text.text = text;
     }
 }

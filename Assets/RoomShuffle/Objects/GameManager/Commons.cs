@@ -36,6 +36,10 @@ public static class Commons
         () => PlayerManager.GetComponent<Inventory>()
     );
 
+    private static RenewableLazy<PowerUpManager> _powerupManager { get; } = new RenewableLazy<PowerUpManager>(
+        () => Object.FindObjectOfType<PowerUpManager>()
+    );
+
     /* *** */
 
     private static RenewableLazy<GameObject> _enemyMananger { get; } = new RenewableLazy<GameObject>(
@@ -107,6 +111,8 @@ public static class Commons
     /// Gets the player's inventory
     /// </summary>
     public static Inventory Inventory => _inventory.Value;
+
+    public static PowerUpManager PowerUpManager => _powerupManager.Value;
 
     /*
      * HUD

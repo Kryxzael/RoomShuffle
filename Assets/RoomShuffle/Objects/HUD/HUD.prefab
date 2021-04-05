@@ -1453,9 +1453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8f60b625031134588ef37b8fe2117b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 7951308019024246065}
-  _imageCopy: {fileID: 7951308019151633976}
-  _text: {fileID: 8820431008408383154}
+  Image: {fileID: 7951308019024246065}
+  ImageCopy: {fileID: 7951308019151633976}
+  Text: {fileID: 8820431008408383154}
   _keySprite: {fileID: -366954489235091134, guid: b42562a756e001f459a1fd0ad3bd178c, type: 3}
   KeyType: 1
 --- !u!114 &94554838
@@ -1470,9 +1470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8f60b625031134588ef37b8fe2117b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 7951308017584086818}
-  _imageCopy: {fileID: 7951308017440937003}
-  _text: {fileID: 8820431006637130913}
+  Image: {fileID: 7951308017584086818}
+  ImageCopy: {fileID: 7951308017440937003}
+  Text: {fileID: 8820431006637130913}
   _keySprite: {fileID: 8012390946470698828, guid: b42562a756e001f459a1fd0ad3bd178c, type: 3}
   KeyType: 0
 --- !u!1001 &761708997

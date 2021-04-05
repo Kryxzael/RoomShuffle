@@ -22,7 +22,7 @@ public class KeySlot : ItemUIManager
     void Start()
     {
         _inventory = Commons.Inventory;
-        _textSmack = _text.GetComponent<TextSmack>();
+        _textSmack = Text.GetComponent<TextSmack>();
         SetItemImageFill(0);
     }
 
@@ -50,16 +50,16 @@ public class KeySlot : ItemUIManager
         //if the player has any keys
         if (_currentNumberOfKeys > 0)
         {
-            _text.text = _currentNumberOfKeys.ToString();
+            Text.text = _currentNumberOfKeys.ToString();
             _textSmack.Smack();
-            _image.sprite = _keySprite;
-            _imageCopy.sprite = _keySprite;
+            Image.sprite = _keySprite;
+            ImageCopy.sprite = _keySprite;
         }
         else
         {
-            _text.text = "";
-            _image.sprite = null;
-            _imageCopy.sprite = null;
+            Text.text = "";
+            Image.sprite = null;
+            ImageCopy.sprite = null;
         }
     }
 }
