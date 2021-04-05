@@ -18,6 +18,8 @@ public class InteractionText : MonoBehaviour
     private const string CONTROLLER_SPRITE_UP = "<sprite=2>";
     void Start()
     {
+        //Time.timeScale = 0.1f;
+
         _pickupBase = GetComponentInParent<PickupBase>();
         
         //The interaction text shall not be visible if the player don't have to

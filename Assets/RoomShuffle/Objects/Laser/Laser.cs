@@ -56,7 +56,7 @@ public class Laser : MonoBehaviour
          * Figure out if the laser should be on
          */
         //The progress (percentage) of the current cycle with offset taken into account
-        var cycleProgress = (Time.time + (CycleOffset * CycleTime)) % CycleTime / CycleTime;
+        var cycleProgress = (Commons.GetEffectValue(Time.time, EffectValueType.EnemySpeed) + (CycleOffset * CycleTime)) % CycleTime / CycleTime;
 
         //The laser is on if the cycle is less than the duty cycle of the laser
         IsOn = cycleProgress < DutyCycle;

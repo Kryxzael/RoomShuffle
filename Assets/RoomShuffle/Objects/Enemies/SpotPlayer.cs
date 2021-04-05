@@ -99,7 +99,7 @@ public class SpotPlayer : EnemyScript
         }
 
         float distanceToPlayer = Vector2.Distance(_player.Value.transform.position, transform.position);   
-        ReactionTimeLeft = Mathf.Clamp(ReactionTimeLeft, 0, ReactionTime);
+        ReactionTimeLeft = Mathf.Clamp(ReactionTimeLeft, 0, Commons.GetEffectValue(ReactionTime, EffectValueType.EnemyWaitTime));
         
         //The player is in the enemy's spotting distance (or chasing spotting distance)
         if (distanceToPlayer < SpottingRadius || 
@@ -168,7 +168,7 @@ public class SpotPlayer : EnemyScript
                 }
                 ReactionTimeLeft += Time.deltaTime;
                 
-                if (ReactionTimeLeft >= ReactionTime)
+                if (ReactionTimeLeft >= Commons.GetEffectValue(ReactionTime, EffectValueType.EnemyWaitTime))
                 {
                     State = SpotterPlayerRelationship.OutOfRadius;
                 }
