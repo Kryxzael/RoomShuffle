@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class SplittingProjectile : Projectile
 {
+    private static bool _isQuitting;
+
     [Tooltip("The projectile that will be fired when the original projectile 'explodes'")]
     public Projectile SplitterProjectile;
 
@@ -85,8 +87,18 @@ public class SplittingProjectile : Projectile
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        _isQuitting = true;
+    }
+
     private void OnDestroy()
     {
+        //Do not split if the reason the projectile is being destroyed is due to application quit
+        //Unity doesn't like that
+        if (_isQuitting)
+            return;
+
         Split();
     }
 }
