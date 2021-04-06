@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10.62
+  Speed: 16
   Pushbackforce: 1000
   SpeedCap: 20
 --- !u!1001 &5097567243550274338
@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Name
-      value: BoomerangProjectile
+      value: FastBoomerangProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Layer

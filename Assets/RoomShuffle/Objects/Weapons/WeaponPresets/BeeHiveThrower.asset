@@ -9,21 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: ForwardBackwardShot
+  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
+  m_Name: BeeHiveThrower
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 25
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 100
       Pickrate: 1
   Range:
-    Minimum: 5
-    Maximum: 15
-  Cooldown: 0.1
-  Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
-  BlastCount: 2
+    Minimum: 8
+    Maximum: 12
+  Cooldown: 3.5
+  Icon: {fileID: -1182408495049320820, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+  Ammunition: {fileID: -6818387512883620425, guid: 59dfd400157a7594f93fefc12a87c572, type: 3}
+  MaxAngle: 0
+  BlastCount: 1

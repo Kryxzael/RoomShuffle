@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adef74459c54efe4da176991c19c4aed, type: 3}
-  m_Name: SplittingProjectile
+  m_Name: BeeProjectile
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: 5957954370949262699, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
+  - Sprite: {fileID: -5043386066909011260, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
     FrameTimeMultiplier: 1
-  - Sprite: {fileID: 1694347047550582946, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
+  - Sprite: {fileID: -97219875951916239, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
   FrameTimeDivider: 4

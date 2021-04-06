@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: ForwardBackwardShot
+  m_Name: BeeWeapon
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 3
       Pickrate: 1
   MaxDurability:
     Candidates:
     - Item: 99
       Pickrate: 1
   Range:
-    Minimum: 5
-    Maximum: 15
-  Cooldown: 0.1
+    Minimum: 30
+    Maximum: 30
+  Cooldown: 4
   Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
-  BlastCount: 2
+  Ammunition: {fileID: -4060184805109433625, guid: 01726a20c38cb17478197daaef2ae51a, type: 3}
+  BlastCount: 15

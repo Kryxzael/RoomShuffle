@@ -9,21 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: ForwardBackwardShot
+  m_Script: {fileID: 11500000, guid: 190032dc69c858343afe685456516461, type: 3}
+  m_Name: BoomerangSpray
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 25
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 999
       Pickrate: 1
   Range:
-    Minimum: 5
-    Maximum: 15
-  Cooldown: 0.1
-  Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
-  BlastCount: 2
+    Minimum: 13
+    Maximum: 16
+  Cooldown: 0.2
+  Icon: {fileID: -4637987512465366153, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+  Ammunition: {fileID: 4670741879340441384, guid: 747b5be46f54b0e40829894d4582723f, type: 3}
+  MaxAngle: 7
+  BlastCount: 1

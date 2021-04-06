@@ -1,127 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4030095956609810926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8486942713699789217}
-  - component: {fileID: 5475200959576329525}
-  - component: {fileID: 4959527946536573213}
-  m_Layer: 0
-  m_Name: Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8486942713699789217
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4030095956609810926}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8321132108485257397}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5475200959576329525
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4030095956609810926}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -5468725238945399578, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.25, y: 0.25}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &4959527946536573213
+--- !u!114 &-6818387512883620425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4030095956609810926}
+  m_GameObject: {fileID: 393914487905459971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30c53e1046191f43ae989f594cad2ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c834abdf52370a4d99f1ec8fc173810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 550
---- !u!114 &4670741879340441384
+  Speed: 12
+  SplitterProjectile: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
+  BlastCount: 3
+  SplittingProjectileRange: 1.5
+  SplittingProjectileDamage: 5
+  TimeBetweenEachSplit: 0.2
+--- !u!114 &1272832062742130230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127145713867747775}
+  m_GameObject: {fileID: 393914487905459971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10.62
-  Pushbackforce: 1000
-  SpeedCap: 20
---- !u!1001 &5097567243550274338
+  Animation: {fileID: 11400000, guid: 613d150a9c3b65b4b8ea7109994aad77, type: 2}
+--- !u!1001 &4758883274041580958
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3701683546172369299, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -168,16 +84,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Name
-      value: BoomerangProjectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
-      propertyPath: m_Layer
-      value: 13
+      value: SlowMultiSplitMiniEdition
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e571cc91c38fb5347bd9563b65524356, type: 3}
+      objectReference: {fileID: 5957954370949262699, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -192,13 +104,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
---- !u!1 &127145713867747775 stripped
+--- !u!1 &393914487905459971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
-  m_PrefabInstance: {fileID: 5097567243550274338}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8321132108485257397 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
-  m_PrefabInstance: {fileID: 5097567243550274338}
+  m_PrefabInstance: {fileID: 4758883274041580958}
   m_PrefabAsset: {fileID: 0}

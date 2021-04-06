@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d0465208336faf4a9ba9fb502d86096, type: 3}
-  m_Name: ThickSine
+  m_Name: MultiHelixWeapon
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
@@ -24,10 +24,11 @@ MonoBehaviour:
     Minimum: 10
     Maximum: 10
   Cooldown: 0.5
-  Icon: {fileID: 2066188200344418693, guid: 671a267be4f532b438d8acccb4b31a73, type: 3}
+  Icon: {fileID: -7153625193738375839, guid: a470aee010057ec49905c736884d6b9d, type: 3}
   AmmunitionList:
   - {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
-  Height: 1
+  - {fileID: 6701171779958748145, guid: 8049e9e8b52dc234994f756b6cd752fd, type: 3}
+  Height: 1.5
   BulletsPerShot: 3
   NumberOfShots: 6
   WaitTime: 0.03
