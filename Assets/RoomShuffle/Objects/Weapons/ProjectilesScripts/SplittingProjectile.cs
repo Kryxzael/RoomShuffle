@@ -37,9 +37,9 @@ public class SplittingProjectile : Projectile
         base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
         _weaponFireHurtBox = GetComponentInChildren<WeaponFireHurtbox>();
-        
+
         //Create a weaponInstance for splittingprojectile
-        SplittingProjectileWeaponInstance = new WeaponInstance();
+        SplittingProjectileWeaponInstance = GetComponentInChildren<WeaponFireHurtbox>().Weapon.Template.CreateWeaponInstance();
         SplittingProjectileWeaponInstance.Range = SplittingProjectileRange;
         SplittingProjectileWeaponInstance.BaseDamage = SplittingProjectileDamage;
     }
