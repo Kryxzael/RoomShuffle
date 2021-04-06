@@ -69,6 +69,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastSine
       objectReference: {fileID: 0}
+    - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.b
       value: 1

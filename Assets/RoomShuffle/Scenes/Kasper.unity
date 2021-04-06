@@ -105697,7 +105697,7 @@ PrefabInstance:
     - target: {fileID: 2463806911641969794, guid: 294187168fc4ec84d80a10c14d967dfc, type: 3}
       propertyPath: Template
       value: 
-      objectReference: {fileID: 11400000, guid: 5723cdb6867861a40bef4c415bc307c4, type: 2}
+      objectReference: {fileID: 11400000, guid: bcd2b937be6baf042a8fab9760cbdddf, type: 2}
     - target: {fileID: 5158213924355233903, guid: 294187168fc4ec84d80a10c14d967dfc, type: 3}
       propertyPath: m_RootOrder
       value: 3

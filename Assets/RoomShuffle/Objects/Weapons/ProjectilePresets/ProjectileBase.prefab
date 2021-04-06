@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2685867409323432219}
   - component: {fileID: 3529542718418839019}
   - component: {fileID: 2114728086437044367}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 1973529831791635022, guid: a8efa3ee436ed3c43b4547365e862a6a, type: 3}
       propertyPath: m_Name
       value: ProjectileLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973529831791635022, guid: a8efa3ee436ed3c43b4547365e862a6a, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5819190435035800042, guid: a8efa3ee436ed3c43b4547365e862a6a, type: 3}
       propertyPath: m_RootOrder
