@@ -1,3 +1,5 @@
+#define USE_CUSTOM_GRAVITY
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +17,7 @@ public class CustomPhysics : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
     }
 
+#if USE_CUSTOM_GRAVITY
     void Update()
     {
         //Stick to ground when on slope
@@ -35,4 +38,6 @@ public class CustomPhysics : MonoBehaviour
             _rigid.gravityScale = 1f;
         }
     }
+#endif
+
 }

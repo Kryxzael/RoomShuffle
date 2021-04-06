@@ -17,6 +17,9 @@ public abstract class DetectObjectsOn : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!collision.contacts.Any(i => i.normal == Vector2.down))
+            return;
+
         ObjectsOn.Add(collision.transform);
     }
 

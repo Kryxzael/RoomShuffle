@@ -6,21 +6,31 @@ using UnityEngine;
 
 public class FerrisWheel : MonoBehaviour
 {
+    [Tooltip("The speed of the ferris wheel object")]
+    public float Speed;
+
+    [Tooltip("The radius of the ferris wheel")]
+    public float Radius;
+
+    [Header("Platform")]
     [Tooltip("The platform(s) that circles around")]
     public GameObject Platform;
 
     [Tooltip("Number of platforms to be spawned")]
     public int NumberOfPlatforms;
+
+    [Header("Tiling Width")]
+    [Tooltip("If enabled, the platforms' tiling width will be overridden by the ferris wheel")]
+    public bool SetTilingWidth = true;
+
+    [Tooltip("The tiling width of the objects to spawn")]
+    public int PlatformWidth = 4;
     
+    [Header("Blank Slots")]
     [Tooltip("Number of blank space that should take place. (absence of platforms)")]
     public int NumberOfBlankSpace;
-    
-    [Tooltip("The speed of the ferris wheel object")] 
-    public float Speed;
 
-    [Tooltip("The radius of the ferris wheel")] 
-    public float Radius;
-
+    [Header("Breathing Effect")]
     [Tooltip("How fast the circle expands and shrinks")]
     public float BreathSpeed;
     
@@ -38,12 +48,17 @@ public class FerrisWheel : MonoBehaviour
 
         for (int i = 0; i < NumberOfPlatforms; i++)
         {
-            //instantiate the object and get circular motion
+            //instantiate the object and add circular motion
             GameObject obj = Instantiate(Platform, transform.Position2D(), Quaternion.identity, transform);
             CircularMotion circularMotion = obj.GetComponent<CircularMotion>();
 
             if (circularMotion == null)
                 circularMotion = obj.AddComponent<CircularMotion>();
+
+            //Resize sprite
+            if (SetTilingWidth && obj.GetComponent<SpriteRenderer>() is SpriteRenderer spr)
+                spr.size = spr.size.SetX(PlatformWidth);
+
 
             //Add object to list
             cmList.Add(circularMotion);

@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 8168405390895722519}
   - component: {fileID: 776669454}
   - component: {fileID: 776669453}
-  - component: {fileID: 776669455}
   - component: {fileID: 776669458}
   m_Layer: 6
-  m_Name: FerrisWheelPlatform
+  m_Name: PlatformBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 2002978951
   m_SortingLayer: -8
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2448499455511643410, guid: 2a6fa6cb829cdb743bf4cbc41f6750b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d3b4a8e4da081d41818eb532db8d198, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 0.1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,14 +100,14 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.0625, y: 0, z: 0.0625, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 1}
+    newSize: {x: 0.1, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
@@ -131,20 +130,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &776669455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948534316156871202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3fb8b76e5192e4e9b129896d3ddce3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  Radius: 0
 --- !u!114 &776669458
 MonoBehaviour:
   m_ObjectHideFlags: 0

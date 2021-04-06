@@ -11,21 +11,31 @@ public enum EndOfLineOption
     Return
 }
 
+/// <summary>
+/// Manages an elevator track
+/// </summary>
 public class ElevatorManager : MonoBehaviour
 {
-    private static int INFINITE_ELEVATORS = 0;
+    private const int INFINITE_ELEVATORS = 0;
 
-    [Tooltip("Number of seconds between each elevator")]
+    [Tooltip("Number of seconds between each elevator cart")]
     public float Frequency;
 
-    [Tooltip("The elevator object")]
-    public Elevator ElevatorObject;
+    [Tooltip("Sets the number of elevator carts that should spawn. 0 or less = infinite")]
+    public int NumberOfCarts;
 
-    [Tooltip("Sets the number of elevators that should spawn. 0 or less = infinite")]
-    public int NumberOfElevators;
-    
-    [Tooltip("What the elevator should do at the end of the line")]
+    [Header("Cart Settings")]
+    [Tooltip("The elevator cart prefab")]
+    public Elevator CartPrefab;
+
+    [Tooltip("What the elevator cart should do at the end of the line")]
     public EndOfLineOption EOLOption;
+
+    [Tooltip("How quickly the carts should move")]
+    public int CartSpeed = 5;
+
+    [Tooltip("The width of the elevator carts")]
+    public int CartWidth = 4;
 
     /// <summary>
     /// Gets all the checkpoints of the elevator
@@ -93,7 +103,7 @@ public class ElevatorManager : MonoBehaviour
     private IEnumerator Start()
     {
         //Sets the amount of elevators to spawn
-        float numberOfElevators = NumberOfElevators;
+        float numberOfElevators = NumberOfCarts;
 
         if (numberOfElevators <= INFINITE_ELEVATORS)
             numberOfElevators = float.PositiveInfinity;
@@ -109,8 +119,8 @@ public class ElevatorManager : MonoBehaviour
 
             for (int i = 0; i < numberOfElevators; i++)
             {
-                Instantiate(ElevatorObject, StartPoint.position, Quaternion.identity, transform);
-                yield return new WaitForSeconds(TrackLength / ElevatorObject.Speed / NumberOfElevators);
+                Instantiate(CartPrefab, StartPoint.position, Quaternion.identity, transform);
+                yield return new WaitForSeconds(TrackLength / CartPrefab.Speed / NumberOfCarts);
             }
         }
 
@@ -119,7 +129,7 @@ public class ElevatorManager : MonoBehaviour
         {
             for (int i = 0; i < numberOfElevators; i++)
             {
-                Instantiate(ElevatorObject, StartPoint.position, Quaternion.identity, transform);
+                Instantiate(CartPrefab, StartPoint.position, Quaternion.identity, transform);
                 yield return new WaitForSeconds(Frequency);
             }
         }

@@ -18,6 +18,12 @@ public class Elevator : MonoBehaviour
         var manager = GetComponentInParent<ElevatorManager>();
         Transform lastCheckpoint = null;
 
+        //Set size of cart
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer)
+            spriteRenderer.size = spriteRenderer.size.SetX(manager.CartWidth);
+
         //Repeat the process as long as there are checkpoints to reach
         foreach (var destination in GetCheckpointProgression(manager))
         {
