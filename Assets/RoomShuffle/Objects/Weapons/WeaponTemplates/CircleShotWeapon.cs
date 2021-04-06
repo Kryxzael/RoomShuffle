@@ -33,6 +33,8 @@ public class CircleShotWeapon : WeaponTemplate
             WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
             hurtbox.Weapon = instance;
+
+            newAmmo.transform.eulerAngles = newAmmo.transform.eulerAngles.SetY(0);
         }
     }
 }

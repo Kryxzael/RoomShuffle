@@ -27,6 +27,7 @@ public abstract class Projectile : MonoBehaviour
         set
         {
             transform.up = value;
+            transform.eulerAngles = new Vector3(0f, 0f, transform.rotation.z);
         }
     }
 
