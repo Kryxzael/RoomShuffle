@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 372087575270391737}
   - component: {fileID: 9070862957951488986}
   m_Layer: 6
-  m_Name: KeysLocks_2
+  m_Name: LockedBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2002978951
+  m_SortingLayer: -8
   m_SortingOrder: 0
   m_Sprite: {fileID: 6647014412928795437, guid: b42562a756e001f459a1fd0ad3bd178c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -43,15 +43,33 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: Background
+    uniqueID: 227251391
     locked: 0
-  - name: Tiles
+  - name: Background Tiles
     uniqueID: 2002978951
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2236158889
+    locked: 0
+  - name: Enemies
+    uniqueID: 3386471175
+    locked: 0
+  - name: Items
+    uniqueID: 1340720717
+    locked: 0
+  - name: Crack FX
+    uniqueID: 1437658149
     locked: 0
   - name: Player
     uniqueID: 1703004959
     locked: 0
-  - name: OverlayTiles
+  - name: Foreground Tiles
     uniqueID: 3214619913
+    locked: 0
+  - name: UI
+    uniqueID: 284663005
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
