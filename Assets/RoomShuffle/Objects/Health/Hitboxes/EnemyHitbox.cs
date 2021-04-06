@@ -30,19 +30,22 @@ public class EnemyHitbox : Hitbox
     /// <param name="hurtbox"></param>
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
+        //Dead men don't scream
+        if (_health.IsDead)
+            return;
+
         GrantInvincibilityFrames();
         _health.DealDamage(hurtbox.GetDamage(this));
 
 
         //TODO: Temporary. Health controller should probably handle deaths
-        if (_health.Health <= 0)
+        if (_health.IsDead)
         {
             //Drop items
             foreach (var i in GetComponentsInChildren<DropLootTableOnDeath>())
                 i.DropItem();
 
             //Destroy the object
-            enabled = false;
             Destroy(transform.parent.gameObject);
         }
             

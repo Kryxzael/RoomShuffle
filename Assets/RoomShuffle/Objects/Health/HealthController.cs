@@ -30,6 +30,28 @@ public class HealthController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets whether the health controller has health
+    /// </summary>
+    public bool IsAlive
+    {
+        get
+        {
+            return Health > 0;
+        }
+    }
+
+    /// <summary>
+    /// Gets whether the health controller has no health
+    /// </summary>
+    public bool IsDead
+    {
+        get
+        {
+            return !IsAlive;
+        }
+    }
+
     /*
      * Healing
      */

@@ -22,6 +22,10 @@ public class PlayerHitbox : Hitbox
     /// <param name="hurtbox"></param>
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
+        //Dead men don't scream
+        if (Commons.PlayerHealth.IsDead)
+            return;
+
         //Hitboxes are not active when noclip is enabled
         if (Cheats.Noclip)
             return;

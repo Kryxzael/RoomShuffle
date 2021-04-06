@@ -23,18 +23,8 @@ public class Timer : MonoBehaviour
     
     //if the timer is running
     private bool _timerIsRunning = false;
-    
-    private float _countDownTarget;
 
     private TextMeshProUGUI TMP;
-    
-    public float TimeLeft
-    {
-        get
-        {
-            return _countDownTarget - CurrentSeconds;
-        }
-    }
 
     private void Start()
     {
