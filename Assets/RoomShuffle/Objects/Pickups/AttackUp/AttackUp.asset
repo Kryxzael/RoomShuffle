@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AttackUp
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: 0}
+  - Sprite: {fileID: 2572291726930597554, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 9121158402776085434, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
-  FrameTimeDivider: 60
+  FrameTimeDivider: 2

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2298778089679458837
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377038182522355464, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748325754322979727, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: Health
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748325754322979727, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: MaximumHealth
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073578666437677538, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5494983281948140313, guid: 671a267be4f532b438d8acccb4b31a73, type: 3}
+    - target: {fileID: 6614164191456134013, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: m_Name
+      value: IronCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483995740942935619, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: Health
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483995740942935619, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: MaximumHealth
+      value: 600
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}

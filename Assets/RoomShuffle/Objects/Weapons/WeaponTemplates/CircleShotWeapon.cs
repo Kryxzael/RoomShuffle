@@ -28,7 +28,7 @@ public class CircleShotWeapon : WeaponTemplate
             );
 
             newAmmo.Direction = direction;
-            newAmmo.transform.Rotate(i * (360f/BlastCount));
+            newAmmo.transform.Rotate(i * (360f / BlastCount));
 
             WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
             hurtbox.Shooter = shooter;
