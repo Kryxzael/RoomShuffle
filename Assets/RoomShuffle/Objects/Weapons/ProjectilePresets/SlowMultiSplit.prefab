@@ -18,6 +18,19 @@ MonoBehaviour:
   SplittingProjectileRange: 1.5
   SplittingProjectileDamage: 25
   TimeBetweenEachSplit: 0.2
+--- !u!114 &1272832062742130230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393914487905459971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 613d150a9c3b65b4b8ea7109994aad77, type: 2}
 --- !u!1001 &4758883274041580958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,15 +84,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Name
-      value: SplittingFirework
+      value: SlowMultiSplit
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5957954370949262699, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
+    - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.g
-      value: 0.88149357
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.r
