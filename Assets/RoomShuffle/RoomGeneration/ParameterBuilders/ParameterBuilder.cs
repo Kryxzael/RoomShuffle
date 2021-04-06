@@ -19,6 +19,9 @@ public abstract class ParameterBuilder : ScriptableObject
     [Tooltip("The generators available enemy sets")]
     public List<EnemySet> EnemySets;
 
+    [Tooltip("The weapons that can spawn in the room")]
+    public List<WeaponTemplate> WeaponTemplates;
+
     /// <summary>
     /// Gets the next room parameters to use when generating a room
     /// </summary>

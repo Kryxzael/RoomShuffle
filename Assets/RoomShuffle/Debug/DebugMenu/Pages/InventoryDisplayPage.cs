@@ -25,6 +25,11 @@ public class InventoryDisplayPage : DebugPage
             caller.NavigationStack.Push(new LevelsDebugPage());
         }
 
+        if (Button("Give Weapon ..."))
+        {
+            caller.NavigationStack.Push(new GiveWeaponDebugPage());
+        }
+
         Separator();
 
         for (int i = 0; i < Commons.Inventory.WeaponSlots.Length; i++)

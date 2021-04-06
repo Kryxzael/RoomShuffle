@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 979b487270c35af4889f1e6054094a8b
+labels:
+- GameplayElement
 PrefabImporter:
   externalObjects: {}
   userData: 

@@ -1,5 +1,8 @@
 fileFormatVersion: 2
 guid: cba342abe28b34e48b53f7d307980880
+labels:
+- Enemy
+- GameplayElement
 PrefabImporter:
   externalObjects: {}
   userData: 
