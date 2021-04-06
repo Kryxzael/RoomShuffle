@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InvincibilityFramesInSeconds: 0
+  DamageTextPrefab: {fileID: 7639935985091447328, guid: 9239f1f5db9b7fa4e99d4d995034caca, type: 3}
 --- !u!114 &6549580918581412365
 MonoBehaviour:
   m_ObjectHideFlags: 0

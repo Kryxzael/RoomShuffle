@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using TMPro;
+
 using UnityEngine;
 
 /// <summary>
@@ -12,6 +14,9 @@ using UnityEngine;
 public class EnemyHitbox : Hitbox
 {
     private HealthController _health;
+
+    /* *** */
+    public PopNumber DamageTextPrefab;
 
     /// <summary>
     /// <inheritdoc />
@@ -25,6 +30,25 @@ public class EnemyHitbox : Hitbox
     }
 
     /// <summary>
+    /// Creates a red floating label over the enemy's head to signify the damage it took
+    /// </summary>
+    /// <param name="damage"></param>
+    public void CreateDamagePopNumber(int damage)
+    {
+        const float POP_NUMBER_RANDOM_X_OFFSET = 1f;
+
+        float verticalOffset = 1f;
+        float horizontalOffset = RandomValueBetween.Symetrical(POP_NUMBER_RANDOM_X_OFFSET).Pick();
+
+        TextMeshPro instance = Commons.InstantiateInCurrentLevel(
+            original: DamageTextPrefab,
+            position: transform.position + Vector3.up * verticalOffset + Vector3.right * horizontalOffset
+        ).GetComponent<TextMeshPro>();
+
+        instance.text = $"-{damage}";
+    }
+
+    /// <summary>
     /// <inheritdoc />
     /// </summary>
     /// <param name="hurtbox"></param>
@@ -34,8 +58,16 @@ public class EnemyHitbox : Hitbox
         if (_health.IsDead)
             return;
 
+        //Give I-frames
         GrantInvincibilityFrames();
-        _health.DealDamage(hurtbox.GetDamage(this));
+
+        //Deal damage
+        int damage = hurtbox.GetDamage(this);
+        _health.DealDamage(damage);
+
+        //Create damage pop-up
+        CreateDamagePopNumber(damage);
+        
 
 
         //TODO: Temporary. Health controller should probably handle deaths

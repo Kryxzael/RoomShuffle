@@ -7,9 +7,8 @@ using UnityEngine;
 /// <summary>
 /// Creates a label that moves, changes color and scale before being destroyed
 /// </summary>
-public class PopNumbers : MonoBehaviour
+public class PopNumber : MonoBehaviour
 {
-
     [Header("End Values")]
     [Tooltip("The scale the label with have at the end of its lifetime")]
     public Vector3 EndSize = Vector3.one * 2f;

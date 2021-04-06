@@ -30,6 +30,16 @@ public struct RandomValueBetween
     }
 
     /// <summary>
+    /// Creates a random value between -value and +value
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static RandomValueBetween Symetrical(float value)
+    {
+        return new RandomValueBetween(-value, value);
+    }
+
+    /// <summary>
     /// Gets a random number between min and max
     /// </summary>
     /// <returns></returns>

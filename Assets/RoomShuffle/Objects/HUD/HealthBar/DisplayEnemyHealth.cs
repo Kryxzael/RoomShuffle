@@ -33,23 +33,12 @@ public class DisplayEnemyHealth : EnemyScript
 
     void Update()
     {
-        int health = Enemy.HealthController.Health;
-        const float POP_NUMBER_RANDOM_X_OFFSET = 1f;
-        
-        if (_lastHealth != health)
-        {
-            
-            TextMeshPro instance = Instantiate(
-                original: PopNumbers, 
-                position: transform.position + Vector3.up * 1f + Vector3.right * UnityEngine.Random.Range(-POP_NUMBER_RANDOM_X_OFFSET, POP_NUMBER_RANDOM_X_OFFSET),
-                rotation: Quaternion.identity
-            );
+        int currentHealth = Enemy.HealthController.Health;
 
-            instance.text = (health - _lastHealth).ToString();
-            
-            
-            _lastHealth = health;
-            SetDisplayHealth(health);
+        if (currentHealth != _lastHealth)
+        {
+            SetDisplayHealth(currentHealth);
+            _lastHealth = currentHealth;
         }
     }
 
