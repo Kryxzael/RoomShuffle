@@ -47,8 +47,9 @@ public class WeaponUIManager : MonoBehaviour
     
     void Update()
     {
+
         Inventory inventory = Commons.Inventory;
-        
+
         UpdateWeaponImage(inventory);
         UpdateCoolDown(inventory);
         UpsizeSelectedWeapon(inventory);
@@ -128,6 +129,9 @@ public class WeaponUIManager : MonoBehaviour
     /// <param name="inventory"></param>
     private void UpdateCoolDown(Inventory inventory)
     {
+        //the minimum cooldwon timer for the weapon for the iconslot to show a filling up animation
+        const float MINIMUM_COOLDOWN_TIME = 0.5f;
+        
         for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
         {
             if (inventory.WeaponSlots[i] == null)
@@ -139,7 +143,7 @@ public class WeaponUIManager : MonoBehaviour
                 continue;
             }
 
-            if (inventory.WeaponSlots[i].Template.Cooldown < 1f)
+            if (inventory.WeaponSlots[i].Template.Cooldown < MINIMUM_COOLDOWN_TIME)
             {
                 _imageCopy[i].fillAmount = 0f;
                 continue;

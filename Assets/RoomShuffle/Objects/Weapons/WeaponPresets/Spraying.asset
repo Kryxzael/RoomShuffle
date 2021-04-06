@@ -18,13 +18,13 @@ MonoBehaviour:
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 999
       Pickrate: 1
   Range:
-    Minimum: 5
-    Maximum: 15
+    Minimum: 3
+    Maximum: 6
   Cooldown: 0.05
   Icon: {fileID: -4637987512465366153, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
-  Ammunition: {fileID: 4670741879340441384, guid: 9b1319a42cfced14792f5a24326a0acb, type: 3}
-  MaxAngle: 18
+  Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
+  MaxAngle: 74
   BlastCount: 2

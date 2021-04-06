@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c834abdf52370a4d99f1ec8fc173810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
+  Speed: 13
   SplitterProjectile: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
-  blastCount: 20
+  BlastCount: 6
+  SplittingProjectileRange: 1.5
+  SplittingProjectileDamage: 25
+  TimeBetweenEachSplit: 0.2
 --- !u!1001 &4758883274041580958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,7 +71,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Name
-      value: SplittingProjectile
+      value: SplittingFirework
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.b

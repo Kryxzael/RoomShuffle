@@ -9,22 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
-  m_Name: Shotgun
+  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
+  m_Name: CircleShot
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 25
+    - Item: 5
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 100
+    - Item: 99
       Pickrate: 1
   Range:
     Minimum: 5
     Maximum: 15
   Cooldown: 1
-  Icon: {fileID: -5561059225712939094, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-  Ammunition: {fileID: -5841809644186459003, guid: 75d5e5dbd14928940b76c49639fdfd70, type: 3}
-  MaxAngle: 5
-  BlastCount: 6
+  Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+  Ammunition: {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
+  BlastCount: 30

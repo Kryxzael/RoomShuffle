@@ -9,21 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: CircleShot
+  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
+  m_Name: LinearMultiSplit
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 25
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 100
       Pickrate: 1
   Range:
-    Minimum: 5
-    Maximum: 15
-  Cooldown: 1
-  Icon: {fileID: 8443716852133858240, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: 4670741879340441384, guid: 9b1319a42cfced14792f5a24326a0acb, type: 3}
-  BlastCount: 30
+    Minimum: 12
+    Maximum: 16
+  Cooldown: 0.3
+  Icon: {fileID: -1182408495049320820, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+  Ammunition: {fileID: -6818387512883620425, guid: ce4c7aa6fcd567444bb4e220555cbc79, type: 3}
+  MaxAngle: 0
+  BlastCount: 1
