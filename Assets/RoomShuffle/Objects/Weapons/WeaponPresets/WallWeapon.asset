@@ -23,8 +23,8 @@ MonoBehaviour:
   Range:
     Minimum: 20
     Maximum: 20
-  Cooldown: 0.5
+  Cooldown: 0.7
   Icon: {fileID: 5154424330881927195, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
   Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
-  Height: 10
+  Height: 5
   BlastCount: 10

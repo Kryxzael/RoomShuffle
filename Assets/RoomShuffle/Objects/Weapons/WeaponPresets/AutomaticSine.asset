@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bb66489907f4dd4e8b0355dc000dd64, type: 3}
-  m_Name: Automatic
+  m_Name: AutomaticSine
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
@@ -21,11 +21,11 @@ MonoBehaviour:
     - Item: 99
       Pickrate: 1
   Range:
-    Minimum: 5
+    Minimum: 10
     Maximum: 15
   Cooldown: 1
   Icon: {fileID: -5481814538712004923, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-  Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
+  Ammunition: {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
   ClusterCount: 6
   WaitTime: 0.04
-  ForceLinear: 0
+  ForceLinear: 1

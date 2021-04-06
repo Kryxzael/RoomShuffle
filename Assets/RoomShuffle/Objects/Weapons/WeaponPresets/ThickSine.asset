@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bb66489907f4dd4e8b0355dc000dd64, type: 3}
-  m_Name: Automatic
+  m_Script: {fileID: 11500000, guid: 4d0465208336faf4a9ba9fb502d86096, type: 3}
+  m_Name: ThickSine
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
@@ -21,11 +21,14 @@ MonoBehaviour:
     - Item: 99
       Pickrate: 1
   Range:
-    Minimum: 5
-    Maximum: 15
-  Cooldown: 1
-  Icon: {fileID: -5481814538712004923, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
-  Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
-  ClusterCount: 6
-  WaitTime: 0.04
-  ForceLinear: 0
+    Minimum: 10
+    Maximum: 10
+  Cooldown: 0.5
+  Icon: {fileID: 2066188200344418693, guid: 671a267be4f532b438d8acccb4b31a73, type: 3}
+  AmmunitionList:
+  - {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
+  Height: 1
+  BulletsPerShot: 3
+  NumberOfShots: 6
+  WaitTime: 0.03
+  ForceLinear: 1
