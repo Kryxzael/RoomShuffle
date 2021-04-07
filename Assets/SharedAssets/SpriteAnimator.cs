@@ -19,6 +19,11 @@ public class SpriteAnimator : MonoBehaviour
     /// </summary>
     public SpriteAnimation Animation;
 
+    /// <summary>
+    /// The speed the animation will be played back at (percentage)
+    /// </summary>
+    public float PlaybackSpeed = 1f;
+
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
@@ -41,7 +46,7 @@ public class SpriteAnimator : MonoBehaviour
             return;
         }
 
-        StartCoroutine("Animate", Animation);
+        StartCoroutine(nameof(Animate), Animation);
     }
 
     private int _currentFrame;
@@ -73,7 +78,7 @@ public class SpriteAnimator : MonoBehaviour
             CurrentFrame = (CurrentFrame + 1) % _animation.FrameCount;
             _spriteRenderer.sprite = _animation.Frames[CurrentFrame].Sprite;
 
-            yield return new WaitForSeconds(_animation.FrameTime / _animation.FrameTimeDivider * _animation.Frames[CurrentFrame].FrameTimeMultiplier);
+            yield return new WaitForSeconds(_animation.FrameTime / _animation.FrameTimeDivider * _animation.Frames[CurrentFrame].FrameTimeMultiplier / PlaybackSpeed);
         }
     }
 

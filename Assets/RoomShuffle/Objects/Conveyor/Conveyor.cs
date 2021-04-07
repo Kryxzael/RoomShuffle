@@ -12,14 +12,25 @@ using UnityEngine;
 [RequireComponent(typeof(Flippable))]
 public class Conveyor : DetectObjectsOn
 {
+    private const float BASE_BELT_SPEED = 0.025f;
+
     private Flippable _flippable;
 
     [Tooltip("The speed the conveyor will move at")]
-    public float Speed;
+    public float Speed = BASE_BELT_SPEED;
 
     private void Awake()
     {
         _flippable = GetComponent<Flippable>();
+    }
+
+    private void Start()
+    {
+        
+
+        var animator = GetComponent<SpriteAnimator>();
+        animator.PlaybackSpeed = Speed / BASE_BELT_SPEED;
+
     }
 
     private void LateUpdate()

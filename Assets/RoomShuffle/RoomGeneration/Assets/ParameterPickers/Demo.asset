@@ -15,4 +15,28 @@ MonoBehaviour:
   Rooms: {fileID: 0}
   EnemySets:
   - {fileID: 11400000, guid: 4c7baf1e546ef9c45ba154e5c5a465ea, type: 2}
+  WeaponTemplates:
+  - {fileID: 11400000, guid: 7e7d8dead0594514dabd4e4d6d705bde, type: 2}
+  - {fileID: 11400000, guid: f6ddb48003c69e44fabc7c70bf617929, type: 2}
+  - {fileID: 11400000, guid: c878a595ac9800144842ef9e0c03626b, type: 2}
+  - {fileID: 11400000, guid: a3559cde01dc3e74fa3f952a09a93590, type: 2}
+  - {fileID: 11400000, guid: 17b56f0b50be04c4ba4cd5d28d4417b7, type: 2}
+  - {fileID: 11400000, guid: c70dee4eb6b31834195948122e9ef357, type: 2}
+  - {fileID: 11400000, guid: 7117c17053a4cd44693e3fbcfdbbb465, type: 2}
+  - {fileID: 11400000, guid: 51ca7c5344304694d98926e0301eec93, type: 2}
+  - {fileID: 11400000, guid: bcd2b937be6baf042a8fab9760cbdddf, type: 2}
+  - {fileID: 11400000, guid: 3e8762ed8794ee84a9442f7546483e2b, type: 2}
+  - {fileID: 11400000, guid: c7c295582b5f22f4ca623b94087792ce, type: 2}
+  - {fileID: 11400000, guid: 3c36fda6ac86db042bd3405d371eb7cc, type: 2}
+  - {fileID: 11400000, guid: 5b6d8505b3db46546a96502416e708b4, type: 2}
+  - {fileID: 11400000, guid: 7af8f01efb9dd214e90d0286de47878c, type: 2}
+  - {fileID: 11400000, guid: 5723cdb6867861a40bef4c415bc307c4, type: 2}
+  - {fileID: 11400000, guid: e7ce13acbeeab124394584ba57176d75, type: 2}
+  - {fileID: 11400000, guid: a2d05d1c496c5aa4ebe980ae68389cc3, type: 2}
+  - {fileID: 11400000, guid: 5bba5275d3c44fb4da96eeb7142fe5c5, type: 2}
+  - {fileID: 11400000, guid: bbf7d0b5328358f43b6f07d63f23f94f, type: 2}
+  - {fileID: 11400000, guid: 9ee6ead2bdc23474c858274c1809e94a, type: 2}
+  - {fileID: 11400000, guid: b733ed6c187418b4b89b6e79886bc89f, type: 2}
+  - {fileID: 11400000, guid: 7056b3696f4971645942bf04bab34b7c, type: 2}
+  - {fileID: 11400000, guid: 1dc29f38168bf3149921990212b067d6, type: 2}
   DemoRoomProgression: []

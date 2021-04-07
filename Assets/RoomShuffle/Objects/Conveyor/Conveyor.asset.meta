@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 853d17e6f23476644974bf91fccdef22
-labels:
-- GameplayElement
-PrefabImporter:
+guid: d5d645c0882f2ac49b3f7a1d0cde1f73
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

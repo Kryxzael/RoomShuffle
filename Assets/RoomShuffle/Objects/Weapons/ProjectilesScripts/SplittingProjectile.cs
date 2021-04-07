@@ -9,7 +9,7 @@ public class SplittingProjectile : Projectile
     [Tooltip("The projectile that will be fired when the original projectile 'explodes'")]
     public Projectile SplitterProjectile;
 
-    [Tooltip("The number of bullets that speads after 'exploding'")]
+    [Tooltip("The number of bullets that spreads after 'exploding'")]
     public int BlastCount = 20;
 
     [Tooltip("The Range of the splitting projectile")]
@@ -30,7 +30,6 @@ public class SplittingProjectile : Projectile
 
     public override bool DestroyOnHitboxContact => true;
     public override bool DestroyOnGroundImpact => true;
-
 
     protected override void Start()
     {
