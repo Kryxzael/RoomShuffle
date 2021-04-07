@@ -14,12 +14,13 @@ public class LinearProjectile : Projectile
         base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
         
+        //sets the speed in the facing direction
+        _rigidbody.velocity = transform.up * Speed;
+        
     }
 
     protected override void Update()
     {
         base.Update();
-        //sets the speed in the facing direction
-        _rigidbody.velocity = transform.up * Speed;
     }
 }

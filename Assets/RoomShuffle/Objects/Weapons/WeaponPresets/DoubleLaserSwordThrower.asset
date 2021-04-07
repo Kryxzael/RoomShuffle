@@ -9,21 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: LaserShowWeapon
+  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
+  m_Name: DoubleLaserSwordThrower
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 0
+    - Item: 25
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 100
       Pickrate: 1
   Range:
     Minimum: 30
     Maximum: 30
-  Cooldown: 10
-  Icon: {fileID: -935110864231157654, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: -9111506526529088046, guid: 31912c296b693364c9b9c29c3f27aa48, type: 3}
-  BlastCount: 25
+  Cooldown: 0.1
+  Icon: {fileID: 2370382069461181947, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+  Ammunition: {fileID: -9111506526529088046, guid: 16d2a4089b6f0dc49a518999c9522b85, type: 3}
+  MaxAngle: 0
+  BlastCount: 1

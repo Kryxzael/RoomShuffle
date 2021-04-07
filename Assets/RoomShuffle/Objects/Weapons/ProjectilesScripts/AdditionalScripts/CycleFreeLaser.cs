@@ -26,6 +26,9 @@ public class CycleFreeLaser : MonoBehaviour
     [Tooltip("For how long the laser will charge")]
     public float ChargeTime = 2f;
 
+    [Tooltip("The maximum distance of the laser")]
+    public float MaxDistance = 200;
+
     /* *** */
 
     /// <summary>
@@ -52,16 +55,15 @@ public class CycleFreeLaser : MonoBehaviour
         /*
          * Set laser start and end point
          */
-        const float MAX_DISTANCE = 200f;
 
         //Start is at the emitter's position
         var start = transform.position;
 
         //End is by default MAX_DISTANCE units away from the emitter
-        var end = start + transform.up * MAX_DISTANCE;
+        var end = start + transform.up * MaxDistance;
 
         //If the laser is obstructed by something, that thing will be the end point
-        var raycastHit = Physics2D.Raycast(transform.position, transform.up, MAX_DISTANCE, Commons.Masks.GroundOnly);
+        var raycastHit = Physics2D.Raycast(transform.position, transform.up, MaxDistance, Commons.Masks.GroundOnly);
 
         if (raycastHit)
             end = raycastHit.point;
