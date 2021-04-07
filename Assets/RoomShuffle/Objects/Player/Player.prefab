@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 857590341}
   - component: {fileID: 680402638022792320}
   - component: {fileID: 4280482282808589427}
+  - component: {fileID: 5478196027095690663}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -177,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1703004959
-  m_SortingLayer: 2
+  m_SortingLayer: -3
   m_SortingOrder: 999
   m_Sprite: {fileID: 20836026226011319, guid: 4b1905d4175ad4e4fb928ab93270bafe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -319,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 0}
+  PlaybackSpeed: 1
 --- !u!114 &7829438793687919286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +389,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379cc7c07ac1e3f42be97c7fc516b0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5478196027095690663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829438793687919276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513931c30d5b0234bbdff12e549fabe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwimForce: 10
+  JumpOutForce: 20
+  MaxAscensionSpeed: 10
+  MaxSinkSpeed: 10
+  MaxHorizontalSpeed: 5
 --- !u!1 &8682947945238927355
 GameObject:
   m_ObjectHideFlags: 0

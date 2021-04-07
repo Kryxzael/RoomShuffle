@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlatformingRooms:
   - {fileID: 4262918373525479744, guid: 5136aae58fff64c4db7649a4b7749731, type: 3}
+  - {fileID: 5427735312198500296, guid: 9f17eb68fba42494faf51caad34b151f, type: 3}
   PuzzleRooms: []
   EradicationRooms: []
   BossRooms: []

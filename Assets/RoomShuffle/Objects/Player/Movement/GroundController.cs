@@ -109,6 +109,7 @@ public class GroundController : MonoBehaviour
         /*
          * Clamp speed
          */
+
         //Horizontal
         _rigid.velocity = _rigid.velocity.SetX(Mathf.Clamp(_rigid.velocity.x, -MaxSpeed, MaxSpeed));
 

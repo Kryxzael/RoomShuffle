@@ -125,6 +125,10 @@ public class JumpController : MonoBehaviour
         if (Cheats.MoonJump)
             return true;
 
+        //The player cannot jump underwater
+        if (Water.IsSubmerged(_rigid))
+            return false;
+
         //The player has mercy frames
         if ((DateTime.Now - _lastGroundedPosition.Time).TotalSeconds <= MercyFramesInSeconds)
         {

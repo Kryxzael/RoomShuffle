@@ -1,4 +1,4 @@
-#define USE_CUSTOM_GRAVITY
+//#define USE_CUSTOM_GRAVITY
 
 using System.Collections;
 using System.Collections.Generic;

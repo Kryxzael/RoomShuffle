@@ -107789,10 +107789,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4470944972168348290, guid: 297785c84d8031b4eac8b986add50d4b, type: 3}
-      propertyPath: m_Size.x
-      value: 10.000001
-      objectReference: {fileID: 0}
     - target: {fileID: 5514032310503424438, guid: 297785c84d8031b4eac8b986add50d4b, type: 3}
       propertyPath: m_Name
       value: Conveyor
@@ -107856,8 +107852,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Frequency: 1
-  NumberOfCarts: 0
-  CartPrefab: {fileID: 0}
+  NumberOfCarts: 3
+  CartPrefab: {fileID: 6924864303680418412, guid: 5a804acea47adac42b36a834f976af53, type: 3}
   EOLOption: 1
   CartSpeed: 5
   CartWidth: 4
@@ -108222,6 +108218,18 @@ PrefabInstance:
     - target: {fileID: 3065580280250307300, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478196027095690663, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+      propertyPath: SwimForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478196027095690663, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+      propertyPath: MaxSinkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478196027095690663, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+      propertyPath: MaxAscensionSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7829438793687919273, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
       propertyPath: m_RootOrder

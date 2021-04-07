@@ -31,8 +31,8 @@ public class WallJump : MonoBehaviour
 
     private void Update()
     {
-        //The player cannot wall jump at a repelling wall
-        if (RepellingWall.PlayerIsInRepellingArea)
+        //The player cannot wall jump at a repelling wall or whilst underwater
+        if (RepellingWall.PlayerIsInRepellingArea || Water.IsSubmerged(_rigid))
             return;
 
         ///Gets the normal of the adjacent wall (if there is one)
