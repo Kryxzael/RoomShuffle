@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class LinearProjectile : Projectile
 {
+
     private Rigidbody2D _rigidbody;
 
     public override bool DestroyOnHitboxContact => true;
@@ -12,6 +13,7 @@ public class LinearProjectile : Projectile
     {
         base.Start();
         _rigidbody = GetComponent<Rigidbody2D>();
+        
     }
 
     protected override void Update()

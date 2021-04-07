@@ -9,20 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53155a19bc98aa44cba055bb5ff15ca8, type: 3}
-  m_Name: LaserWeapon
+  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
+  m_Name: SmashBallWeapon
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 50
+    - Item: 0
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 40
+    - Item: 99
       Pickrate: 1
   Range:
-    Minimum: 0
-    Maximum: 0
-  Cooldown: 1.5
-  Icon: {fileID: -1058106716612752769, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
-  Ammunition: {fileID: -8431960660060657411, guid: 14e05188311a68b479cca26dcaa7f6f6, type: 3}
+    Minimum: 30
+    Maximum: 30
+  Cooldown: 3
+  Icon: {fileID: -935110864231157654, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+  Ammunition: {fileID: -9111506526529088046, guid: 4fa7990b9a244584593754f6257deddb, type: 3}
+  BlastCount: 4

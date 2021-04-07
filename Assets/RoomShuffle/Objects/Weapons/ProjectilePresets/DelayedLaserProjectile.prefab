@@ -38,8 +38,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3fcdb5d2f835341a342d4036b7c148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LivingTime: 0.3
---- !u!114 &-8431960660060657411
+  LivingTime: 2
+--- !u!114 &-9111506526529088046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,6 +52,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
+--- !u!114 &4176049167187557990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831466014978973620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914a3c11fe1a3704495b79301c175abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChargingMaterial: {fileID: 2100000, guid: c0c4c7f3d34e1bc4b8a95cc8ae8450a4, type: 2}
+  FiringMaterial: {fileID: 2100000, guid: 12d861709a857504f9f21d30fcf9f786, type: 2}
+  ChargeTime: 1
 --- !u!61 &8587147193739072524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,15 +154,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158470, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: CycleTime
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158470, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: DutyCycle
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158470, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: CycleOffset
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -159,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: -0.006
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Positions.Array.data[0].z
@@ -171,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 199.994
+      value: 199.988
       objectReference: {fileID: 0}
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Positions.Array.data[1].z
@@ -179,7 +194,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 69657648604158465, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+    - {fileID: 69657648604158470, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+--- !u!1 &2831466014978973620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 69657648604158466, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+  m_PrefabInstance: {fileID: 2863192144499770806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5154803445940039994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,11 +214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_LocalPosition.x
@@ -241,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Name
-      value: LaserProjectile
+      value: DelayedLaserProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 5151418942144103069, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Layer
