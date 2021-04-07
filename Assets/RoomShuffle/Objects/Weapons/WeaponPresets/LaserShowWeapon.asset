@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
-  m_Name: SpinningSmashBallWeapon
+  m_Name: LaserShowWeapon
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
@@ -23,7 +23,7 @@ MonoBehaviour:
   Range:
     Minimum: 30
     Maximum: 30
-  Cooldown: 3
+  Cooldown: 10
   Icon: {fileID: -935110864231157654, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
-  Ammunition: {fileID: -9111506526529088046, guid: afc7643a25946ef4b83190bf549ced39, type: 3}
-  BlastCount: 2
+  Ammunition: {fileID: -9111506526529088046, guid: 4fa7990b9a244584593754f6257deddb, type: 3}
+  BlastCount: 25
