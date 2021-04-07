@@ -18,7 +18,7 @@ public class InstantHurtbox : WeaponTemplate
     {
         Projectile newAmmo = Instantiate(
             original: Ammunition,
-            position: shooter.GetProjectilesSpawnPoint() + direction,
+            position: shooter.GetProjectilesSpawnPoint() + (direction * Ammunition.transform.localScale.y/9),
             rotation: Quaternion.identity
         );
 

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53155a19bc98aa44cba055bb5ff15ca8, type: 3}
+  m_Name: LaserWeapon
+  m_EditorClassIdentifier: 
+  BaseDamage:
+    Candidates:
+    - Item: 50
+      Pickrate: 1
+  MaxDurability:
+    Candidates:
+    - Item: 9999
+      Pickrate: 1
+  Range:
+    Minimum: 0
+    Maximum: 0
+  Cooldown: 0.22
+  Icon: {fileID: -1058106716612752769, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+  Ammunition: {fileID: -1440295070373798962, guid: 14e05188311a68b479cca26dcaa7f6f6, type: 3}

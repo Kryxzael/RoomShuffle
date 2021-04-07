@@ -10,8 +10,8 @@ public class TimedLinearProjectile : Projectile
 
     private float _time;
 
-    public override bool DestroyOnHitboxContact => true;
-    public override bool DestroyOnGroundImpact => true;
+    public override bool DestroyOnHitboxContact => false;
+    public override bool DestroyOnGroundImpact => false;
 
     protected override void Start()
     {
