@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190032dc69c858343afe685456516461, type: 3}
+  m_Name: BigHoming
+  m_EditorClassIdentifier: 
+  BaseDamage:
+    Candidates:
+    - Item: 75
+      Pickrate: 1
+  MaxDurability:
+    Candidates:
+    - Item: 999
+      Pickrate: 1
+  Range:
+    Minimum: 15
+    Maximum: 20
+  Cooldown: 2
+  Icon: {fileID: -4637987512465366153, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+  Ammunition: {fileID: 211898560015080534, guid: 01e0c0aa2d7440945a39a707b41a1793, type: 3}
+  MaxAngle: 0
+  BlastCount: 1

@@ -66,5 +66,8 @@ public class HomingProjectile : Projectile
             _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
         }
 
+        //Look at enemy
+        transform.up = _nearestEnemy.transform.position - transform.position;
+
     }
 }

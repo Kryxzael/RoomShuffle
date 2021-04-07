@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 9d46b0e00e0bffa45afa165c6788c449
-labels:
-- Projectile
-PrefabImporter:
+guid: fd1a131832bf7f44a9752e544cbbca9a
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
