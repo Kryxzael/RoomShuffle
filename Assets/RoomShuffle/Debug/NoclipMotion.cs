@@ -60,7 +60,7 @@ public class NoclipMotion : MonoBehaviour
          */
         if (Cheats.Noclip)
         {
-            Vector2 inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 inputVector = new Vector2(Input.GetAxisRaw("Horizontal") * (FlipCamera.IsFlipped ? -1f : 1f), Input.GetAxisRaw("Vertical"));
             transform.Translate(inputVector * NoclipSpeed);
         }
     }

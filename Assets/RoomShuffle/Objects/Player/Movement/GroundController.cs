@@ -69,8 +69,13 @@ public class GroundController : MonoBehaviour
          * Input
          */
 
+        float input = Input.GetAxisRaw("Horizontal");
+
+        if (FlipCamera.IsFlipped)
+            input *= -1;
+
         //Player wants to move right 
-        if (Input.GetAxisRaw("Horizontal") > 0.25f)
+        if (input > 0.25f)
         {
             //Player is currently moving in the opposite direction, decelerate them
             if (_rigid.velocity.x < 0)
@@ -82,7 +87,7 @@ public class GroundController : MonoBehaviour
         }
 
         //Player wants to move left
-        else if (Input.GetAxisRaw("Horizontal") < -0.25f)
+        else if (input < -0.25f)
         {
             //Player is currently moving in the opposite direction, decelerate them
             if (_rigid.velocity.x > 0)
