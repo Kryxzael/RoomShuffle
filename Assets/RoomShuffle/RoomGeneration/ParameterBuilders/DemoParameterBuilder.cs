@@ -32,7 +32,8 @@ public class DemoParameterBuilder : ParameterBuilder
             Layout = _currentRoom.Current,
             Theme = RoomTheme.Grass,
             Effect = RoomEffects.None,
-            EnemySet = EnemySets[random.Next(EnemySets.Count)]
+            EnemySet = EnemySets[random.Next(EnemySets.Count)],
+            FlipHorizontal = false
         };
     }
 }

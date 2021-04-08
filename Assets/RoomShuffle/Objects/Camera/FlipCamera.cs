@@ -13,7 +13,7 @@ public class FlipCamera : MonoBehaviour
     /// <summary>
     /// Whether the camera is currently flipped
     /// </summary>
-    public static bool IsFlipped { get; set; } = true;
+    public static bool IsFlipped { get; set; } = false;
 
     new private Camera camera;
 

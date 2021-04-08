@@ -13,4 +13,5 @@ public class RoomParameters
     public RoomTheme Theme;
     public RoomEffects Effect;
     public EnemySet EnemySet;
+    public bool FlipHorizontal;
 }
