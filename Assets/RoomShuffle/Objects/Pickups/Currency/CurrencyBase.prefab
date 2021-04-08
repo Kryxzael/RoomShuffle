@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 0}
+  PlaybackSpeed: 1
 --- !u!114 &6529962587543489333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,6 +37,10 @@ PrefabInstance:
     - target: {fileID: 382140331158365946, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Name
       value: CurrencyBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 461654146341380666, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2433889289742187677, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Radius

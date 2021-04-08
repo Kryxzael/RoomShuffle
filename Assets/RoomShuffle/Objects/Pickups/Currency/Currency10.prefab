@@ -111,10 +111,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency10
       objectReference: {fileID: 0}
-    - target: {fileID: 7005886389956380122, guid: 1bf49af9c70cf624b8f4f91ef07279c6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7069642161122230554, guid: 1bf49af9c70cf624b8f4f91ef07279c6, type: 3}
       propertyPath: m_Layer
       value: 10
