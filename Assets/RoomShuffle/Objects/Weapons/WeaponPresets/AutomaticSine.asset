@@ -24,7 +24,7 @@ MonoBehaviour:
     Minimum: 10
     Maximum: 15
   Cooldown: 1
-  Icon: {fileID: -5481814538712004923, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+  Icon: {fileID: -761887118410055393, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
   Ammunition: {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
   ClusterCount: 6
   WaitTime: 0.04

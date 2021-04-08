@@ -24,7 +24,7 @@ MonoBehaviour:
     Minimum: 10
     Maximum: 10
   Cooldown: 0.5
-  Icon: {fileID: -7153625193738375839, guid: a470aee010057ec49905c736884d6b9d, type: 3}
+  Icon: {fileID: 4774762479299409953, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
   AmmunitionList:
   - {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
   - {fileID: 6701171779958748145, guid: 8049e9e8b52dc234994f756b6cd752fd, type: 3}
