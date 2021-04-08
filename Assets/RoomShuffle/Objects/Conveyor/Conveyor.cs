@@ -12,7 +12,7 @@ using UnityEngine;
 [RequireComponent(typeof(Flippable))]
 public class Conveyor : DetectObjectsOn
 {
-    private const float BASE_BELT_SPEED = 0.025f;
+    private const float BASE_BELT_SPEED = 5f;
 
     private Flippable _flippable;
 
