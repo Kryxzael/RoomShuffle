@@ -18,9 +18,4 @@ public class LinearProjectile : Projectile
         _rigidbody.velocity = transform.up * Speed;
         
     }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
 }
