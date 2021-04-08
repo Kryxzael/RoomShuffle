@@ -37,7 +37,7 @@ public class Conveyor : DetectObjectsOn
     {
         foreach (Transform i in ObjectsOn)
         {
-            i.Translate(_flippable.DirectionVector * Commons.GetEffectValue(Speed, EffectValueType.EnemySpeed));
+            i.Translate(_flippable.DirectionVector * Commons.GetEffectValue(Speed, EffectValueType.EnemySpeed) * Time.deltaTime);
         }
     }
 }
