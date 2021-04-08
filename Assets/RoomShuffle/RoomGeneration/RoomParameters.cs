@@ -14,4 +14,5 @@ public class RoomParameters
     public RoomEffects Effect;
     public EnemySet EnemySet;
     public bool FlipHorizontal;
+    public IEnumerator<WeaponTemplate> WeaponEnumerator;
 }

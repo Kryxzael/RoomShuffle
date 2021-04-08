@@ -33,7 +33,8 @@ public class DemoParameterBuilder : ParameterBuilder
             Theme = RoomTheme.Grass,
             Effect = RoomEffects.None,
             EnemySet = EnemySets[random.Next(EnemySets.Count)],
-            FlipHorizontal = false
+            FlipHorizontal = false,
+            WeaponEnumerator = WeaponTemplates.OrderBy(i => UnityEngine.Random.value).GetEnumerator()
         };
     }
 }

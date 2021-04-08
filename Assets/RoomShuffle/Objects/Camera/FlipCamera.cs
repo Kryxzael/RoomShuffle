@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 using UnityEngine;
 
-//Modified variant, original at: https://answers.unity.com/questions/20337/flipmirror-camera.html by videordealmeida at Jan 17 2017 03:30 PM
+//Adapted, original at: https://answers.unity.com/questions/20337/flipmirror-camera.html by videordealmeida at Jan 17 2017 03:30 PM
 
 [RequireComponent(typeof(Camera))]
 [ExecuteInEditMode]
