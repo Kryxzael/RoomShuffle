@@ -100,8 +100,8 @@ MonoBehaviour:
   ChargingMaterial: {fileID: 2100000, guid: c0c4c7f3d34e1bc4b8a95cc8ae8450a4, type: 2}
   FiringMaterial: {fileID: 2100000, guid: 12d861709a857504f9f21d30fcf9f786, type: 2}
   CycleTime: 5
-  DutyCycle: 0.5
-  CycleOffset: 0
+  DutyCycle: 0.25
+  CycleOffset: 0.5
 --- !u!120 &69657648604158471
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -143,8 +143,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -47.82, y: 3.85, z: 0}
-  - {x: -47.82, y: 8, z: 0}
+  - {x: 42.5, y: 1.4999995, z: 0}
+  - {x: 42.499996, y: -4, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -153,7 +153,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.6710644
+        value: 0.7039623
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -165,8 +165,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -189,7 +189,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 1
+      m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

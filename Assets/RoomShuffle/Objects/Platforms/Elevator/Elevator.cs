@@ -24,6 +24,9 @@ public class Elevator : MonoBehaviour
         if (spriteRenderer)
             spriteRenderer.size = spriteRenderer.size.SetX(manager.CartWidth);
 
+        //Sets the speed of the cart
+        Speed = manager.CartSpeed;
+
         //Repeat the process as long as there are checkpoints to reach
         foreach (var destination in GetCheckpointProgression(manager))
         {

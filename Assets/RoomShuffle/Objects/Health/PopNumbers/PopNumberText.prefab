@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5899629728705117788}
   - component: {fileID: 521378033056875349}
   - component: {fileID: 7639935985091447328}
+  - component: {fileID: 2406372164719404058}
   m_Layer: 0
   m_Name: PopNumberText
   m_TagString: Untagged
@@ -183,9 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndSize: {x: 2, y: 2, z: 2}
-  RelativeStartPosition: {x: 0, y: 1, z: 0}
   RelativeEndPosition: {x: 0, y: 2.5, z: 0}
-  StartColor: {r: 1, g: 0, b: 0, a: 1}
   EndColor: {r: 1, g: 0, b: 0, a: 0}
   AnimationLength: 5
   AnimationCurve:
@@ -212,3 +211,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2406372164719404058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645097769926533686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdad30e59ba58044395326909f00c53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -119,5 +119,7 @@ public class RoomGenerator : MonoBehaviour
 
         //Set up room effects
         Commons.RoomEffectController.OnRoomStart(parameters);
+
+        FlipCamera.IsFlipped = true;
     }
 }

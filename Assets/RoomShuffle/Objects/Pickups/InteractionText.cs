@@ -11,15 +11,14 @@ public class InteractionText : MonoBehaviour
     private bool _controllerConnected = false;
     private PickupBase _pickupBase;
     
-    //TODO chenge all of these to the correct sprites
+    //TODO change all of these to the correct sprites
     private const string KEYBOARD_SPRITE_DOWN = "<sprite=1>";
     private const string KEYBOARD_SPRITE_UP = "<sprite=0>";
     private const string CONTROLLER_SPRITE_DOWN = "<sprite=3>";
     private const string CONTROLLER_SPRITE_UP = "<sprite=2>";
+
     void Start()
     {
-        //Time.timeScale = 0.1f;
-
         _pickupBase = GetComponentInParent<PickupBase>();
         
         //The interaction text shall not be visible if the player don't have to
@@ -44,18 +43,8 @@ public class InteractionText : MonoBehaviour
     
     public void Update()
     {
-        //the item is within pickup range
-        if (_pickupBase.InPickupRange)
-        {
-            //Show Interaction Text
-            transform.localScale = Vector3.one;
-        }
-        //the item is not whithin pickup range
-        else
-        {
-            //Hide interaction Text
-            transform.localScale = Vector3.zero;
-        }
+        //Shows the text if the player is within
+        TMP.enabled = _pickupBase.InPickupRange;
     }
 
     /// <summary>

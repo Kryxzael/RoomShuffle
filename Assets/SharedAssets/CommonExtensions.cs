@@ -9,6 +9,11 @@ using System.Linq;
 public static class CommonExtensions
 {
     /// <summary>
+    /// The default mask the OnGround checks will use if nothing else is specified
+    /// </summary>
+    public static LayerMask DefaultGroundMask = ~0;
+
+    /// <summary>
     /// Checks if the 2D game object of this monobehaviour is grounded
     /// </summary>
     /// <param name="mb"></param>
@@ -57,14 +62,14 @@ public static class CommonExtensions
         //Does a horizontal raycasting under the object's collider to check if it collides with another collider
         if (layers.Any())
         {
-            return Physics2D.Raycast(new Vector2(collider.bounds.min.x, collider.bounds.min.y - RAY_DISTANCE), Vector2.right, collider.bounds.size.x, LayerMask.GetMask(layers));
+            return Physics2D.Raycast(new Vector2(collider.bounds.min.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE, LayerMask.GetMask(layers));
         }
 
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(new Vector2(collider.bounds.min.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE))
+        if (hit = Physics2D.Raycast(new Vector2(collider.bounds.min.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE, DefaultGroundMask))
             return hit;
 
-        if (hit = Physics2D.Raycast(new Vector2(collider.bounds.max.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE))
+        if (hit = Physics2D.Raycast(new Vector2(collider.bounds.max.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE, DefaultGroundMask))
             return hit;
 
         return default;
@@ -131,7 +136,7 @@ public static class CommonExtensions
         }
         else
         {
-            return pnts.Any(i => Physics.RaycastAll(new Ray(i, Vector3.down), 0.1f).Any());
+            return pnts.Any(i => Physics.RaycastAll(new Ray(i, Vector3.down), 0.1f, DefaultGroundMask).Any());
         }
     }
 

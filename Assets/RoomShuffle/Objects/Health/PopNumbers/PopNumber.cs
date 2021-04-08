@@ -59,6 +59,9 @@ public class PopNumber : MonoBehaviour
                 t: AnimationCurve.Evaluate(lerpTime)
             );
 
+            //Override for flipped camera
+            transform.localScale = transform.localScale.SetX(transform.localScale.x * (FlipCamera.IsFlipped ? -1f : 1f));
+
             transform.position = Vector3.Lerp(
                 a: startPosition, 
                 b: _originalPosition + RelativeEndPosition,

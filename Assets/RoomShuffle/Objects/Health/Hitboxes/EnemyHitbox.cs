@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,6 +38,9 @@ public class EnemyHitbox : Hitbox
     {
         const float POP_NUMBER_RANDOM_X_OFFSET = 1f;
 
+        if (damage <= 0)
+            return;
+
         float verticalOffset = 1f;
         float horizontalOffset = RandomValueBetween.Symetrical(POP_NUMBER_RANDOM_X_OFFSET).Pick();
 
@@ -45,7 +49,12 @@ public class EnemyHitbox : Hitbox
             position: transform.position + Vector3.up * verticalOffset + Vector3.right * horizontalOffset
         ).GetComponent<TextMeshPro>();
 
-        instance.text = $"-{damage}";
+        string damageText = damage.ToString();
+
+        if (damage >= 10000)
+            damageText = "\x221E";
+
+        instance.text = $"-{damageText}";
     }
 
     /// <summary>

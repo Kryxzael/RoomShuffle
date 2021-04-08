@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1829799556434204644, guid: d9a493154ee60d9449ea0e2c7ea147a4, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1829799556434204645, guid: d9a493154ee60d9449ea0e2c7ea147a4, type: 3}
       propertyPath: Damage
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829799556434204647, guid: d9a493154ee60d9449ea0e2c7ea147a4, type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1829799556434204647, guid: d9a493154ee60d9449ea0e2c7ea147a4, type: 3}
       propertyPath: m_Color.b

@@ -50,6 +50,7 @@ public class CharacterAnimator : MonoBehaviour
 
         /*
          * Override animation is noclip is enabled
+         * 
          */
         if (Cheats.Noclip)
         {
@@ -61,10 +62,14 @@ public class CharacterAnimator : MonoBehaviour
         /*
          * Set sprite direction
          */
-        if (Input.GetAxisRaw("Horizontal") > 0.2f)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        if (FlipCamera.IsFlipped)
+            horizontal *= -1;
+
+        if (horizontal > 0.2f)
             _flippable.Direction = Direction1D.Right;
 
-        else if (Input.GetAxisRaw("Horizontal") < -0.2f)
+        else if (horizontal < -0.2f)
             _flippable.Direction = Direction1D.Left;
 
         /*

@@ -32,6 +32,10 @@ public abstract class Hitbox : MonoBehaviour
         _renderer = GetComponentInParent<SpriteRenderer>();
     }
 
+    public Hitbox()
+    {        
+    }
+
     /// <summary>
     /// Enables invincibility time for the object
     /// </summary>
@@ -83,13 +87,15 @@ public abstract class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<HurtBox>() is HurtBox hurt)
+        object x = "Hello";
+
+        if (collision.GetComponent<HurtBox>() is HurtBox hurt && hurt)
             TryDealDamageBy(hurt);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt.ContinuousDamage)
+        if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt && hurt.ContinuousDamage)
             TryDealDamageBy(hurt);
     }
 

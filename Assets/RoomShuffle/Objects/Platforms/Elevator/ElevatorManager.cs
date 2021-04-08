@@ -120,7 +120,7 @@ public class ElevatorManager : MonoBehaviour
             for (int i = 0; i < numberOfElevators; i++)
             {
                 Instantiate(CartPrefab, StartPoint.position, Quaternion.identity, transform);
-                yield return new WaitForSeconds(TrackLength / CartPrefab.Speed / NumberOfCarts);
+                yield return new WaitForSeconds(TrackLength / CartSpeed / NumberOfCarts);
             }
         }
 

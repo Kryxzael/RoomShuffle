@@ -59,6 +59,9 @@ public class JumpController : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _flippable = GetComponent<Flippable>();
+
+        //Sets up the default ground mask for OnGround2D()
+        CommonExtensions.DefaultGroundMask = Commons.Masks.GroundOnly;
     }
 
     private void Update()

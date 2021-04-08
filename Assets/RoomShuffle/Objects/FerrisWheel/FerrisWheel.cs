@@ -56,7 +56,7 @@ public class FerrisWheel : MonoBehaviour
                 circularMotion = obj.AddComponent<CircularMotion>();
 
             //Resize sprite
-            if (SetTilingWidth && obj.GetComponent<SpriteRenderer>() is SpriteRenderer spr)
+            if (SetTilingWidth && obj.GetComponent<SpriteRenderer>() is SpriteRenderer spr && spr)
                 spr.size = spr.size.SetX(PlatformWidth);
 
 
