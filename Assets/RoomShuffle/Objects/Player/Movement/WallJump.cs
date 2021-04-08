@@ -71,11 +71,11 @@ public class WallJump : MonoBehaviour
         RaycastHit2D hit;
 
         //Checks for right wall
-        if (hit = Physics2D.Raycast(transform.position, Vector2.right, _collider.bounds.size.x / 2f + CHECK_DISTANCE, ~LayerMask.GetMask("RepellingWall")))
+        if (hit = Physics2D.Raycast(transform.position, Vector2.right, _collider.bounds.size.x / 2f + CHECK_DISTANCE, Commons.Masks.GroundOnly))
             return hit.normal;
 
         //Checks for left wall
-        if (hit = Physics2D.Raycast(transform.position, Vector2.left, _collider.bounds.size.x / 2f + CHECK_DISTANCE, ~LayerMask.GetMask("RepellingWall")))
+        if (hit = Physics2D.Raycast(transform.position, Vector2.left, _collider.bounds.size.x / 2f + CHECK_DISTANCE, Commons.Masks.GroundOnly))
             return hit.normal;
 
         //No wall found
