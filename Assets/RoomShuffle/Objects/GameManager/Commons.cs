@@ -213,7 +213,7 @@ public static class Commons
     /// </summary>
     public static class Masks
     {
-        public static readonly LayerMask GroundOnly = LayerMask.GetMask("Ground");
+        public static readonly LayerMask GroundOnly = LayerMask.GetMask("Ground", "Crate");
         public static readonly LayerMask HitboxesHurtboxes = LayerMask.GetMask("Hitbox Hurtbox");
     }
 }
