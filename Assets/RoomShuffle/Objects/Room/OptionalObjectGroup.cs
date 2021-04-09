@@ -17,8 +17,8 @@ public class OptionalObjectGroup : MonoBehaviour
 
     private void Start()
     {
-        if (GetCandidates().Count() < 2)
-            throw new InvalidOperationException("An OptionalObjectGroup must have at least two direct OptionalObjectCandidates");
+        if (GetCandidates().Count() == 1)
+            throw new InvalidOperationException("An OptionalObjectGroup must have at least two direct OptionalObjectCandidates or have none at all");
     }
 
     /// <summary>
@@ -40,13 +40,23 @@ public class OptionalObjectGroup : MonoBehaviour
     }
 
     /// <summary>
-    /// Selects one of the OptionalObjectCandidates in the 
+    /// Selects one of the OptionalObjectCandidates to spawn and destroys the others
     /// </summary>
     /// <param name="random"></param>
     public void Select(System.Random random)
     {
         //Gets all candidates (direct children)
         var candidates = GetCandidates().ToArray();
+
+        //If there are no candidates, then choose to destroy self or not
+        if (candidates.Length == 0)
+        {
+            if (random.NextDouble() <= ChanceToSpawnNothing)
+                Destroy(gameObject);
+
+            return;
+        }
+
 
         //No accessible candidates found in group
         if (candidates.All(i => i.SpawnChance == 0f))
