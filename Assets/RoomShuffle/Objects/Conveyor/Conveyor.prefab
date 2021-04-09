@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2561563027324664375}
   - component: {fileID: 933976887205477536}
   - component: {fileID: 6060868218916977561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Conveyor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

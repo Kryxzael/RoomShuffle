@@ -148,4 +148,5 @@ public class ElevatorManager : MonoBehaviour
         if (EOLOption == EndOfLineOption.Loop)
             Gizmos.DrawLine(EndPoint.position, StartPoint.position);
     }
+    
 }
