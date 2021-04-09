@@ -15,6 +15,20 @@ MonoBehaviour:
   JumpForce: 15
   JumpInterval: 0
   AffectedByFastFoe: 1
+--- !u!114 &7538243041049948279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968760827972290024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 3a3100976f9c0f24a8cdb88d9e7094c6, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &7605399513996432125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 926801475820779279, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+      objectReference: {fileID: 2192450021786810173, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
     - target: {fileID: 8747412442085526250, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Name
       value: FastStandingJumper

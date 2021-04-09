@@ -26,7 +26,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189b06f808fdd45b9a9c1d454b7cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 5
+  WalkSpeed: 3
+--- !u!114 &7980152369121438433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3332340997247347791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: d97b7d8e8d7040d43a50fa49bac1002b, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &7964119877578111834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,7 +55,19 @@ PrefabInstance:
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7369953315678303813, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+      objectReference: {fileID: -8421458170528590454, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
+    - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Color.b
+      value: 0.495283
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Color.g
+      value: 0.74486595
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: StartingDirection
       value: -1

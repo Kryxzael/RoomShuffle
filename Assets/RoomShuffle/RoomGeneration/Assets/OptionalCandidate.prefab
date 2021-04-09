@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7996559805360086476}
   - component: {fileID: 6475843831449013288}
   - component: {fileID: 905593659840579994}
+  - component: {fileID: 3807153658156654838}
+  - component: {fileID: 236218234414324833}
   m_Layer: 6
   m_Name: Solid
   m_TagString: Untagged
@@ -132,7 +134,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -148,6 +150,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8bbff53404f2b4db214a357bfb9c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &3807153658156654838
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300904763612653862}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &236218234414324833
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300904763612653862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6475843831449013288}
+    m_ColliderPaths:
+    - - X: 120000000
+        Y: 80000000
+      - X: 80000000
+        Y: 80000000
+      - X: 80000000
+        Y: 60000000
+      - X: 120000000
+        Y: 60000000
+    - - X: 220000000
+        Y: 80000000
+      - X: 180000000
+        Y: 80000000
+      - X: 180000000
+        Y: 60000000
+      - X: 220000000
+        Y: 60000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 21.999971, y: 6}
+      - {x: 21.999971, y: 8}
+      - {x: 18, y: 7.9999704}
+      - {x: 18.000029, y: 6}
+    - - {x: 11.99997, y: 6}
+      - {x: 11.99997, y: 8}
+      - {x: 8, y: 7.9999704}
+      - {x: 8.00003, y: 6}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
 --- !u!1 &1598486401395835986
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +373,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1080347383
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

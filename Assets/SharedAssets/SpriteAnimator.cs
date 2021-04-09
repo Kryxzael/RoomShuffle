@@ -46,7 +46,7 @@ public class SpriteAnimator : MonoBehaviour
             return;
         }
 
-        StartCoroutine(nameof(Animate), Animation);
+        StartCoroutine(nameof(Animate));
     }
 
     private int _currentFrame;
@@ -64,6 +64,19 @@ public class SpriteAnimator : MonoBehaviour
         {
             _currentFrame = Mathf.Clamp(value, 0, _animation.FrameCount);
         }
+    }
+
+    /// <summary>
+    /// Restarts the current animation
+    /// </summary>
+    public void RestartAnimation()
+    {
+        if (_animation == null)
+            return;
+
+        StopAllCoroutines();
+        CurrentFrame = 0;
+        StartCoroutine(nameof(Animate));
     }
 
     private IEnumerator Animate()

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adef74459c54efe4da176991c19c4aed, type: 3}
-  m_Name: FullHealhPickup
+  m_Name: Walker
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: -5388755749296596579, guid: 43c8563f1ff1ae24d91ae4ddb266145e, type: 3}
+  - Sprite: {fileID: -1147401495359466748, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
     FrameTimeMultiplier: 1
-  - Sprite: {fileID: 5670370932310569416, guid: 43c8563f1ff1ae24d91ae4ddb266145e, type: 3}
+  - Sprite: {fileID: -8421458170528590454, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
-  FrameTimeDivider: 2
+  FrameTimeDivider: 4

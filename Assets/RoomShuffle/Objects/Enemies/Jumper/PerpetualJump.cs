@@ -10,6 +10,7 @@ using UnityEngine;
 /// <summary>
 /// Causes an object to perpetually jump whenever it touches the ground
 /// </summary>
+[RequireComponent(typeof(SpriteAnimation))]
 public class PerpetualJump : MonoBehaviour
 {
     [Tooltip("The force (speed) of the jump")]
@@ -26,6 +27,7 @@ public class PerpetualJump : MonoBehaviour
     private IEnumerator Start()
     {
         var rigidbody = GetComponentInParent<Rigidbody2D>();
+        var animator = GetComponent<SpriteAnimator>();
 
         while (true)
         {
@@ -36,6 +38,10 @@ public class PerpetualJump : MonoBehaviour
             //Apply fast-foe effect
             if (AffectedByFastFoe)
                 waitTime = Commons.GetEffectValue(waitTime, EffectValueType.EnemyWaitTime);
+
+            //Reset animation on landing
+            if (this.OnGround2D())
+                animator.RestartAnimation();
 
             //The object waits for its interval
             while (time <= waitTime)
