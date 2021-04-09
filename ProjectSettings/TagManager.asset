@@ -47,6 +47,9 @@ TagManager:
     uniqueID: 227251391
     locked: 0
   - name: Background Tiles
+    uniqueID: 1008013769
+    locked: 0
+  - name: Ground Tiles
     uniqueID: 2002978951
     locked: 0
   - name: Projectiles

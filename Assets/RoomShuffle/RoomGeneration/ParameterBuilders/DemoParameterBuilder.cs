@@ -12,6 +12,9 @@ public class DemoParameterBuilder : ParameterBuilder
 
     public List<RoomLayout> DemoRoomProgression;
 
+    public int EnemySetIndex = 0;
+    public int WeaponSetIndex = 0;
+
     public override RoomParameters GetInitialParameters(System.Random random)
     {
         _currentRoom = DemoRoomProgression.GetEnumerator();
@@ -32,9 +35,9 @@ public class DemoParameterBuilder : ParameterBuilder
             Layout = _currentRoom.Current,
             Theme = RoomTheme.Grass,
             Effect = RoomEffects.None,
-            EnemySet = EnemySets[random.Next(EnemySets.Count)],
+            EnemySet = EnemySets[EnemySetIndex],
             FlipHorizontal = false,
-            WeaponEnumerator = WeaponTemplates.OrderBy(i => UnityEngine.Random.value).GetEnumerator()
+            WeaponEnumerator = Enumerable.Repeat(WeaponTemplates.ElementAt(WeaponSetIndex), 100).GetEnumerator()
         };
     }
 }
