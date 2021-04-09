@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1305637963229040091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6942247698572244151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 9113d785dd8810740aa9fd49dcfa9a22, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &1825384997240817155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,14 +24,14 @@ PrefabInstance:
     - target: {fileID: 4118640679207093132, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1666111160872865085, guid: b1ecbbc622d60904abe8c48243dc5e4a, type: 3}
+      objectReference: {fileID: -5731162285055332302, guid: 43c8563f1ff1ae24d91ae4ddb266145e, type: 3}
     - target: {fileID: 4118640679207093132, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
       propertyPath: m_Color.b
-      value: 0.36320752
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4118640679207093132, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
       propertyPath: m_Color.g
-      value: 0.36320752
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4118640679207093132, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
       propertyPath: m_Color.r
@@ -77,3 +91,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
+--- !u!1 &6942247698572244151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8719743466327126708, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
+  m_PrefabInstance: {fileID: 1825384997240817155}
+  m_PrefabAsset: {fileID: 0}
