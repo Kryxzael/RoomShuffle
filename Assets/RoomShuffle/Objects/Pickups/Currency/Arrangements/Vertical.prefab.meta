@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: a39c1314b0285c74aafc8e045c6a80c2
+labels:
+- Pickup
 PrefabImporter:
   externalObjects: {}
   userData: 
