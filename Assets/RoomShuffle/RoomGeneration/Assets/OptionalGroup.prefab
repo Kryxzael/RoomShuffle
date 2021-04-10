@@ -54,10 +54,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 9156928611143720675}
     m_Modifications:
     - target: {fileID: 621484507078170776, guid: 96cb0335c63d65248a33421c2c48d49c, type: 3}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 621484507078170776, guid: 96cb0335c63d65248a33421c2c48d49c, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 0
       objectReference: {fileID: 0}
