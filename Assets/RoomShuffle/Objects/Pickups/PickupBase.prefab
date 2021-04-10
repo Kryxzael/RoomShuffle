@@ -542,8 +542,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5690166193303761803, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
       propertyPath: m_text
-      value: '0 <sprite=4> '
+      value: '0 <sprite=0> '
       objectReference: {fileID: 0}
+    - target: {fileID: 5690166193303761803, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 474cb1b546da6f24db8b2711414fdace, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
 --- !u!1 &461654146341380666 stripped

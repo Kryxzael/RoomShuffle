@@ -86,7 +86,8 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
         /// <param name="text"></param>
         private void SetLabel(string text)
         {
-            _label.text = text + "<sprite=4>";
+            const int SPRITE_INDEX = 0;
+            _label.text = text + $"<sprite={SPRITE_INDEX}>";
         }
     }
     

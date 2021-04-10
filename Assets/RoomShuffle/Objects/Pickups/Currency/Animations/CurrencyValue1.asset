@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CurrencyValue1
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: -2918713382870590211, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+  - Sprite: {fileID: -5365863229979688361, guid: 88f7c33ff8c0ff04aadc55860ef4c254, type: 3}
     FrameTimeMultiplier: 1
-  - Sprite: {fileID: 4015476655238648777, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+  - Sprite: {fileID: 1497490333533014219, guid: 88f7c33ff8c0ff04aadc55860ef4c254, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
   FrameTimeDivider: 2

@@ -20,7 +20,7 @@ public class PriceTag : MonoBehaviour
             gameObject.SetActive(false);
 
         //The index on the sprite of the sprite to display
-        const int SPRITE_SHEET_INDEX = 4;
+        const int SPRITE_SHEET_INDEX = 0;
 
         //Sets the price text
         textMesh.text = $"{pickup.Price} <sprite={SPRITE_SHEET_INDEX}> ";

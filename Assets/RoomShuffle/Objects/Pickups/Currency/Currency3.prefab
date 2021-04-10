@@ -11,10 +11,14 @@ PrefabInstance:
       propertyPath: Animation
       value: 
       objectReference: {fileID: 11400000, guid: 59e0017fa542d384492a42e1d9e6ceca, type: 2}
+    - target: {fileID: 780315471827138550, guid: 1bf49af9c70cf624b8f4f91ef07279c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2763889054215703592, guid: 1bf49af9c70cf624b8f4f91ef07279c6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2257632810970275249, guid: 2f6cd71deb4d54b4ea036460ba2a7535, type: 3}
+      objectReference: {fileID: 7733358744028532689, guid: 88f7c33ff8c0ff04aadc55860ef4c254, type: 3}
     - target: {fileID: 4512773650411631134, guid: 1bf49af9c70cf624b8f4f91ef07279c6, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 2
