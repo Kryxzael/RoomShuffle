@@ -437,6 +437,18 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4489212257017188549, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826079827518665624, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068852669390042188, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
 --- !u!4 &5553085235075713750 stripped
