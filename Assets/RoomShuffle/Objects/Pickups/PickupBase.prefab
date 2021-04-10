@@ -445,10 +445,6 @@ PrefabInstance:
       value: PriceTag
       objectReference: {fileID: 0}
     - target: {fileID: 5690166193303761801, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690166193303761801, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
