@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedWeaponSlot: 0
+  FallbackWeapon: {fileID: 11400000, guid: 32aeae76919aa164bb2e8cbb0cc196fd, type: 2}
   Currency: 0
   PuzzleKeys: 0
   GeneralKeys: 0

@@ -14,12 +14,18 @@ public class Inventory : MonoBehaviour
     //The amount of weapons the player can carry
     public const int MAX_WEAPON_SLOTS = 2;
 
+    //The weapon to use if the player tries to fire an empty weapon
+    private WeaponInstance _fallbackWeaponInstance;
+
     [Header("Weapons")]
     [Tooltip("The weapons the player is carrying")]
     public WeaponInstance[] WeaponSlots = new WeaponInstance[MAX_WEAPON_SLOTS];
 
     [Tooltip("The currently selected weapon slot")]
     public int SelectedWeaponSlot;
+
+    [Tooltip("The weapon to instantiate if the player doesn't have any weapons")]
+    public WeaponTemplate FallbackWeapon;
 
     /// <summary>
     /// Gets the weapon in the selected weapon slot
@@ -58,18 +64,30 @@ public class Inventory : MonoBehaviour
     [Tooltip("The amount of general keys the player is holding. This value is NOT reset each room")]
     public int GeneralKeys;
 
+    private void Start()
+    {
+        _fallbackWeaponInstance = FallbackWeapon.CreateWeaponInstance();
+    }
+
     private void Update()
-    { 
+    {
         /*
          * Weapon firing
          */
-        if (SelectedWeapon != null)
+        if (Input.GetButton("Fire"))
         {
-            if (Input.GetButton("Fire") && SelectedWeapon.CanFire(ignoreDurability: false))
+            //Player does not hold a weapon, use fallback if available
+            if (SelectedWeapon == null || (SelectedWeapon.Durability == 0 && !Cheats.InfiniteAmmo))
             {
-                SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
+                if (_fallbackWeaponInstance.CanFire(ignoreDurability: true))
+                    _fallbackWeaponInstance.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
             }
+
+            //Player has weapon. Fire it if it can be fired
+            if (SelectedWeapon.CanFire(ignoreDurability: false))
+                SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
         }
+
         /*
          * Switch weapon with button
          */
