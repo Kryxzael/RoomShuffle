@@ -300,6 +300,8 @@ GameObject:
   - component: {fileID: 5473697764776778003}
   - component: {fileID: 7130101877365959919}
   - component: {fileID: 5460642046265644934}
+  - component: {fileID: 2168782968936994294}
+  - component: {fileID: 591844290749995522}
   m_Layer: 12
   m_Name: WeakSpot
   m_TagString: Untagged
@@ -402,8 +404,8 @@ SpriteRenderer:
   m_SortingLayerID: 1437658149
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5935207669931119478, guid: aad3bff4c9c12a54d8ae570a02f1a735, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.35686275}
+  m_Sprite: {fileID: -6207757138182406052, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -439,3 +441,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &2168782968936994294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7523499527680363377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 0}
+  PlaybackSpeed: 1
+--- !u!114 &591844290749995522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7523499527680363377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333fff3e13c28c1479888f03d9e0e1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+    DefaultSprite: {fileID: -6207757138182406052, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    GrassSprite: {fileID: -8184379150101219391, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    SnowSprite: {fileID: 4887062365957883200, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    AutumnSprite: {fileID: 2814704284844696603, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    CaveSprite: {fileID: -2961528784374388474, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    VolcanoSprite: {fileID: 3408134585108976541, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    JungleSprite: {fileID: -6095331046095953541, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    CloudSprite: {fileID: -3515633774369559798, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    FactorySprite: {fileID: 5470801890448593414, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    DefaultAnimation: {fileID: 0}
+    GrassAnimation: {fileID: 0}
+    SnowAnimation: {fileID: 0}
+    AutumnAnimation: {fileID: 0}
+    CaveAnimation: {fileID: 0}
+    VolcanoAnimation: {fileID: 0}
+    JungleAnimation: {fileID: 0}
+    CloudAnimation: {fileID: 0}
+    FactoryAnimation: {fileID: 0}

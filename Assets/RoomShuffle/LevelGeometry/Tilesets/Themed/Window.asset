@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94975398706e294db646ccb23b5c435, type: 3}
+  m_Name: Window
+  m_EditorClassIdentifier: 
+  CollisionType: 2
+  Visuals:
+    DefaultSprite: {fileID: -8955107517056722913, guid: 11154916454401f4e98404e506317092, type: 3}
+    GrassSprite: {fileID: 6568613397067072510, guid: 9b370985d895c554db958dbe91c81840, type: 3}
+    SnowSprite: {fileID: 2689580043110298439, guid: 60f3618b70a2e834794e7725aea22a71, type: 3}
+    AutumnSprite: {fileID: -4809317364085913722, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
+    CaveSprite: {fileID: 4244239831416960097, guid: a6fdba693bca4bb48954fb7e4e69121e, type: 3}
+    VolcanoSprite: {fileID: 4742805993594641856, guid: a093777ba49c9b84d8098e2f654d7aa8, type: 3}
+    JungleSprite: {fileID: 8861985366464598012, guid: 2a6fa6cb829cdb743bf4cbc41f6750b6, type: 3}
+    CloudSprite: {fileID: -453107676248031222, guid: b1ecbbc622d60904abe8c48243dc5e4a, type: 3}
+    FactorySprite: {fileID: -6364173915528063109, guid: ae8d232ce6fbd59498e614a79cdb61f7, type: 3}
+    DefaultAnimation: {fileID: 0}
+    GrassAnimation: {fileID: 0}
+    SnowAnimation: {fileID: 0}
+    AutumnAnimation: {fileID: 0}
+    CaveAnimation: {fileID: 0}
+    VolcanoAnimation: {fileID: 0}
+    JungleAnimation: {fileID: 0}
+    CloudAnimation: {fileID: 0}
+    FactoryAnimation: {fileID: 11400000, guid: 563b5c35d7afaf746b83789d1a81ab78, type: 2}
