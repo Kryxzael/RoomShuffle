@@ -23,11 +23,9 @@ public class CircularMotion : MonoBehaviour
 
         if (Arm)
         {
-            GameObject instance = Instantiate(Arm, transform.position, Quaternion.identity);
+            GameObject instance = Instantiate(Arm, transform.position, Quaternion.identity, transform.parent);
             _armTransform = instance;
         }
-
-
 
         if (_armTransform)
         {
