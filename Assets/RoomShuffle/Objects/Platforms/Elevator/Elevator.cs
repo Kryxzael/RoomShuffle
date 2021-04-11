@@ -40,7 +40,9 @@ public class Elevator : MonoBehaviour
                 travelPercentage += (Time.deltaTime * Speed) / Vector2.Distance(lastCheckpoint.position, destination.position);
                 transform.position = Vector2.Lerp(lastCheckpoint.position, destination.position, travelPercentage);
 
-                yield return new WaitForEndOfFrame();
+                //yield return null runs _before_ LateUpdate()
+                //yield return new WaitForEndOfFrame() runs _after_ LateUpdate() (which screws with some other scripts)
+                yield return null;
             }
 
             lastCheckpoint = destination;
