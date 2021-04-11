@@ -68,7 +68,7 @@ PlayerSettings:
   androidRenderOutsideSafeArea: 1
   androidUseSwappy: 1
   androidBlitType: 0
-  defaultIsNativeResolution: 1
+  defaultIsNativeResolution: 0
   macRetinaSupport: 1
   runInBackground: 0
   captureSingleScreen: 0
@@ -122,11 +122,11 @@ PlayerSettings:
   vulkanEnablePreTransform: 0
   vulkanEnableLateAcquireNextImage: 0
   m_SupportedAspectRatios:
-    4:3: 1
-    5:4: 1
-    16:10: 1
+    4:3: 0
+    5:4: 0
+    16:10: 0
     16:9: 1
-    Others: 1
+    Others: 0
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
