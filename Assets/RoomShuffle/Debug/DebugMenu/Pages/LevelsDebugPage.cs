@@ -21,7 +21,7 @@ public class LevelsDebugPage : DebugPage
         ReadOnly($"Damage Level: {Commons.PlayerProgression.DamageLevel}");
         if (Button("Level Up Damage"))
         {
-            Commons.PlayerProgression.LevelUpHealth();
+            Commons.PlayerProgression.LevelUpDamage();
         }
 
         Separator();

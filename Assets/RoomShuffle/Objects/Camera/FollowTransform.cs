@@ -23,6 +23,9 @@ public class FollowTransform : MonoBehaviour
 
     private void Update()
     {
+        if (!Target)
+            return;
+
         transform.position = Target.transform.position.SetZ(transform.position.z);
     }
 }

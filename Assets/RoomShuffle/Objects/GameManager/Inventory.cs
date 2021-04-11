@@ -84,8 +84,11 @@ public class Inventory : MonoBehaviour
             }
 
             //Player has weapon. Fire it if it can be fired
-            if (SelectedWeapon.CanFire(ignoreDurability: false))
-                SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
+            else
+            {
+                if (SelectedWeapon.CanFire(ignoreDurability: false))
+                    SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
+            }
         }
 
         /*

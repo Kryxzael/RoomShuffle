@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6436943173050799565}
   - component: {fileID: 8436267474268975168}
   - component: {fileID: 6197143611851246799}
+  - component: {fileID: 3809066240436208363}
   m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
@@ -89,6 +90,34 @@ MonoBehaviour:
   LootTables:
   - Spawnrate: 1
     Table: {fileID: 11400000, guid: b8d4939b2bec78f4f8aaa33278166be0, type: 2}
+--- !u!114 &3809066240436208363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449751605051159208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eb848f1e684954896da7817ca5b5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleCount:
+    Minimum: 10
+    Maximum: 20
+  SmallDropParticleCount:
+    Minimum: 1
+    Maximum: 3
+  Particles:
+  - {fileID: 2308649882508590360, guid: 271cb8f4129c1714ba02752719e42df1, type: 3}
+  - {fileID: 2308649882508590360, guid: fc211d981ae65aa4bbf395a91c73748f, type: 3}
+  - {fileID: 2308649882508590360, guid: 349ec5faa84dc054396a98d1480bb618, type: 3}
+  LaunchForce:
+    Minimum: 200
+    Maximum: 500
+  TorqueForce:
+    Minimum: 10
+    Maximum: 20
 --- !u!1 &3481919079678641621
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +188,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1437658149
-  m_SortingLayer: -4
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

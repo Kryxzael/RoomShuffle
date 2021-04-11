@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 4682636288040449590}
   - component: {fileID: 666715296166345627}
   - component: {fileID: 3065580280250307300}
+  - component: {fileID: 3432185508647361718}
   m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
@@ -383,6 +384,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5021219, y: 0.8705674}
   m_EdgeRadius: 0
+--- !u!114 &3432185508647361718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682947945238927355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eb848f1e684954896da7817ca5b5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleCount:
+    Minimum: 10
+    Maximum: 20
+  SmallDropParticleCount:
+    Minimum: 1
+    Maximum: 3
+  Particles:
+  - {fileID: 2308649882508590360, guid: 271cb8f4129c1714ba02752719e42df1, type: 3}
+  - {fileID: 2308649882508590360, guid: fc211d981ae65aa4bbf395a91c73748f, type: 3}
+  - {fileID: 2308649882508590360, guid: 349ec5faa84dc054396a98d1480bb618, type: 3}
+  LaunchForce:
+    Minimum: 200
+    Maximum: 500
+  TorqueForce:
+    Minimum: 10
+    Maximum: 20
 --- !u!1 &8999811931387121829
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +428,7 @@ GameObject:
   - component: {fileID: 2098516253473810944}
   m_Layer: 7
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

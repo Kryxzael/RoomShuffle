@@ -53,7 +53,7 @@ public class SoftKillHurtbox : HurtBox
 
     public override void OnDealDamage(Hitbox hitbox)
     {
-        if (hitbox is PlayerHitbox && (Cheats.HealthCheat != Cheats.HealthCheatType.Godmode || !RespawnIgnoresGodMode))
+        if (hitbox is PlayerHitbox && (Cheats.HealthCheat != Cheats.HealthCheatType.Godmode || !RespawnIgnoresGodMode) && Commons.PlayerHealth.Health - GetDamage(hitbox) > 0)
         {
             Commons.RespawnPlayer();
         }

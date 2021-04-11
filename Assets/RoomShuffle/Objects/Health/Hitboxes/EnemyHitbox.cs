@@ -75,12 +75,25 @@ public class EnemyHitbox : Hitbox
         //TODO: Temporary. Health controller should probably handle deaths
         if (_health.IsDead)
         {
+            //Explode
+            foreach (var i in GetComponentsInChildren<ExplodeOnDeath>())
+                i.ExplodeBig();
+
             //Drop items
             foreach (var i in GetComponentsInChildren<DropLootTableOnDeath>())
                 i.DropItem();
 
             //Destroy the object
             Destroy(transform.parent.gameObject);
+        }
+        else
+        {
+            if (hurtbox.IgnoresInvincibilityFrames)
+                return;
+
+            //Drop some scraps
+            foreach (var i in GetComponentsInChildren<ExplodeOnDeath>())
+                i.ExplodeSmall();
         }
             
     }

@@ -92,7 +92,7 @@ public class SpotPlayer : EnemyScript
     void Update()
     {
         //If the no-target cheat is enabled, the spotter will never see the player
-        if (Cheats.NoTarget)
+        if (Cheats.NoTarget || Commons.PlayerHealth.IsDead)
         {
             State = SpotterPlayerRelationship.OutOfRadius;
             return;

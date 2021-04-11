@@ -11,10 +11,17 @@ using UnityEngine;
 /// </summary>
 public class PlayerHitbox : Hitbox
 {
+    private ExplodeOnDeath _exploder;
+
     /// <summary>
     /// <inheritdoc />
     /// </summary>
     public override HurtBoxTypes SusceptibleTo { get; } = HurtBoxTypes.HurtfulToPlayer;
+
+    protected override void Awake()
+    {
+        _exploder = GetComponent<ExplodeOnDeath>();
+    }
 
     /// <summary>
     /// <inheritdoc />
@@ -32,5 +39,17 @@ public class PlayerHitbox : Hitbox
 
         GrantInvincibilityFrames();
         Commons.PlayerHealth.DealDamage(hurtbox.GetDamage(this));
+
+        //TODO: Move this?
+        if (Commons.PlayerHealth.IsDead)
+        {
+            if (_exploder)
+                _exploder.ExplodeBig();
+        }
+        else
+        {
+            if (_exploder && !hurtbox.IgnoresInvincibilityFrames)
+                _exploder.ExplodeSmall();
+        }
     }
 }
