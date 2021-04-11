@@ -36,6 +36,10 @@ public class FerrisWheel : MonoBehaviour
     
     [Tooltip("How much the circle shrinks and expands")]
     public float BreathAmplitude;
+    
+    [Header("Visuals")]
+    [Tooltip("The 'arms' that points to the pivot point")]
+    public GameObject Arm;
 
     //List of all circularMotions on the ferris wheel
     private List<CircularMotion> cmList = new List<CircularMotion>();
@@ -69,7 +73,13 @@ public class FerrisWheel : MonoBehaviour
             //Set speed and radius for each ferris wheel object
             circularMotion.Radius = Radius;
             circularMotion.Speed = Speed;
-            
+
+            //Set visual arm for circular motion
+            if (Arm)
+            {
+                circularMotion.Arm = Arm;
+            }
+
         }
     }
 

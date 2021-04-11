@@ -43,7 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08518b85c47e9e448b8e1bdab28ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Platform: {fileID: 0}
-  NumberOfPlatforms: 10
   Speed: 5
   Radius: 3
+  Platform: {fileID: 0}
+  NumberOfPlatforms: 10
+  SetTilingWidth: 1
+  PlatformWidth: 4
+  NumberOfBlankSpace: 0
+  BreathSpeed: 0
+  BreathAmplitude: 0

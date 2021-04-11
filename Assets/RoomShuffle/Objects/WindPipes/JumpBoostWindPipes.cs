@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Multiplies the magnitude of the effector when holding jump  
+/// </summary>
 public class JumpBoostWindPipes : MonoBehaviour
 {
+    //Separated windpipes
     private AreaEffector2D strongWind;
     private AreaEffector2D middleWind;
     private AreaEffector2D weakWind;
 
+    //The original magnitude values of the windpipes
     private float strongForce;
     private float middleForce;
     private float weakForce;
@@ -17,6 +22,7 @@ public class JumpBoostWindPipes : MonoBehaviour
     
     private void Start()
     {
+        //Find the areaEffectors in children
         foreach (Transform child in transform)
         {
             switch (child.name)
@@ -33,6 +39,7 @@ public class JumpBoostWindPipes : MonoBehaviour
             }
         }
 
+        //Set original values
         strongForce = strongWind.forceMagnitude;
         middleForce = middleWind.forceMagnitude;
         weakForce = weakWind.forceMagnitude;
@@ -41,15 +48,10 @@ public class JumpBoostWindPipes : MonoBehaviour
 
     void Update()
     {
-        float mulitply = 1;
+        //Set the multplier to desired multiplier if holding jump. else 1.
+        float mulitply = Input.GetButton("Jump") ? ForceMulitplier : 1f;
         
-        if (Input.GetButton("Jump"))
-        {
-            mulitply = ForceMulitplier;
-        }
-        
-        Debug.Log(strongWind);
-
+        //Multiply magnitude
         strongWind.forceMagnitude = strongForce * mulitply;
         middleWind.forceMagnitude = middleForce * mulitply;
         weakWind.forceMagnitude = weakForce * mulitply;
