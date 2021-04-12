@@ -14,10 +14,11 @@ public class Bouncy : MonoBehaviour
     [Tooltip("The amount of time the player will not have a speed cap")]
     public float NoSpeedCapTime;
 
-    private GroundController _playerGroundController;
     private float _playerMaxSpeed;
     private float _noSpeedCapTimeLeft = 0;
-    private JumpController _jumpController;
+
+    private RenewableLazy<GroundController> _playerGroundController = new RenewableLazy<GroundController>(() => CommonExtensions.GetPlayer().GetComponent<GroundController>());
+    private RenewableLazy<JumpController> _jumpController = new RenewableLazy<JumpController>(() => CommonExtensions.GetPlayer().GetComponent<JumpController>());
 
     private void Update()
     {
@@ -26,20 +27,17 @@ public class Bouncy : MonoBehaviour
         {
             float percentage = ( _noSpeedCapTimeLeft / NoSpeedCapTime) * 10;
             _noSpeedCapTimeLeft -= Time.deltaTime;
-            _playerGroundController.MaxSpeed = (_playerMaxSpeed * percentage) + _playerMaxSpeed;
+            _playerGroundController.Value.MaxSpeed = (_playerMaxSpeed * percentage) + _playerMaxSpeed;
         }
         else
         {
-            _playerGroundController.MaxSpeed = _playerMaxSpeed;
+            _playerGroundController.Value.MaxSpeed = _playerMaxSpeed;
         }
     }
 
     private void Start()
     {
-        GameObject player = this.GetPlayer();
-        _playerGroundController = player.GetComponent<GroundController>();
-        _playerMaxSpeed = _playerGroundController.MaxSpeed;
-        _jumpController = player.GetComponent<JumpController>();
+        _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -79,7 +77,7 @@ public class Bouncy : MonoBehaviour
             //Invert and add velocity
             collision.rigidbody.SetVelocityY(pushBack * -direction);
             
-            _jumpController.CaptureSuccessfulJumpSnapshot();
+            _jumpController.Value.CaptureSuccessfulJumpSnapshot();
         }
         
     }
