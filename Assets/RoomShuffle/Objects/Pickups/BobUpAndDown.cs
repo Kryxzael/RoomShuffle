@@ -46,5 +46,20 @@ namespace Assets.RoomShuffle.Objects.Pickups
             transform.localPosition = _startingPosition + (direction * Mathf.Sin((_time + _randomPhaseOffset) * BobSpeed) * BobHeight);
             _time += Time.deltaTime;
         }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            float distance = BobHeight;
+
+            if (Horizontal)
+            {
+                Gizmos.DrawLine(transform.position + Vector3.right * distance, transform.position + Vector3.left * distance);
+            }
+            else
+            {
+                Gizmos.DrawLine(transform.position + Vector3.up * distance, transform.position + Vector3.down * distance);
+            }
+        }
     }
 }
