@@ -87,8 +87,6 @@ public abstract class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        object x = "Hello";
-
         if (collision.GetComponent<HurtBox>() is HurtBox hurt && hurt)
             TryDealDamageBy(hurt);
     }

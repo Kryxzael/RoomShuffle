@@ -19,6 +19,9 @@ public class HealthController : MonoBehaviour
     [Tooltip("The current health of the health controller")]
     public int Health;
 
+    [Tooltip("If enabled, health cheats will affect the way this health controller consumes damage")]
+    public bool AffectedByHealthCheats = false;
+
     /// <summary>
     /// Gets the controller's health as an amount of hearts
     /// </summary>
@@ -83,17 +86,21 @@ public class HealthController : MonoBehaviour
     /// <param name="rawDamage"></param>
     public void DealDamage(int rawDamage)
     {
-        switch (Cheats.HealthCheat)
+        if (AffectedByHealthCheats)
         {
-            case Cheats.HealthCheatType.None:
-                Health = Mathf.Max(0, Health - rawDamage);
-                break;
-            case Cheats.HealthCheatType.Godmode:
-                return;
-            case Cheats.HealthCheatType.BuddhaMode:
-                Health = Mathf.Max(1, Health - rawDamage);
-                return;
+            switch (Cheats.HealthCheat)
+            {
+                case Cheats.HealthCheatType.None:
+                    break;
+                case Cheats.HealthCheatType.Godmode:
+                    return;
+                case Cheats.HealthCheatType.BuddhaMode:
+                    Health = Mathf.Max(1, Health - rawDamage);
+                    return;
+            }
         }
+
+        Health = Mathf.Max(0, Health - rawDamage);
     }
 
     /// <summary>

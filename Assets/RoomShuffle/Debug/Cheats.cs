@@ -39,7 +39,7 @@ public static class Cheats
     /// <summary>
     /// Sets the health cheat of the player
     /// </summary>
-    public static HealthCheatType HealthCheat { get; set; }
+    public static HealthCheatType HealthCheat { get; set; } = HealthCheatType.Godmode;
 
     /// <summary>
     /// Represents a way to cheat the player's health

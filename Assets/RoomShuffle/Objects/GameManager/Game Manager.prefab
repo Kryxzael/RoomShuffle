@@ -212,7 +212,7 @@ MonoBehaviour:
   HealthLevel: 0
   DamageLevel: 0
   StartingHealth: 300
-  AttackUpTime: 15
+  DamageLevelScalar: 0.2
 --- !u!114 &8590704837162352334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaximumHealth: 0
   Health: 0
+  AffectedByHealthCheats: 1
 --- !u!114 &1636370513975752729
 MonoBehaviour:
   m_ObjectHideFlags: 0
