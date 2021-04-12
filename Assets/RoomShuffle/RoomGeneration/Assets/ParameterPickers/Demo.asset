@@ -49,6 +49,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7056b3696f4971645942bf04bab34b7c, type: 2}
   - {fileID: 11400000, guid: 1dc29f38168bf3149921990212b067d6, type: 2}
   DemoRoomProgression:
-  - {fileID: 6667954375096041687, guid: 85d2dd81ef9db0c478659c971e78061f, type: 3}
+  - {fileID: 2274178028711059654, guid: ead2be241bbe52c4f8dc42a99845283f, type: 3}
   EnemySetIndex: 0
   WeaponSetIndex: 5

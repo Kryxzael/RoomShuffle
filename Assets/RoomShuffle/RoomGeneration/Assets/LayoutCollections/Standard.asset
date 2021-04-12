@@ -13,14 +13,32 @@ MonoBehaviour:
   m_Name: Standard
   m_EditorClassIdentifier: 
   PlatformingRooms:
-  - {fileID: 4262918373525479744, guid: 5136aae58fff64c4db7649a4b7749731, type: 3}
+  - {fileID: 6667954375096041687, guid: 4e03387a569dcb24f8e23b2cebe58bc9, type: 3}
+  - {fileID: 6667954375096041687, guid: adc3814b690bde84fbb5aeeadc92d716, type: 3}
+  - {fileID: 6667954375096041687, guid: 5e7f1a72098696b41bf48d38681d0286, type: 3}
+  - {fileID: 4979086133836799197, guid: c8444d6398b33364a95123c7656f3fc3, type: 3}
+  - {fileID: 6667954375096041687, guid: 185c89be210153b4fa4b39bff23677c8, type: 3}
+  - {fileID: 6667954375096041687, guid: c7f109bc5918d4348aa5aa0947151430, type: 3}
+  - {fileID: 6667954375096041687, guid: 34a23942ad0cbc74d9a6368b97bf123d, type: 3}
+  - {fileID: 6667954375096041687, guid: 98e335c4568b09b40aedd24e98fc30b4, type: 3}
   - {fileID: 5427735312198500296, guid: 9f17eb68fba42494faf51caad34b151f, type: 3}
+  - {fileID: 6667954375096041687, guid: 37b0f36bab61d994887cf7f9e98eca9f, type: 3}
+  - {fileID: 6667954375096041687, guid: f2154b745f39bc94cb895131cd10385c, type: 3}
+  - {fileID: 6667954375096041687, guid: 2e3e8e9937a362c48a910530cf2b7588, type: 3}
   PuzzleRooms: []
-  EradicationRooms: []
+  EradicationRooms:
+  - {fileID: 2410021266094607295, guid: 0d057eb3049c7b54eb249e39813b1d88, type: 3}
   BossRooms: []
   TransitionRooms:
-  - {fileID: 4262918373525479744, guid: 5136aae58fff64c4db7649a4b7749731, type: 3}
+  - {fileID: 110700131586179316, guid: 2136825620dc8564390f73df29015843, type: 3}
+  - {fileID: 3357780465577758427, guid: 0cc161167de51a84ebfb18d13e159912, type: 3}
+  - {fileID: 175062878375977997, guid: 0c019f0970d3b56459b3ee8e1ad7d6c2, type: 3}
+  - {fileID: 6026251753484923945, guid: 7eb73c5edfd666147870f81bc28dde78, type: 3}
+  - {fileID: 110700131586179316, guid: dd863aca9d07fb341abccb6faeefbdb8, type: 3}
   CrossroadRooms: []
   RespiteRooms: []
-  ShopRooms: []
+  ShopRooms:
+  - {fileID: 6026251753484923945, guid: 153fea9e06b73184f991924a222ea8f2, type: 3}
+  - {fileID: 6026251753484923945, guid: e8bbb400935a15d45a1ef1c242736d9f, type: 3}
+  - {fileID: 6026251753484923945, guid: e8f974f4333cc644285c9da7ce760071, type: 3}
   SecretRooms: []

@@ -12,7 +12,7 @@ public class LoadLevelDebugPage : DebugPage
 
     protected override void RunItems(DebugMenu caller)
     {
-        foreach (var i in Resources.FindObjectsOfTypeAll<RoomLayout>())
+        foreach (var i in Resources.FindObjectsOfTypeAll<RoomLayout>().OrderBy(i => i.name))
         {
             if (Button(i.name))
             {
