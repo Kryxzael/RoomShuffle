@@ -20,8 +20,21 @@ public class RenewableLazy<T>
         get
         {
             //Renews the value if necessary
-            if ((ShouldRenew == null && _value == null) || (ShouldRenew != null && ShouldRenew()))
+            if (ShouldRenew == null)
+            {
+                //_value.Equals(null) is necessary because unity overrides the == operator for custom null checks
+                // and generics DO NOT RESPECT THIS OVERLOAD.
+                // This was a pain to debug by the way, since the debugger would use Unity's == overload,
+                // which didn't correspond with the code that was actually being executed.
+                if (_value == null || _value.Equals(null))
+                {
+                    Renew();
+                }
+            }
+            else if (ShouldRenew())
+            {
                 Renew();
+            }
 
             return _value;
         }
