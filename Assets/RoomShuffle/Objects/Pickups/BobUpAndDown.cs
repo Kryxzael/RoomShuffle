@@ -20,7 +20,7 @@ namespace Assets.RoomShuffle.Objects.Pickups
         private float _time;
 
         //A random offset in the bobbing phase so that items don't bob in sync
-        private float _randomPhaseOffset;
+        private float _phaseOffset;
 
         /* *** */
 
@@ -33,17 +33,32 @@ namespace Assets.RoomShuffle.Objects.Pickups
         [Tooltip("How fast the item will bob")]
         public float BobSpeed = 2f;
 
+        [Tooltip("The offeset of the bobbing")]
+        [Range(0, 1)]
+        public float MaxOffset = 1f;
+
+        [Tooltip("If the element should select a random value between 0 and MaxOffset")]
+        public bool UseRandomBobbing = true;
+
         private void Start()
         {
             _startingPosition = transform.localPosition;
-            _randomPhaseOffset = UnityEngine.Random.Range(0, Mathf.PI * 2f);
+            if (UseRandomBobbing)
+            {
+                _phaseOffset = UnityEngine.Random.Range(0, MaxOffset * Mathf.PI * 2f);
+            }
+            else
+            {
+                _phaseOffset = MaxOffset * MaxOffset * Mathf.PI * 2f;
+            }
+            
         }
 
         private void Update()
         {
-            Vector3 direction = Horizontal ? Vector2.right : Vector2.up;
+            Vector3 direction = Horizontal ? transform.right : transform.up;
 
-            transform.localPosition = _startingPosition + (direction * Mathf.Sin((_time + _randomPhaseOffset) * BobSpeed) * BobHeight);
+            transform.localPosition = _startingPosition + direction * (Mathf.Sin((_time + _phaseOffset) * BobSpeed) * BobHeight);
             _time += Time.deltaTime;
         }
 
