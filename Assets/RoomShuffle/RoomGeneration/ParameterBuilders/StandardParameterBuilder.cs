@@ -31,6 +31,11 @@ public class StandardParameterBuilder : ParameterBuilder
         RoomParameters output = new RoomParameters();
         output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
 
+        /*
+         * Room Theme
+         */
+
+        //Pick the next theme
         if (history.RoomsSinceThemeChange() >= ThemeChangeFrequency.PickInt())
         {
             do
@@ -38,22 +43,31 @@ public class StandardParameterBuilder : ParameterBuilder
                 output.Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length);
             } while (output.Theme == history.First().Theme);
         }
+
+        //Use the existing theme
         else
         {
             output.Theme = history.First().Theme;
         }
 
+        /*
+         * Room Class
+         */
 
+        //Pick a transition room
         if (history.RoomsSinceClass(RoomClass.Transition) >= TransitionFrequency.PickInt(random))
         {
             output.Class = RoomClass.Transition;
-            output.Layout = Rooms.TransitionRooms[random.Next(Rooms.TransitionRooms.Count)];
         }
+
+        //Pick a platforming room
         else
         {
             output.Class = RoomClass.Platforming;
-            output.Layout = Rooms.PlatformingRooms[random.Next(Rooms.PlatformingRooms.Count)];
         }
+
+        //Pick random room-layout and flip-state
+        (output.Layout, output.FlipHorizontal) = Rooms.PickRandomToMatchPreviousExit(output.Class, history.First().Layout.ExitSide, random);
 
         return output;
     }

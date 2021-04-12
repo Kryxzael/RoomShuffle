@@ -20,6 +20,9 @@ public class RoomGenerationDebugPage : DebugPage
         if (Button("Regenerate"))
             Commons.RoomGenerator.GenerateNext();
 
+        if (Button("Load Level ..."))
+            caller.NavigationStack.Push(new LoadLevelDebugPage());
+
         if (Button("Respawn"))
             Commons.RespawnPlayer();
 

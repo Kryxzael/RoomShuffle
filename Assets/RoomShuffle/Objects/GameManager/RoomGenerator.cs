@@ -1,5 +1,6 @@
 using NUnit.Framework;
 
+using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
@@ -25,6 +26,11 @@ public class RoomGenerator : MonoBehaviour
     [Header("Generators")]
     [Tooltip("The room parameter picker the generator will use")]
     public ParameterBuilder RoomParameterBuilder;
+
+    /// <summary>
+    /// Gets the room parameter builders that are currently being used to override the primary room parameter builder
+    /// </summary>
+    public Stack<ParameterBuilderOverride> RoomParameterBuilderOverrides { get; } = new Stack<ParameterBuilderOverride>();
 
     /* *** */
 
@@ -86,11 +92,23 @@ public class RoomGenerator : MonoBehaviour
          * Create the room configuration
          */
         RoomParameters parameters;
+        var builder = RoomParameterBuilder;
+
+        while (RoomParameterBuilderOverrides.Any())
+        {
+            if (RoomParameterBuilderOverrides.Peek().HasNext())
+            {
+                builder = RoomParameterBuilderOverrides.Peek();
+                break;
+            }
+
+            RoomParameterBuilderOverrides.Pop();
+        }
 
         if (CurrentRoomConfig == null)
-            parameters = RoomParameterBuilder.GetInitialParameters(RoomRng);
+            parameters = builder.GetInitialParameters(RoomRng);
         else
-            parameters = RoomParameterBuilder.GetNextParameters(History, RoomRng);
+            parameters = builder.GetNextParameters(History, RoomRng);
 
         CurrentRoomObject = Instantiate(parameters.Layout).gameObject;
 
