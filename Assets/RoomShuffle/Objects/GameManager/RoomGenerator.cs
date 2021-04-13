@@ -135,6 +135,10 @@ public class RoomGenerator : MonoBehaviour
         foreach (var i in CurrentRoomObject.GetComponentsInChildren<OptionalObjectGroup>())
             i.Select(RoomRng);
 
+        //Spawn treasure
+        foreach (var i in CurrentRoomObject.GetComponentsInChildren<RandomItem>())
+            i.SpawnAndDestroy(RoomRng);
+
         //Set up room effects
         Commons.RoomEffectController.OnRoomStart(parameters);
 
