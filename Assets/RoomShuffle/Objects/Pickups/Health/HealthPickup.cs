@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class HealthPickup : PickupScript
 {
+    [Range(0f, 1f)]
     [Tooltip("How much HP the pickup will restore")]
-    public int Restoration = 100;
+    public float RestorationPercentage = 0.25f;
 
     public override void OnPickup()
     {
-        Commons.PlayerHealth.Heal(Restoration);
+        Commons.PlayerHealth.Heal((int)Mathf.Ceil(Commons.PlayerHealth.MaximumHealth * RestorationPercentage));
     }
 }

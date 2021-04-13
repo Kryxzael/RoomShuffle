@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animation: {fileID: 11400000, guid: 9113d785dd8810740aa9fd49dcfa9a22, type: 2}
+  Animation: {fileID: 11400000, guid: dc42a922bb59b11449f6947eec3b18fd, type: 2}
   PlaybackSpeed: 1
 --- !u!1001 &1825384997240817155
 PrefabInstance:
@@ -84,6 +84,10 @@ PrefabInstance:
     - target: {fileID: 5911633666651577447, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
       propertyPath: Restoration
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911633666651577447, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
+      propertyPath: RestorationPercentage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9100366504064109182, guid: e642fc82873037f408fb20261c4ce3e7, type: 3}
       propertyPath: m_Name
