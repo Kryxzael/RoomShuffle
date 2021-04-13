@@ -67,7 +67,11 @@ public class StandardParameterBuilder : ParameterBuilder
         }
 
         //Pick random room-layout and flip-state
-        (output.Layout, output.FlipHorizontal) = Rooms.PickRandomToMatchPreviousExit(output.Class, history.First().Layout.ExitSide, random);
+        (output.Layout, output.FlipHorizontal, output.Entrance) = Rooms.PickRandomToMatchPreviousExit(output.Class, history.First().Exit, random);
+
+        //Pick random exit
+        output.Exit = output.Layout.GetRandomExit(random);
+        
 
         return output;
     }
@@ -79,12 +83,16 @@ public class StandardParameterBuilder : ParameterBuilder
     /// <returns></returns>
     public override RoomParameters GetInitialParameters(System.Random random)
     {
+        var layout = Rooms.PlatformingRooms[random.Next(Rooms.PlatformingRooms.Count)];
+
         return new RoomParameters
         {
             EnemySet = EnemySets[random.Next(EnemySets.Count)],
             Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length),
             Class = RoomClass.Platforming,
-            Layout = Rooms.PlatformingRooms[random.Next(Rooms.PlatformingRooms.Count)]
+            Layout = layout,
+            Entrance = layout.GetRandomEntrance(random),
+            Exit = layout.GetRandomExit(random)
         };
     }
 }

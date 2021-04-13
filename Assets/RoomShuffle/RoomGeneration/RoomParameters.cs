@@ -15,4 +15,6 @@ public class RoomParameters
     public EnemySet EnemySet;
     public bool FlipHorizontal;
     public IEnumerator<WeaponTemplate> WeaponEnumerator;
+    public EntranceExitSides Entrance;
+    public EntranceExitSides Exit;
 }

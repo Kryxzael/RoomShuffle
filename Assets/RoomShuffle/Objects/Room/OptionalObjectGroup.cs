@@ -46,10 +46,14 @@ public class OptionalObjectGroup : MonoBehaviour
     public void Select(System.Random random)
     {
         //Gets all candidates (direct children)
-        var candidates = GetCandidates().ToArray();
+        var allCandidates = GetCandidates();
+
+        var availableCandidates = allCandidates
+            .Where(i => i.SpawnWhenEntranceIs.HasFlag(Commons.RoomGenerator.CurrentRoomConfig.Entrance) && i.SpawnWhenExitIs.HasFlag(Commons.RoomGenerator.CurrentRoomConfig.Exit))
+            .ToArray();
 
         //If there are no candidates, then choose to destroy self or not
-        if (candidates.Length == 0)
+        if (availableCandidates.Length == 0)
         {
             if (random.NextDouble() <= ChanceToSpawnNothing)
                 Destroy(gameObject);
@@ -59,7 +63,7 @@ public class OptionalObjectGroup : MonoBehaviour
 
 
         //No accessible candidates found in group
-        if (candidates.All(i => i.SpawnChance == 0f))
+        if (availableCandidates.All(i => i.SpawnChance == 0f))
             throw new System.InvalidOperationException($"OptionalSpawnGroup has no accessible candidates");
 
         //Choose a random object to spawn from the group
@@ -67,11 +71,11 @@ public class OptionalObjectGroup : MonoBehaviour
 
         do
         {
-            currentCandidate = candidates[random.Next(candidates.Length)];
+            currentCandidate = availableCandidates[random.Next(availableCandidates.Length)];
         } while (random.NextDouble() > currentCandidate.SpawnChance);
 
         //Disable all other objects
-        foreach (var i in candidates)
+        foreach (var i in allCandidates)
         {
             if (i == currentCandidate)
                 continue;

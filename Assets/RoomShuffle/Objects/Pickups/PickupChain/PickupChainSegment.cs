@@ -12,7 +12,7 @@ using UnityEngine;
 /// </summary>
 public class PickupChainSegment : MonoBehaviour
 {
-    private bool _applicationInShutdown;
+    private static bool _applicationInShutdown;
 
     [Header("Chain")]
     [Tooltip("The group the segment is part of. Each segment in the same chain should have the same ID")]

@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f734f8c975afd46a4379b0f7a846b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RespawnIgnoresGodMode: 1
+  RespawnIgnoresGodMode: 0
 --- !u!114 &1612831703587599267
 MonoBehaviour:
   m_ObjectHideFlags: 0

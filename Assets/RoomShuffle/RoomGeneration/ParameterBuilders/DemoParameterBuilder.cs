@@ -29,15 +29,19 @@ public class DemoParameterBuilder : ParameterBuilder
             _currentRoom.MoveNext();
         }
 
+        var layout = _currentRoom.Current;
+
         return new RoomParameters()
         {
             Class = RoomClass.Platforming,
-            Layout = _currentRoom.Current,
+            Layout = layout,
             Theme = RoomTheme.Grass,
             Effect = RoomEffects.None,
             EnemySet = EnemySets[EnemySetIndex],
             FlipHorizontal = false,
-            WeaponEnumerator = Enumerable.Repeat(WeaponTemplates.ElementAt(WeaponSetIndex), 100).GetEnumerator()
+            WeaponEnumerator = Enumerable.Repeat(WeaponTemplates.ElementAt(WeaponSetIndex), 100).GetEnumerator(),
+            Entrance = layout.GetRandomEntrance(random),
+            Exit = layout.GetRandomExit(random),
         };
     }
 }

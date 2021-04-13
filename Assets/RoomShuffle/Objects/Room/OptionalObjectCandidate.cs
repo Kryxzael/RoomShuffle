@@ -15,6 +15,10 @@ public class OptionalObjectCandidate : MonoBehaviour
     [Range(0f, 1f)]
     public float SpawnChance;
 
+    [Header("Contextual Spawning")]
+    public EntranceExitSides SpawnWhenEntranceIs = EntranceExitSides.Bottom | EntranceExitSides.Left | EntranceExitSides.Right | EntranceExitSides.Top;
+    public EntranceExitSides SpawnWhenExitIs = EntranceExitSides.Bottom | EntranceExitSides.Left | EntranceExitSides.Right | EntranceExitSides.Top;
+
     private void Start()
     {
         if (transform.parent == null || transform.parent.GetComponent<OptionalObjectGroup>() == null)

@@ -240,6 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnChance: 1
+  SpawnWhenEntranceIs: -1
+  SpawnWhenExitIs: -1
 --- !u!1 &2448002508016172167
 GameObject:
   m_ObjectHideFlags: 0

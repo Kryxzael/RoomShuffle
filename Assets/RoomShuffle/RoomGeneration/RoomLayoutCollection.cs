@@ -34,7 +34,7 @@ public class RoomLayoutCollection : ScriptableObject
     /// <param name="lastRoomExit"></param>
     /// <param name="random"></param>
     /// <returns></returns>
-    public (RoomLayout room, bool shouldFlip) PickRandomToMatchPreviousExit(RoomClass @class, Direction4 lastRoomExit, System.Random random)
+    public (RoomLayout room, bool shouldFlip, EntranceExitSides entraceSide) PickRandomToMatchPreviousExit(RoomClass @class, EntranceExitSides lastRoomExit, System.Random random)
     {
         //Calculate which list to choose from
         List<RoomLayout> rooms = @class switch
@@ -51,32 +51,35 @@ public class RoomLayoutCollection : ScriptableObject
             _ => throw new ArgumentException(nameof(@class)),
         };
 
-        //Further filter to rooms with entrance on the correct side
-        rooms = lastRoomExit switch
+        //Select the next entrance side
+        EntranceExitSides entraceSide = lastRoomExit switch
         {
-            //If last exit was on top of bottom, the new room must have an entrance at the opposite side
-            Direction4.Up => rooms.Where(i => i.EntranceSide == Direction4.Down).ToList(),
-            Direction4.Down => rooms.Where(i => i.EntranceSide == Direction4.Up).ToList(),
+            //If last exit was on top or bottom, the new room must have an entrance at the opposite side
+            EntranceExitSides.Top => EntranceExitSides.Bottom,
+            EntranceExitSides.Bottom => EntranceExitSides.Top,
 
             //If last exit was on either side of the room, the new room must have an entrance at the left side (which will later be flipped if neccesary)
-            _ => rooms.Where(i => i.EntranceSide == Direction4.Down).ToList()
+            _ => EntranceExitSides.Left
         };
 
         //Then calculate whether the room should be flipped
         bool shouldFlip = lastRoomExit switch
         {
             //If the last room exited vertically, leave it to chance
-            Direction4.Up => random.Next(2) == 0,
-            Direction4.Down => random.Next(2) == 0,
+            EntranceExitSides.Top => random.Next(2) == 0,
+            EntranceExitSides.Bottom => random.Next(2) == 0,
 
             //If the last room exited on the left, the room must be flipped
-            Direction4.Left => true,
+            EntranceExitSides.Left => true,
 
             //If the last room exited on the right, the room must be not flipped
             _ => false
         };
 
+        //Further filter to rooms with entrance on the correct side
+        rooms = rooms.Where(i => i.EntranceSides.HasFlag(entraceSide)).ToList();
+
         //Finally, pick a room and return the result
-        return (rooms[random.Next(rooms.Count)], shouldFlip);
+        return (rooms[random.Next(rooms.Count)], shouldFlip, entraceSide);
     }
 }
