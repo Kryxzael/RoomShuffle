@@ -32,7 +32,7 @@ public class ElevatorManager : MonoBehaviour
     public EndOfLineOption EOLOption;
 
     [Tooltip("How quickly the carts should move")]
-    public int CartSpeed = 5;
+    public float CartSpeed = 5;
 
     [Tooltip("The width of the elevator carts")]
     public int CartWidth = 4;
