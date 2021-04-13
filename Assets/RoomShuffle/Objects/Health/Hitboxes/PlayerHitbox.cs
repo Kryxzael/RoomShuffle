@@ -20,6 +20,7 @@ public class PlayerHitbox : Hitbox
 
     protected override void Awake()
     {
+        base.Awake();
         _exploder = GetComponent<ExplodeOnDeath>();
     }
 
