@@ -100,4 +100,10 @@ public class FerrisWheel : MonoBehaviour
             _time -= (float)Math.PI * 2;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, Radius);
+    }
 }

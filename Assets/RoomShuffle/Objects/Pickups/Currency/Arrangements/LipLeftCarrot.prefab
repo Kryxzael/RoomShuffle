@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6771546832675832996}
   - component: {fileID: 3582192621933914641}
   m_Layer: 0
-  m_Name: LipLeftCarot
+  m_Name: LipLeftCarrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7014765924584511453}
   - {fileID: 3268634935462464342}
+  - {fileID: 7014765924584511453}
   - {fileID: 8052041634757135229}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,11 +56,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6671356171363614601, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
       propertyPath: m_Name
-      value: Currency1
+      value: Middle
       objectReference: {fileID: 0}
     - target: {fileID: 8238952111807041528, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8238952111807041528, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
       propertyPath: m_LocalPosition.x
@@ -118,7 +118,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6671356171363614601, guid: 1e44836a1ffaea1418697ec5a4ecad60, type: 3}
       propertyPath: m_Name
-      value: Currency3
+      value: Right
       objectReference: {fileID: 0}
     - target: {fileID: 8238952111807041528, guid: 1e44836a1ffaea1418697ec5a4ecad60, type: 3}
       propertyPath: m_RootOrder
@@ -180,11 +180,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6671356171363614601, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
       propertyPath: m_Name
-      value: Currency1 (2)
+      value: Left
       objectReference: {fileID: 0}
     - target: {fileID: 8238952111807041528, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8238952111807041528, guid: f2ce9df32c5e9034fa029d2ccfaf6124, type: 3}
       propertyPath: m_LocalPosition.x
