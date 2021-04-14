@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - CountdownTimer
   - CurrencyText
+  - RedCoinsCountdownTimer
   layers:
   - Default
   - TransparentFX

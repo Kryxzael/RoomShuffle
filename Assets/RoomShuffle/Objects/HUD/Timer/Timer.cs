@@ -95,7 +95,7 @@ public class Timer : MonoBehaviour
     {
         if (_timerIsRunning)
             return;
-            
+        
         StartCoroutine(CoStartCountdown(seconds));
         _timerIsRunning = true;
     }
@@ -180,9 +180,9 @@ public class Timer : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CoStartCountdown(float seconds)
     {
+        CurrentSeconds = seconds;
         SetColor(Color.white);
         transform.localScale = Vector3.one * 1f;
-        CurrentSeconds = seconds;
         bool blinking = false;
 
         while (CurrentSeconds > 0)
@@ -230,7 +230,8 @@ public class Timer : MonoBehaviour
 
     private IEnumerator CoStartBlinking()
     {
-        transform.localScale = Vector3.one * 1.5f;
+        //If the script uses GUI version. Increase size
+        transform.localScale = UseGUI? Vector3.one * 1.5f : Vector3.one;
         
         bool alternate = true;
 
