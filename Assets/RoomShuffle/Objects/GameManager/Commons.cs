@@ -56,6 +56,10 @@ public static class Commons
         () => GameObject.FindWithTag("CountdownTimer")
     );
     
+    private static RenewableLazy<GameObject> _redCoinsCountdownTimerUI { get; } = new RenewableLazy<GameObject>(
+        () => GameObject.FindWithTag("RedCoinsCountdownTimer")
+    );
+    
     private static RenewableLazy<GameObject> _currencyUI { get; } = new RenewableLazy<GameObject>(
         () => GameObject.FindWithTag("CurrencyText")
     );
@@ -122,6 +126,11 @@ public static class Commons
     /// Gets the CountdownTimer in UI
     /// </summary>
     public static GameObject CountdownTimer => _countdownTimerUI.Value;
+    
+    /// <summary>
+    /// Gets the CountdownTimer in UI
+    /// </summary>
+    public static GameObject RedCoinsCountdownTimer => _redCoinsCountdownTimerUI.Value;
     
     /// <summary>
     /// Gets the currency UI element

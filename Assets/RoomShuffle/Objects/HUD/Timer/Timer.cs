@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
 public class Timer : MonoBehaviour
 {
     [Tooltip("The number that represents the added time on time added")]
@@ -24,15 +23,24 @@ public class Timer : MonoBehaviour
     //if the timer is running
     private bool _timerIsRunning = false;
 
-    private TextMeshProUGUI TMP;
+    private TextMeshProUGUI TMP_GUI;
+
+    private TextMeshPro TMP;
+
+    private bool UseGUI;
 
     private void Start()
     {
         //Get textmeshpro component
-        TMP = GetComponent<TextMeshProUGUI>();
-        
-        //TODO remove this counter
-        StartCountdown(60);
+        TMP_GUI = GetComponent<TextMeshProUGUI>();
+
+        if (TMP_GUI)
+        {
+            UseGUI = true;
+            return;
+        }
+
+        TMP = GetComponent<TextMeshPro>();
     }
 
     //TODO Remove this nonsense in update
@@ -159,7 +167,7 @@ public class Timer : MonoBehaviour
     {
         while (true)
         {
-            TMP.text = formatNumber(CurrentSeconds);
+            SetText(formatNumber(CurrentSeconds));
             CurrentSeconds += Time.deltaTime;
 
             yield return new WaitForEndOfFrame();
@@ -172,14 +180,14 @@ public class Timer : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CoStartCountdown(float seconds)
     {
-        TMP.color = Color.white;
+        SetColor(Color.white);
         transform.localScale = Vector3.one * 1f;
         CurrentSeconds = seconds;
         bool blinking = false;
 
         while (CurrentSeconds > 0)
         {
-            TMP.text = formatNumber(CurrentSeconds);
+            SetText(formatNumber(CurrentSeconds));
             CurrentSeconds -= Time.deltaTime;
 
             //Should the timer start blinking
@@ -193,7 +201,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                TMP.color = Color.white;
+                SetColor(Color.white);
                 transform.localScale = Vector3.one * 1f;
                 blinking = false;
             }
@@ -202,7 +210,7 @@ public class Timer : MonoBehaviour
         }
 
         CurrentSeconds = 0;
-        TMP.text = formatNumber(CurrentSeconds);
+        SetText(formatNumber(CurrentSeconds));
     }
 
     private string formatNumber(float number)
@@ -219,7 +227,7 @@ public class Timer : MonoBehaviour
 
     }
 
-    
+
     private IEnumerator CoStartBlinking()
     {
         transform.localScale = Vector3.one * 1.5f;
@@ -231,12 +239,12 @@ public class Timer : MonoBehaviour
         {
             if (alternate)
             {
-                TMP.color = Color.red;
+                SetColor(Color.red);
                 //TODO Tick
             }
             else
             {
-                TMP.color = Color.white;
+                SetColor(Color.white);
                 //TODO Tock
             }
 
@@ -244,9 +252,46 @@ public class Timer : MonoBehaviour
             alternate = !alternate;
         }
         
-        TMP.color = Color.red;
+        SetColor(Color.red);
         
         transform.localScale = Vector3.one * 1f;
     }
+
+    public void HideTimer()
+    {
+        StopTimer();
+        SetText("");
+    }
+
+    /// <summary>
+    /// Sets the text of the textmeshpro
+    /// </summary>
+    /// <param name="text"></param>
+    private void SetText(string text)
+    {
+        if (UseGUI)
+        {
+            TMP_GUI.text = text;
+            return;
+        }
+
+        TMP.text = text;
+    }
     
+    /// <summary>
+    /// Sets the color of the Textmeshpro
+    /// </summary>
+    /// <param name="color"></param>
+    private void SetColor(Color color)
+    {
+        if (UseGUI)
+        {
+            TMP_GUI.color = color;
+            return;
+        }
+
+        TMP.color = color;
+    }
+
+
 }
