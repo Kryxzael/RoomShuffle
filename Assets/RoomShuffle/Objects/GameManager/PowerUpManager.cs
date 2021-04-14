@@ -17,15 +17,21 @@ public class PowerUpManager : MonoBehaviour
     [Tooltip("By what factor to multiply the player's base damage when Attack-Up is active")]
     public float AttackUpMultiplier = 2f;
 
+    [Tooltip("The timescale of the game in slow-down mode")]
+    public float SlowDownTimeScale = 0f;
+
     [Header("Max Times")]
     [Tooltip("How long the player will have the attack-up power-up for")]
     public float AttackUpTime = 15f;
+
+    [Tooltip("How long the player will have the slowdown power-up for")]
+    public float SlowDownUnscaledTime = 15f;
 
     private void Update()
     {
         //Decrease timers
         foreach (var (key, value) in _powerUpsWithTimers.Select(i => (i.Key, i.Value)).ToArray())
-            _powerUpsWithTimers[key] = Math.Max(0f, value - Time.deltaTime);
+            _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
     }
 
     /// <summary>
@@ -59,6 +65,7 @@ public class PowerUpManager : MonoBehaviour
         return powerup switch
         {
             PowerUp.AttackUp => AttackUpTime,
+            PowerUp.SlowDown => SlowDownUnscaledTime,
             _ => 0,
         };
     }
@@ -82,5 +89,10 @@ public enum PowerUp
     /// <summary>
     /// Increases the player's attack output
     /// </summary>
-    AttackUp = 0x1
+    AttackUp = 0x1,
+
+    /// <summary>
+    /// Reduces the timescale of the game
+    /// </summary>
+    SlowDown = 0x2
 }

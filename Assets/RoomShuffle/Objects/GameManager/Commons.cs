@@ -201,12 +201,19 @@ public static class Commons
         switch (inputType)
         {
             case EffectValueType.EnemySpeed:
+                if (PowerUpManager.HasPowerUp(PowerUp.SlowDown))
+                    return originalValue * PowerUpManager.SlowDownTimeScale;
+
                 if (fxs.HasFlag(RoomEffects.FastFoe))
                     return originalValue * controller.FastFoeSpeedMultiplier;
                 break;
             case EffectValueType.EnemyWaitTime:
+                if (PowerUpManager.HasPowerUp(PowerUp.SlowDown))
+                    return originalValue / PowerUpManager.SlowDownTimeScale;
+
                 if (fxs.HasFlag(RoomEffects.FastFoe))
                     return originalValue / controller.FastFoeSpeedMultiplier;
+
                 break;
             case EffectValueType.ProjectileSize:
                 if (fxs.HasFlag(RoomEffects.LargeProjectiles))

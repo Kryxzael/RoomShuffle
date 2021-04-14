@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using TMPro;
+
 using UnityEngine;
 
 public class ItemSlot : ItemUIManager
 {
     public Sprite BlankSprite;
     public Sprite AttackUpSprite;
+    public Sprite SlowDownSprite;
 
     private void FixedUpdate()
     {
@@ -19,6 +22,7 @@ public class ItemSlot : ItemUIManager
         Sprite sprite = shownPowerUp switch
         {
             PowerUp.AttackUp => AttackUpSprite,
+            PowerUp.SlowDown => SlowDownSprite,
             _ => BlankSprite,
         };
 

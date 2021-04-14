@@ -29,10 +29,10 @@ public class RandomItem : MonoBehaviour
             candidate = Candidates[random.Next(Candidates.Count)];
         } while (random.NextDouble() > candidate.Spawnrate);
 
-        Commons.InstantiateInCurrentLevel(candidate.Item, transform.position);
+        var spawned = Instantiate(candidate.Item, transform.parent);
         Destroy(gameObject);
 
-        return candidate.Item;
+        return spawned;
     }
 
     [Serializable]

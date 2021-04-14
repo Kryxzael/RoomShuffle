@@ -32,10 +32,6 @@ public abstract class Hitbox : MonoBehaviour
         _renderer = GetComponentInParent<SpriteRenderer>();
     }
 
-    public Hitbox()
-    {        
-    }
-
     /// <summary>
     /// Enables invincibility time for the object
     /// </summary>

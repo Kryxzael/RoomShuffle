@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: FastFoeSpeedMultiplier
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1636370513975752729, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: SlowDownTimeScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951372522608969565, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: SlowDownSprite
+      value: 
+      objectReference: {fileID: 2615784214319083819, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
     - target: {fileID: 6447120639103844522, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_RootOrder
       value: 0

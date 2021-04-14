@@ -12,6 +12,8 @@ using UnityEngine;
 /// </summary>
 public class PickupChainSegment : MonoBehaviour
 {
+    private RoomParameters _room;
+
     private static bool _applicationInShutdown;
 
     [Header("Chain")]
@@ -33,6 +35,8 @@ public class PickupChainSegment : MonoBehaviour
         //Hide segment unless it's the first one
         if (ChainStep != 0)
             gameObject.SetActive(false);
+
+        _room = Commons.RoomGenerator.CurrentRoomConfig;
     }
 
     private void Update()
@@ -43,6 +47,19 @@ public class PickupChainSegment : MonoBehaviour
 
         //Destroying the object triggers the next chain to spawn
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Finds and spawns the next chain segment
+    /// </summary>
+    private void SpawnNextSegment()
+    {
+        var nextSegment = FindObjectsOfType<PickupChainSegment>(includeInactive: true)
+            .Where(i => i.ChainGroup == ChainGroup && i.ChainStep == ChainStep + 1)
+            .SingleOrDefault();
+
+        if (nextSegment)
+            nextSegment.SpawnSegment();
     }
 
     /// <summary>
@@ -82,15 +99,9 @@ public class PickupChainSegment : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_applicationInShutdown)
+        if (_applicationInShutdown || Commons.RoomGenerator == null || Commons.RoomGenerator.CurrentRoomConfig != _room)
             return;
 
-        //Find and spawn the next chain segment
-        var nextSegment = FindObjectsOfType<PickupChainSegment>(includeInactive: true)
-            .Where(i => i.ChainGroup == ChainGroup && i.ChainStep == ChainStep + 1)
-            .SingleOrDefault();
-
-        if (nextSegment)
-            nextSegment.SpawnSegment();
+        SpawnNextSegment();
     }
 }

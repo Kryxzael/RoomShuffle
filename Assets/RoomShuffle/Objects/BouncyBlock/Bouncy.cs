@@ -22,6 +22,8 @@ public class Bouncy : MonoBehaviour
 
     private void Update()
     {
+        _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
+
         //Adjust player maximum horizontal speed 
         if (_noSpeedCapTimeLeft > 0)
         {
@@ -33,11 +35,6 @@ public class Bouncy : MonoBehaviour
         {
             _playerGroundController.Value.MaxSpeed = _playerMaxSpeed;
         }
-    }
-
-    private void Start()
-    {
-        _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
