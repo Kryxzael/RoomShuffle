@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CountDownTime: 10
   CircleSprite: {fileID: 21300000, guid: 1332f0719600e2f449ef59965b43cbad, type: 3}
+  PlayerTimerPrefab: {fileID: 6605033046374842693, guid: 9ddcee4987edf104bbd35a9d7cf6ba22, type: 3}
 --- !u!1 &2678214643984694316
 GameObject:
   m_ObjectHideFlags: 0
