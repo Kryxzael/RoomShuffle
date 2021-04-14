@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adef74459c54efe4da176991c19c4aed, type: 3}
+  m_Name: ForcefieldDown
+  m_EditorClassIdentifier: 
+  Frames:
+  - Sprite: {fileID: -1110910375707526145, guid: 3fa80882a9ad7b249ad6e2f065bee348, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -645165976990835480, guid: 3fa80882a9ad7b249ad6e2f065bee348, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 1443253790569317065, guid: 3fa80882a9ad7b249ad6e2f065bee348, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 1630648952882153358, guid: 3fa80882a9ad7b249ad6e2f065bee348, type: 3}
+    FrameTimeMultiplier: 1
+  FrameTime: 1
+  FrameTimeDivider: 4

@@ -12599,7 +12599,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1308038168735935817, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: m_Name
-      value: Hide
+      value: DuckUnderLava
       objectReference: {fileID: 0}
     - target: {fileID: 2073700076939989529, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: m_LocalPosition.x

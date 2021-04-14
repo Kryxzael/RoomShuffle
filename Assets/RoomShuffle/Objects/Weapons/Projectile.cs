@@ -76,8 +76,10 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        const int BULLET_BLOCKER_LAYER_INDEX = 17;
+
         //The bullet has hit a wall
-        if (DestroyOnGroundImpact)
+        if (DestroyOnGroundImpact || collision.gameObject.layer == BULLET_BLOCKER_LAYER_INDEX)
         {
             Destroy(gameObject);
             return;
