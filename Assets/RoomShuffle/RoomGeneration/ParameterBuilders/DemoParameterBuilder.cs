@@ -12,9 +12,6 @@ public class DemoParameterBuilder : ParameterBuilder
 
     public List<RoomLayout> DemoRoomProgression;
 
-    public int EnemySetIndex = 0;
-    public int WeaponSetIndex = 0;
-
     public override RoomParameters GetInitialParameters(System.Random random)
     {
         _currentRoom = DemoRoomProgression.GetEnumerator();
@@ -29,19 +26,25 @@ public class DemoParameterBuilder : ParameterBuilder
             _currentRoom.MoveNext();
         }
 
-        var layout = _currentRoom.Current;
+        var output = new RoomParameters();
+        output.Class = RoomClass.Platforming;
+        output.Layout = _currentRoom.Current;
+        output.Theme = typeof(RoomTheme).GetEnumValues() //Absolutely disgusting, but it's for testing so it's ok
+            .Cast<RoomTheme>()
+            .Where(i => i != RoomTheme.Edit)
+            .OrderBy(i => random.Next())
+            .First();
+        output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
+        output.Effect = RoomEffects.None;
+        output.FlipHorizontal = random.Next(2) == 0;
+        output.WeaponEnumerator = WeaponTemplates.GetEnumerator();
+        output.Entrance = output.Layout.GetRandomEntrance(random);
 
-        return new RoomParameters()
+        do
         {
-            Class = RoomClass.Platforming,
-            Layout = layout,
-            Theme = RoomTheme.Grass,
-            Effect = RoomEffects.None,
-            EnemySet = EnemySets[EnemySetIndex],
-            FlipHorizontal = false,
-            WeaponEnumerator = Enumerable.Repeat(WeaponTemplates.ElementAt(WeaponSetIndex), 100).GetEnumerator(),
-            Entrance = layout.GetRandomEntrance(random),
-            Exit = layout.GetRandomExit(random),
-        };
+            output.Exit = output.Layout.GetRandomExit(random);
+        } while (output.Entrance == output.Exit);
+
+        return output;
     }
 }
