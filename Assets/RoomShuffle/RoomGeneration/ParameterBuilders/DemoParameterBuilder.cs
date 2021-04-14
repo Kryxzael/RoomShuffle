@@ -34,10 +34,11 @@ public class DemoParameterBuilder : ParameterBuilder
             .Where(i => i != RoomTheme.Edit)
             .OrderBy(i => random.Next())
             .First();
+
         output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
         output.Effect = RoomEffects.None;
         output.FlipHorizontal = random.Next(2) == 0;
-        output.WeaponEnumerator = WeaponTemplates.GetEnumerator();
+        output.WeaponEnumerator = WeaponTemplates.OrderBy(i => random.Next()).GetEnumerator();
         output.Entrance = output.Layout.GetRandomEntrance(random);
 
         do

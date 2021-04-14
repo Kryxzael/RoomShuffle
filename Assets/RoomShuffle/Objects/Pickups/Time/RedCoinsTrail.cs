@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
 
 public class RedCoinsTrail : MonoBehaviour
 {
@@ -24,8 +23,6 @@ public class RedCoinsTrail : MonoBehaviour
     public GameObject PlayerTimerPrefab;
 
     private GameObject PlayerTimerInstance;
-
-    private bool _timerStarted = false;
 
     private void Awake()
     {
@@ -107,7 +104,7 @@ public class RedCoinsTrail : MonoBehaviour
         Destroy(PlayerTimerInstance);
     }
 
-    //The player successfully picked up alle items.
+    //The player successfully picked up all items.
     private void OnDestroy()
     {
         Destroy(PlayerTimerInstance);
