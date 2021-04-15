@@ -43,7 +43,7 @@ public class DemoParameterBuilder : ParameterBuilder
 
         do
         {
-            output.Exit = output.Layout.GetRandomExit(random);
+            output.Exit = output.Layout.GetRandomExit(random, EntranceExitSides.None);
         } while (output.Entrance == output.Exit);
 
         return output;

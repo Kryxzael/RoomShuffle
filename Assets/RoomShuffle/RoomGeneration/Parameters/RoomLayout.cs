@@ -33,9 +33,19 @@ public class RoomLayout : MonoBehaviour
     /// </summary>
     /// <param name="random"></param>
     /// <returns></returns>
-    public EntranceExitSides GetRandomExit(System.Random random)
+    public EntranceExitSides GetRandomExit(System.Random random, EntranceExitSides excludedEntranceSide)
     {
-        return GetRandomSide(ExitSides, random);
+        if (ExitSides == excludedEntranceSide)
+            throw new InvalidOperationException($"This room ({gameObject.name}) does not have any exits that are not on the entrance side");
+
+        EntranceExitSides output;
+
+        do
+        {
+            output = GetRandomSide(ExitSides, random);
+        } while (output == excludedEntranceSide);
+
+        return output;
     }
 
     private EntranceExitSides GetRandomSide(EntranceExitSides flags, System.Random random)

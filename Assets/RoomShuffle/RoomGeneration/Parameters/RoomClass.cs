@@ -30,6 +30,11 @@ public enum RoomClass
     Transition,
 
     /// <summary>
+    /// A room where the player can by permanent stat-boosting items for currency
+    /// </summary>
+    Shop,
+
+    /// <summary>
     /// A room containing more enemies than usual, and where all enemies must be killed before progressing. Enemies will not spawn with effects in this room class.
     /// </summary>
     Eradication,

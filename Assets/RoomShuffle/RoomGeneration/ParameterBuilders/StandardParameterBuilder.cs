@@ -13,12 +13,24 @@ using UnityEngine;
 public class StandardParameterBuilder : ParameterBuilder
 {
     [Tooltip("How many rooms can be generated before a transition room will be generated")]
-    public RandomValueBetween TransitionFrequency = new RandomValueBetween(5, 8);
+    public RandomValueBetween ShopFrequency = new RandomValueBetween(5, 10);
 
     /// <summary>
     /// How often the room theme should change
     /// </summary>
     public RandomValueBetween ThemeChangeFrequency = new RandomValueBetween(3, 10);
+
+    /* *** */
+
+    /*
+     * Enumerators used to predetermine the level layouts to use
+     */
+
+    private IEnumerator<RoomLayout> _platformLayoutEnumerator;
+    private IEnumerator<RoomLayout> _puzzleLayoutEnumerator;
+    private IEnumerator<RoomLayout> _eradicationLayoutEnumerator;
+
+    private RoomLayout _queuedLayout;
 
     /// <summary>
     /// <inheritdoc />
@@ -29,6 +41,8 @@ public class StandardParameterBuilder : ParameterBuilder
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
         RoomParameters output = new RoomParameters();
+        RoomLayout nextLayout;
+
         output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
 
         /*
@@ -51,27 +65,44 @@ public class StandardParameterBuilder : ParameterBuilder
         }
 
         /*
-         * Room Class
+         * Room Class and Queued Layout
          */
 
-        //Pick a transition room
-        if (history.RoomsSinceClass(RoomClass.Transition) >= TransitionFrequency.PickInt(random))
+        if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick())
         {
-            output.Class = RoomClass.Transition;
+            output.Class = RoomClass.Shop;
+            nextLayout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
         }
 
         //Pick a platforming room
         else
         {
             output.Class = RoomClass.Platforming;
+            nextLayout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
         }
 
-        //Pick random room-layout and flip-state
-        (output.Layout, output.FlipHorizontal, output.Entrance) = Rooms.PickRandomToMatchPreviousExit(output.Class, history.First().Exit, random);
+        /*
+         * Glue rooms together
+         */
 
-        //Pick random exit
-        output.Exit = output.Layout.GetRandomExit(random);
-        
+        //Something's in the queue, consume it
+        if (_queuedLayout != null)
+        {
+            nextLayout = _queuedLayout;
+            _queuedLayout = null;
+        }
+
+        //Choose entrance direction, flip state and potentially create a transition room between the last and the queued room
+        (output.Layout, output.FlipHorizontal, output.Entrance, output.Exit) = Rooms.CreateTransition(history.First(), nextLayout, random);
+
+        //If the output's layout is different from what the previous function returned, then a transition has been made
+        //Queue the next layout to have it be generated next
+        if (output.Layout != nextLayout)
+        {
+            output.Class = RoomClass.Transition;
+            _queuedLayout = nextLayout;
+        }
+            
 
         return output;
     }
@@ -83,7 +114,10 @@ public class StandardParameterBuilder : ParameterBuilder
     /// <returns></returns>
     public override RoomParameters GetInitialParameters(System.Random random)
     {
-        var layout = Rooms.PlatformingRooms[random.Next(Rooms.PlatformingRooms.Count)];
+        /*
+         * Create and return the first platforming room
+         */
+        var layout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
 
         return new RoomParameters
         {
@@ -92,7 +126,25 @@ public class StandardParameterBuilder : ParameterBuilder
             Class = RoomClass.Platforming,
             Layout = layout,
             Entrance = layout.GetRandomEntrance(random),
-            Exit = layout.GetRandomExit(random)
+            Exit = layout.GetRandomExit(random, EntranceExitSides.None)
         };
+    }
+
+    /// <summary>
+    /// Gets the next room layout of the provided enumerator, and re-shufles it if its completed
+    /// </summary>
+    /// <param name="enumerator"></param>
+    /// <param name="source"></param>
+    /// <param name="random"></param>
+    /// <returns></returns>
+    private static RoomLayout NextLayout(ref IEnumerator<RoomLayout> enumerator, IEnumerable<RoomLayout> source, System.Random random)
+    {
+        if (enumerator == null || !enumerator.MoveNext())
+        {
+            enumerator = source.OrderBy(i => random.Next()).GetEnumerator();
+            enumerator.MoveNext();
+        }
+
+        return enumerator.Current;
     }
 }

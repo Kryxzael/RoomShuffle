@@ -28,58 +28,51 @@ public class RoomLayoutCollection : ScriptableObject
     public List<RoomLayout> SecretRooms = new List<RoomLayout>();
 
     /// <summary>
-    /// Picks a random room matching with the direction of the previous room's exit and a given room class
+    /// Gets a transition room between the last and the next room
     /// </summary>
-    /// <param name="class"></param>
-    /// <param name="lastRoomExit"></param>
-    /// <param name="random"></param>
+    /// <param name="last"></param>
+    /// <param name="next"></param>
     /// <returns></returns>
-    public (RoomLayout room, bool shouldFlip, EntranceExitSides entraceSide) PickRandomToMatchPreviousExit(RoomClass @class, EntranceExitSides lastRoomExit, System.Random random)
+    public (RoomLayout layout, bool shouldFlip, EntranceExitSides entranceSide, EntranceExitSides exitSide) CreateTransition(RoomParameters last, RoomLayout next, System.Random random)
     {
-        //Calculate which list to choose from
-        List<RoomLayout> rooms = @class switch
-        {
-            RoomClass.Platforming => PlatformingRooms,
-            RoomClass.Respite => RespiteRooms,
-            RoomClass.Transition => TransitionRooms,
-            RoomClass.Eradication => EradicationRooms,
-            RoomClass.Puzzle => PuzzleRooms,
-            RoomClass.Secret => SecretRooms,
-            RoomClass.Crossroads => CrossroadRooms,
-            RoomClass.Boss => BossRooms,
+        //Start with the next room, to see if no transition room is needed
+        var candidate = next;
 
-            _ => throw new ArgumentException(nameof(@class)),
-        };
-
-        //Select the next entrance side
-        EntranceExitSides entraceSide = lastRoomExit switch
+        //Choose the entrance position based on the last exit position
+        var entrance = last.Exit switch
         {
-            //If last exit was on top or bottom, the new room must have an entrance at the opposite side
             EntranceExitSides.Top => EntranceExitSides.Bottom,
+            EntranceExitSides.Right => EntranceExitSides.Left,
             EntranceExitSides.Bottom => EntranceExitSides.Top,
-
-            //If last exit was on either side of the room, the new room must have an entrance at the left side (which will later be flipped if neccesary)
-            _ => EntranceExitSides.Left
+            EntranceExitSides.Left => EntranceExitSides.Left, //Right-entranced rooms are just flipped
+            _ => throw new InvalidOperationException()
         };
 
-        //Then calculate whether the room should be flipped
-        bool shouldFlip = lastRoomExit switch
+        //Choose if the room is flipped
+        bool shouldFlip = last.Exit switch
         {
-            //If the last room exited vertically, leave it to chance
             EntranceExitSides.Top => random.Next(2) == 0,
+            EntranceExitSides.Right => last.FlipHorizontal,
             EntranceExitSides.Bottom => random.Next(2) == 0,
-
-            //If the last room exited on the left, the room must be flipped
-            EntranceExitSides.Left => true,
-
-            //If the last room exited on the right, the room must be not flipped
-            _ => false
+            EntranceExitSides.Left => !last.FlipHorizontal,
+            _ => throw new InvalidOperationException()
         };
 
-        //Further filter to rooms with entrance on the correct side
-        rooms = rooms.Where(i => i.EntranceSides.HasFlag(entraceSide)).ToList();
+        //Choose the exit position
+        //var exit = next.GetRandomExit(random, entrance);
+        var exit = next.GetRandomExit(random, EntranceExitSides.None);
 
-        //Finally, pick a room and return the result
-        return (rooms[random.Next(rooms.Count)], shouldFlip, entraceSide);
+        //If the current candidate does not have the provided entrance or exit, choose a new candidate (transition room)
+        while (!candidate.EntranceSides.HasFlag(entrance) || !candidate.ExitSides.HasFlag(exit))
+        {
+            //Choose a random transition room
+            candidate = TransitionRooms[random.Next(TransitionRooms.Count)];
+
+            //Choose a new exit based on the next room's available exits
+            //Note: This call makes it so that multiple transitions may spawn after each other and could probably be optimized
+            exit = candidate.GetRandomExit(random, entrance);
+        }
+
+        return (candidate, shouldFlip, entrance, exit);
     }
 }

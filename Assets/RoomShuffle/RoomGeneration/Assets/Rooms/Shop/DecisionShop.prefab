@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70620d14c518ac648b3ee7054ba7854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntranceSide: 6
-  ExitSide: 2
+  EntranceSides: 8
+  ExitSides: 2
 --- !u!156049354 &8526969819462550149
 Grid:
   m_ObjectHideFlags: 0
