@@ -20,9 +20,14 @@ public class Bouncy : MonoBehaviour
     private RenewableLazy<GroundController> _playerGroundController = new RenewableLazy<GroundController>(() => CommonExtensions.GetPlayer().GetComponent<GroundController>());
     private RenewableLazy<JumpController> _jumpController = new RenewableLazy<JumpController>(() => CommonExtensions.GetPlayer().GetComponent<JumpController>());
 
-    private void Update()
+
+    private void Start()
     {
         _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
+    }
+
+    private void Update()
+    {
 
         //Adjust player maximum horizontal speed 
         if (_noSpeedCapTimeLeft > 0)
@@ -42,6 +47,7 @@ public class Bouncy : MonoBehaviour
         ContactPoint2D contact = collision.GetContact(0);
         Vector2 relativeVelocity = collision.relativeVelocity;
         
+        //If the collsision is from the side
         if (contact.normal.x != 0)
         {
             //if the collision is with a player: disable the speed cap for a little while
@@ -56,6 +62,7 @@ public class Bouncy : MonoBehaviour
             //Invert and add velocity
             collision.rigidbody.SetVelocityX(pushBack * -direction);
         }
+        //if the collsision is from top or bottom
         else
         {
             int direction = Math.Sign(relativeVelocity.y);
