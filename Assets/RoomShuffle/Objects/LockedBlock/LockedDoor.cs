@@ -20,7 +20,7 @@ public class LockedDoor : MonoBehaviour
             {
                 Commons.Inventory.GeneralKeys--;
 
-                Commons.RoomGenerator.RoomParameterBuilderOverrides.Push(GeneratorOverride);
+                Commons.RoomGenerator.RoomParameterBuilderOverrides.Push(Instantiate(GeneratorOverride));
                 Commons.RoomGenerator.GenerateNext();
             }
         }
