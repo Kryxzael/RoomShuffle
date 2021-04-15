@@ -54,12 +54,21 @@ public class KeySlot : ItemUIManager
             _textSmack.Smack();
             Image.sprite = _keySprite;
             ImageCopy.sprite = _keySprite;
+
+            if (Image.enabled == false)
+            {
+                Image.enabled = true;
+                ImageCopy.enabled = true;
+            }
         }
         else
         {
             Text.text = "";
-            Image.sprite = null;
-            ImageCopy.sprite = null;
+            if (Image.enabled)
+            {
+                Image.enabled = false;
+                ImageCopy.enabled = false;
+            }
         }
     }
 }
