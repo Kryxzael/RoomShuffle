@@ -37,6 +37,8 @@ public class ContactBlockGroup : MonoBehaviour
         if (_blocks.TrueForAll(x => x.On))
         {
             _prize.SetActive(true);
+            
+            _blocks.ForEach(x => x.Lock());
         }
     }
 }
