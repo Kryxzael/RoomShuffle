@@ -13,16 +13,37 @@ MonoBehaviour:
   m_Name: Standard
   m_EditorClassIdentifier: 
   PlatformingRooms:
+  - {fileID: 6026251753484923945, guid: 7eb73c5edfd666147870f81bc28dde78, type: 3}
+  - {fileID: 6667954375096041687, guid: f5916e9c63a676448ba3367bab25ac30, type: 3}
+  - {fileID: 6667954375096041687, guid: d5b1666747c0dd64f97bdada318d35f7, type: 3}
+  - {fileID: 6667954375096041687, guid: 163b87a48a79eef418a4aaecf877d5db, type: 3}
+  - {fileID: 6667954375096041687, guid: 2d5c01c4fc4d6f24d878d0ee31d7ac1a, type: 3}
   - {fileID: 6667954375096041687, guid: 4e03387a569dcb24f8e23b2cebe58bc9, type: 3}
+  - {fileID: 6667954375096041687, guid: c786142951496ae408a20fc4702a3c78, type: 3}
   - {fileID: 6667954375096041687, guid: adc3814b690bde84fbb5aeeadc92d716, type: 3}
+  - {fileID: 6667954375096041687, guid: db1767a5199be97458775a34a703cdbe, type: 3}
+  - {fileID: 3357780465577758427, guid: 0cc161167de51a84ebfb18d13e159912, type: 3}
+  - {fileID: 6667954375096041687, guid: beebcec23f7a25c44a5d95a5bda19d3b, type: 3}
+  - {fileID: 6667954375096041687, guid: 890046fdb145eef4f89bce94169fee49, type: 3}
+  - {fileID: 7974522891231979387, guid: b76230f5214d8dd44a81a65b15e8e0fc, type: 3}
   - {fileID: 6667954375096041687, guid: 5e7f1a72098696b41bf48d38681d0286, type: 3}
+  - {fileID: 6667954375096041687, guid: d4a93d6e04dd3904abfdbcb67abce730, type: 3}
+  - {fileID: 6667954375096041687, guid: 49e107187bce1a6478d9f0e4e77ce765, type: 3}
+  - {fileID: 6667954375096041687, guid: cbf2b91aa7148464bb181379dd0586da, type: 3}
   - {fileID: 4979086133836799197, guid: c8444d6398b33364a95123c7656f3fc3, type: 3}
   - {fileID: 6667954375096041687, guid: 185c89be210153b4fa4b39bff23677c8, type: 3}
+  - {fileID: 2274178028711059654, guid: ead2be241bbe52c4f8dc42a99845283f, type: 3}
+  - {fileID: 6667954375096041687, guid: 09459a72117f7184b86143a55c694522, type: 3}
+  - {fileID: 110700131586179316, guid: 2136825620dc8564390f73df29015843, type: 3}
+  - {fileID: 110700131586179316, guid: dd863aca9d07fb341abccb6faeefbdb8, type: 3}
   - {fileID: 6667954375096041687, guid: c7f109bc5918d4348aa5aa0947151430, type: 3}
   - {fileID: 6667954375096041687, guid: 34a23942ad0cbc74d9a6368b97bf123d, type: 3}
+  - {fileID: 6667954375096041687, guid: 8ff983d1d849eae49a042258c4aa90d0, type: 3}
   - {fileID: 6667954375096041687, guid: 98e335c4568b09b40aedd24e98fc30b4, type: 3}
+  - {fileID: 6667954375096041687, guid: 570aeb745ea5470498030a97aad46c84, type: 3}
   - {fileID: 5427735312198500296, guid: 9f17eb68fba42494faf51caad34b151f, type: 3}
   - {fileID: 6667954375096041687, guid: 37b0f36bab61d994887cf7f9e98eca9f, type: 3}
+  - {fileID: 6667954375096041687, guid: fc8282adf70b5fc4889d0150ed71b2d5, type: 3}
   - {fileID: 6667954375096041687, guid: f2154b745f39bc94cb895131cd10385c, type: 3}
   - {fileID: 6667954375096041687, guid: 2e3e8e9937a362c48a910530cf2b7588, type: 3}
   PuzzleRooms: []
@@ -30,11 +51,9 @@ MonoBehaviour:
   - {fileID: 2410021266094607295, guid: 0d057eb3049c7b54eb249e39813b1d88, type: 3}
   BossRooms: []
   TransitionRooms:
-  - {fileID: 110700131586179316, guid: 2136825620dc8564390f73df29015843, type: 3}
-  - {fileID: 3357780465577758427, guid: 0cc161167de51a84ebfb18d13e159912, type: 3}
-  - {fileID: 175062878375977997, guid: 0c019f0970d3b56459b3ee8e1ad7d6c2, type: 3}
-  - {fileID: 6026251753484923945, guid: 7eb73c5edfd666147870f81bc28dde78, type: 3}
-  - {fileID: 110700131586179316, guid: dd863aca9d07fb341abccb6faeefbdb8, type: 3}
+  - {fileID: 2084406279729262953, guid: c91c38dcfc21ae043b53e9e0814dabab, type: 3}
+  - {fileID: 4928483466949914506, guid: bbe0a9db9159aa94c816291edc4b5c2e, type: 3}
+  - {fileID: 4928483466949914506, guid: 26b90b093fb28364bbde734c128d725e, type: 3}
   CrossroadRooms: []
   RespiteRooms: []
   ShopRooms:
