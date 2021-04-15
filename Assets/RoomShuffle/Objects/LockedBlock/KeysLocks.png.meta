@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 10819681845999859
     second: KeysLocks_3
+  - first:
+      213: -7674176446492090417
+    second: KeysLocks_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,7 +122,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9
-        y: 2
+        y: 36
         width: 13
         height: 28
       alignment: 0
@@ -140,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 42
-        y: 2
+        y: 36
         width: 9
         height: 18
       alignment: 0
@@ -161,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 34
         width: 32
         height: 32
       alignment: 0
@@ -182,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 34
         width: 32
         height: 32
       alignment: 0
@@ -194,6 +197,27 @@ TextureImporter:
       bones: []
       spriteID: 3f8730d7170762000800000000000000
       internalID: 10819681845999859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KeysLocks_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 36
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcf5b237e29df7590800000000000000
+      internalID: -7674176446492090417
       vertices: []
       indices: 
       edges: []

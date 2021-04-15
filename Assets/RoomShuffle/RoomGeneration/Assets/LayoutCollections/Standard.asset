@@ -63,4 +63,5 @@ MonoBehaviour:
   - {fileID: 6026251753484923945, guid: 153fea9e06b73184f991924a222ea8f2, type: 3}
   - {fileID: 6026251753484923945, guid: e8bbb400935a15d45a1ef1c242736d9f, type: 3}
   - {fileID: 6026251753484923945, guid: e8f974f4333cc644285c9da7ce760071, type: 3}
-  SecretRooms: []
+  SecretRooms:
+  - {fileID: 7819719442892091808, guid: 62bd81a5463489d43a58421e4c692680, type: 3}
