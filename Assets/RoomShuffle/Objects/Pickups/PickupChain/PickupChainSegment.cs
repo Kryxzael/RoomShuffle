@@ -84,7 +84,7 @@ public class PickupChainSegment : MonoBehaviour
         IEnumerator CoSpawnSegment()
         {
             //Reenable all children in order
-            foreach (var i in children)
+            foreach (var i in children.ToArray())
             {
                 i.gameObject.SetActive(true);
                 yield return new WaitForSeconds(AnimationDelay);

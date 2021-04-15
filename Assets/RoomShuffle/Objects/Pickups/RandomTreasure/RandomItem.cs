@@ -17,7 +17,7 @@ public class RandomItem : MonoBehaviour
     /// <summary>
     /// Spawns an item, then destroys itself
     /// </summary>
-    public GameObject SpawnAndDestroy(System.Random random)
+    private void Start()
     {
         if (!Candidates.Any() || Candidates.Max(i => i.Spawnrate) == 0)
             throw new InvalidOperationException("No accessible candidates");
@@ -26,13 +26,11 @@ public class RandomItem : MonoBehaviour
 
         do
         {
-            candidate = Candidates[random.Next(Candidates.Count)];
-        } while (random.NextDouble() > candidate.Spawnrate);
+            candidate = Candidates[Commons.RoomGenerator.RoomRng.Next(Candidates.Count)];
+        } while (Commons.RoomGenerator.RoomRng.NextDouble() > candidate.Spawnrate);
 
-        var spawned = Instantiate(candidate.Item, transform.parent);
+        Instantiate(candidate.Item, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
-
-        return spawned;
     }
 
     [Serializable]

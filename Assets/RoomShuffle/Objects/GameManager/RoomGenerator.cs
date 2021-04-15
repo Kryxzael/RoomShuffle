@@ -37,7 +37,7 @@ public class RoomGenerator : MonoBehaviour
     /// <summary>
     /// The random number generator used to generate rooms
     /// </summary>
-    private SysRandom RoomRng;
+    public SysRandom RoomRng { get; private set; }
 
     /*
      * Generation History
@@ -134,10 +134,6 @@ public class RoomGenerator : MonoBehaviour
         //Go over every spawn group
         foreach (var i in CurrentRoomObject.GetComponentsInChildren<OptionalObjectGroup>())
             i.Select(RoomRng);
-
-        //Spawn treasure
-        foreach (var i in CurrentRoomObject.GetComponentsInChildren<RandomItem>())
-            i.SpawnAndDestroy(RoomRng);
 
         //Set up room effects
         Commons.RoomEffectController.OnRoomStart(parameters);
