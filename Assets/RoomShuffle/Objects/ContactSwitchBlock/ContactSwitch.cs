@@ -15,6 +15,7 @@ public class ContactSwitch : MonoBehaviour
     private void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
+        _sprite.sprite = On ? OnSprite : OffSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
