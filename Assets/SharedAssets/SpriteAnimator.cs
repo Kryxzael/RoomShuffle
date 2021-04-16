@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -95,5 +96,11 @@ public class SpriteAnimator : MonoBehaviour
         }
     }
 
-    
+    /// <summary>
+    /// Restarts the animation if the object have previously been disabled and enabled again
+    /// </summary>
+    private void OnEnable()
+    {
+        RestartAnimation();
+    }
 }
