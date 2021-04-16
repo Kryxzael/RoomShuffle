@@ -10,6 +10,8 @@ public class Spinning : MonoBehaviour
     [Tooltip("How much time must pass before the spinning starts")]
     public float TimeBeforeStart = 0;
 
+    public bool AffectedByFastFoe = true;
+
     private float _timePassed;
     void Update()
     {
@@ -18,6 +20,11 @@ public class Spinning : MonoBehaviour
         if (_timePassed < TimeBeforeStart)
             return;
 
-        transform.Rotate(RotationSpeed * Time.deltaTime);
+        var speed = RotationSpeed;
+
+        if (AffectedByFastFoe)
+            speed = Commons.GetEffectValue(speed, EffectValueType.EnemySpeed);
+
+        transform.Rotate(speed * Time.deltaTime);
     }
 }
