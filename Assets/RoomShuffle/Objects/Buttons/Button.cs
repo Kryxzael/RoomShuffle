@@ -36,6 +36,16 @@ public class Button : MonoBehaviour
         buttonUp.SetActive(false);
         buttonDown.SetActive(true);
     }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (Pressed)
+            return;
+                
+        Pressed = true;
+        buttonUp.SetActive(false);
+        buttonDown.SetActive(true);
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
