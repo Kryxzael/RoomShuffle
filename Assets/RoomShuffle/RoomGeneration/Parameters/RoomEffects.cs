@@ -43,4 +43,9 @@ public enum RoomEffects
     /// The projectiles will be larger than normal
     /// </summary>
     LargeProjectiles = 0x20,
+
+    /// <summary>
+    /// All lights will be disabled and you can only see silhouettes
+    /// </summary>
+    Backlit = 0x40,
 }

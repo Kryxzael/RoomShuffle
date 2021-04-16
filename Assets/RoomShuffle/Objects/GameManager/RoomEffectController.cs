@@ -57,6 +57,7 @@ public class RoomEffectController : MonoBehaviour
         LowGravity(fx.HasFlag(RoomEffects.LowGravity));
         Darkness(fx.HasFlag(RoomEffects.Darkness));
         LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
+        Backlit(fx.HasFlag(RoomEffects.Backlit));
     }
 
     /// <summary>
@@ -88,14 +89,9 @@ public class RoomEffectController : MonoBehaviour
     /// <param name="enabled"></param>
     private void LargeEnemies(bool enabled)
     {
-        //TODO: This might not be the best way to find enemies
-        foreach (HealthController i in FindObjectsOfType<HealthController>())
+        foreach (var i in FindObjectsOfType<EnemyBase>())
         {
-            //LOL
-            if (i == Commons.PlayerHealth)
-                continue;
-
-            if (i.GetComponent<Collider2D>() is Collider2D collider)
+            if (i.GetComponentInChildren<Collider2D>() is Collider2D collider)
             {
                 float height = collider.bounds.size.y;
 
@@ -108,6 +104,21 @@ public class RoomEffectController : MonoBehaviour
 
                 //TODO: Disabling this effect does nothing
             }
+        }
+    }
+
+    /// <summary>
+    /// Sets the back-lit effect
+    /// </summary>
+    /// <param name="enabled"></param>
+    private void Backlit(bool enabled)
+    {
+        //TODO: This should be removed when we get backgrounds
+        Camera.main.backgroundColor = enabled ? Color.white : Color.black;
+
+        foreach (Light i in FindObjectsOfType<Light>(includeInactive: false))
+        {
+            i.enabled = !enabled;
         }
     }
 }
