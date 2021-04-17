@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70620d14c518ac648b3ee7054ba7854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntranceSide: 6
-  ExitSide: 2
+  EntranceSides: 0
+  ExitSides: 0
 --- !u!156049354 &8526969819462550149
 Grid:
   m_ObjectHideFlags: 0
@@ -429,25 +429,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3073710730394243572, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
-      propertyPath: m_CompositePaths.m_Paths.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3073710730394243572, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
-      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4489212257017188549, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7826079827518665624, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8068852669390042188, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d1654171a316d44088378e7365ea42c, type: 3}
