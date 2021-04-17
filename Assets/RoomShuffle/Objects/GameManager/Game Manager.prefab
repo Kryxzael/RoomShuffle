@@ -394,6 +394,8 @@ MonoBehaviour:
   FastFoeSpeedMultiplier: 1.5
   LargeEnemiesGrowMultiplier: 2
   LargeProjectilesGrowMultiplier: 3
+  IcyGroundAccelerationMultiplier: 0.5
+  IcyGroundDecelerationMultiplier: 0.001
 --- !u!114 &7945820380264407300
 MonoBehaviour:
   m_ObjectHideFlags: 0

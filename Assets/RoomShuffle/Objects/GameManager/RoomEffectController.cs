@@ -33,6 +33,16 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("By how much enemies will grow when large enemies are enabled")]
     public float LargeProjectilesGrowMultiplier = 3f;
 
+    [Header("Icy")]
+    [Tooltip("By how much the player's acceleration speed will be multiplied when icy is enabled")]
+    public float IcyGroundAccelerationMultiplier = 1f;
+
+    [Tooltip("By how much the player's deceleration speed will be multiplied when icy is enabled")]
+    public float IcyGroundDecelerationMultiplier = 1f;
+
+    [Tooltip("By how much the player's maximum ground speed will be multiplied when icy is enabled")]
+    public float IcyGroundMaxSpeedMultiplier = 1.2f;
+
     /* *** */
 
     //The default gravity level as defined by the physics settings

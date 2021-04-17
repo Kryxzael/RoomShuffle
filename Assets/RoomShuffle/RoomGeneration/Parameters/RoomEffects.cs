@@ -52,5 +52,10 @@ public enum RoomEffects
     /// <summary>
     /// The player's input controls will be reversed
     /// </summary>
-    ReverseControls = 0x80
+    ReverseControls = 0x80,
+
+    /// <summary>
+    /// The player's physics will be slippery
+    /// </summary>
+    Icy = 0x100
 }

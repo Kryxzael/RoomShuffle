@@ -219,6 +219,22 @@ public static class Commons
                 if (fxs.HasFlag(RoomEffects.LargeProjectiles))
                     return originalValue * controller.LargeProjectilesGrowMultiplier;
                 break;
+
+            case EffectValueType.PlayerAcceleration:
+                if (fxs.HasFlag(RoomEffects.Icy))
+                    return originalValue * controller.IcyGroundAccelerationMultiplier;
+                break;
+
+            case EffectValueType.PlayerDeceleration:
+                if (fxs.HasFlag(RoomEffects.Icy))
+                    return originalValue * controller.IcyGroundDecelerationMultiplier;
+                break;
+
+
+            case EffectValueType.PlayerMaxSpeed:
+                if (fxs.HasFlag(RoomEffects.Icy))
+                    return originalValue * controller.IcyGroundMaxSpeedMultiplier;
+                break;
         }
 
         return originalValue;
@@ -255,5 +271,23 @@ public enum EffectValueType
     /// The value describes a component of a projectile's size
     /// * The value will be upscaled when larger projectiles is enabled
     /// </summary>
-    ProjectileSize
+    ProjectileSize,
+
+    /// <summary>
+    /// The value describes the player's acceleration speed
+    /// * The value will be reduced when the icy effect is enabled
+    /// </summary>
+    PlayerAcceleration,
+
+    /// <summary>
+    /// The value describes the player's deceleration speed
+    /// * The value will be reduced when the icy effect is enabled
+    /// </summary>
+    PlayerDeceleration,
+
+    /// <summary>
+    /// The value describes the player's maximum speed when grounded
+    /// * The value will be increased when the icy effect is enabled
+    /// </summary>
+    PlayerMaxSpeed
 }

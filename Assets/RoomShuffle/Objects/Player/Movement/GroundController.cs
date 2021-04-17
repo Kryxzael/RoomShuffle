@@ -54,10 +54,10 @@ public class GroundController : MonoBehaviour
         RaycastHit2D onGround = this.OnGround2D();
 
         //The acceleration
-        float acc = onGround ? Acceleration : AirAcceleration;
+        float acc = onGround ? Commons.GetEffectValue(Acceleration, EffectValueType.PlayerAcceleration) : AirAcceleration;
 
         //The deceleration
-        float dec = onGround ? DecelerationForce : AirDecelerationForce;
+        float dec = onGround ? Commons.GetEffectValue(DecelerationForce, EffectValueType.PlayerDeceleration) : AirDecelerationForce;
 
         //The minimum speed.
         float minSpeed = onGround ? 0f : AirMinimumSpeed;
@@ -116,7 +116,8 @@ public class GroundController : MonoBehaviour
          */
 
         //Horizontal
-        _rigid.velocity = _rigid.velocity.SetX(Mathf.Clamp(_rigid.velocity.x, -MaxSpeed, MaxSpeed));
+        var maxSpeed = Commons.GetEffectValue(MaxSpeed, EffectValueType.PlayerMaxSpeed);
+        _rigid.SetVelocityX(currentX => Mathf.Clamp(currentX, -maxSpeed, maxSpeed));
 
         DebugScreenDrawer.Enable("gravity", "gravity: " + _rigid.gravityScale.ToString("P"));
     }
