@@ -138,14 +138,6 @@ PrefabInstance:
       propertyPath: SlowDownTimeScale
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2390164727809682978, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
-      propertyPath: IcyGroundMaxSpeedMultiplier
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390164727809682978, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
-      propertyPath: IcyGroundDecelerationMultiplier
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3951372522608969565, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: SlowDownSprite
       value: 
