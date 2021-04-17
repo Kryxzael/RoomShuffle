@@ -7,13 +7,16 @@ public class Button : MonoBehaviour
 {
     public bool Pressed { get; set; }
 
+    //Sprite and collision for the button down state
     private GameObject buttonDown;
-    private GameObject buttonUp;
     
+    //Sprite and collision for the button up state
+    private GameObject buttonUp;
+
     void Start()
     {
-        Pressed = false;
 
+        //Find button up and button down children
         foreach (Transform child in transform)
         {
             if (child.name.Equals("ButtonUp"))
@@ -25,19 +28,31 @@ public class Button : MonoBehaviour
                 buttonDown = child.gameObject;
             }
         }
-        
-        buttonUp.SetActive(true);
-        buttonDown.SetActive(false);
+
+        //Strat by being deavtivated. "Pressed" has to be true for "DePress()" to run
+        Pressed = true;
+        DePress();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Pressed = true;
-        buttonUp.SetActive(false);
-        buttonDown.SetActive(true);
+        Press();
     }
     
     private void OnTriggerStay2D(Collider2D other)
+    {
+        Press();
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        DePress();
+    }
+
+    /// <summary>
+    /// sets the button to be pressed if it isn't already
+    /// </summary>
+    public void Press()
     {
         if (Pressed)
             return;
@@ -47,10 +62,17 @@ public class Button : MonoBehaviour
         buttonDown.SetActive(true);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    /// <summary>
+    /// Sets the button to unpressed if it isn't already
+    /// </summary>
+    public void DePress()
     {
+        if (!Pressed)
+            return;
+
         Pressed = false;
         buttonUp.SetActive(true);
         buttonDown.SetActive(false);
     }
+    
 }
