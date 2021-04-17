@@ -63,7 +63,7 @@ public class CharacterAnimator : MonoBehaviour
          * Set sprite direction
          */
         float horizontal = Input.GetAxisRaw("Horizontal");
-        if (FlipCamera.IsFlipped)
+        if (FlipCamera.IsFlipped ^ Commons.CurrentRoomEffects.HasFlag(RoomEffects.ReverseControls))
             horizontal *= -1;
 
         if (horizontal > 0.2f)

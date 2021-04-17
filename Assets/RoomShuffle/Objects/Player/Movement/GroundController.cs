@@ -71,7 +71,7 @@ public class GroundController : MonoBehaviour
 
         float input = Input.GetAxisRaw("Horizontal");
 
-        if (FlipCamera.IsFlipped)
+        if (FlipCamera.IsFlipped ^ Commons.CurrentRoomEffects.HasFlag(RoomEffects.ReverseControls))
             input *= -1;
 
         //Player wants to move right 

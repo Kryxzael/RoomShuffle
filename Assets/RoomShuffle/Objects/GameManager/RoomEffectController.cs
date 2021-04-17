@@ -114,7 +114,8 @@ public class RoomEffectController : MonoBehaviour
     private void Backlit(bool enabled)
     {
         //TODO: This should be removed when we get backgrounds
-        Camera.main.backgroundColor = enabled ? Color.white : Color.black;
+        if (Camera.main)
+            Camera.main.backgroundColor = enabled ? Color.white : Color.black;
 
         foreach (Light i in FindObjectsOfType<Light>(includeInactive: false))
         {
