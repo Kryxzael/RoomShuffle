@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_AutoTiling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2785833206994718678, guid: 9032cd22ccb9dbf4bb1e66899e3921f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9271c43467c6afb4db7c7a5aa539772b, type: 2}
     - target: {fileID: 2785833206994718679, guid: 9032cd22ccb9dbf4bb1e66899e3921f0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -91,5 +95,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6753894721723560756, guid: 9032cd22ccb9dbf4bb1e66899e3921f0, type: 3}
+    - {fileID: 8443412375546598639, guid: 9032cd22ccb9dbf4bb1e66899e3921f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9032cd22ccb9dbf4bb1e66899e3921f0, type: 3}
