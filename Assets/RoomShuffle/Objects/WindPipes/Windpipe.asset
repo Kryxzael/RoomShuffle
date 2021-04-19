@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Windpipe
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: 0}
+  - Sprite: {fileID: 21300000, guid: e74a518457827f74a86872e9fd74a674, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 21300000, guid: 29623103f39ced74081f903410d52594, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 21300000, guid: fdbcb212197c3f342b61e7a62a05beb2, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 21300000, guid: 847ce7d97ab93b044af7f734c4cc134e, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
-  FrameTimeDivider: 60
+  FrameTimeDivider: 30

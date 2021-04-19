@@ -49,4 +49,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7056b3696f4971645942bf04bab34b7c, type: 2}
   - {fileID: 11400000, guid: 1dc29f38168bf3149921990212b067d6, type: 2}
   DemoRoomProgression:
-  - {fileID: 6667954375096041687, guid: 37b0f36bab61d994887cf7f9e98eca9f, type: 3}
+  - {fileID: 6667954375096041687, guid: f2154b745f39bc94cb895131cd10385c, type: 3}
+  - {fileID: 6667954375096041687, guid: 185c89be210153b4fa4b39bff23677c8, type: 3}
+  - {fileID: 6667954375096041687, guid: fc8282adf70b5fc4889d0150ed71b2d5, type: 3}
