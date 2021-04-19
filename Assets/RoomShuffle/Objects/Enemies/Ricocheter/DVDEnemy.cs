@@ -108,7 +108,7 @@ public class DVDEnemy : EnemyScript
     /// </summary>
     private void FlipToVelocityDirection()
     {
-        if (Enemy.Flippable.DirectionSign != Math.Sign(Enemy.Rigidbody.velocity.x))
+        if (Enemy.Flippable.DirectionSign != Math.Sign(Enemy.Rigidbody.velocity.x) && Mathf.Approximately(Enemy.Rigidbody.velocity.x, 0))
             Enemy.Flippable.Flip();
     }
 }

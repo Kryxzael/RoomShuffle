@@ -76,6 +76,15 @@ public struct RandomValueBetween
     }
 
     /// <summary>
+    /// Creates a new random value from the provided tuple
+    /// </summary>
+    /// <param name="minMaxTuple"></param>
+    public static implicit operator RandomValueBetween((float min, float max) minMaxTuple)
+    {
+        return new RandomValueBetween(minMaxTuple.min, minMaxTuple.max);
+    }
+
+    /// <summary>
     /// <inheritdoc />
     /// </summary>
     /// <returns></returns>

@@ -14,6 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkSpeed: 3
   ClockwiseRotation: 0
+--- !u!114 &8105739731696014836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128540765930643550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 5369bba0d82c1d24aa47a79ea8dc2a66, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &5697483946944264011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1182408495049320820, guid: daa38cda758fb2a4ebef6743a906ab9a, type: 3}
+      objectReference: {fileID: 7877921557971618100, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: StartingDirection
       value: 0

@@ -55,6 +55,7 @@ public sealed class EnemyBase : MonoBehaviour
             case RigidbodyMode.NoGravity:
                 Rigidbody.gravityScale = 0f;
                 Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+                Rigidbody.velocity = default;
                 break;
             case RigidbodyMode.Static:
                 Rigidbody.bodyType = RigidbodyType2D.Static;
