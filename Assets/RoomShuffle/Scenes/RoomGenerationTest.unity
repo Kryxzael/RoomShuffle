@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: SlowDownTimeScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3951372522608969565, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: SlowDownSprite
       value: 
@@ -204,11 +208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Seed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: UseRandomSeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: RoomParameterBuilder

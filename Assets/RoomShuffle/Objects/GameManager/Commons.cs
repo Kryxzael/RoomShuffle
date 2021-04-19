@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// A static class with references to various game management resources
@@ -62,6 +63,10 @@ public static class Commons
     
     private static RenewableLazy<GameObject> _currencyUI { get; } = new RenewableLazy<GameObject>(
         () => GameObject.FindWithTag("CurrencyText")
+    );
+
+    private static RenewableLazy<Image> _screenSpacePlayer { get; } = new RenewableLazy<Image>(
+        () => GameObject.Find("ScreenSpacePlayer").GetComponent<Image>()
     );
 
     /*
@@ -136,7 +141,12 @@ public static class Commons
     /// Gets the currency UI element
     /// </summary>
     public static GameObject CurrencyUI => _currencyUI.Value;
-    
+
+    /// <summary>
+    /// Gets the screen space player image
+    /// </summary>
+    public static Image ScreenSpacePlayer => _screenSpacePlayer.Value;
+
 
     /*
      * Enemies
