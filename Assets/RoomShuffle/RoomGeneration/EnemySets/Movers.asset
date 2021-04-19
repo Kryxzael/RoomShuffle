@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a34f5a56fa077429812755a7447d5a, type: 3}
+  m_Name: Movers
+  m_EditorClassIdentifier: 
+  EnabledInEradication: 1
+  PrimaryGround: {fileID: 1721273977298268592, guid: 73eb61f525868204baeecca8c4929458, type: 3}
+  SecondaryGround: {fileID: 1220127869279705111, guid: c7aca51d2a06d5347b047c97b306a7e0, type: 3}
+  PrimaryAir: {fileID: 1247834456278841005, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
+  SecondaryAir: {fileID: 1247834456278841005, guid: 79351766bd1ca9547a06331e43ab95e3, type: 3}

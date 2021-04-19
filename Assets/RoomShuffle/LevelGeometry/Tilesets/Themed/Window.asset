@@ -31,4 +31,4 @@ MonoBehaviour:
     VolcanoAnimation: {fileID: 0}
     JungleAnimation: {fileID: 0}
     CloudAnimation: {fileID: 0}
-    FactoryAnimation: {fileID: 11400000, guid: 563b5c35d7afaf746b83789d1a81ab78, type: 2}
+    FactoryAnimation: {fileID: 0}

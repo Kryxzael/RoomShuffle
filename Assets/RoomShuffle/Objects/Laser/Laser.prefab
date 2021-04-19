@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9271c43467c6afb4db7c7a5aa539772b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,8 +143,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 42.5, y: 1.4999995, z: 0}
-  - {x: 42.499996, y: -4, z: 0}
+  - {x: 40.5, y: 1.5, z: 0}
+  - {x: 40.5, y: 201.5, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

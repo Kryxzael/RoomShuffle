@@ -24,6 +24,7 @@ public class RoomLayoutCollection : ScriptableObject
     public List<RoomLayout> RespiteRooms = new List<RoomLayout>();
 
     [Header("== SPECIAL ROOMS ==")]
+    public List<RoomLayout> StartingRooms = new List<RoomLayout>();
     public List<RoomLayout> ShopRooms = new List<RoomLayout>();
     public List<RoomLayout> SecretRooms = new List<RoomLayout>();
 

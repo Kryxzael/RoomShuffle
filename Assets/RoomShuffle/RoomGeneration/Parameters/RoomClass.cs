@@ -15,6 +15,11 @@ public enum RoomClass
     Inaccessible,
 
     /// <summary>
+    /// The room that appears at the start of the game
+    /// </summary>
+    Starting,
+
+    /// <summary>
     /// A standard platforming challenge, with a normal configuration of enemies and collectibles where the goal is simply to reach the exit of the room.
     /// </summary>
     Platforming,

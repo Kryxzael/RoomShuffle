@@ -12,13 +12,22 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Room Parameter Builders/Standard")]
 public class StandardParameterBuilder : ParameterBuilder
 {
+    [Header("Room Class Frequency")]
     [Tooltip("How many rooms can be generated before a transition room will be generated")]
-    public RandomValueBetween ShopFrequency = new RandomValueBetween(5, 10);
+    public RandomValueBetween ShopFrequency = (5, 10);
 
-    /// <summary>
-    /// How often the room theme should change
-    /// </summary>
-    public RandomValueBetween ThemeChangeFrequency = new RandomValueBetween(3, 10);
+    [Tooltip("How many rooms can be generated before a transition room will be generated")]
+    public RandomValueBetween PuzzleFrequency = (4, 7);
+
+    [Tooltip("How many rooms can be generated before a transition room will be generated")]
+    public RandomValueBetween EradicationFrequency = (9, 13);
+
+    [Header("General Frequency")]
+    [Tooltip("How often the room theme should change")]
+    public RandomValueBetween ThemeChangeFrequency = (3, 10);
+
+    [Tooltip("How often a room effect should be applied")]
+    public RandomValueBetween RoomEffectFrequency = (4, 6);
 
     /* *** */
 
@@ -68,10 +77,25 @@ public class StandardParameterBuilder : ParameterBuilder
          * Room Class and Queued Layout
          */
 
+        //Time for a shop
         if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick())
         {
             output.Class = RoomClass.Shop;
             nextLayout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
+        }
+
+        //Time for a puzzle
+        else if (history.RoomsSinceClass(RoomClass.Puzzle) >= PuzzleFrequency.Pick())
+        {
+            output.Class = RoomClass.Puzzle;
+            nextLayout = NextLayout(ref _puzzleLayoutEnumerator, Rooms.PuzzleRooms, random);
+        }
+
+        //Time for a eradication room
+        else if (history.RoomsSinceClass(RoomClass.Eradication) >= EradicationFrequency.Pick())
+        {
+            output.Class = RoomClass.Eradication;
+            nextLayout = NextLayout(ref _eradicationLayoutEnumerator, Rooms.EradicationRooms, random);
         }
 
         //Pick a platforming room
@@ -81,6 +105,28 @@ public class StandardParameterBuilder : ParameterBuilder
             nextLayout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
         }
 
+        /*
+         * Room effects
+         */
+
+        if (history.RoomsSinceMatchOfPredicate(i => i.Effect != RoomEffects.None) >= RoomEffectFrequency.Pick())
+        {
+            output.Effect = typeof(RoomEffects)
+                .GetEnumValues()
+                .Cast<RoomEffects>() 
+                .Except(new[] { RoomEffects.None })
+                .OrderBy(i => random.Next())
+                .First();
+        }
+
+        /*
+         * Weapon enumerator
+         */
+        output.WeaponEnumerator = WeaponTemplates
+            .OrderBy(i => random.Next())
+            .GetEnumerator();
+            
+        
         /*
          * Glue rooms together
          */
@@ -117,21 +163,22 @@ public class StandardParameterBuilder : ParameterBuilder
         /*
          * Create and return the first platforming room
          */
-        var layout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
+        var layout = Rooms.StartingRooms[random.Next(Rooms.StartingRooms.Count)];
 
         return new RoomParameters
         {
             EnemySet = EnemySets[random.Next(EnemySets.Count)],
             Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length),
-            Class = RoomClass.Platforming,
+            Class = RoomClass.Starting,
             Layout = layout,
             Entrance = layout.GetRandomEntrance(random),
-            Exit = layout.GetRandomExit(random, EntranceExitSides.None)
+            Exit = layout.GetRandomExit(random, EntranceExitSides.None),
+            WeaponEnumerator = WeaponTemplates.OrderBy(i => random.Next()).GetEnumerator()
         };
     }
 
     /// <summary>
-    /// Gets the next room layout of the provided enumerator, and re-shufles it if its completed
+    /// Gets the next room layout of the provided enumerator, and re-shuffles it if its completed
     /// </summary>
     /// <param name="enumerator"></param>
     /// <param name="source"></param>

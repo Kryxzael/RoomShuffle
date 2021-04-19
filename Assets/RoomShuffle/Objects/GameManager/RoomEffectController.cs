@@ -48,13 +48,9 @@ public class RoomEffectController : MonoBehaviour
     //The default gravity level as defined by the physics settings
     private Vector2 _defaultGravity;
 
-    //The 'sun' sources in the generator that are disabled when dark mode is enabled
-    private IEnumerable<Light> _suns;
-
-    private void Awake()
+    private void Start()
     {
         _defaultGravity = Physics2D.gravity;
-        _suns = FindObjectsOfType<Light>().Where(i => i.type == LightType.Directional);
     }
 
     /// <summary>
@@ -67,7 +63,7 @@ public class RoomEffectController : MonoBehaviour
         LowGravity(fx.HasFlag(RoomEffects.LowGravity));
         Darkness(fx.HasFlag(RoomEffects.Darkness));
         LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
-        Backlit(fx.HasFlag(RoomEffects.Backlit));
+        //Backlit(fx.HasFlag(RoomEffects.Backlit));
     }
 
     /// <summary>
@@ -89,7 +85,7 @@ public class RoomEffectController : MonoBehaviour
     /// <param name="enabled"></param>
     private void Darkness(bool enabled)
     {
-        foreach (Light i in _suns)
+        foreach (Light i in FindObjectsOfType<Light>().Where(i => i.type == LightType.Directional))
             i.enabled = !enabled;
     }
 
