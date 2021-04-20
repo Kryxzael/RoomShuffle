@@ -15,6 +15,9 @@ public class Timer : MonoBehaviour
     [Tooltip("How much time is left before the text starts blinking and ticking")]
     public float BlinkingTime = 10;
 
+    [Tooltip("The formating string to use when displaying the time. This does not decide the format of the time itself but the text around it")]
+    public string TimerTextFormat = "{0}";
+
     /// <summary>
     /// The displayed timer value in seconds
     /// </summary>
@@ -223,7 +226,7 @@ public class Timer : MonoBehaviour
             t.Seconds, 
             t.Milliseconds / 10);
 
-        return formattedString;
+        return string.Format(TimerTextFormat, arg0: formattedString);
 
     }
 

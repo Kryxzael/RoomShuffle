@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: FastFoeSpeedMultiplier
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 253764894502133428, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: TimerTextFormat
+      value: 'TIME: {0}'
+      objectReference: {fileID: 0}
     - target: {fileID: 1475885064819581927, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_TagString
       value: CountdownTimer

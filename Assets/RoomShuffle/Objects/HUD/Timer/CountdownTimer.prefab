@@ -150,3 +150,4 @@ MonoBehaviour:
   PositivePopNumber: {fileID: 9204857899976595522, guid: a6d37de52caa3104ea40982eb460939a, type: 3}
   NegativePopNumber: {fileID: 3469888029550492065, guid: c277c3cd5441e934baa18704011cb14e, type: 3}
   BlinkingTime: 10
+  TimerTextFormat: 'Time: {0}'
