@@ -46,12 +46,7 @@ public class RoomEffectController : MonoBehaviour
     /* *** */
 
     //The default gravity level as defined by the physics settings
-    private Vector2 _defaultGravity;
-
-    private void Start()
-    {
-        _defaultGravity = Physics2D.gravity;
-    }
+    private Vector2 _defaultGravity = new Vector2(0, -60);
 
     /// <summary>
     /// Runs when a new room is generated
