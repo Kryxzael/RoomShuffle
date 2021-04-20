@@ -38,7 +38,7 @@ public class Exit : MonoBehaviour
         (screenSpacePlayer.transform as RectTransform).sizeDelta = new Vector2(Mathf.Abs(screenBoundsMax.x - screenBoundsMin.x), Mathf.Abs(screenBoundsMax.y - screenBoundsMin.y));
 
         if (imageFlipped)
-            screenSpacePlayer.transform.localScale *= -1;
+            screenSpacePlayer.transform.localScale = screenSpacePlayer.transform.localScale.SetX(-screenSpacePlayer.transform.localScale.x);
 
         /*
          * Load next level and move player
@@ -67,6 +67,6 @@ public class Exit : MonoBehaviour
         screenSpacePlayer.transform.position = new Vector3(99999f, 99999f);
 
         if (imageFlipped)
-            screenSpacePlayer.transform.localScale *= -1;
+            screenSpacePlayer.transform.localScale = screenSpacePlayer.transform.localScale.SetX(-screenSpacePlayer.transform.localScale.x);
     }
 }
