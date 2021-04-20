@@ -8,9 +8,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TextSmack), typeof(TextMeshProUGUI))]
 public class RoomCounter : MonoBehaviour
 {
-    
-    private int roomNumber = 0;
-    private int x;
+    private int _lastRoomNumber;
     private TextMeshProUGUI _textMeshProUGUI;
     private TextSmack _textSmack;
 
@@ -22,18 +20,11 @@ public class RoomCounter : MonoBehaviour
 
     private void Update()
     {
-        //TODO remove all the nonsense below
-        if (Input.GetKeyDown(KeyCode.O))
+        if (_lastRoomNumber != (_lastRoomNumber = Commons.RoomGenerator.CurrentRoomNumber))
         {
-            x++;
+            _textMeshProUGUI.text = _lastRoomNumber.ToString();
+            _textSmack.Smack();
         }
-        if (roomNumber == x)
-            return;
-        roomNumber = x;
-        //Nonsense ends here
         
-        
-        _textMeshProUGUI.text = roomNumber.ToString();
-        _textSmack.Smack();
     }
 }

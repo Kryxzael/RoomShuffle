@@ -28,6 +28,11 @@ public class RoomGenerator : MonoBehaviour
     public ParameterBuilder RoomParameterBuilder;
 
     /// <summary>
+    /// Gets or sets the number that is displayed as the room count
+    /// </summary>
+    public int CurrentRoomNumber { get; set; }
+
+    /// <summary>
     /// Gets the room parameter builders that are currently being used to override the primary room parameter builder
     /// </summary>
     public Stack<ParameterBuilderOverride> RoomParameterBuilderOverrides { get; } = new Stack<ParameterBuilderOverride>();
@@ -140,5 +145,18 @@ public class RoomGenerator : MonoBehaviour
 
         //Flip camera
         FlipCamera.IsFlipped = CurrentRoomConfig.FlipHorizontal;
+
+        //Increase room number
+        switch (parameters.Class)
+        {
+            case RoomClass.Platforming:
+            case RoomClass.Eradication:
+            case RoomClass.Puzzle:
+            case RoomClass.Boss:
+                CurrentRoomNumber++;
+                break;
+            default:
+                break;
+        }
     }
 }
