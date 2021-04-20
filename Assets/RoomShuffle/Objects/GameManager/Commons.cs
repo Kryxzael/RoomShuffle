@@ -50,11 +50,11 @@ public static class Commons
     private static RenewableLazy<EnemyProgression> _enemyProgression { get; } = new RenewableLazy<EnemyProgression>(
         () => EnemyManager.GetComponent<EnemyProgression>()
     );
-    
+
     /* *** */
-    
-    private static RenewableLazy<GameObject> _countdownTimerUI { get; } = new RenewableLazy<GameObject>(
-        () => GameObject.FindWithTag("CountdownTimer")
+
+    private static RenewableLazy<Timer> _countdownTimerUI { get; } = new RenewableLazy<Timer>(
+        () => GameObject.FindWithTag("CountdownTimer").GetComponent<Timer>()
     );
     
     private static RenewableLazy<GameObject> _redCoinsCountdownTimerUI { get; } = new RenewableLazy<GameObject>(
@@ -130,7 +130,7 @@ public static class Commons
     /// <summary>
     /// Gets the CountdownTimer in UI
     /// </summary>
-    public static GameObject CountdownTimer => _countdownTimerUI.Value;
+    public static Timer CountdownTimer => _countdownTimerUI.Value;
     
     /// <summary>
     /// Gets the CountdownTimer in UI
@@ -256,6 +256,7 @@ public static class Commons
     public static class Masks
     {
         public static readonly LayerMask GroundOnly = LayerMask.GetMask("Ground", "Crate");
+        public static readonly LayerMask GroundAndBlockers = LayerMask.GetMask("Ground", "Crate", "Enemy Blocker");
         public static readonly LayerMask HitboxesHurtboxes = LayerMask.GetMask("Hitbox Hurtbox");
     }
 }

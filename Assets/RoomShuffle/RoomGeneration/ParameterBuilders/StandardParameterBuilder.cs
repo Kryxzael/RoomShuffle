@@ -115,7 +115,7 @@ public class StandardParameterBuilder : ParameterBuilder
                 .GetEnumValues()
                 .Cast<RoomEffects>() 
                 .Except(new[] { RoomEffects.None })
-                .Where(i => !output.Layout.ExcludedEffects.HasFlag(i))
+                .Where(i => !nextLayout.ExcludedEffects.HasFlag(i))
                 .OrderBy(i => random.Next())
                 .FirstOrDefault();
         }

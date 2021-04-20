@@ -19,7 +19,11 @@ public class RoomLayout : MonoBehaviour
     public EntranceExitSides ExitSides;
 
     [Header("Effects")]
+    [Tooltip("What room effects to exclude when picking an effect for this room")]
     public RoomEffects ExcludedEffects = RoomEffects.None;
+
+    [Tooltip("The amount of time the player will have to complete the room when the timer effect is active. Ignored if timer effect is excluded")]
+    public float TimerEffectSeconds = 300f;
 
     /// <summary>
     /// Gets a random entrance direction for this room based on its exit sides

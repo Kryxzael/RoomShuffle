@@ -57,5 +57,10 @@ public enum RoomEffects
     /// <summary>
     /// The player's physics will be slippery
     /// </summary>
-    Icy = 0x100
+    Icy = 0x100,
+
+    /// <summary>
+    /// The room will have a time limit that the player must complete the room within
+    /// </summary>
+    Timer = 0x200
 }

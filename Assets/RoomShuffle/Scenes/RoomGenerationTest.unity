@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: FastFoeSpeedMultiplier
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1475885064819581927, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_TagString
+      value: CountdownTimer
+      objectReference: {fileID: 0}
     - target: {fileID: 1636370513975752729, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: SlowDownTimeScale
       value: 0
@@ -193,6 +197,18 @@ PrefabInstance:
     - target: {fileID: 6447120639103844524, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_Name
       value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883257380096748028, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883257380096748028, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883257380096748028, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -97
       objectReference: {fileID: 0}
     - target: {fileID: 8192665857860898478, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_RootOrder

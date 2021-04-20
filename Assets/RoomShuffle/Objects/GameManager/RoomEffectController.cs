@@ -59,6 +59,21 @@ public class RoomEffectController : MonoBehaviour
         Darkness(fx.HasFlag(RoomEffects.Darkness));
         LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
         //Backlit(fx.HasFlag(RoomEffects.Backlit));
+        Timer(fx.HasFlag(RoomEffects.Timer), room);
+    }
+
+    private void Update()
+    {
+        if (Commons.CurrentRoomEffects.HasFlag(RoomEffects.Timer) && Commons.CountdownTimer.CurrentSeconds <= 0)
+        {
+            Commons.PlayerHealth.SoftKill();
+            Commons.RespawnPlayer();
+
+            Commons.CountdownTimer.StopCountdown();
+
+            if (Commons.PlayerHealth.IsAlive)
+                Timer(true, Commons.RoomGenerator.CurrentRoomConfig);
+        }
     }
 
     /// <summary>
@@ -121,6 +136,22 @@ public class RoomEffectController : MonoBehaviour
         foreach (Light i in FindObjectsOfType<Light>(includeInactive: false))
         {
             i.enabled = !enabled;
+        }
+    }
+
+    /// <summary>
+    /// Sets the timer effect
+    /// </summary>
+    private void Timer(bool enabled, RoomParameters room)
+    {
+        if (enabled)
+        {
+            Commons.CountdownTimer.StartCountdown(room.Layout.TimerEffectSeconds);
+        }
+        else
+        {
+            Commons.CountdownTimer.StopCountdown();
+            Commons.CountdownTimer.HideTimer();
         }
     }
 }

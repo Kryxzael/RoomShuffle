@@ -58,9 +58,9 @@ public class Timer : MonoBehaviour
     }
 
     /// <summary>
-    /// Starts a timer of the timer isn't running
+    /// Starts a stopwatch if the timer isn't running
     /// </summary>
-    public void StartTimer()
+    public void StartStopwatch()
     {
         if (_timerIsRunning)
             return;
@@ -70,16 +70,16 @@ public class Timer : MonoBehaviour
     }
     
     /// <summary>
-    /// Starts the timer from zero even if the timer is running
+    /// Starts the stopwatch from zero even if the timer is running
     /// </summary>
-    public void ResetTimer()
+    public void ResetStopwatch()
     {
         StopTimer();
-        StartTimer();
+        StartStopwatch();
     }
 
     /// <summary>
-    /// Stops the timer
+    /// Stops the countdown/stopwatch
     /// </summary>
     public void StopTimer()
     {
@@ -167,7 +167,7 @@ public class Timer : MonoBehaviour
     {
         while (true)
         {
-            SetText(formatNumber(CurrentSeconds));
+            SetText(FormatNumber(CurrentSeconds));
             CurrentSeconds += Time.deltaTime;
 
             yield return new WaitForEndOfFrame();
@@ -187,7 +187,7 @@ public class Timer : MonoBehaviour
 
         while (CurrentSeconds > 0)
         {
-            SetText(formatNumber(CurrentSeconds));
+            SetText(FormatNumber(CurrentSeconds));
             CurrentSeconds -= Time.deltaTime;
 
             //Should the timer start blinking
@@ -210,10 +210,10 @@ public class Timer : MonoBehaviour
         }
 
         CurrentSeconds = 0;
-        SetText(formatNumber(CurrentSeconds));
+        SetText(FormatNumber(CurrentSeconds));
     }
 
-    private string formatNumber(float number)
+    private string FormatNumber(float number)
     {
         TimeSpan t = TimeSpan.FromSeconds(number);
 
