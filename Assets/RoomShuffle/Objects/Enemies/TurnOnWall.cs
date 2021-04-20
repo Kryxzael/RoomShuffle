@@ -113,7 +113,7 @@ public class TurnOnWall : MonoBehaviour
     private static RaycastHit2D RaycastAndDebug(float x, float y, Vector2 direction)
     {
         Debug.DrawLine(new Vector2(x, y), new Vector2(x, y) + direction * CHECK_DISTANCE, Color.green);
-        return Physics2D.Raycast(new Vector2(x, y), direction, CHECK_DISTANCE, ~LayerMask.GetMask("NoSelfCollision"));
+        return Physics2D.Raycast(new Vector2(x, y), direction, CHECK_DISTANCE, Commons.Masks.GroundAndBlockers);
     }
 
     /// <summary>
