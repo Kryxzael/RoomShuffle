@@ -18,6 +18,9 @@ public class RoomLayout : MonoBehaviour
     [Tooltip("The side(s) of the room where the exit(s) is/are")]
     public EntranceExitSides ExitSides;
 
+    [Header("Effects")]
+    public RoomEffects ExcludedEffects = RoomEffects.None;
+
     /// <summary>
     /// Gets a random entrance direction for this room based on its exit sides
     /// </summary>
