@@ -25,7 +25,6 @@ public class SquashNStretch : MonoBehaviour
         float squash = _originalScale.x + (Mathf.Sin(_time)*Magnitude);
         float squish = _originalScale.y + (Mathf.Cos(_time)*Magnitude);
         
-
-        transform.localScale = new Vector2(squash, squish);
+        transform.localScale = new Vector3(squash, squish, 1f);
     }
 }
