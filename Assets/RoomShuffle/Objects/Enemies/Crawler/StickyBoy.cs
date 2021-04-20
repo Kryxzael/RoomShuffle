@@ -177,26 +177,26 @@ public class StickyBoy : EnemyScript
         switch (checkDirection)
         {
             case 2: 
-                RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE);
-                RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE);
+                RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+                RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
 
                 return (downLeft || downRight);
 
             case 4: 
-                RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE);
-                RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE);
+                RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+                RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
 
                 return (upLeft || upRight);
 
             case 3: 
-                RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.left, RAYCAST_DISTANCE);
-                RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.left, RAYCAST_DISTANCE);
+                RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+                RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
 
                 return (leftUp || leftDown);
 
             case 1: 
-                RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.right, RAYCAST_DISTANCE);
-                RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.right, RAYCAST_DISTANCE);
+                RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+                RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
 
                 return (rightUp || rightDown);
 
