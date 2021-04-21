@@ -18,8 +18,8 @@ namespace RoomShuffle.Defaults
         [Tooltip("If true, the audio channel will play the first and second clip in the list. This overrides clipIndex")]
         public bool PlayBothClips = false;
         
-        [Tooltip("If true, the audio channel will only have one audio source ")]
-        public bool PlayBothAudioSources = true;
+        [Tooltip("If true, the audio will only play if the channel is not playing anything ")]
+        public bool OverrideAudio = true;
 
         [Header("When to play")] 
         public bool _OnEnable;
@@ -83,7 +83,7 @@ namespace RoomShuffle.Defaults
                     //Make primary channel play sound
                     _audioSource.PlayOneShot(AudioClips[index], volume);
                 }
-                else
+                else if (OverrideAudio)
                 {
                     //make secondary channel make sound if primary is occupied
                     _secondary.PlayOneShot(AudioClips[index], volume);
@@ -135,6 +135,8 @@ namespace RoomShuffle.Defaults
         Lock,
         ContactBlock,
         BouncyBlock,
-        Button
+        Button,
+        Laser,
+        HitBoxHurtBox
     }
 }

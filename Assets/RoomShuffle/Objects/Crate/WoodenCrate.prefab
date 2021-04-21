@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2383897918148421677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474786258434908349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 82faaacbc83ff284bb47af6e2ae317ed, type: 3}
+  - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
+  Channel: 0
+  PlayBothClips: 0
+  PlayBothAudioSources: 1
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0
 --- !u!1001 &2298778089679458837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,3 +100,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+--- !u!1 &4474786258434908349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2449751605051159208, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+  m_PrefabInstance: {fileID: 2298778089679458837}
+  m_PrefabAsset: {fileID: 0}

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using RoomShuffle.Defaults;
+using TMPro;
 
 using UnityEngine;
 
@@ -8,6 +9,8 @@ using UnityEngine;
 public class EnemyHitbox : Hitbox
 {
     private HealthController _health;
+
+    private MultiSoundPlayer _multiSoundPlayer;
 
     /* *** */
     public PopNumber DamageTextPrefab;
@@ -21,6 +24,8 @@ public class EnemyHitbox : Hitbox
     {
         base.Awake();
         _health = GetComponentInParent<HealthController>();
+
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
     }
 
     /// <summary>
@@ -56,6 +61,9 @@ public class EnemyHitbox : Hitbox
     /// <param name="hurtbox"></param>
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
+        //Play damage sound
+        _multiSoundPlayer.PlaySound(-1, 1, 0.5f);
+        
         //Dead men don't scream
         if (_health.IsDead)
             return;
