@@ -36,9 +36,13 @@ public class PowerUpManager : MonoBehaviour
 
     private void Update()
     {
-        //Decrease timers
-        foreach (var (key, value) in _powerUpsWithTimers.Select(i => (i.Key, i.Value)).ToArray())
-            _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
+        //Decrease timers (unless in a safe-room
+        if (!Commons.RoomGenerator.CurrentRoomConfig.Class.IsSafeRoom())
+        {
+            foreach (var (key, value) in _powerUpsWithTimers.Select(i => (i.Key, i.Value)).ToArray())
+                _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
+        }
+        
 
         if (HasPowerUp(PowerUp.DefenseUp))
             Commons.PlayerHealth.DefensePercentage = DefenseStrength;

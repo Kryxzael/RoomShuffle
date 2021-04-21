@@ -64,3 +64,30 @@ public enum RoomClass
     /// </summary>
     Boss
 }
+
+public static class RoomClassExtensions
+{
+    /// <summary>
+    /// Gets whether the room class considered safe. Safe rooms aren't counted to score, do not deplete power-ups, allow firing, or contain hazards
+    /// </summary>
+    /// <param name="class"></param>
+    /// <returns></returns>
+    public static bool IsSafeRoom(this RoomClass @class)
+    {
+        switch (@class)
+        {
+            case RoomClass.Inaccessible:
+            case RoomClass.Starting:
+            case RoomClass.Respite:
+            case RoomClass.Transition:
+            case RoomClass.Shop:
+            case RoomClass.Puzzle:
+            case RoomClass.Secret:
+            case RoomClass.Crossroads:
+                return true;
+
+            default:
+                return false;
+        }
+    }
+}

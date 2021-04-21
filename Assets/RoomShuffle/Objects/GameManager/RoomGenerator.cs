@@ -147,16 +147,7 @@ public class RoomGenerator : MonoBehaviour
         FlipCamera.IsFlipped = CurrentRoomConfig.FlipHorizontal;
 
         //Increase room number
-        switch (parameters.Class)
-        {
-            case RoomClass.Platforming:
-            case RoomClass.Eradication:
-            case RoomClass.Puzzle:
-            case RoomClass.Boss:
-                CurrentRoomNumber++;
-                break;
-            default:
-                break;
-        }
+        if (!parameters.Class.IsSafeRoom())
+            CurrentRoomNumber++;
     }
 }

@@ -40,6 +40,7 @@ public class StandardParameterBuilder : ParameterBuilder
     private IEnumerator<RoomLayout> _eradicationLayoutEnumerator;
 
     private RoomLayout _queuedLayout;
+    private RoomClass? _queuedClass;
 
     /// <summary>
     /// <inheritdoc />
@@ -104,22 +105,6 @@ public class StandardParameterBuilder : ParameterBuilder
             output.Class = RoomClass.Platforming;
             nextLayout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
         }
-
-        /*
-         * Room effects
-         */
-
-        if (history.RoomsSinceMatchOfPredicate(i => i.Effect != RoomEffects.None) >= RoomEffectFrequency.Pick())
-        {
-            output.Effect = typeof(RoomEffects)
-                .GetEnumValues()
-                .Cast<RoomEffects>() 
-                .Except(new[] { RoomEffects.None })
-                .Where(i => !nextLayout.ExcludedEffects.HasFlag(i))
-                .OrderBy(i => random.Next())
-                .FirstOrDefault();
-        }
-
         /*
          * Weapon enumerator
          */
@@ -135,6 +120,7 @@ public class StandardParameterBuilder : ParameterBuilder
         //Something's in the queue, consume it
         if (_queuedLayout != null)
         {
+            output.Class = _queuedClass.Value;
             nextLayout = _queuedLayout;
             _queuedLayout = null;
         }
@@ -146,10 +132,26 @@ public class StandardParameterBuilder : ParameterBuilder
         //Queue the next layout to have it be generated next
         if (output.Layout != nextLayout)
         {
-            output.Class = RoomClass.Transition;
+            _queuedClass = output.Class;
             _queuedLayout = nextLayout;
+            output.Class = RoomClass.Transition;
         }
-            
+
+        /*
+         * Room effects
+         */
+
+        if (!output.Class.IsSafeRoom() && history.RoomsSinceMatchOfPredicate(i => i.Effect != RoomEffects.None) >= RoomEffectFrequency.Pick())
+        {
+            output.Effect = typeof(RoomEffects)
+                .GetEnumValues()
+                .Cast<RoomEffects>()
+                .Except(new[] { RoomEffects.None })
+                .Where(i => !nextLayout.ExcludedEffects.HasFlag(i))
+                .OrderBy(i => random.Next())
+                .FirstOrDefault();
+        }
+
 
         return output;
     }
