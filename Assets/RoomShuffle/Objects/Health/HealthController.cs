@@ -22,6 +22,10 @@ public class HealthController : MonoBehaviour
     [Tooltip("If enabled, health cheats will affect the way this health controller consumes damage")]
     public bool AffectedByHealthCheats = false;
 
+    [Tooltip("How much (percentage) of incoming damage will be ignored")]
+    [Range(0f, 1f)]
+    public float DefensePercentage;
+
     /// <summary>
     /// Gets the controller's health as an amount of hearts
     /// </summary>
@@ -86,6 +90,8 @@ public class HealthController : MonoBehaviour
     /// <param name="rawDamage"></param>
     public void DealDamage(int rawDamage)
     {
+        rawDamage = (int)(rawDamage * (1f - DefensePercentage));
+
         if (AffectedByHealthCheats)
         {
             switch (Cheats.HealthCheat)

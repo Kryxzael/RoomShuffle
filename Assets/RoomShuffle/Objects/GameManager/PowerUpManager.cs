@@ -20,6 +20,10 @@ public class PowerUpManager : MonoBehaviour
     [Tooltip("The timescale of the game in slow-down mode")]
     public float SlowDownTimeScale = 0f;
 
+    [Tooltip("The amount (percentage) of damage a player with the defense-up power-up will absorb")]
+    [Range(0f, 1f)]
+    public float DefenseStrength = 0.5f;
+
     [Header("Max Times")]
     [Tooltip("How long the player will have the attack-up power-up for")]
     public float AttackUpTime = 15f;
@@ -27,11 +31,19 @@ public class PowerUpManager : MonoBehaviour
     [Tooltip("How long the player will have the slowdown power-up for")]
     public float SlowDownUnscaledTime = 15f;
 
+    [Tooltip("How long the player will have the defense-up power-up for")]
+    public float DefenseUpTime = 30f;
+
     private void Update()
     {
         //Decrease timers
         foreach (var (key, value) in _powerUpsWithTimers.Select(i => (i.Key, i.Value)).ToArray())
             _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
+
+        if (HasPowerUp(PowerUp.DefenseUp))
+            Commons.PlayerHealth.DefensePercentage = DefenseStrength;
+        else
+            Commons.PlayerHealth.DefensePercentage = 0f;
     }
 
     /// <summary>
@@ -66,6 +78,7 @@ public class PowerUpManager : MonoBehaviour
         {
             PowerUp.AttackUp => AttackUpTime,
             PowerUp.SlowDown => SlowDownUnscaledTime,
+            PowerUp.DefenseUp => AttackUpTime,
             _ => 0,
         };
     }
@@ -89,10 +102,15 @@ public enum PowerUp
     /// <summary>
     /// Increases the player's attack output
     /// </summary>
-    AttackUp = 0x1,
+    AttackUp,
 
     /// <summary>
     /// Reduces the timescale of the game
     /// </summary>
-    SlowDown = 0x2
+    SlowDown,
+
+    /// <summary>
+    /// Reduces the damage the player takes
+    /// </summary>
+    DefenseUp
 }

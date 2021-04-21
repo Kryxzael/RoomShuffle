@@ -26,6 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675c826f3aaaf32418b80bf7b1165ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PowerUp: 1
 --- !u!114 &8745181011362735189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +42,7 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: fbdad25b7e6dcb04580ed4cac477d119, type: 3}
   Chanel: 0
+  PlayBoth: 0
   _OnEnable: 0
   _OnStart: 0
   _OnDisable: 0
