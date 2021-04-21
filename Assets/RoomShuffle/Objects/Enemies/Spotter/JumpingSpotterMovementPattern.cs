@@ -43,13 +43,11 @@ public class JumpingSpotterMovementPattern : EnemyScript
     /* *** */
 
     private Vector2 _direction;
-    private GameObject _player;
     private SpotPlayer _spotPlayer; 
     private LimitedMovementRadius _limitedMovementRadius;
 
     void Start()
     {
-        _player = this.GetPlayer();
         _spotPlayer = GetComponent<SpotPlayer>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
         
@@ -105,7 +103,7 @@ public class JumpingSpotterMovementPattern : EnemyScript
     /// </summary>
     private void FlipToPlayer()
     {
-        FlipToVector2(_player.transform.position);
+        FlipToVector2(this.GetPlayer().transform.position);
     }
     
     /// <summary>

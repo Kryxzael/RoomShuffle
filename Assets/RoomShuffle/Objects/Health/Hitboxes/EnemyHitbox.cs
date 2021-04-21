@@ -1,4 +1,5 @@
-﻿using RoomShuffle.Defaults;
+﻿using System.Linq;
+using RoomShuffle.Defaults;
 using TMPro;
 
 using UnityEngine;
@@ -11,6 +12,8 @@ public class EnemyHitbox : Hitbox
     private HealthController _health;
 
     private MultiSoundPlayer _multiSoundPlayer;
+
+    private SpotPlayer _spotPlayer;
 
     /* *** */
     public PopNumber DamageTextPrefab;
@@ -26,6 +29,10 @@ public class EnemyHitbox : Hitbox
         _health = GetComponentInParent<HealthController>();
 
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
+
+        _spotPlayer = transform.parent.transform.Cast<Transform>().FirstOrDefault(x => x.name.Equals("Body"))
+            ?.gameObject
+            .GetComponent<SpotPlayer>();
     }
 
     /// <summary>
@@ -62,10 +69,14 @@ public class EnemyHitbox : Hitbox
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
         //Play damage sound
-        if (_multiSoundPlayer && !(hurtbox is PlayerInvincibilityHurtbox))
+        if (_multiSoundPlayer && !(hurtbox is PlayerInvincibilityHurtbox && !Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility)))
+        {
             _multiSoundPlayer.PlaySound(-1, 1, 0.5f);
-        
-        
+        }
+
+        if (!(hurtbox is PlayerInvincibilityHurtbox))
+            MakeEnemyBlindChase();
+
         //Dead men don't scream
         if (_health.IsDead)
             return;
@@ -106,5 +117,14 @@ public class EnemyHitbox : Hitbox
                 i.ExplodeSmall();
         }
             
+    }
+
+    private void MakeEnemyBlindChase()
+    {
+        if (!_spotPlayer)
+            return;
+
+        _spotPlayer.UpdateBlindChaseDirection();
+        _spotPlayer.BlindChaseTimeLeft = 1.5f;
     }
 }

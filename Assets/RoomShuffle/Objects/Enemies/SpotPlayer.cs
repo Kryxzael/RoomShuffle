@@ -63,13 +63,13 @@ public class SpotPlayer : EnemyScript
     /// <summary>
     /// The current state of the spotter
     /// </summary>
-    public SpotterPlayerRelationship State { get; private set; }
+    public SpotterPlayerRelationship State { get; set; }
 
     //How much time there is left before the spotter goes from spotted mode to chasing mode or how long it will be puzzled for
     private float ReactionTimeLeft;
     
     //How much time there is left before the spotter stops chasing blindly the player after loosing sight of the player
-    private float BlindChaseTimeLeft;
+    public float BlindChaseTimeLeft { get; set; }
     
     //The Direction the enemy will blindly chase the player in.
     public Vector2 BlindChaseDirection { get; private set; }
@@ -138,8 +138,7 @@ public class SpotPlayer : EnemyScript
                     //resets the blind chasing counter
                     BlindChaseTimeLeft = BlindChaseTime;
                     
-                    //update the direction the enemy will blindly chase in.
-                    BlindChaseDirection = (_player.Value.transform.position - transform.position).normalized;
+                    UpdateBlindChaseDirection();
                 }
             }
 
@@ -179,6 +178,12 @@ public class SpotPlayer : EnemyScript
             }
             
         }
+    }
+
+    public void UpdateBlindChaseDirection()
+    {
+        //update the direction the enemy will blindly chase in.
+        BlindChaseDirection = (_player.Value.transform.position - transform.position).normalized;
     }
 
 
