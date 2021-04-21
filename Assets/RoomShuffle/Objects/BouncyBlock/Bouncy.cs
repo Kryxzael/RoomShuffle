@@ -59,7 +59,7 @@ public class Bouncy : MonoBehaviour
             _multiSoundPlayer.PlaySound();
         }
         //Play sound at 40% volume
-        else
+        else if (!collision.gameObject.GetComponent<Projectile>())
         {
             _multiSoundPlayer.PlaySound(0,1,0.4f);
         }
