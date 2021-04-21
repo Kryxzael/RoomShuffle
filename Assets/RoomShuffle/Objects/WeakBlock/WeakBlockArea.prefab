@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 2168782968936994294}
   - component: {fileID: 591844290749995522}
   - component: {fileID: 3730815546759979025}
+  - component: {fileID: 6194005826774882523}
   m_Layer: 12
   m_Name: WeakSpot
   m_TagString: Untagged
@@ -366,6 +367,7 @@ MonoBehaviour:
   MaximumHealth: 1
   Health: 1
   AffectedByHealthCheats: 0
+  DefensePercentage: 0
 --- !u!212 &7130101877365959919
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -479,6 +481,7 @@ MonoBehaviour:
     JungleSprite: {fileID: -6095331046095953541, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
     CloudSprite: {fileID: -3515633774369559798, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
     FactorySprite: {fileID: 5470801890448593414, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
+    DesertSprite: {fileID: 0}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
@@ -488,6 +491,7 @@ MonoBehaviour:
     JungleAnimation: {fileID: 0}
     CloudAnimation: {fileID: 0}
     FactoryAnimation: {fileID: 0}
+    DesertAnimation: {fileID: 0}
 --- !u!114 &3730815546759979025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,3 +520,26 @@ MonoBehaviour:
   TorqueForce:
     Minimum: 10
     Maximum: 20
+--- !u!114 &6194005826774882523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7523499527680363377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 82faaacbc83ff284bb47af6e2ae317ed, type: 3}
+  - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
+  Channel: 11
+  PlayBothClips: 0
+  OverrideAudio: 1
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0

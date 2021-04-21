@@ -39,6 +39,7 @@ public class StandardParameterBuilder : ParameterBuilder
     private IEnumerator<RoomLayout> _puzzleLayoutEnumerator;
     private IEnumerator<RoomLayout> _eradicationLayoutEnumerator;
 
+    [NonSerialized]
     private RoomLayout _queuedLayout;
     private RoomClass? _queuedClass;
 

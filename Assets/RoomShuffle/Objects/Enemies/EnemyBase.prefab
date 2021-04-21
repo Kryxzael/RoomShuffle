@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3955319330377783456}
   - component: {fileID: 1104641263068939290}
   - component: {fileID: 6788068092947058875}
-  - component: {fileID: 7300094616487393570}
   m_Layer: 12
   m_Name: Hitbox Hurtbox
   m_TagString: Untagged
@@ -150,29 +149,6 @@ MonoBehaviour:
   TorqueForce:
     Minimum: 10
     Maximum: 20
---- !u!114 &7300094616487393570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082062311414963440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioClips:
-  - {fileID: 8300000, guid: 82faaacbc83ff284bb47af6e2ae317ed, type: 3}
-  - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
-  Channel: 11
-  PlayBothClips: 0
-  OverrideAudio: 1
-  _OnEnable: 0
-  _OnStart: 0
-  _OnDisable: 0
-  _OnDestroy: 0
-  ClipIndex: 0
 --- !u!1 &3063418235417007039
 GameObject:
   m_ObjectHideFlags: 0

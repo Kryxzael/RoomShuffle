@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2383897918148421677
+--- !u!114 &7340294230896110872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,9 +15,9 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: 82faaacbc83ff284bb47af6e2ae317ed, type: 3}
   - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
-  Channel: 0
+  Channel: 11
   PlayBothClips: 0
-  PlayBothAudioSources: 1
+  OverrideAudio: 1
   _OnEnable: 0
   _OnStart: 0
   _OnDisable: 0
