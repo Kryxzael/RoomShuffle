@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5032126856250151943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591263941064537959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 2d722d23e9b6d0d41908a571e4f6976b, type: 3}
+  Channel: 0
+  PlayBothClips: 0
+  OverrideAudio: 1
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0
+--- !u!114 &2027039729229246276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591263941064537959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7852148b0061bc4588642f84d7b0161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClipIndex: 0
 --- !u!114 &1071955114170497879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +123,11 @@ PrefabInstance:
       objectReference: {fileID: 2615784214319083819, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
+--- !u!1 &591263941064537959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 382140331158365946, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
+  m_PrefabInstance: {fileID: 970866502581178781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1115951588277145517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 145696277867765296, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
