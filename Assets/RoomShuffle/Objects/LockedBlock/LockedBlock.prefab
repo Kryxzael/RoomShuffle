@@ -138,8 +138,9 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: ee5e8db25e859c349b8e849df484e38e, type: 3}
   - {fileID: 8300000, guid: 52667460f79afdc4096194878c4a5127, type: 3}
-  Chanel: 6
-  PlayBoth: 1
+  Channel: 0
+  PlayBothClips: 1
+  PlayBothAudioSources: 1
   _OnEnable: 0
   _OnStart: 0
   _OnDisable: 0

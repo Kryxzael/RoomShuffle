@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7987466520943323334}
   - component: {fileID: 7987466520943323335}
   - component: {fileID: -4836906137247490562}
+  - component: {fileID: 2857455260571597932}
   m_Layer: 0
   m_Name: BouncyBlock
   m_TagString: Untagged
@@ -125,3 +126,24 @@ MonoBehaviour:
   MinimumPushBackVelocity: 26
   HoldingJumpScale: 1.25
   NoSpeedCapTime: 0.35
+--- !u!114 &2857455260571597932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987466520943323332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 4786e22d99d117e479c840c5b9f7a678, type: 3}
+  Chanel: 8
+  PlayBoth: 0
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0

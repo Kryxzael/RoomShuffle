@@ -12,11 +12,14 @@ namespace RoomShuffle.Defaults
         [Tooltip("List of Audio clips that can be played")]
         public List<AudioClip> AudioClips = new List<AudioClip>();
 
-        [Tooltip("Which audio chanel should be used to play the sound. Each chanel has two audio sources")]
-        public AudioChanel Chanel;
+        [Tooltip("Which audio channel should be used to play the sound. Each channel has two audio sources")]
+        public AudioChannel Channel;
         
-        [Tooltip("If true, the audio chanel will play the first and second clip in the list. This overrides clipIndex")]
-        public bool PlayBoth = false;
+        [Tooltip("If true, the audio channel will play the first and second clip in the list. This overrides clipIndex")]
+        public bool PlayBothClips = false;
+        
+        [Tooltip("If true, the audio channel will only have one audio source ")]
+        public bool PlayBothAudioSources = true;
 
         [Header("When to play")] 
         public bool _OnEnable;
@@ -32,13 +35,11 @@ namespace RoomShuffle.Defaults
 
         private void Awake()
         {
-            //Get audiosources
-            //Transform audioChannelObject = Commons.AudioManager.transform.Cast<Transform>()
-            //    .FirstOrDefault(x => x.name.Equals(Chanel.ToString()));
 
+            //Find correct audio sources for the channel
             foreach (Transform child in Commons.AudioManager.transform)
             {
-                if (child.name.Equals(Chanel.ToString()))
+                if (child.name.Equals(Channel.ToString()))
                 {
                     _audioSource = child.GetComponent<AudioSource>();
                     _secondary = child.GetComponentInChildren<AudioSource>();
@@ -50,10 +51,10 @@ namespace RoomShuffle.Defaults
         }
 
         /// <summary>
-        /// Plays a sound from an audio chanel. If index is -1, it picks a random clip
+        /// Plays a sound from an audio channel. If index is -1, it picks a random clip
         /// </summary>
         /// <param name="index"></param>
-        public void PlaySound(int index = -1, float pitch = 1f)
+        public void PlaySound(int index = -1, float pitch = 1f, float volume = 1f)
         {
             if (!AudioClips.Any())
                 return;
@@ -62,10 +63,10 @@ namespace RoomShuffle.Defaults
             _secondary.pitch = pitch;
 
             //If the two first sound should be played simultaneously
-            if (PlayBoth && AudioClips[0] && AudioClips[1])
+            if (PlayBothClips && AudioClips[0] && AudioClips[1])
             {
-                _audioSource.PlayOneShot(AudioClips[0]);
-                _secondary.PlayOneShot(AudioClips[1]);
+                _audioSource.PlayOneShot(AudioClips[0], volume);
+                _secondary.PlayOneShot(AudioClips[1], volume);
                 return;
             }
 
@@ -80,12 +81,12 @@ namespace RoomShuffle.Defaults
                 if (!_audioSource.isPlaying)
                 {
                     //Make primary channel play sound
-                    _audioSource.PlayOneShot(AudioClips[index]);
+                    _audioSource.PlayOneShot(AudioClips[index], volume);
                 }
                 else
                 {
-                    //make secondary chanel make sound if primary is occupied
-                    _secondary.PlayOneShot(AudioClips[index]);
+                    //make secondary channel make sound if primary is occupied
+                    _secondary.PlayOneShot(AudioClips[index], volume);
                 }
             }
         }
@@ -123,7 +124,7 @@ namespace RoomShuffle.Defaults
         }
     }
 
-    public enum AudioChanel
+    public enum AudioChannel
     {
         Pickup,
         DeniedAction,
@@ -133,5 +134,7 @@ namespace RoomShuffle.Defaults
         CurrencyHUD,
         Lock,
         ContactBlock,
+        BouncyBlock,
+        Button
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RoomShuffle.Defaults;
 using UnityEngine;
 
 public class Bouncy : MonoBehaviour
@@ -17,6 +18,8 @@ public class Bouncy : MonoBehaviour
     private float _playerMaxSpeed;
     private float _noSpeedCapTimeLeft = 0;
 
+    private MultiSoundPlayer _multiSoundPlayer;
+
     private RenewableLazy<GroundController> _playerGroundController = new RenewableLazy<GroundController>(() => CommonExtensions.GetPlayer().GetComponent<GroundController>());
     private RenewableLazy<JumpController> _jumpController = new RenewableLazy<JumpController>(() => CommonExtensions.GetPlayer().GetComponent<JumpController>());
 
@@ -24,6 +27,8 @@ public class Bouncy : MonoBehaviour
     private void Start()
     {
         _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
+
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
     }
 
     private void Update()
@@ -44,6 +49,26 @@ public class Bouncy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
+         * Sound
+         */
+        
+        //Play sound at normal volume if collision is player
+        if (collision.gameObject.IsPlayer())
+        {
+            _multiSoundPlayer.PlaySound();
+        }
+        //Play sound at 40% volume
+        else
+        {
+            _multiSoundPlayer.PlaySound(0,1,0.4f);
+        }
+        
+
+        /*
+         * Collision logic
+         */
+        
         ContactPoint2D contact = collision.GetContact(0);
         Vector2 relativeVelocity = collision.relativeVelocity;
         

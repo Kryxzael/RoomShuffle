@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 2875610362015107323}
   - component: {fileID: 808483629293860240}
   - component: {fileID: 2709953218046276315}
+  - component: {fileID: 8443084281340483155}
   m_Layer: 0
   m_Name: EnableForeverOnPressed
   m_TagString: Untagged
@@ -486,3 +487,24 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8443084281340483155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423147645555135269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: f974c1468566c53488ad878b16b4457d, type: 3}
+  Channel: 0
+  PlayBoth: 0
+  _OnEnable: 0
+  _OnStart: 1
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0
