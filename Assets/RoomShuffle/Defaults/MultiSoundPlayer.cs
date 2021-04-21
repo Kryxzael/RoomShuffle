@@ -9,9 +9,14 @@ namespace RoomShuffle.Defaults
     public class MultiSoundPlayer : MonoBehaviour
     {
     
+        [Tooltip("List of Audio clips that can be played")]
         public List<AudioClip> AudioClips = new List<AudioClip>();
 
+        [Tooltip("Which audio chanel should be used to play the sound. Each chanel has two audio sources")]
         public AudioChanel Chanel;
+        
+        [Tooltip("If true, the audio chanel will play the first and second clip in the list. This overrides clipIndex")]
+        public bool PlayBoth = false;
 
         [Header("When to play")] 
         public bool _OnEnable;
@@ -19,6 +24,7 @@ namespace RoomShuffle.Defaults
         public bool _OnDisable;
         public bool _OnDestroy;
 
+        [Tooltip("What clip should be automatically played")]
         public int ClipIndex;
 
         private AudioSource _audioSource;
@@ -40,12 +46,28 @@ namespace RoomShuffle.Defaults
                 }
             }
 
+
         }
 
-        public void PlaySound(int index = -1)
+        /// <summary>
+        /// Plays a sound from an audio chanel. If index is -1, it picks a random clip
+        /// </summary>
+        /// <param name="index"></param>
+        public void PlaySound(int index = -1, float pitch = 1f)
         {
             if (!AudioClips.Any())
                 return;
+
+            _audioSource.pitch = pitch;
+            _secondary.pitch = pitch;
+
+            //If the two first sound should be played simultaneously
+            if (PlayBoth && AudioClips[0] && AudioClips[1])
+            {
+                _audioSource.PlayOneShot(AudioClips[0]);
+                _secondary.PlayOneShot(AudioClips[1]);
+                return;
+            }
 
             // if the index isn't set. set the index to a random clip
             if (index == -1)
@@ -65,10 +87,7 @@ namespace RoomShuffle.Defaults
                     //make secondary chanel make sound if primary is occupied
                     _secondary.PlayOneShot(AudioClips[index]);
                 }
-
-
             }
-
         }
 
         private void Start()
@@ -111,6 +130,8 @@ namespace RoomShuffle.Defaults
         Fanfare,
         RedCoinsTick,
         RoomTimerTick,
-        CurrencyHUD
+        CurrencyHUD,
+        Lock,
+        ContactBlock,
     }
 }
