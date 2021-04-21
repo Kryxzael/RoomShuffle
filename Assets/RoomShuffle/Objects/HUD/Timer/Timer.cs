@@ -192,6 +192,7 @@ public class Timer : MonoBehaviour
         CurrentSeconds = seconds;
         StartCoroutine(MakeTickNoise());
         SetColor(Color.white);
+        
         transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;
         bool blinking = false;
 
@@ -212,7 +213,10 @@ public class Timer : MonoBehaviour
             else
             {
                 SetColor(Color.white);
-                transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;
+                
+                if (UseGUI)
+                    transform.localScale = Vector3.one * 1f;
+                
                 blinking = false;
             }
 
@@ -240,8 +244,8 @@ public class Timer : MonoBehaviour
 
     private IEnumerator CoStartBlinking()
     {
-        //If the script uses GUI version. Increase size
-        transform.localScale = UseGUI? Vector3.one * 1.5f : Vector3.one;
+        if (UseGUI)
+            transform.localScale = Vector3.one * 1.5f;
         
         bool alternate = true;
 
@@ -263,7 +267,8 @@ public class Timer : MonoBehaviour
         
         SetColor(Color.red);
         
-        transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;
+        if (UseGUI)
+            transform.localScale = Vector3.one * 1;
     }
 
     public void HideTimer()
