@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RoomShuffle.Defaults;
 using UnityEngine;
 
 public class ContactSwitch : MonoBehaviour
@@ -25,6 +26,7 @@ public class ContactSwitch : MonoBehaviour
 
     private void Start()
     {
+        
         _sprite = GetComponent<SpriteRenderer>();
         
         //Set the corresponding sprite to the "On" bariable
@@ -85,6 +87,7 @@ public class ContactSwitch : MonoBehaviour
 
             //change corresponding sprite
             _sprite.sprite = On ? OnSprite : OffSprite;
+            
         }
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3246703940207827674}
   - component: {fileID: 2813767170129978638}
+  - component: {fileID: 4703542603478131631}
   m_Layer: 0
   m_Name: ContactSwitchGroup
   m_TagString: Untagged
@@ -45,6 +46,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a14b6763fac5084a94c79901c6feff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4703542603478131631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460802919881617545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: db1e08e5e2a10b04b8167b72c8a16b63, type: 3}
+  - {fileID: 8300000, guid: f974c1468566c53488ad878b16b4457d, type: 3}
+  Chanel: 7
+  PlayBoth: 0
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0
 --- !u!1 &4912607671585492136
 GameObject:
   m_ObjectHideFlags: 0

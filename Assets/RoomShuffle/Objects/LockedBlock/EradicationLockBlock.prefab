@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5265323075528254088}
   - component: {fileID: 372087575270391737}
   - component: {fileID: 7025794273710960329}
+  - component: {fileID: 8418324704215392520}
   m_Layer: 6
   m_Name: EradicationLockBlock
   m_TagString: Untagged
@@ -122,3 +123,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8152801347d2b9a4d9f0110a544b9513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8418324704215392520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630811596052230394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 8d067b1dd5dee3648938a097ad2f989d, type: 3}
+  Chanel: 6
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 1
+  ClipIndex: 0

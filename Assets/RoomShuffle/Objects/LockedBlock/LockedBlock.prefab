@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5265323075528254088}
   - component: {fileID: 372087575270391737}
   - component: {fileID: 9070862957951488986}
+  - component: {fileID: 2448283782583903462}
   m_Layer: 6
   m_Name: LockedBlock
   m_TagString: Untagged
@@ -122,3 +123,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0553854fb4ae7459e6277da914716b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2448283782583903462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630811596052230394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: ee5e8db25e859c349b8e849df484e38e, type: 3}
+  - {fileID: 8300000, guid: 52667460f79afdc4096194878c4a5127, type: 3}
+  Chanel: 6
+  PlayBoth: 1
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 1
+  ClipIndex: 0
