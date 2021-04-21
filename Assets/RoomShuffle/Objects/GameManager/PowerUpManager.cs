@@ -34,6 +34,9 @@ public class PowerUpManager : MonoBehaviour
     [Tooltip("How long the player will have the defense-up power-up for")]
     public float DefenseUpTime = 30f;
 
+    [Tooltip("How long the player will have the invincibility power-up for")]
+    public float InvincibilityTime = 15f;
+
     private void Update()
     {
         //Decrease timers (unless in a safe-room
@@ -42,10 +45,14 @@ public class PowerUpManager : MonoBehaviour
             foreach (var (key, value) in _powerUpsWithTimers.Select(i => (i.Key, i.Value)).ToArray())
                 _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
         }
-        
 
-        if (HasPowerUp(PowerUp.DefenseUp))
+
+        if (HasPowerUp(PowerUp.Invincibility))
+            Commons.PlayerHealth.DefensePercentage = 1f;
+
+        else if (HasPowerUp(PowerUp.DefenseUp))
             Commons.PlayerHealth.DefensePercentage = DefenseStrength;
+
         else
             Commons.PlayerHealth.DefensePercentage = 0f;
     }
@@ -83,6 +90,7 @@ public class PowerUpManager : MonoBehaviour
             PowerUp.AttackUp => AttackUpTime,
             PowerUp.SlowDown => SlowDownUnscaledTime,
             PowerUp.DefenseUp => AttackUpTime,
+            PowerUp.Invincibility => InvincibilityTime,
             _ => 0,
         };
     }
@@ -116,5 +124,10 @@ public enum PowerUp
     /// <summary>
     /// Reduces the damage the player takes
     /// </summary>
-    DefenseUp
+    DefenseUp,
+
+    /// <summary>
+    /// Makes the player invincible, and lets the kill enemies on touch
+    /// </summary>
+    Invincibility
 }

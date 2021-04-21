@@ -400,8 +400,9 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: d8c8c5e6eb4b1bf4580469e22daf0b05, type: 3}
   - {fileID: 8300000, guid: b3beceafb07ce0d4aad013c0570bb46b, type: 3}
-  Chanel: 5
-  PlayBoth: 0
+  Channel: 0
+  PlayBothClips: 0
+  OverrideAudio: 1
   _OnEnable: 0
   _OnStart: 0
   _OnDisable: 0
@@ -1225,6 +1226,7 @@ MonoBehaviour:
   AttackUpSprite: {fileID: 2572291726930597554, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
   SlowDownSprite: {fileID: 2615784214319083819, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
   DefenseUpSprite: {fileID: -3633803890869268143, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
+  InvincibilitySprite: {fileID: -9160710649248755215, guid: 57d7ad2f1afe38a4ea6a4162363874b2, type: 3}
 --- !u!1 &2268190243178694010
 GameObject:
   m_ObjectHideFlags: 0

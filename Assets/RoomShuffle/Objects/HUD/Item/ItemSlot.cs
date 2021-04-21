@@ -12,6 +12,7 @@ public class ItemSlot : ItemUIManager
     public Sprite AttackUpSprite;
     public Sprite SlowDownSprite;
     public Sprite DefenseUpSprite;
+    public Sprite InvincibilitySprite;
 
     private void FixedUpdate()
     {
@@ -25,6 +26,7 @@ public class ItemSlot : ItemUIManager
             PowerUp.AttackUp => AttackUpSprite,
             PowerUp.SlowDown => SlowDownSprite,
             PowerUp.DefenseUp => DefenseUpSprite,
+            PowerUp.Invincibility => InvincibilitySprite,
             _ => BlankSprite,
         };
 
