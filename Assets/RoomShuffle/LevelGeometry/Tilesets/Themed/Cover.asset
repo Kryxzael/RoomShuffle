@@ -23,6 +23,7 @@ MonoBehaviour:
     JungleSprite: {fileID: -8539274849412838972, guid: 2a6fa6cb829cdb743bf4cbc41f6750b6, type: 3}
     CloudSprite: {fileID: -1551757773269413495, guid: 7f37dc8b1fb1cab419fc75ea793690e4, type: 3}
     FactorySprite: {fileID: 0}
+    DesertSprite: {fileID: 3623700348287497924, guid: d0c4590b28abb63449705866971a3b7d, type: 3}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
@@ -32,3 +33,4 @@ MonoBehaviour:
     JungleAnimation: {fileID: 0}
     CloudAnimation: {fileID: 0}
     FactoryAnimation: {fileID: 11400000, guid: a38dd64d7a2a34c4098f61c1c265df38, type: 2}
+    DesertAnimation: {fileID: 0}

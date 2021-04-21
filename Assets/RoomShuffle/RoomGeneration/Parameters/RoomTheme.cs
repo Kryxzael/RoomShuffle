@@ -52,5 +52,10 @@ public enum RoomTheme
     /// <summary>
     /// A mechanical factory area
     /// </summary>
-    Factory
+    Factory,
+
+    /// <summary>
+    /// A sandy desert
+    /// </summary>
+    Desert
 }

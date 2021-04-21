@@ -43,6 +43,7 @@ public class ThemedAnimationCollection
     public Sprite JungleSprite;
     public Sprite CloudSprite;
     public Sprite FactorySprite;
+    public Sprite DesertSprite;
 
     [Header("Animations")]
     [Tooltip("The fallback animation that is used when no recognized theme is found")]
@@ -56,6 +57,7 @@ public class ThemedAnimationCollection
     public SpriteAnimation JungleAnimation;
     public SpriteAnimation CloudAnimation;
     public SpriteAnimation FactoryAnimation;
+    public SpriteAnimation DesertAnimation;
 
     /// <summary>
     /// Gets the sprite for the current tileset according to the room generator
@@ -93,6 +95,7 @@ public class ThemedAnimationCollection
                 RoomTheme.Jungle => (JungleSprite, JungleAnimation),
                 RoomTheme.Cloud => (CloudSprite, CloudAnimation),
                 RoomTheme.Factory => (FactorySprite, FactoryAnimation),
+                RoomTheme.Desert => (DesertSprite, DesertAnimation),
                 _ => (DefaultSprite, DefaultAnimation)
             };
         }
