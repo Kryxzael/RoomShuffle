@@ -62,8 +62,9 @@ public class EnemyHitbox : Hitbox
     protected override void OnReceiveDamage(HurtBox hurtbox)
     {
         //Play damage sound
-        if (_multiSoundPlayer)
+        if (_multiSoundPlayer && !(hurtbox is PlayerInvincibilityHurtbox))
             _multiSoundPlayer.PlaySound(-1, 1, 0.5f);
+        
         
         //Dead men don't scream
         if (_health.IsDead)
