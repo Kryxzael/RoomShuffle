@@ -24,6 +24,10 @@ public static class Commons
     private static RenewableLazy<GameObject> _playerManager { get; } = new RenewableLazy<GameObject>(
         () => GameObject.Find("PlayerManager")
     );
+    
+    private static RenewableLazy<GameObject> _audioManager { get; } = new RenewableLazy<GameObject>(
+        () => GameObject.FindWithTag("AudioManager")
+    );
 
     private static RenewableLazy<PlayerProgression> _playerProgression { get; } = new RenewableLazy<PlayerProgression>(
         () => PlayerManager.GetComponent<PlayerProgression>()
@@ -105,6 +109,11 @@ public static class Commons
     /// Gets the player manager object of the scene
     /// </summary>
     public static GameObject PlayerManager => _playerManager.Value;
+    
+    /// <summary>
+    /// Gets the audio manager object of the scene
+    /// </summary>
+    public static GameObject AudioManager => _audioManager.Value;
 
     /// <summary>
     /// Gets the player progression controller of the scene

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 11400000, guid: ab5411c0fa3c5a745a62927254c6e741, type: 2}
+  PlaybackSpeed: 1
 --- !u!114 &5914662067660891258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,6 +26,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea3be3f43e105e45a970d0a9dfd546c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3583707853589864230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400948224138043159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: fbdad25b7e6dcb04580ed4cac477d119, type: 3}
+  Chanel: 0
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0
+--- !u!114 &4274416802407150305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400948224138043159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7852148b0061bc4588642f84d7b0161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClipIndex: 0
 --- !u!1001 &4546052774491963687
 PrefabInstance:
   m_ObjectHideFlags: 0

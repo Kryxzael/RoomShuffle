@@ -10,6 +10,7 @@ TagManager:
   - CountdownTimer
   - CurrencyText
   - RedCoinsCountdownTimer
+  - AudioManager
   layers:
   - Default
   - TransparentFX

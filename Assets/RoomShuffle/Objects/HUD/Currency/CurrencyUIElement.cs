@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using RoomShuffle.Defaults;
 using TMPro;
 
 using UnityEngine;
@@ -26,10 +26,13 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
 
         private TextSmack _smack;
 
+        private MultiSoundPlayer _multiSoundPlayer;
+
         private void Awake()
         {
             _label = GetComponent<TextMeshProUGUI>();
             _smack = GetComponent<TextSmack>();
+            _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
         }
 
         private void Update()
@@ -63,10 +66,12 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
                 if (count > _lastKnownCurrencyValue)
                 {
                     count--;
+                    _multiSoundPlayer.PlaySound(0);
                 }
                 else
                 {
                     count++;
+                    _multiSoundPlayer.PlaySound(1);
                 }
 
                 SetLabel(count.ToString());

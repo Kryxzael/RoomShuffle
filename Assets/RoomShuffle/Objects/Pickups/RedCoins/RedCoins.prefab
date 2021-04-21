@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 3586544903371245286}
   - component: {fileID: 2500150828850939204}
   - component: {fileID: 2237527783943514442}
+  - component: {fileID: 3068537652783785145}
   m_Layer: 0
   m_Name: Prize
   m_TagString: Untagged
@@ -271,3 +272,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmackOnStart: 0
   SmackOnEnable: 1
+--- !u!114 &3068537652783785145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678214643984694316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: f974c1468566c53488ad878b16b4457d, type: 3}
+  Chanel: 2
+  _OnEnable: 0
+  _OnStart: 1
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0

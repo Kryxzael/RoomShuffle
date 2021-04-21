@@ -12,7 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b4c1dc215dc42448096b179f2931fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Restoration: 0
+  RestorationPercentage: 0.25
+--- !u!114 &5227425940292670530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719743466327126708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: eee756a5cf348f94c91f7a333b6491a3, type: 3}
+  Chanel: 0
+  _OnEnable: 0
+  _OnStart: 0
+  _OnDisable: 0
+  _OnDestroy: 0
+  ClipIndex: 0
+--- !u!114 &8003190675008382828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719743466327126708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7852148b0061bc4588642f84d7b0161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClipIndex: 0
 --- !u!1001 &8865157221165673604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22,7 +55,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 382140331158365946, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Name
-      value: HeartBase
+      value: HeartPickupBase
       objectReference: {fileID: 0}
     - target: {fileID: 3138563393531745931, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_RootOrder

@@ -98,6 +98,8 @@ MonoBehaviour:
   Horizontal: 0
   BobHeight: 0.25
   BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &382140331158365946
 GameObject:
   m_ObjectHideFlags: 0

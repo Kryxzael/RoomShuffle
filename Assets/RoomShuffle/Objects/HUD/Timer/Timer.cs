@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using RoomShuffle.Defaults;
 using TMPro;
 using UnityEngine;
 
@@ -32,8 +32,14 @@ public class Timer : MonoBehaviour
 
     private bool UseGUI;
 
+    private MultiSoundPlayer _multiSoundPlayer;
+
     private void Start()
     {
+        
+        //Get audio source
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
+        
         //Get textmeshpro component
         TMP_GUI = GetComponent<TextMeshProUGUI>();
 
@@ -184,8 +190,9 @@ public class Timer : MonoBehaviour
     private IEnumerator CoStartCountdown(float seconds)
     {
         CurrentSeconds = seconds;
+        StartCoroutine(MakeTickNoise());
         SetColor(Color.white);
-        transform.localScale = Vector3.one * 1f;
+        transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;
         bool blinking = false;
 
         while (CurrentSeconds > 0)
@@ -205,7 +212,7 @@ public class Timer : MonoBehaviour
             else
             {
                 SetColor(Color.white);
-                transform.localScale = Vector3.one * 1f;
+                transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;
                 blinking = false;
             }
 
@@ -244,12 +251,10 @@ public class Timer : MonoBehaviour
             if (alternate)
             {
                 SetColor(Color.red);
-                //TODO Tick
             }
             else
             {
                 SetColor(Color.white);
-                //TODO Tock
             }
 
             yield return new WaitForSeconds((CurrentSeconds < 1.5f ? 1.5f : CurrentSeconds)/BlinkingTime);
@@ -258,7 +263,7 @@ public class Timer : MonoBehaviour
         
         SetColor(Color.red);
         
-        transform.localScale = Vector3.one * 1f;
+        transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;
     }
 
     public void HideTimer()
@@ -297,5 +302,30 @@ public class Timer : MonoBehaviour
         TMP.color = color;
     }
 
+    private IEnumerator MakeTickNoise()
+    {
+
+        while (CurrentSeconds > 0 && CurrentSeconds > BlinkingTime)
+        {
+            _multiSoundPlayer.PlaySound(0);
+            yield return new WaitForSeconds(0.5f);
+            _multiSoundPlayer.PlaySound(1);
+            yield return new WaitForSeconds(0.5f);
+        }
+        while (CurrentSeconds > 0 && CurrentSeconds > BlinkingTime/2)
+        {
+            _multiSoundPlayer.PlaySound(0);
+            yield return new WaitForSeconds(0.25f);
+            _multiSoundPlayer.PlaySound(1);
+            yield return new WaitForSeconds(0.25f);
+        }
+        while (CurrentSeconds > 0)
+        {
+            _multiSoundPlayer.PlaySound(0);
+            yield return new WaitForSeconds(0.15f);
+            _multiSoundPlayer.PlaySound(1);
+            yield return new WaitForSeconds(0.15f);
+        }
+    }
 
 }
