@@ -501,10 +501,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioClips:
   - {fileID: 8300000, guid: f974c1468566c53488ad878b16b4457d, type: 3}
-  Channel: 0
-  PlayBoth: 0
-  _OnEnable: 0
-  _OnStart: 1
-  _OnDisable: 0
-  _OnDestroy: 0
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  PlayOnEnable: 0
+  PlayOnStart: 1
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
   ClipIndex: 0

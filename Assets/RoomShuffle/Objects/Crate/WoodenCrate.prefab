@@ -15,9 +15,8 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: 82faaacbc83ff284bb47af6e2ae317ed, type: 3}
   - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
-  Channel: 11
-  PlayBothClips: 0
-  OverrideAudio: 1
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0.117
   _OnEnable: 0
   _OnStart: 0
   _OnDisable: 0

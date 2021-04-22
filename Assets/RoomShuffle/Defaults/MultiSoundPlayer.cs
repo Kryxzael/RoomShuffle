@@ -12,42 +12,46 @@ namespace RoomShuffle.Defaults
         [Tooltip("List of Audio clips that can be played")]
         public List<AudioClip> AudioClips = new List<AudioClip>();
 
-        [Tooltip("Which audio channel should be used to play the sound. Each channel has two audio sources")]
-        public AudioChannel Channel;
-        
-        [Tooltip("If true, the audio channel will play the first and second clip in the list. This overrides clipIndex")]
-        public bool PlayBothClips = false;
-        
-        [Tooltip("If true, the audio will only play if the channel is not playing anything ")]
-        public bool OverrideAudio = true;
+        [Tooltip("If true, the audio source will play all the clips at the same time!")]
+        public bool PlayAll = false;
+
+        [Tooltip("The minimum amount of time in seconds between each sound")]
+        [Range(0, 1)]
+        public float MinimumTimeBetweenSounds = 0;
 
         [Header("When to play")] 
-        public bool _OnEnable;
-        public bool _OnStart;
-        public bool _OnDisable;
-        public bool _OnDestroy;
+        public bool PlayOnEnable;
+        public bool PlayOnStart;
+        public bool PlayOnDisable;
+        public bool PlayOnDestroy;
+        public bool PlayOnUpdate; 
 
-        [Tooltip("What clip should be automatically played")]
+        [Tooltip("What clip should be automatically played on the 'PlayOn____' options")]
         public int ClipIndex;
 
-        private AudioSource _audioSource;
-        private AudioSource _secondary;
+        //Used for all non pitch corrected audio
+        private AudioSource _primaryAudioSource;
+        
+        //only used for pitch adjusted audio
+        private AudioSource _secondaryAudioSource;
+
+        private float _timePassed;
 
         private void Awake()
         {
+            //get audio source
+            _primaryAudioSource = Commons.AudioManager.GetComponent<AudioSource>();
+            _secondaryAudioSource = Commons.AudioManager.transform.Cast<Transform>().FirstOrDefault()
+                ?.GetComponent<AudioSource>();
+        }
 
-            //Find correct audio sources for the channel
-            foreach (Transform child in Commons.AudioManager.transform)
-            {
-                if (child.name.Equals(Channel.ToString()))
-                {
-                    _audioSource = child.GetComponent<AudioSource>();
-                    _secondary = child.GetComponentInChildren<AudioSource>();
-                    break;
-                }
-            }
-
-
+        private void Update()
+        {
+            if (_timePassed <= MinimumTimeBetweenSounds)
+                _timePassed += Time.deltaTime;
+            
+            if (PlayOnUpdate)
+                PlaySound(ClipIndex);
         }
 
         /// <summary>
@@ -59,41 +63,45 @@ namespace RoomShuffle.Defaults
             if (!AudioClips.Any())
                 return;
 
-            _audioSource.pitch = pitch;
-            _secondary.pitch = pitch;
-
-            //If the two first sound should be played simultaneously
-            if (PlayBothClips && AudioClips[0] && AudioClips[1])
+            if (_timePassed < MinimumTimeBetweenSounds)
             {
-                _audioSource.PlayOneShot(AudioClips[0], volume);
-                _secondary.PlayOneShot(AudioClips[1], volume);
+                return;
+            }
+
+            //Set audiosource according to pitch. Use secondary source only if pitch is different
+            AudioSource source = pitch == 1f ? _primaryAudioSource : _secondaryAudioSource;
+            
+            Debug.Log(_secondaryAudioSource == _primaryAudioSource);
+            
+            _timePassed = 0;
+
+            source.pitch = pitch;
+
+            //Play all the clips
+            if (PlayAll)
+            {
+                foreach (AudioClip clip in AudioClips)
+                {
+                    source.PlayOneShot(clip, volume);
+                }
                 return;
             }
 
             // if the index isn't set. set the index to a random clip
             if (index == -1)
             {
-                index = new RandomValueBetween(0, AudioClips.Count-1).PickInt();
+                index = new RandomValueBetween(0, AudioClips.Count).PickInt();
             }
 
-            if (AudioClips[index] != null)
+            if (AudioClips[index])
             {
-                if (!_audioSource.isPlaying)
-                {
-                    //Make primary channel play sound
-                    _audioSource.PlayOneShot(AudioClips[index], volume);
-                }
-                else if (OverrideAudio)
-                {
-                    //make secondary channel make sound if primary is occupied
-                    _secondary.PlayOneShot(AudioClips[index], volume);
-                }
+                source.PlayOneShot(AudioClips[index], volume);
             }
         }
 
         private void Start()
         {
-            if (_OnStart)
+            if (PlayOnStart)
             {
                 PlaySound(ClipIndex);
             }
@@ -101,7 +109,7 @@ namespace RoomShuffle.Defaults
         
         private void OnEnable()
         {
-            if (_OnEnable)
+            if (PlayOnEnable)
             {
                 PlaySound(ClipIndex);
             }
@@ -109,7 +117,7 @@ namespace RoomShuffle.Defaults
         
         private void OnDestroy()
         {
-            if (_OnDestroy)
+            if (PlayOnDestroy)
             {
                 PlaySound(ClipIndex);
             }
@@ -117,26 +125,10 @@ namespace RoomShuffle.Defaults
         
         private void OnDisable()
         {
-            if (_OnDisable)
+            if (PlayOnDisable)
             {
                 PlaySound(ClipIndex);
             }
         }
-    }
-
-    public enum AudioChannel
-    {
-        Pickup,
-        DeniedAction,
-        Fanfare,
-        RedCoinsTick,
-        RoomTimerTick,
-        CurrencyHUD,
-        Lock,
-        ContactBlock,
-        BouncyBlock,
-        Button,
-        Laser,
-        HitBoxHurtBox
     }
 }

@@ -137,9 +137,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioClips:
   - {fileID: 8300000, guid: 8d067b1dd5dee3648938a097ad2f989d, type: 3}
-  Chanel: 6
-  _OnEnable: 0
-  _OnStart: 0
-  _OnDisable: 0
-  _OnDestroy: 1
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 1
+  PlayOnUpdate: 0
   ClipIndex: 0

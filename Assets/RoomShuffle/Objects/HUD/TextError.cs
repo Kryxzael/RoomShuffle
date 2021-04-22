@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RoomShuffle.Defaults;
 using TMPro;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class TextError : MonoBehaviour
 
     private TextMeshProUGUI TMP;
 
-    private AudioSource _audioSource;
+    private MultiSoundPlayer _multiSoundPlayer;
 
     //TODO remove the nonsense in update... or just the whole update method
     public void Update()
@@ -33,7 +34,7 @@ public class TextError : MonoBehaviour
     {
         TMP = GetComponent<TextMeshProUGUI>();
 
-        _audioSource = Commons.AudioManager.transform.Cast<Transform>().FirstOrDefault(x => x.name.Equals("DeniedAction"))?.GetComponent<AudioSource>();
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
     }
 
     public void ErrorLerp()
@@ -61,9 +62,6 @@ public class TextError : MonoBehaviour
 
     private void PlayErrorSound()
     {
-        if (!_audioSource)
-            return;
-        
-        _audioSource.Play();
+        _multiSoundPlayer.PlaySound(2);
     }
 }

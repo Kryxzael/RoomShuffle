@@ -400,13 +400,14 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: d8c8c5e6eb4b1bf4580469e22daf0b05, type: 3}
   - {fileID: 8300000, guid: b3beceafb07ce0d4aad013c0570bb46b, type: 3}
-  Channel: 0
-  PlayBothClips: 0
-  OverrideAudio: 1
-  _OnEnable: 0
-  _OnStart: 0
-  _OnDisable: 0
-  _OnDestroy: 0
+  - {fileID: 8300000, guid: 5b03fc77feaf7954e92b015d8d35e559, type: 3}
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
   ClipIndex: 0
 --- !u!1 &728013538
 GameObject:
