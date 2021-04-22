@@ -14,6 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkSpeed: 3
   ClockwiseRotation: 0
+--- !u!114 &1265465483835679579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128540765930643550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 5369bba0d82c1d24aa47a79ea8dc2a66, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &772354706257413270
 PrefabInstance:
   m_ObjectHideFlags: 0
