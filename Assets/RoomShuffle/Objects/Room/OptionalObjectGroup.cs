@@ -51,7 +51,7 @@ public class OptionalObjectGroup : MonoBehaviour
         var availableCandidates = allCandidates
             .Where(i => i.SpawnWhenEntranceIs.HasFlag(Commons.RoomGenerator.CurrentRoomConfig.Entrance) && i.SpawnWhenExitIs.HasFlag(Commons.RoomGenerator.CurrentRoomConfig.Exit))
             .ToArray();
-
+        
         //If there are no candidates, then choose to destroy self or not
         if (availableCandidates.Length == 0)
         {

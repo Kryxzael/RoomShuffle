@@ -157,6 +157,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3955319330377783456, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0346107
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955319330377783456, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.y
+      value: 0.93134
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955319330377783456, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0031642914
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955319330377783456, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.52792907
+      objectReference: {fileID: 0}
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -216,6 +232,22 @@ PrefabInstance:
     - target: {fileID: 8747412442085526253, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218483393129584807, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6897888
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218483393129584807, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.y
+      value: 0.61654377
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218483393129584807, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0043082237
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218483393129584807, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1917281
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629be960b28b727418def72be1739e90, type: 3}

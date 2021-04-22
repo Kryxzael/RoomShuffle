@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adef74459c54efe4da176991c19c4aed, type: 3}
+  m_Name: Chase
+  m_EditorClassIdentifier: 
+  Frames:
+  - Sprite: {fileID: 1252844980985794323, guid: 9611cda381a9836458f13fcc96d7b27e, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -4714828775933527560, guid: 9611cda381a9836458f13fcc96d7b27e, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -1977879520915774805, guid: 9611cda381a9836458f13fcc96d7b27e, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -6414607566452416248, guid: 9611cda381a9836458f13fcc96d7b27e, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 2601827287595355355, guid: 9611cda381a9836458f13fcc96d7b27e, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -3012048571618001510, guid: 9611cda381a9836458f13fcc96d7b27e, type: 3}
+    FrameTimeMultiplier: 1
+  FrameTime: 1
+  FrameTimeDivider: 8

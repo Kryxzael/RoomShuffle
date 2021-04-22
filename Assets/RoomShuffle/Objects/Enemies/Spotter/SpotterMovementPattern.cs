@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// An enemy pattern that can spot the player and chase them
 /// </summary>
-[RequireComponent(typeof(LimitedMovementRadius))]
+[RequireComponent(typeof(LimitedMovementRadius), typeof(SpriteAnimator))]
 public class SpotterMovementPattern : EnemyScript
 {
     [Tooltip("The speed the spotter will move at when fumbling")]
@@ -23,6 +23,12 @@ public class SpotterMovementPattern : EnemyScript
     
     [Tooltip("The amount of the in seconds the enemy will attempt to go home after loosing sight of the player")]
     public float GoHomeTime;
+
+    [Header("Animations")]
+    public SpriteAnimation IdleAnimation;
+    public SpriteAnimation WalkAnimation;
+    public SpriteAnimation SpotAnimation;
+    public SpriteAnimation ChaseAnimation;
 
     //how much time is left of the GoHomeTime
     private float _goHomeTimeLeft;
@@ -38,47 +44,56 @@ public class SpotterMovementPattern : EnemyScript
     private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
     private SpotPlayer _spotPlayer;
     private LimitedMovementRadius _limitedMovementRadius;
+    private SpriteAnimator _animator;
 
     void Start()
     {
         _spotPlayer = GetComponent<SpotPlayer>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
+        _animator = GetComponent<SpriteAnimator>();
     }
     
     void Update()
     {
-        ShowDebugColors(); //TODO Delete this
-        
         switch (_spotPlayer.State)
         {
             case SpotterPlayerRelationship.OutOfRadius:
             case SpotterPlayerRelationship.HiddenInRadius:   
                 if (!_limitedMovementRadius.InHomeRadius)
                 {
-                    tryToGoHome();
+                    TryToGoHome();
                 }
                 else
                 {
                     FumbleAround();
                 }
+
+                if (Mathf.Approximately(Enemy.Rigidbody.velocity.x, 0f))
+                    _animator.Animation = IdleAnimation;
+                else
+                    _animator.Animation = WalkAnimation;
                 break;
 
             case SpotterPlayerRelationship.Spotted:
                 FlipToPlayer();
                 Enemy.Rigidbody.SetVelocityX(0f);
+                _animator.Animation = SpotAnimation;
                 break;
 
             case SpotterPlayerRelationship.Puzzled:
                 Enemy.Rigidbody.SetVelocityX(0f);
+                _animator.Animation = IdleAnimation;
                 break;
-            
+
             case SpotterPlayerRelationship.BlindChasing:
                 Enemy.Rigidbody.SetVelocityX(Math.Sign(_spotPlayer.BlindChaseDirection.x) * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
+                _animator.Animation = ChaseAnimation;
                 break;
 
             case SpotterPlayerRelationship.Chasing:
                 FlipToPlayer();
                 Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
+                _animator.Animation = ChaseAnimation; 
                 break;
         }
     }
@@ -132,7 +147,7 @@ public class SpotterMovementPattern : EnemyScript
         }
     }
     
-    private void tryToGoHome()
+    private void TryToGoHome()
     {
         _goHomeTimeLeft -= Time.deltaTime;
         if (_goHomeTimeLeft <= 0)
@@ -145,19 +160,5 @@ public class SpotterMovementPattern : EnemyScript
             FlipToVector2(_limitedMovementRadius.Home);
             Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(WalkSpeed, EffectValueType.EnemySpeed));
         }
-    }
-    
-    private void ShowDebugColors()
-    {
-        Enemy.SpriteRenderer.color = _spotPlayer.State switch
-        {
-            SpotterPlayerRelationship.OutOfRadius => Color.green,
-            SpotterPlayerRelationship.HiddenInRadius => Color.blue,
-            SpotterPlayerRelationship.Spotted => Color.yellow,
-            SpotterPlayerRelationship.Puzzled => Color.magenta,
-            SpotterPlayerRelationship.Chasing => Color.red,
-            SpotterPlayerRelationship.BlindChasing => Color.cyan,
-            _ => Color.black,
-        };
     }
 }

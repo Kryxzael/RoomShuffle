@@ -35,7 +35,7 @@ public enum SpotterPlayerRelationship
     BlindChasing,
 
     /// <summary>
-    /// The spotter has seen the player but has not lost them before it could enter chasing mode
+    /// The spotter has seen the player but has lost them before it could enter chasing mode
     /// </summary>
     Puzzled
 }

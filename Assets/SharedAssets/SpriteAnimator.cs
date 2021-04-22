@@ -16,7 +16,7 @@ public class SpriteAnimator : MonoBehaviour
     private SpriteAnimation _animation;
 
     /// <summary>
-    /// Gets or sets the current animation. Setting a animation will reset the CurrentFrame value
+    /// Gets or sets the current animation. Setting an animation will reset the CurrentFrame value
     /// </summary>
     public SpriteAnimation Animation;
 
@@ -76,7 +76,7 @@ public class SpriteAnimator : MonoBehaviour
             return;
 
         StopAllCoroutines();
-        CurrentFrame = 0;
+        CurrentFrame = -1;
         StartCoroutine(nameof(Animate));
     }
 

@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// An enemy pattern that can spot the player and chase them
 /// </summary>
-[RequireComponent(typeof(LimitedMovementRadius))]
+[RequireComponent(typeof(LimitedMovementRadius), typeof(FlyingSpotterMovementPattern))]
 public class FlyingSpotterMovementPattern : EnemyScript
 {
     [Tooltip("The speed the spotter will fly at when fumbling")]
@@ -34,25 +34,29 @@ public class FlyingSpotterMovementPattern : EnemyScript
     //If the current fumble mode is flying
     private bool _fumbleFly = true;
 
+    [Header("Animations")]
+    public SpriteAnimation IdleAnimation;
+    public SpriteAnimation FlyAnimation;
+    public SpriteAnimation SpotAnimation;
+    public SpriteAnimation ChaseAnimation;
+
     /* *** */
 
     private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
     private SpotPlayer _spotPlayer;
+    private SpriteAnimator _animator;
     private Vector2 _flyDirection;
     private LimitedMovementRadius _limitedMovementRadius;
 
     private void Start()
     {
         _spotPlayer = GetComponent<SpotPlayer>();
+        _animator = GetComponent<SpriteAnimator>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
     }
     
     private void Update()
     {
-        //TODO Delete this function
-        ShowDebugColors();
-
-
         switch (_spotPlayer.State)
         {
             case SpotterPlayerRelationship.OutOfRadius:
@@ -68,15 +72,22 @@ public class FlyingSpotterMovementPattern : EnemyScript
                     _goHomeCurrentWaitTime = Commons.GetEffectValue(GoHomeWaitTime, EffectValueType.EnemyWaitTime);
                     FumbleAround();
                 }
+
+                if (Mathf.Approximately(Enemy.Rigidbody.velocity.x, 0f))
+                    _animator.Animation = IdleAnimation;
+                else
+                    _animator.Animation = FlyAnimation;
                 break;
 
             case SpotterPlayerRelationship.Spotted:
                 FlipToPlayer();
                 Enemy.Rigidbody.velocity = default;
+                _animator.Animation = SpotAnimation;
                 break;
 
             case SpotterPlayerRelationship.Puzzled:
                 Enemy.Rigidbody.velocity = default;
+                _animator.Animation = IdleAnimation;
                 break;
             
             case SpotterPlayerRelationship.BlindChasing:
@@ -94,12 +105,15 @@ public class FlyingSpotterMovementPattern : EnemyScript
                     Enemy.Flippable.Direction = Direction1D.Right;
                 }
 
+                _animator.Animation = ChaseAnimation;
+
                 break;
 
             case SpotterPlayerRelationship.Chasing:
                 FlipToPlayer();
                 _goHomeCurrentWaitTime = GoHomeWaitTime;
                 Enemy.Rigidbody.velocity = (_player.Value.transform.position - transform.position).normalized * Commons.GetEffectValue(ChaseSpeed, EffectValueType.EnemySpeed);
+                _animator.Animation = ChaseAnimation;
                 break;
             
         }
@@ -173,19 +187,5 @@ public class FlyingSpotterMovementPattern : EnemyScript
         {
             Enemy.Rigidbody.velocity = (_limitedMovementRadius.Home - (Vector2)transform.position).normalized * Commons.GetEffectValue(FlyingSpeed, EffectValueType.EnemySpeed);
         }
-    }
-
-    private void ShowDebugColors()
-    {
-        Enemy.SpriteRenderer.color = _spotPlayer.State switch
-        {
-            SpotterPlayerRelationship.OutOfRadius => Color.green,
-            SpotterPlayerRelationship.HiddenInRadius => Color.blue,
-            SpotterPlayerRelationship.Spotted => Color.yellow,
-            SpotterPlayerRelationship.Puzzled => Color.magenta,
-            SpotterPlayerRelationship.Chasing => Color.red,
-            SpotterPlayerRelationship.BlindChasing => Color.cyan,
-            _ => Color.black,
-        };
     }
 }

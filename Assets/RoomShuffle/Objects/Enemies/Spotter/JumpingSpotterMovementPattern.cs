@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// An enemy pattern that can spot the player and chase them while jumping
 /// </summary>
-[RequireComponent(typeof(LimitedMovementRadius))]
+[RequireComponent(typeof(LimitedMovementRadius), typeof(SpriteAnimator))]
 public class JumpingSpotterMovementPattern : EnemyScript
 {
 
@@ -24,7 +24,16 @@ public class JumpingSpotterMovementPattern : EnemyScript
     
     [Tooltip("The amount of if time in seconds the enemy will attempt to go home after loosing sight of the player")]
     public float GoHomeTime;
-    
+
+    private bool _lastAnimationWas1;
+
+    [Header("Animations")]
+    public SpriteAnimation IdleAnimation;
+    public SpriteAnimation JumpAnimation;
+    public SpriteAnimation SpotAnimation;
+    public SpriteAnimation ChaseAnimation1;
+    public SpriteAnimation ChaseAnimation2;
+
     //The remaining ground time
     private float _groundTimeLeft;
 
@@ -45,11 +54,13 @@ public class JumpingSpotterMovementPattern : EnemyScript
     private Vector2 _direction;
     private SpotPlayer _spotPlayer; 
     private LimitedMovementRadius _limitedMovementRadius;
+    private SpriteAnimator _animator;
 
     void Start()
     {
         _spotPlayer = GetComponent<SpotPlayer>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
+        _animator = GetComponent<SpriteAnimator>();
         
         //Creates a vector from the "Degree" variable. This will be the jump angle
         _direction = new Vector2(
@@ -60,9 +71,7 @@ public class JumpingSpotterMovementPattern : EnemyScript
     }
     
     void Update()
-    {
-        ShowDebugColors(); //TODO Delete this line
-        
+    {        
         StopOnGround();
 
         switch (_spotPlayer.State)
@@ -80,10 +89,12 @@ public class JumpingSpotterMovementPattern : EnemyScript
                 break;
 
             case SpotterPlayerRelationship.Spotted:
+                _animator.Animation = SpotAnimation;
                 FlipToPlayer();
                 break;
 
             case SpotterPlayerRelationship.Puzzled:
+                _animator.Animation = IdleAnimation;
                 break;
             
             case SpotterPlayerRelationship.BlindChasing:
@@ -191,7 +202,7 @@ public class JumpingSpotterMovementPattern : EnemyScript
     }
 
     /// <summary>
-    /// If grounded, the enemy will to a jump in det horizontal direction decided by the argument
+    /// If grounded, the enemy will to a jump in the horizontal direction decided by the argument
     /// </summary>
     /// <param name="sign"></param>
     private void JumpToSign(int sign)
@@ -205,6 +216,23 @@ public class JumpingSpotterMovementPattern : EnemyScript
         Enemy.Rigidbody.SetVelocityX(Enemy.Rigidbody.velocity.x * sign);
 
         _fumbleJumpsLeft--;
+
+        if (_spotPlayer.InPursuit)
+        {
+            if (_lastAnimationWas1)
+                _animator.Animation = ChaseAnimation2;
+
+            else
+                _animator.Animation = ChaseAnimation1;
+
+            _lastAnimationWas1 = !_lastAnimationWas1;
+        }
+            
+
+        else
+            _animator.Animation = JumpAnimation;
+
+        _animator.RestartAnimation();
     }
 
     /// <summary>
@@ -226,19 +254,5 @@ public class JumpingSpotterMovementPattern : EnemyScript
         {
             JumpToSign(Enemy.Flippable.DirectionSign);
         }
-    }
-
-    private void ShowDebugColors()
-    {
-        Enemy.SpriteRenderer.color = _spotPlayer.State switch
-        {
-            SpotterPlayerRelationship.OutOfRadius => Color.green,
-            SpotterPlayerRelationship.HiddenInRadius => Color.blue,
-            SpotterPlayerRelationship.Spotted => Color.yellow,
-            SpotterPlayerRelationship.Puzzled => Color.magenta,
-            SpotterPlayerRelationship.Chasing => Color.red,
-            SpotterPlayerRelationship.BlindChasing => Color.cyan,
-            _ => Color.black,
-        };
     }
 }

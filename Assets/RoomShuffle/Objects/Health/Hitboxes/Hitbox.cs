@@ -55,7 +55,7 @@ public abstract class Hitbox : MonoBehaviour
         HasInvincibilityFrames = true;
 
         //Store elapsed time of I-frames, and whether the object is currently blinking
-        bool isBlinking = false;
+        bool isBlinking = true;
         float elapsedTime = 0f;
         const float BLINK_RATE = 0.1f;
 
