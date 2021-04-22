@@ -149,5 +149,8 @@ public class RoomGenerator : MonoBehaviour
         //Increase room number
         if (!parameters.Class.IsSafeRoom())
             CurrentRoomNumber++;
+
+        //Spawn the player
+        FindObjectOfType<Entrance>().SpawnPlayer();
     }
 }

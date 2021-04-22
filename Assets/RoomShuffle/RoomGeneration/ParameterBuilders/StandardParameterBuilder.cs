@@ -153,7 +153,6 @@ public class StandardParameterBuilder : ParameterBuilder
                 .FirstOrDefault();
         }
 
-
         return output;
     }
 

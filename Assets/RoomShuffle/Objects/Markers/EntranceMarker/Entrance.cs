@@ -9,11 +9,6 @@ public class Entrance : MonoBehaviour
 {
     public GameObject Player;
 
-    private void Start()
-    {
-        SpawnPlayer();
-    }
-
     /// <summary>
     /// Spawns a player at the entrance's position
     /// </summary>
