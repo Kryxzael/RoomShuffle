@@ -97,7 +97,7 @@ public class EnemyHitbox : Hitbox
         if (_health.IsDead)
         {
             //Explode
-            foreach (var i in GetComponentsInChildren<ExplodeOnDeath>())
+            foreach (var i in GetComponentsInChildren<ParticleExplosion>())
                 i.ExplodeBig();
 
             //Drop items
@@ -113,7 +113,7 @@ public class EnemyHitbox : Hitbox
                 return;
 
             //Drop some scraps
-            foreach (var i in GetComponentsInChildren<ExplodeOnDeath>())
+            foreach (var i in GetComponentsInChildren<ParticleExplosion>())
                 i.ExplodeSmall();
         }
             

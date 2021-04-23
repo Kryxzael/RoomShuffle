@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Allows an object to create an explosion of rigidbodies
 /// </summary>
-public class ExplodeOnDeath : MonoBehaviour
+public class ParticleExplosion : MonoBehaviour
 {
     [Tooltip("The amount of rigidbodies to spawn when a big explosion is created")]
     public RandomValueBetween ParticleCount;

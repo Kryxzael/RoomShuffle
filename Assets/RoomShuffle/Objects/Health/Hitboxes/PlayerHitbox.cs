@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerHitbox : Hitbox
 {
-    private ExplodeOnDeath _exploder;
+    private ParticleExplosion _exploder;
 
     /// <summary>
     /// <inheritdoc />
@@ -21,7 +21,7 @@ public class PlayerHitbox : Hitbox
     protected override void Awake()
     {
         base.Awake();
-        _exploder = GetComponent<ExplodeOnDeath>();
+        _exploder = GetComponent<ParticleExplosion>();
     }
 
     /// <summary>

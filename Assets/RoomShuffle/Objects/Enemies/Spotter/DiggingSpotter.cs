@@ -49,12 +49,14 @@ public class DiggingSpotter : EnemyScript
     private SpotPlayer _spotPlayer;
     private LimitedMovementRadius _limitedMovementRadius;
     private SpriteAnimator _animator;
+    private ParticleExplosion _exploder;
 
     void Start()
     {
         _spotPlayer = GetComponent<SpotPlayer>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
         _animator = GetComponent<SpriteAnimator>();
+        _exploder = GetComponentInChildren<ParticleExplosion>();
 
         StartCoroutine(DigDown());
     }
@@ -161,6 +163,7 @@ public class DiggingSpotter : EnemyScript
         
         yield return new WaitUntil(() => this.OnGround2D());
 
+        _exploder.ExplodeBig();
         _animator.Animation = ChaseAnimation;
         _aboveGround = true;
         _inTransitionAnimation = false;
@@ -179,6 +182,7 @@ public class DiggingSpotter : EnemyScript
 
         yield return new WaitForSeconds(1);
 
+        _exploder.ExplodeBig();
         _animator.Animation = DigIdleAnimation;
         _aboveGround = false;
         Enemy.Hitbox.gameObject.SetActive(false);
