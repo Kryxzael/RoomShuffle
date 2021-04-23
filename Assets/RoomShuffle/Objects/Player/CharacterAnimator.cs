@@ -25,12 +25,6 @@ public class CharacterAnimator : MonoBehaviour
     [Tooltip("The animation to use when the character is moving down")]
     public SpriteAnimation Fall;
 
-    [Tooltip("The animation to use when the character crouching")]
-    public SpriteAnimation Crouch;
-
-    [Tooltip("The animation to use when the character is looking up")]
-    public SpriteAnimation LookUp;
-
     /* *** */
 
     private Rigidbody2D _rigid;
@@ -76,10 +70,6 @@ public class CharacterAnimator : MonoBehaviour
          * Set animation
          */
 
-        //Crouching
-        if (Input.GetAxisRaw("Vertical") < 0f)
-            _spriteAnimator.Animation = Crouch;
-
         //Jumping (Moving up)
         else if (_rigid.velocity.y > MIN_MOTION && !this.OnGround2D())
             _spriteAnimator.Animation = Jump;
@@ -91,10 +81,6 @@ public class CharacterAnimator : MonoBehaviour
         //Falling (Moving laterally)
         else if (Mathf.Abs(_rigid.velocity.x) > MIN_MOTION)
             _spriteAnimator.Animation = Walk;
-
-        //Looking up
-        else if (Input.GetAxisRaw("Vertical") > 0f)
-            _spriteAnimator.Animation = LookUp;
 
         //Idle (Not moving)
         else

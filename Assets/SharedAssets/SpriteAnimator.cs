@@ -63,7 +63,7 @@ public class SpriteAnimator : MonoBehaviour
         }
         set
         {
-            _currentFrame = Mathf.Clamp(value, 0, _animation.FrameCount);
+            _currentFrame = Mathf.Clamp(value, -1, _animation.FrameCount);
         }
     }
 
@@ -82,6 +82,8 @@ public class SpriteAnimator : MonoBehaviour
 
     private IEnumerator Animate()
     {
+        CurrentFrame = -1;
+
         if (_animation.FrameCount == 0)
         {
             yield break;

@@ -32,6 +32,5 @@ public class InstantHurtbox : WeaponTemplate
         hurtbox.Weapon = instance;
 
         newAmmo.transform.eulerAngles = newAmmo.transform.eulerAngles.SetY(0);
-
     }
 }
