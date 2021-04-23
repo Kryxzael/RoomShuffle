@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adef74459c54efe4da176991c19c4aed, type: 3}
-  m_Name: Crawler
+  m_Name: Ricocheter
   m_EditorClassIdentifier: 
   Frames:
   - Sprite: {fileID: -3375038303658136201, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
