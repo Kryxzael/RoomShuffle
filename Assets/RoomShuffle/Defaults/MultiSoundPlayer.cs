@@ -19,6 +19,8 @@ namespace RoomShuffle.Defaults
         [Range(0, 1)]
         public float MinimumTimeBetweenSounds = 0;
 
+        public bool LimitAudio;
+
         [Header("When to play")] 
         public bool PlayOnEnable;
         public bool PlayOnStart;
@@ -37,12 +39,16 @@ namespace RoomShuffle.Defaults
 
         private float _timePassed;
 
+        private LimitedAudioManager _limitedAudioManager;
+
         private void Awake()
         {
+            GameObject AudioManager = Commons.AudioManager;
+            
             //get audio source
-            _primaryAudioSource = Commons.AudioManager.GetComponent<AudioSource>();
-            _secondaryAudioSource = Commons.AudioManager.transform.Cast<Transform>().FirstOrDefault()
-                ?.GetComponent<AudioSource>();
+            _primaryAudioSource = AudioManager.GetComponent<AudioSource>();
+            _secondaryAudioSource = AudioManager.transform.Cast<Transform>().FirstOrDefault().GetComponent<AudioSource>();
+            _limitedAudioManager = AudioManager.GetComponent<LimitedAudioManager>();
         }
 
         private void Update()
@@ -71,8 +77,6 @@ namespace RoomShuffle.Defaults
             //Set audiosource according to pitch. Use secondary source only if pitch is different
             AudioSource source = pitch == 1f ? _primaryAudioSource : _secondaryAudioSource;
             
-            Debug.Log(_secondaryAudioSource == _primaryAudioSource);
-            
             _timePassed = 0;
 
             source.pitch = pitch;
@@ -82,7 +86,14 @@ namespace RoomShuffle.Defaults
             {
                 foreach (AudioClip clip in AudioClips)
                 {
-                    source.PlayOneShot(clip, volume);
+                    if (LimitAudio)
+                    {
+                        _limitedAudioManager.PlayLimitedSound(clip);
+                    }
+                    else
+                    {
+                        source.PlayOneShot(clip, volume);   
+                    }
                 }
                 return;
             }
@@ -95,7 +106,15 @@ namespace RoomShuffle.Defaults
 
             if (AudioClips[index])
             {
-                source.PlayOneShot(AudioClips[index], volume);
+                if (LimitAudio)
+                {
+                    _limitedAudioManager.PlayLimitedSound(AudioClips[index]);
+                }
+                else
+                {
+                    source.PlayOneShot(AudioClips[index], volume);
+                }
+                
             }
         }
 
