@@ -1,5 +1,6 @@
 using NUnit.Framework;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,21 +24,25 @@ public class RoomGenerator : MonoBehaviour
     [Tooltip("Whether the generator should set its seed randomly. If this is enabled, the 'Seed' property is ignored")]
     public bool UseRandomSeed;
 
-    [Header("Generators")]
+    [Header("Generator")]
     [Tooltip("The room parameter picker the generator will use")]
     public ParameterBuilder RoomParameterBuilder;
 
-    /// <summary>
-    /// Gets or sets the number that is displayed as the room count
-    /// </summary>
-    public int CurrentRoomNumber { get; set; }
+    [Header("Backgrounds")]
+    [Tooltip("Gets the backgrounds to use for the different room themes")]
+    public List<RoomThemeBackgroundMapping> Backgrounds = new List<RoomThemeBackgroundMapping>();
+
+    /* *** */
 
     /// <summary>
     /// Gets the room parameter builders that are currently being used to override the primary room parameter builder
     /// </summary>
     public Stack<ParameterBuilderOverride> RoomParameterBuilderOverrides { get; } = new Stack<ParameterBuilderOverride>();
 
-    /* *** */
+    /// <summary>
+    /// Gets or sets the number that is displayed as the room count
+    /// </summary>
+    public int CurrentRoomNumber { get; set; }
 
     /// <summary>
     /// The random number generator used to generate rooms
@@ -52,6 +57,11 @@ public class RoomGenerator : MonoBehaviour
     /// The root object of the currently generated room
     /// </summary>
     private GameObject CurrentRoomObject;
+
+    /// <summary>
+    /// The background object of the currently generated room
+    /// </summary>
+    private GameObject CurrentBackgroundObject;
 
     /// <summary>
     /// Gets the current room's parameter
@@ -73,7 +83,7 @@ public class RoomGenerator : MonoBehaviour
     private void Awake()
     {
         if (UseRandomSeed)
-            Seed = Random.Range(0, int.MaxValue);
+            Seed = UnityEngine.Random.Range(0, int.MaxValue);
 
         RoomRng = new SysRandom(Seed);
     }
@@ -89,9 +99,12 @@ public class RoomGenerator : MonoBehaviour
     /// </summary>
     public void GenerateNext()
     {
-        //Destroy current room
-        if (CurrentRoomObject != null)
-            Destroy(CurrentRoomObject);
+        /*
+         * Destroy current room and background
+         */
+        DestroyImmediate(CurrentRoomObject);
+        Destroy(CurrentBackgroundObject);
+
 
         /*
          * Create the room configuration
@@ -99,6 +112,7 @@ public class RoomGenerator : MonoBehaviour
         RoomParameters parameters;
         var builder = RoomParameterBuilder;
 
+        //Use parameter builder overrides if present
         while (RoomParameterBuilderOverrides.Any())
         {
             if (RoomParameterBuilderOverrides.Peek().HasNext())
@@ -110,11 +124,15 @@ public class RoomGenerator : MonoBehaviour
             RoomParameterBuilderOverrides.Pop();
         }
 
+        //Generate parameters with builder
         if (CurrentRoomConfig == null)
             parameters = builder.GetInitialParameters(RoomRng);
         else
             parameters = builder.GetNextParameters(History, RoomRng);
 
+        /*
+         * Spawn room
+         */
         CurrentRoomObject = Instantiate(parameters.Layout).gameObject;
 
         //Create generation entry
@@ -124,7 +142,20 @@ public class RoomGenerator : MonoBehaviour
         //Add to history
         History.RegisterHistory(parameters);
 
-        DebugScreenDrawer.Enable("roomcount", "room: " + History.Count());
+        /*
+         * Spawn background
+         */
+        if (!parameters.Effect.HasFlag(RoomEffects.Darkness))
+        {
+            var background = Backgrounds.SingleOrDefault(i => i.Theme == parameters.Theme);
+            
+            if (background != null)
+                CurrentBackgroundObject = Instantiate(background.Background);
+        }
+
+        /*
+         * Post-generation setup
+         */
 
         //Reload tilesets
         foreach (Tilemap i in FindObjectsOfType<Tilemap>())
@@ -133,10 +164,7 @@ public class RoomGenerator : MonoBehaviour
         //Clear puzzle keys
         Commons.Inventory.PuzzleKeys = 0;
 
-        /*
-         * Set optional objects
-         */
-        //Go over every spawn group
+        //Set optional objects
         foreach (var i in CurrentRoomObject.GetComponentsInChildren<OptionalObjectGroup>())
             i.Select(RoomRng);
 
@@ -152,5 +180,13 @@ public class RoomGenerator : MonoBehaviour
 
         //Spawn the player
         FindObjectOfType<Entrance>().SpawnPlayer();
+    }
+
+
+    [Serializable]
+    public class RoomThemeBackgroundMapping
+    {
+        public RoomTheme Theme;
+        public GameObject Background;
     }
 }
