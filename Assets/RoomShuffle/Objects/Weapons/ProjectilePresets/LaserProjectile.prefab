@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3838528766248490060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2831466014978973620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c491525f10d4345bdbbf9aa1d46927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FriendlyFireOn: 0
-  BaseDamage: 5
-  _hurtBox: {fileID: 8607221160332809425}
 --- !u!61 &4731243971794411631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67,6 +52,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LivingTime: 0.3
+--- !u!114 &3838528766248490060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831466014978973620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c491525f10d4345bdbbf9aa1d46927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FriendlyFireOn: 0
+  BaseDamage: 5
+  _hurtBox: {fileID: 8607221160332809425}
 --- !u!61 &8587147193739072524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,6 +216,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: LimitAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4670741879340441384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127145713867747775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 16
+  Pushbackforce: 1000
+  SpeedCap: 20
 --- !u!1 &4030095956609810926
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,21 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 550
---- !u!114 &4670741879340441384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127145713867747775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 16
-  Pushbackforce: 1000
-  SpeedCap: 20
+  TimeBeforeStart: 0
+  AffectedByFastFoe: 1
 --- !u!1001 &5097567243550274338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +120,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: LimitAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a58e438b7cfa445498120af0e6169082, type: 3}
     - target: {fileID: 3701683546172369299, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Layer
       value: 12

@@ -20,6 +20,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: LimitAudio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_RootOrder
       value: 0

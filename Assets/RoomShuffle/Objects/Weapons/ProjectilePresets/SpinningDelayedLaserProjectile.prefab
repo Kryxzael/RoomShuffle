@@ -66,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 180
   TimeBeforeStart: 1
+  AffectedByFastFoe: 1
 --- !u!114 &4176049167187557990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +82,7 @@ MonoBehaviour:
   ChargingMaterial: {fileID: 2100000, guid: c0c4c7f3d34e1bc4b8a95cc8ae8450a4, type: 2}
   FiringMaterial: {fileID: 2100000, guid: 12d861709a857504f9f21d30fcf9f786, type: 2}
   ChargeTime: 1
+  MaxDistance: 200
 --- !u!61 &8587147193739072524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -301,6 +307,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3639939928067859011, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
     - {fileID: 2114728086437044367, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+    - {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
 --- !u!1 &68695632109433767 stripped
 GameObject:

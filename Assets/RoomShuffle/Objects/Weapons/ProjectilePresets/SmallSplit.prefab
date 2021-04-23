@@ -18,6 +18,28 @@ MonoBehaviour:
   SplittingProjectileRange: 0.7
   SplittingProjectileDamage: 25
   TimeBetweenEachSplit: 0
+--- !u!114 &4082587510107247985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393914487905459971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips: []
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
+  ClipIndex: 0
 --- !u!114 &6771202670531649521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 11400000, guid: 613d150a9c3b65b4b8ea7109994aad77, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &4758883274041580958
 PrefabInstance:
   m_ObjectHideFlags: 0

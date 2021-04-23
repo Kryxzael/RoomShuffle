@@ -15,6 +15,29 @@ MonoBehaviour:
   Speed: 8
   DragForce: 500
   MaxSpeed: 8
+--- !u!114 &4308555634531019119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68695632109433767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 1
+  PlayOnEnable: 0
+  PlayOnStart: 1
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
+  ClipIndex: 0
 --- !u!114 &4970394322578524792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 11400000, guid: eea727a6fdc3495428d66fa674e82721, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &5154803445940039994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,7 +135,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
 --- !u!1 &68695632109433767 stripped
 GameObject:

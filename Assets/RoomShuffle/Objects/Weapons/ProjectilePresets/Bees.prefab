@@ -29,6 +29,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 11400000, guid: 3a3427b128d2d6e4da63da0d5c74c895, type: 2}
+  PlaybackSpeed: 1
 --- !u!1001 &5154803445940039994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,7 +105,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2732852020601560473, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
 --- !u!1 &68695632109433767 stripped
 GameObject:
