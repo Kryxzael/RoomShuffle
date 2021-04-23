@@ -1,14 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
-
-using Random = UnityEngine.Random;
 
 /// <summary>
-/// An enemy pattern that can spot the player and chase them
+/// An enemy pattern for the digging spotter.
 /// </summary>
 [RequireComponent(typeof(LimitedMovementRadius), typeof(SpriteAnimator))]
 public class DiggingSpotter : EnemyScript
@@ -19,18 +14,15 @@ public class DiggingSpotter : EnemyScript
     [Tooltip("The speed the spotter will move at when chasing")]
     public float RunSpeed;
 
-    [Tooltip("The amount of time the spotter can move or wait before choosing a new action when fumbling")]
-    public RandomValueBetween FumbleWaitTime = new RandomValueBetween(3f, 7f);
-
     [Header("Animations")]
     public SpriteAnimation IdleAnimation;
     public SpriteAnimation DigIdleAnimation;
     public SpriteAnimation DigChaseAnimation;
     public SpriteAnimation ChaseAnimation;
 
-    public float PopUpJumpForce = 10;
-
-
+    [Tooltip("The force the enemy will jump up from the ground with")]
+    public float PopUpJumpVelocity = 18;
+    
     //The remaining fumble wait time
     private float _fumbleCurrentWaitTime;
 
@@ -42,6 +34,8 @@ public class DiggingSpotter : EnemyScript
 
     // if the enemy is either digging down or popping up
     private bool _inTransitionAnimation = false;
+
+    private int _relativePosition = 0;
 
     /* *** */
 
@@ -58,6 +52,7 @@ public class DiggingSpotter : EnemyScript
         _animator = GetComponent<SpriteAnimator>();
         _exploder = GetComponentInChildren<ParticleExplosion>();
 
+        // start of by digging down
         StartCoroutine(DigDown());
     }
     
@@ -71,6 +66,7 @@ public class DiggingSpotter : EnemyScript
 
         switch (_spotPlayer.State)
         {
+            
             case SpotterPlayerRelationship.OutOfRadius:
             case SpotterPlayerRelationship.HiddenInRadius:
                 Idle();
@@ -88,17 +84,21 @@ public class DiggingSpotter : EnemyScript
 
             case SpotterPlayerRelationship.Chasing:
 
-                if (FlipToPlayer() && !_aboveGround)
+                //If the enemy is under ground and has turned (which means the player is directly over the player):
+                //pop up from the ground.
+                if (FlipToPlayer() && !_aboveGround && (_relativePosition != Math.Sign(_player.Value.transform.position.x - transform.position.x)))
                 {
                     StartCoroutine(PopUp());
                 }
 
+                //Chase the player above ground
                 if (_aboveGround)
                 {
                     Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
                     _animator.Animation = ChaseAnimation;
                     break;   
                 }
+                //Chase the player under ground
                 else
                 {
                     Enemy.Rigidbody.SetVelocityX(Enemy.Flippable.DirectionSign * Commons.GetEffectValue(DigSpeed, EffectValueType.EnemySpeed));
@@ -106,6 +106,9 @@ public class DiggingSpotter : EnemyScript
                     break;
                 }
         }
+        
+        //The vertical position of the player relative to the enemy
+        _relativePosition = Math.Sign(_player.Value.transform.position.x - transform.position.x);
     }
 
     /// <summary>
@@ -135,7 +138,7 @@ public class DiggingSpotter : EnemyScript
     }
     
     /// <summary>
-    /// Makes the object idle
+    /// Makes the object idle under ground
     /// </summary>
     private void Idle()
     {
@@ -147,23 +150,44 @@ public class DiggingSpotter : EnemyScript
         Enemy.Rigidbody.SetVelocityX(0);
     }
 
+    /// <summary>
+    /// Makes the enemy pop up from the ground.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PopUp()
     {
+        //How much time the enemy waits before it pops out of the ground
+        const float WAIT_TIME_BEFORE_POPPING = 0.15f;
+        
         //the enemy is already above ground
         if (_aboveGround)
             yield break;
+        
+        //TODO telegraph jumping
+        yield return new WaitForSeconds(WAIT_TIME_BEFORE_POPPING);
 
-        Enemy.Rigidbody.SetVelocityX(0);
+        //Activate hitbox before animation starts
         Enemy.Hitbox.gameObject.SetActive(true);
+        
+        //deactivate HUD
         Enemy.HUD.SetActive(true);
+        
         _inTransitionAnimation = true;
+        
+        //Use idleanimation as jumping sprite
         _animator.Animation = IdleAnimation;
-        Enemy.Rigidbody.SetVelocityY(PopUpJumpForce);
+        
+        //Make enemy jump
+        Enemy.Rigidbody.SetVelocityY(PopUpJumpVelocity);
         Enemy.Rigidbody.SetVelocityX(0);
         
+        //wait for the enemy to hit the ground
         yield return new WaitUntil(() => this.OnGround2D());
 
+        //Create dust
         _exploder.ExplodeBig();
+
+        //start chasing
         _animator.Animation = ChaseAnimation;
         _aboveGround = true;
         _inTransitionAnimation = false;
@@ -172,6 +196,9 @@ public class DiggingSpotter : EnemyScript
 
     private IEnumerator DigDown()
     {
+        //For how long the enemy should wait before it starts digging down again
+        const float WAIT_TIME_BEFORE_DIGGING = 1f;
+        
         //the enemy is already under ground
         if (!_aboveGround)
             yield break;
@@ -180,12 +207,20 @@ public class DiggingSpotter : EnemyScript
         _inTransitionAnimation = true;
         _animator.Animation = IdleAnimation;
 
-        yield return new WaitForSeconds(1);
+        //Wait before goinf under ground
+        yield return new WaitForSeconds(WAIT_TIME_BEFORE_DIGGING);
 
+        //Create dust
         _exploder.ExplodeBig();
+
+        //Start idling under ground
         _animator.Animation = DigIdleAnimation;
         _aboveGround = false;
+        
+        //Deactivate hitbox
         Enemy.Hitbox.gameObject.SetActive(false);
+        
+        // Hide Hud
         Enemy.HUD.SetActive(false);
         _inTransitionAnimation = false;
     }
