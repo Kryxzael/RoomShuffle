@@ -170,6 +170,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2d5629c1cf36a0a47975cab3cd5d27ac, type: 3}
   PlayAll: 0
   MinimumTimeBetweenSounds: 0.17
+  LimitAudio: 0
   PlayOnEnable: 0
   PlayOnStart: 0
   PlayOnDisable: 0
@@ -402,6 +403,7 @@ MonoBehaviour:
   Rigidbody: {fileID: 7478987885904739896}
   Light: {fileID: 4531955745375408205}
   Flippable: {fileID: 4598150316143863701}
+  HUD: {fileID: 3063418235417007039}
   BaseHealth: 300
   BaseContactDamage: 100
   StartingDirection: -1

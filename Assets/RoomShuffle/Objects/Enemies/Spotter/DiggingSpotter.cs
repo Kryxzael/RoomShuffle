@@ -49,11 +49,9 @@ public class DiggingSpotter : EnemyScript
     private SpotPlayer _spotPlayer;
     private LimitedMovementRadius _limitedMovementRadius;
     private SpriteAnimator _animator;
-    private GameObject _hitBox;
 
     void Start()
     {
-        _hitBox = transform.parent.Cast<Transform>().FirstOrDefault(x => x.name.Equals("Hitbox Hurtbox")).gameObject;
         _spotPlayer = GetComponent<SpotPlayer>();
         _limitedMovementRadius = GetComponent<LimitedMovementRadius>();
         _animator = GetComponent<SpriteAnimator>();
@@ -63,7 +61,7 @@ public class DiggingSpotter : EnemyScript
     
     void Update()
     {
-        //if the enemy is in a tranisition animation return.
+        //if the enemy is in a transition animation return.
         if (_inTransitionAnimation)
         {
             return;
@@ -84,9 +82,6 @@ public class DiggingSpotter : EnemyScript
 
             case SpotterPlayerRelationship.Puzzled:
                 Enemy.Rigidbody.SetVelocityX(0f);
-                break;
-
-            case SpotterPlayerRelationship.BlindChasing:
                 break;
 
             case SpotterPlayerRelationship.Chasing:
@@ -157,7 +152,8 @@ public class DiggingSpotter : EnemyScript
             yield break;
 
         Enemy.Rigidbody.SetVelocityX(0);
-        _hitBox.SetActive(true);
+        Enemy.Hitbox.gameObject.SetActive(true);
+        Enemy.HUD.SetActive(true);
         _inTransitionAnimation = true;
         _animator.Animation = IdleAnimation;
         Enemy.Rigidbody.SetVelocityY(PopUpJumpForce);
@@ -185,7 +181,8 @@ public class DiggingSpotter : EnemyScript
 
         _animator.Animation = DigIdleAnimation;
         _aboveGround = false;
-        _hitBox.SetActive(false);
+        Enemy.Hitbox.gameObject.SetActive(false);
+        Enemy.HUD.SetActive(false);
         _inTransitionAnimation = false;
     }
     

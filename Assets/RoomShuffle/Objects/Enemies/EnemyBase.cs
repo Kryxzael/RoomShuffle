@@ -22,6 +22,7 @@ public sealed class EnemyBase : MonoBehaviour
     public Rigidbody2D Rigidbody;
     public Light Light;
     public Flippable Flippable;
+    public GameObject HUD;
 
     [Header("Initialization")]
     [Tooltip("The amount of base maximum HP the enemy has")]

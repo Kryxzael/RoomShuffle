@@ -644,6 +644,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 942a331eedafe0d45aacb52ac9e5623b, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: UseRandomSeed
       value: 1
       objectReference: {fileID: 0}
@@ -651,5 +655,17 @@ PrefabInstance:
       propertyPath: RoomParameterBuilder
       value: 
       objectReference: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[0].Theme
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[0].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 942a331eedafe0d45aacb52ac9e5623b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
