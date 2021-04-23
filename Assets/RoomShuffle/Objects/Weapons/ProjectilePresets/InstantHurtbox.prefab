@@ -17,7 +17,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.25}
+    oldSize: {x: 0.9375, y: 0.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25}
+  m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1001 &5154803445940039994
 PrefabInstance:
@@ -95,11 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_LocalScale.y
-      value: 14
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3874410656206117783, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_LocalPosition.x
@@ -152,10 +152,14 @@ PrefabInstance:
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -282556187193606341, guid: 8898020a882daa94cb7876c037b70f00, type: 3}
+      objectReference: {fileID: -6189289526238714443, guid: 4ea5e4caa0d3d574398668e0002c4327, type: 3}
+    - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
+      propertyPath: m_Color.a
+      value: 0.38431373
+      objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.g
@@ -163,7 +167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5494177612033687297, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}
       propertyPath: m_Color.r
-      value: 0.9837978
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3639939928067859011, guid: 9d46b0e00e0bffa45afa165c6788c449, type: 3}

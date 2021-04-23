@@ -14,15 +14,18 @@ public class InstantHurtbox : WeaponTemplate
     [Tooltip("The ammunition to use when firing")]
     public Projectile Ammunition;
 
+    [Tooltip("The distance away from the player the hurtbox will spawn")]
+    public float Distance = 2f;
+
     protected override void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction)
     {
         Projectile newAmmo = Instantiate(
             original: Ammunition,
-            position: shooter.GetProjectilesSpawnPoint() + (direction * Ammunition.transform.localScale.y/9),
-            rotation: Quaternion.identity
+            position: shooter.GetProjectilesSpawnPoint() + (direction * Distance),
+            rotation: Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f))
         );
 
-        newAmmo.Direction = direction;
+        //newAmmo.Direction = direction;
 
         WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
         hurtbox.Shooter = shooter;
