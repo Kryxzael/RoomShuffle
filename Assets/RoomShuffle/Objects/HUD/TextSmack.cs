@@ -36,5 +36,7 @@ public class TextSmack : MonoBehaviour
             lerpTime += SmackSpeed * Time.deltaTime * 240f;
             yield return new WaitForEndOfFrame();
         }
+
+        transform.localScale = originalScaleVector;
     }
 }
