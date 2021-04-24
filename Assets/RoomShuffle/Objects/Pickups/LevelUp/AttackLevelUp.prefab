@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &958583941713203637
+--- !u!114 &1350218347306324840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7694132226647251680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 638577a28e8238d44afe84e97ce63be3, type: 3}
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animation: {fileID: 11400000, guid: 24a67d01956a86c47bf38a60a0c3636a, type: 2}
+  PlaybackSpeed: 1
 --- !u!114 &3245326692934815481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +50,7 @@ MonoBehaviour:
   PlayOnDestroy: 0
   PlayOnUpdate: 0
   ClipIndex: 0
---- !u!114 &1350218347306324840
+--- !u!114 &5425083004491853663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,11 +59,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7694132226647251680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 68bf5a7720b04a649848b54bba509da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animation: {fileID: 11400000, guid: 047acbf0d2a1e6e4ea7b4c03071f9c02, type: 2}
-  PlaybackSpeed: 1
 --- !u!1001 &7548755906907227344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 382140331158365946, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Name
-      value: HealthLevelUp
+      value: AttackLevelUp
       objectReference: {fileID: 0}
     - target: {fileID: 461654146341380664, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_text
@@ -124,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 4769035365267631880, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4070684885479781121, guid: 3ba67cd87553dce4ebce0df7d1eaeed1, type: 3}
+      objectReference: {fileID: 2516891264115741334, guid: 3ba67cd87553dce4ebce0df7d1eaeed1, type: 3}
     - target: {fileID: 4769035365267631880, guid: 1adf4a18d77e4ef47ab1530a6058a7bb, type: 3}
       propertyPath: m_Color.b
       value: 1
