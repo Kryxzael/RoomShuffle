@@ -71,7 +71,7 @@ public class CharacterAnimator : MonoBehaviour
          */
 
         //Jumping (Moving up)
-        else if (_rigid.velocity.y > MIN_MOTION && !this.OnGround2D())
+        if (_rigid.velocity.y > MIN_MOTION && !this.OnGround2D())
             _spriteAnimator.Animation = Jump;
 
         //Falling (In the air)
