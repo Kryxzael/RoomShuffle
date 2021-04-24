@@ -13,13 +13,6 @@ public class InventoryDisplayPage : DebugPage
 
     protected override void RunItems(DebugMenu caller)
     {
-        ReadOnly($"<3: {Commons.PlayerHealth.Health} / {Commons.PlayerHealth.MaximumHealth}");
-        ReadOnly($"${Commons.Inventory.Currency}");
-        ReadOnly($"{Commons.Inventory.GeneralKeys} general keys");
-        ReadOnly($"{Commons.Inventory.PuzzleKeys} puzzle keys");
-
-        Separator();
-
         if (Button("Levels and Health ..."))
         {
             caller.NavigationStack.Push(new LevelsDebugPage());
@@ -32,27 +25,19 @@ public class InventoryDisplayPage : DebugPage
 
         Separator();
 
-        for (int i = 0; i < Commons.Inventory.WeaponSlots.Length; i++)
+        if (Button("Give $$$"))
         {
-            WeaponInstance instance = Commons.Inventory.WeaponSlots[i];
+            Commons.Inventory.Currency += 50;
+        }
 
-            if (instance == null)
-            {
-                ReadOnly("(none)");
-            }
-            else
-            {
-                string name = $"{instance.Template.name} [{instance.Durability} / {instance.MaxDurability}]";
+        if (Button("Give General Key"))
+        {
+            Commons.Inventory.GeneralKeys++;
+        }
 
-                if (Cheats.InfiniteAmmo)
-                    name = $"{instance.Template.name} [∞ / ∞]";
-
-                if (i == Commons.Inventory.SelectedWeaponSlot)
-                    name = "*" + name + "*";
-
-                if (Button(name))
-                    Commons.Inventory.SelectedWeaponSlot = i;
-            }
+        if (Button("Give Puzzle Key"))
+        {
+            Commons.Inventory.PuzzleKeys++;
         }
     }
 }
