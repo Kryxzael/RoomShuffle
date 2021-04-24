@@ -256,9 +256,10 @@ MonoBehaviour:
   Idle: {fileID: 11400000, guid: 79a446fd012cf464b973d238d59a3858, type: 2}
   Walk: {fileID: 11400000, guid: 44480e628b2a0de45a2a1af5552f9b4f, type: 2}
   Jump: {fileID: 11400000, guid: 5293022443688b9499f850ec2b9d9dc9, type: 2}
+  Swim: {fileID: 11400000, guid: 866bfa4f6a35ab84ca360a0de666ffa4, type: 2}
   Fall: {fileID: 11400000, guid: 3b785838134452d498cc1645e8574474, type: 2}
-  Crouch: {fileID: 11400000, guid: 36220c42c8d5aa34fac1dc9ac7218ea7, type: 2}
-  LookUp: {fileID: 11400000, guid: 4405182fd3380d64ab0f06d3adc6f471, type: 2}
+  Slide: {fileID: 11400000, guid: a5c0372584b06cc439565f47592a8597, type: 2}
+  Fire: {fileID: 11400000, guid: b958d971c1ef79640b0ecc93c4dd83c2, type: 2}
 --- !u!114 &857590341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513931c30d5b0234bbdff12e549fabe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lastSubmergeState: 0
+  _animator: {fileID: 0}
   SwimForce: 10
   JumpOutForce: 20
   MaxAscensionSpeed: 10

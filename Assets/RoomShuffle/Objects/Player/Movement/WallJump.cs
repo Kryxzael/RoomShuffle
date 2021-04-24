@@ -12,10 +12,12 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Flippable))]
 public class WallJump : MonoBehaviour
 {
     private Rigidbody2D _rigid;
     private Collider2D _collider;
+    private Flippable _flippable;
 
     [Tooltip("The force that will be applied by a wall jump")]
     public float WallJumpForce = 10f;
@@ -23,10 +25,13 @@ public class WallJump : MonoBehaviour
     [Tooltip("The maximum speed the player is allowed to fall when adjacent to a wall and ready to wall jump")]
     public float MaxFallSpeedOnWall = 5f;
 
+    public bool NextToWall { get; private set; }
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _flippable = GetComponent<Flippable>();
     }
 
     private void Update()
@@ -39,10 +44,10 @@ public class WallJump : MonoBehaviour
         Vector2? wallNormal = GetWallNormal();
 
         //If there is an adjacent wall
-        if (wallNormal != null)
-        {
-            DebugScreenDrawer.Enable("wallang", "wallang: " + Vector2.Angle(wallNormal.Value, Vector2.up));
+        NextToWall = wallNormal != null && Mathf.Sign(wallNormal.Value.x) == -_flippable.DirectionSign;
 
+        if (NextToWall)
+        {
             //If the player attempts to jump while next to a wall, create a wall jump
             if (Input.GetButtonDown("Jump") && !this.OnGround2D())
             {
@@ -52,10 +57,6 @@ public class WallJump : MonoBehaviour
 
             //Restrict maximum falling speed
             _rigid.velocity = _rigid.velocity.SetY(Mathf.Max(_rigid.velocity.y, -MaxFallSpeedOnWall));        
-        }
-        else
-        {
-            DebugScreenDrawer.Enable("wallang", "wallang: N/A");
         }
     }
 

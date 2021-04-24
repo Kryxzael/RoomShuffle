@@ -10,6 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteAnimator))]
 [RequireComponent(typeof(Flippable))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(WallJump))]
 public class CharacterAnimator : MonoBehaviour
 {
     [Header("Animations")]
@@ -22,20 +23,33 @@ public class CharacterAnimator : MonoBehaviour
     [Tooltip("The animation to use when the character is moving up")]
     public SpriteAnimation Jump;
 
+    [Tooltip("The animation to use when the character is underwater")]
+    public SpriteAnimation Swim;
+
     [Tooltip("The animation to use when the character is moving down")]
     public SpriteAnimation Fall;
+
+    [Tooltip("The animation to use when the character is sliding down a wall-jumpable wall")]
+    public SpriteAnimation Slide;
+
+    [Tooltip("The animation to use when the character is firing a weapon")]
+    public SpriteAnimation Fire;
 
     /* *** */
 
     private Rigidbody2D _rigid;
     private SpriteAnimator _spriteAnimator;
+    private WallJump _wallJump;
     private Flippable _flippable;
+
+    private RenewableLazy<PlayerWeaponShooter> _playerShooter = new RenewableLazy<PlayerWeaponShooter>(() => FindObjectOfType<PlayerWeaponShooter>());
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _spriteAnimator = GetComponent<SpriteAnimator>();
         _flippable = GetComponent<Flippable>();
+        _wallJump = GetComponent<WallJump>();
     }
 
     void Update()
@@ -70,13 +84,31 @@ public class CharacterAnimator : MonoBehaviour
          * Set animation
          */
 
+        //Shooting
+        if ((System.DateTime.Now - Commons.Inventory.LastFireTime).TotalSeconds <= 0.1f)
+            _spriteAnimator.Animation = Fire;
+
+        //Swimming
+        else if (Water.IsSubmerged(_rigid) && !this.OnGround2D())
+            _spriteAnimator.Animation = Swim;
+
         //Jumping (Moving up)
-        if (_rigid.velocity.y > MIN_MOTION && !this.OnGround2D())
+        else if (_rigid.velocity.y > MIN_MOTION && !this.OnGround2D())
             _spriteAnimator.Animation = Jump;
 
         //Falling (In the air)
         else if (!this.OnGround2D())
-            _spriteAnimator.Animation = Fall;
+        {
+            if (_wallJump.NextToWall)
+            {
+                _spriteAnimator.Animation = Slide;
+            }
+            else
+            {
+                _spriteAnimator.Animation = Fall;
+            }
+        }
+
 
         //Falling (Moving laterally)
         else if (Mathf.Abs(_rigid.velocity.x) > MIN_MOTION)

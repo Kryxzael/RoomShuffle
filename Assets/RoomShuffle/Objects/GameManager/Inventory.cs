@@ -54,6 +54,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the last time the player fired a weapon
+    /// </summary>
+    public DateTime LastFireTime { get; private set; }
+
     [Tooltip("The amount of spendable currency the player has")]
     public int Currency;
 
@@ -80,14 +85,21 @@ public class Inventory : MonoBehaviour
             if (SelectedWeapon == null || (SelectedWeapon.Durability == 0 && !Cheats.InfiniteAmmo))
             {
                 if (_fallbackWeaponInstance.CanFire(ignoreDurability: true))
+                {
                     _fallbackWeaponInstance.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
+                    LastFireTime = DateTime.Now;
+                }
+                    
             }
 
             //Player has weapon. Fire it if it can be fired
             else
             {
                 if (SelectedWeapon.CanFire(ignoreDurability: false))
+                {
                     SelectedWeapon.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
+                    LastFireTime = DateTime.Now;
+                }
             }
         }
 
