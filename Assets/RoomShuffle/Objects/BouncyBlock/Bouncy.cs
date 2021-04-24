@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using RoomShuffle.Defaults;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class Bouncy : MonoBehaviour
 
     private float _playerMaxSpeed;
     private float _noSpeedCapTimeLeft = 0;
+    private Camera _mainCamera;
 
     private MultiSoundPlayer _multiSoundPlayer;
 
@@ -29,6 +31,8 @@ public class Bouncy : MonoBehaviour
         _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
 
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
+        
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -52,18 +56,20 @@ public class Bouncy : MonoBehaviour
         /*
          * Sound
          */
-        
-        //Play sound at normal volume if collision is player
-        if (collision.gameObject.IsPlayer())
+
+        if (IsBounceOnScreen(collision.contacts.First().point, _mainCamera))
         {
-            _multiSoundPlayer.PlaySound();
+            //Play sound at normal volume if collision is player
+            if (collision.gameObject.IsPlayer())
+            {
+                _multiSoundPlayer.PlaySound();
+            }
+            //Play sound at 40% volume
+            else if (!collision.gameObject.GetComponent<Projectile>())
+            {
+                _multiSoundPlayer.PlaySound(0,1,0.4f);
+            }
         }
-        //Play sound at 40% volume
-        else if (!collision.gameObject.GetComponent<Projectile>())
-        {
-            _multiSoundPlayer.PlaySound(0,1,0.4f);
-        }
-        
 
         /*
          * Collision logic
@@ -109,5 +115,25 @@ public class Bouncy : MonoBehaviour
             _jumpController.Value.CaptureSuccessfulJumpSnapshot();
         }
         
+    }
+    
+    /// <summary>
+    /// Checks if the laser is intersecting with the camera.
+    /// </summary>
+    /// <param name="startPosition"></param>
+    /// <param name="endPosition"></param>
+    /// <returns></returns>
+    static public bool IsBounceOnScreen(Vector2 position, Camera camera)
+    {
+        if (!camera)
+        {
+            return false;
+        }
+
+        float height = 2f * camera.orthographicSize;
+        float width = height * camera.aspect;
+        Bounds cameraBounds = new Bounds(camera.transform.position, new Vector3(width, height, 0));
+        return cameraBounds.Contains(new Vector3(position.x, position.y, camera.transform.position.z));
+
     }
 }
