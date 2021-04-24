@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Jump
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: -879688093049715321, guid: 4b1905d4175ad4e4fb928ab93270bafe, type: 3}
+  - Sprite: {fileID: 6472545519820947264, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
     FrameTimeMultiplier: 1
+  - Sprite: {fileID: 7365574002475698461, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: Infinity
   FrameTime: 1
-  FrameTimeDivider: 60
+  FrameTimeDivider: 3

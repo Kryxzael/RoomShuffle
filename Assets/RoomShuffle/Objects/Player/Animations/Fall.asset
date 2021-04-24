@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fall
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: -7262510225554307482, guid: 4b1905d4175ad4e4fb928ab93270bafe, type: 3}
+  - Sprite: {fileID: -5319882733741912588, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
   FrameTimeDivider: 60

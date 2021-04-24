@@ -13,9 +13,21 @@ MonoBehaviour:
   m_Name: Walk
   m_EditorClassIdentifier: 
   Frames:
-  - Sprite: {fileID: 2558153338994370982, guid: 4b1905d4175ad4e4fb928ab93270bafe, type: 3}
-    FrameTimeMultiplier: 2
-  - Sprite: {fileID: 20836026226011319, guid: 4b1905d4175ad4e4fb928ab93270bafe, type: 3}
+  - Sprite: {fileID: -1182821291677670348, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -4709456396536258026, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -4529042392078601758, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -7446026091647042388, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 5938012242645255967, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -4245738604243887485, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: 2473453845335418800, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
+    FrameTimeMultiplier: 1
+  - Sprite: {fileID: -3287367053296241113, guid: d66fc559c389d984eb0b8b588fc428d1, type: 3}
     FrameTimeMultiplier: 1
   FrameTime: 1
   FrameTimeDivider: 10
