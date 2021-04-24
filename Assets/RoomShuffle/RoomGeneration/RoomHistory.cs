@@ -52,7 +52,19 @@ public class RoomHistory : IEnumerable<RoomParameters>
     /// <returns></returns>
     public int RoomsSinceMatchOfPredicate(Func<RoomParameters, bool> predicate)
     {
-        return _history.TakeWhile(i => !predicate(i)).Count();
+        var count = 0;
+
+        foreach (var i in _history)
+        {
+            if (predicate(i))
+                return count;
+
+
+            if (!i.Class.IsSafeRoom())
+                count++;
+        }
+
+        return count;
     }
 
     /// <summary>
