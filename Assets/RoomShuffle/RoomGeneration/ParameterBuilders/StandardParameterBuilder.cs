@@ -80,21 +80,21 @@ public class StandardParameterBuilder : ParameterBuilder
          */
 
         //Time for a shop
-        if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick())
+        if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick(random))
         {
             output.Class = RoomClass.Shop;
             nextLayout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
         }
 
         //Time for a puzzle
-        else if (history.RoomsSinceClass(RoomClass.Puzzle) >= PuzzleFrequency.Pick())
+        else if (history.RoomsSinceClass(RoomClass.Puzzle) >= PuzzleFrequency.Pick(random))
         {
             output.Class = RoomClass.Puzzle;
             nextLayout = NextLayout(ref _puzzleLayoutEnumerator, Rooms.PuzzleRooms, random);
         }
 
         //Time for a eradication room
-        else if (history.RoomsSinceClass(RoomClass.Eradication) >= EradicationFrequency.Pick())
+        else if (history.RoomsSinceClass(RoomClass.Eradication) >= EradicationFrequency.Pick(random))
         {
             output.Class = RoomClass.Eradication;
             nextLayout = NextLayout(ref _eradicationLayoutEnumerator, Rooms.EradicationRooms, random);

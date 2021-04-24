@@ -45,6 +45,7 @@ public struct RandomValueBetween
     /// <returns></returns>
     public float Pick()
     {
+        //TODO: Should these values be inclusive, inclusive instead of inclusive, exclusive?
         return UnityEngine.Random.Range(Minimum, Maximum);
     }
 
@@ -54,7 +55,7 @@ public struct RandomValueBetween
     /// <returns></returns>
     public int PickInt()
     {
-        return UnityEngine.Random.Range((int)Math.Ceiling(Minimum), (int)Math.Floor(Maximum));
+        return UnityEngine.Random.Range(Mathf.CeilToInt(Minimum), Mathf.FloorToInt(Maximum));
     }
 
     /// <summary>
