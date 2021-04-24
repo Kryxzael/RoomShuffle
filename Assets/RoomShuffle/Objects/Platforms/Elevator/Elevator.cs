@@ -15,8 +15,14 @@ public class Elevator : MonoBehaviour
 
     private IEnumerator Start()
     {
+
         var manager = GetComponentInParent<ElevatorManager>();
         Transform lastCheckpoint = null;
+
+        if (!manager)
+        {
+            Debug.Log("There is a heckin elevator cart at " + this.transform.position);
+        }
 
         //Set size of cart
         var spriteRenderer = GetComponent<SpriteRenderer>();

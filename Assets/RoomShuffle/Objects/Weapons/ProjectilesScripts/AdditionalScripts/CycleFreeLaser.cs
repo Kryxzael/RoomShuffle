@@ -135,6 +135,11 @@ public class CycleFreeLaser : MonoBehaviour
     /// <returns></returns>
     private bool IsLaserOnScreen(Vector2 startPosition, Vector2 endPosition)
     {
+        if (!_mainCamera)
+        {
+            return false;
+        }
+
         float height = 2f * _mainCamera.orthographicSize;
         float width = height * _mainCamera.aspect;
         Bounds cameraBounds = new Bounds(_mainCamera.transform.position, new Vector3(width, height, 0));

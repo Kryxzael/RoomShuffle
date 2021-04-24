@@ -37,6 +37,6 @@ public class TextSmack : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        transform.localScale = originalScaleVector;
+        transform.localScale = new Vector3(originalScaleVector.x, originalScaleVector.y, originalScaleVector.x);
     }
 }
