@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -37,6 +39,10 @@ public class Laser : MonoBehaviour
 
     /* *** */
 
+    private LaserAudio _laserAudio;
+    private Camera _mainCamera;
+    private bool _isVisible;
+
     /// <summary>
     /// Is the laser currently active
     /// </summary>
@@ -48,6 +54,13 @@ public class Laser : MonoBehaviour
 
         //The hurtbox of this object isn't used normally (with collision) but is applied by the laser programmatically
         _hurtbox = GetComponent<HurtBox>();
+
+        _laserAudio = Commons.AudioManager.GetComponent<LaserAudio>();
+    }
+
+    private void Start()
+    {
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -99,6 +112,7 @@ public class Laser : MonoBehaviour
         //Laser is firing
         if (IsOn)
         {
+
             /*
              * Apply hurtbox
              */
@@ -117,6 +131,9 @@ public class Laser : MonoBehaviour
 
             //Set firing material
             _lineRenderer.material = FiringMaterial;
+
+            _isVisible = IsLaserOnScreen(start, end) || _isVisible;
+
         }
 
         //Laser is not firing
@@ -125,5 +142,50 @@ public class Laser : MonoBehaviour
             //Set charge-up material
             _lineRenderer.material = ChargingMaterial;
         }
+        
+        //add laser to active laser list (to play audio)
+        if (_isVisible && IsOn)
+        {
+            _laserAudio.AddLaser(gameObject);
+        }
+        else
+        {
+            _laserAudio.RemoveLaser(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Checks if the laser is intersecting with the camera.
+    /// </summary>
+    /// <param name="startPosition"></param>
+    /// <param name="endPosition"></param>
+    /// <returns></returns>
+    private bool IsLaserOnScreen(Vector2 startPosition, Vector2 endPosition)
+    {
+        float height = 2f * _mainCamera.orthographicSize;
+        float width = height * _mainCamera.aspect;
+        Bounds cameraBounds = new Bounds(_mainCamera.transform.position, new Vector3(width, height, 0));
+        
+        Ray ray = new Ray(startPosition, endPosition - startPosition);
+            
+        bool intersecting = cameraBounds.IntersectRay(ray, out float length);
+
+        return (length <= Vector2.Distance(startPosition, endPosition) && intersecting);
+
+    }
+
+    private void OnBecameVisible()
+    {
+        _isVisible = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        _isVisible = false;
+    }
+
+    private void OnDestroy()
+    {
+        _laserAudio.RemoveLaser(gameObject);
     }
 }

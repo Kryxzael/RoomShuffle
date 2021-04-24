@@ -12,6 +12,9 @@ public class CycleFreeLaser : MonoBehaviour
 {
     private LineRenderer _lineRenderer;
     private HurtBox _hurtbox;
+    private LaserAudio _laserAudio;
+
+    private bool _isVisible;
 
     /* *** */
 
@@ -38,12 +41,17 @@ public class CycleFreeLaser : MonoBehaviour
 
     private float _time;
 
+    private Camera _mainCamera;
+
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
 
         //The hurtbox of this object isn't used normally (with collision) but is applied by the laser programmatically
         _hurtbox = GetComponent<HurtBox>();
+
+        _laserAudio = Commons.AudioManager.GetComponent<LaserAudio>();
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -87,6 +95,7 @@ public class CycleFreeLaser : MonoBehaviour
             //For each hitbox that was hit, deal damage with the hurtbox
             foreach (var i in hits)
             {
+
                 var hitbox = i.collider.GetComponent<Hitbox>();
 
                 if (hitbox == null)
@@ -105,5 +114,51 @@ public class CycleFreeLaser : MonoBehaviour
             //Set charge-up material
             _lineRenderer.material = ChargingMaterial;
         }
+
+        _isVisible = IsLaserOnScreen(start, end) || _isVisible;
+
+        if (IsOn && _isVisible)
+        {
+            _laserAudio.AddLaser(gameObject);
+        }
+        else
+        {
+            _laserAudio.RemoveLaser(gameObject);
+        }
+    }
+    
+    /// <summary>
+    /// Checks if the laser is intersecting with the camera.
+    /// </summary>
+    /// <param name="startPosition"></param>
+    /// <param name="endPosition"></param>
+    /// <returns></returns>
+    private bool IsLaserOnScreen(Vector2 startPosition, Vector2 endPosition)
+    {
+        float height = 2f * _mainCamera.orthographicSize;
+        float width = height * _mainCamera.aspect;
+        Bounds cameraBounds = new Bounds(_mainCamera.transform.position, new Vector3(width, height, 0));
+        
+        Ray ray = new Ray(startPosition, endPosition - startPosition);
+            
+        bool intersecting = cameraBounds.IntersectRay(ray, out float length);
+
+        return (length <= Vector2.Distance(startPosition, endPosition) && intersecting);
+
+    }
+    
+    private void OnBecameVisible()
+    {
+        _isVisible = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        _isVisible = false;
+    }
+    
+    private void OnDestroy()
+    {
+        _laserAudio.RemoveLaser(gameObject);
     }
 }
