@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &828175532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1859639223865566493, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+  m_PrefabInstance: {fileID: 8590704836912431958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &828175537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828175532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90cd7303371855449499df9672f2648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmackSpeed: 0.008
+  SmackMaxSize: {x: 2, y: 2, z: 2}
+  SmackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0031967163
+      value: 0.49764252
+      inSlope: 1.3938874
+      outSlope: 1.3938874
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.34983766
+      value: 0.9897327
+      inSlope: 0.13736904
+      outSlope: 0.13736904
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.85203415
+      value: 0.4276998
+      inSlope: -0.3017646
+      outSlope: -0.3017646
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9968262
+      value: 0.5023575
+      inSlope: 0.5156201
+      outSlope: 0.5156201
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &849031686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1996377099, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
@@ -686,6 +747,26 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 392401065643352595, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 560
+      objectReference: {fileID: 0}
+    - target: {fileID: 392401065643352595, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 392401065643352595, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392401065643352595, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392401065643352595, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1475885064819581927, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_TagString
       value: CountdownTimer
@@ -697,6 +778,18 @@ PrefabInstance:
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808763575985346629, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808763575985346629, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808763575985346629, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3951372522608969565, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: SlowDownSprite
