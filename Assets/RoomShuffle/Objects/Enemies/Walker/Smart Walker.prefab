@@ -27,6 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 3
+  Vertical: 0
 --- !u!114 &7980152369121438433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,6 +49,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0098021
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7495419
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0011319073
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12560612
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3681573580406778509, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Name
       value: Behavior

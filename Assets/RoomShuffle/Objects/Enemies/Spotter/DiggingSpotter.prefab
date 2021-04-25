@@ -58,14 +58,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DigSpeed: 3
   RunSpeed: 5
-  FumbleWaitTime:
-    Minimum: 3
-    Maximum: 7
   IdleAnimation: {fileID: 11400000, guid: fc4fa355fdd970642b47b509a91516e8, type: 2}
   DigIdleAnimation: {fileID: 11400000, guid: 9565c7e1d03936a47bdde3d2c13e1c26, type: 2}
   DigChaseAnimation: {fileID: 11400000, guid: 9565c7e1d03936a47bdde3d2c13e1c26, type: 2}
   ChaseAnimation: {fileID: 11400000, guid: d44f37331a44c9b468128c06a2457b6b, type: 2}
-  PopUpJumpForce: 18
+  PopUpJumpVelocity: 18
 --- !u!1 &8013624280759930989
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +127,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6953025
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9560125
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.002348721
+      objectReference: {fileID: 0}
+    - target: {fileID: 894127540491368612, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12096
+      objectReference: {fileID: 0}
     - target: {fileID: 3955319330377783456, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Size.x
       value: 0.6949034
