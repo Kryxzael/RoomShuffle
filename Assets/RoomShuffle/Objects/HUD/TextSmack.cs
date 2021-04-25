@@ -19,7 +19,7 @@ public class TextSmack : MonoBehaviour
         float lerpTime = 0f;
         while (lerpTime < 1f)
         {
-            transform.localScale = Vector3.Lerp(originalScaleVector / 2, SmackMaxSize, SmackCurve.Evaluate(lerpTime));
+            transform.localScale = Vector3.Lerp(new Vector2(0,0), SmackMaxSize, SmackCurve.Evaluate(lerpTime));
 
             /*
              * So about '240f'. Here's a story about the TextSmack script.
