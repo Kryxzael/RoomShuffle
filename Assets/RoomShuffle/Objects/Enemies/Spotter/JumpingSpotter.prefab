@@ -21,6 +21,11 @@ MonoBehaviour:
     Minimum: 1
     Maximum: 2
   GoHomeTime: 5
+  IdleAnimation: {fileID: 11400000, guid: 1a51981896bd7c9488d5859308e4cbd1, type: 2}
+  JumpAnimation: {fileID: 11400000, guid: 7472195fe57644747a13cab3d9483765, type: 2}
+  SpotAnimation: {fileID: 11400000, guid: 1adada22a3ee4d74891b486f9aa76cbf, type: 2}
+  ChaseAnimation1: {fileID: 11400000, guid: 6454026408467cd4f9f19f5f0b5df20a, type: 2}
+  ChaseAnimation2: {fileID: 11400000, guid: a04b4956263837843892bf2d503de7d1, type: 2}
 --- !u!114 &810171592110291560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +56,20 @@ MonoBehaviour:
   SpottingRadius: 5
   SpottingRadiusChasingScale: 2
   EnemiescanSeeTroughEnemies: 0
+--- !u!114 &7861861922264053573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73681772342839619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b315454b50c11d84b9a21dfa6333c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 0}
+  PlaybackSpeed: 1
 --- !u!1001 &4736981415762533974
 PrefabInstance:
   m_ObjectHideFlags: 0

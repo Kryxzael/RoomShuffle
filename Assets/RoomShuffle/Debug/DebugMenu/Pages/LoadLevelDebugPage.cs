@@ -19,7 +19,7 @@ public class LoadLevelDebugPage : DebugPage
             caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Puzzles", Commons.RoomGenerator.RoomParameterBuilder.Rooms.PuzzleRooms));
 
         if (Button("Eradications ... "))
-            caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Eradications", Commons.RoomGenerator.RoomParameterBuilder.Rooms.PlatformingRooms));
+            caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Eradications", Commons.RoomGenerator.RoomParameterBuilder.Rooms.EradicationRooms));
 
         if (Button("Shops ... "))
             caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Shops", Commons.RoomGenerator.RoomParameterBuilder.Rooms.ShopRooms));
