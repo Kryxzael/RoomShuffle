@@ -59,17 +59,31 @@ public static class CommonExtensions
         {
             return default;
         }
+
+        //If the collider is a box collider. check get the edge radius and add that to the new Bounds object
+        float edgeRadius = 0;
+        if (collider is BoxCollider2D)
+        {
+            edgeRadius = ((BoxCollider2D) collider).edgeRadius;
+        }
+
+        //Create bounds object based on collider.bounds, but add the edgeradius
+        Bounds colliderBounds = new Bounds(collider.bounds.center,
+            new Vector3(collider.bounds.size.x + (edgeRadius * 2), collider.bounds.size.y + (edgeRadius * 2),
+                collider.bounds.size.z));
+        
+            
         //Does a horizontal raycasting under the object's collider to check if it collides with another collider
         if (layers.Any())
         {
-            return Physics2D.Raycast(new Vector2(collider.bounds.min.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE, LayerMask.GetMask(layers));
+            return Physics2D.Raycast(new Vector2(colliderBounds.min.x, colliderBounds.min.y), Vector2.down, RAY_DISTANCE, LayerMask.GetMask(layers));
         }
 
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(new Vector2(collider.bounds.min.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE, DefaultGroundMask))
+        if (hit = Physics2D.Raycast(new Vector2(colliderBounds.min.x, colliderBounds.min.y), Vector2.down, RAY_DISTANCE, DefaultGroundMask))
             return hit;
 
-        if (hit = Physics2D.Raycast(new Vector2(collider.bounds.max.x, collider.bounds.min.y), Vector2.down, RAY_DISTANCE, DefaultGroundMask))
+        if (hit = Physics2D.Raycast(new Vector2(colliderBounds.max.x, colliderBounds.min.y), Vector2.down, RAY_DISTANCE, DefaultGroundMask))
             return hit;
 
         return default;
