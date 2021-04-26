@@ -37,9 +37,9 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         
-        //Get audio source
+        //Get audio source. This is only in use when "UseGUI is false"
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
-        
+
         //Get textmeshpro component
         TMP_GUI = GetComponent<TextMeshProUGUI>();
 
@@ -50,6 +50,7 @@ public class Timer : MonoBehaviour
         }
 
         TMP = GetComponent<TextMeshPro>();
+        
     }
 
     //TODO Remove this nonsense in update
@@ -190,7 +191,12 @@ public class Timer : MonoBehaviour
     private IEnumerator CoStartCountdown(float seconds)
     {
         CurrentSeconds = seconds;
-        StartCoroutine(MakeTickNoise());
+
+        if (!UseGUI)
+        { 
+            StartCoroutine(MakeTickNoise());
+        }
+
         SetColor(Color.white);
         
         transform.localScale = UseGUI ? Vector3.one * 1f : transform.localScale;

@@ -64,10 +64,17 @@ public class RoomEffectController : MonoBehaviour
 
     private void Update()
     {
-        if (Commons.CurrentRoomEffects.HasFlag(RoomEffects.Timer) && Commons.CountdownTimer.CurrentSeconds <= 0)
+        if ((Commons.CurrentRoomEffects.HasFlag(RoomEffects.Timer) || Commons.SpeedRunMode) && Commons.CountdownTimer.CurrentSeconds <= 0)
         {
-            Commons.PlayerHealth.SoftKill();
-            Commons.RespawnPlayer();
+            if (Commons.SpeedRunMode)
+            {
+                Commons.PlayerHealth.Kill();
+            }
+            else
+            {
+                Commons.PlayerHealth.SoftKill(); 
+                Commons.RespawnPlayer();
+            }
 
             Commons.CountdownTimer.StopCountdown();
 
@@ -144,6 +151,9 @@ public class RoomEffectController : MonoBehaviour
     /// </summary>
     private void Timer(bool enabled, RoomParameters room)
     {
+        if (Commons.SpeedRunMode)
+            return;
+        
         if (enabled)
         {
             Commons.CountdownTimer.StartCountdown(room.Layout.TimerEffectSeconds);

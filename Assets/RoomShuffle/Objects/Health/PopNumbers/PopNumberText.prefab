@@ -211,6 +211,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  Flip: 1
 --- !u!114 &2406372164719404058
 MonoBehaviour:
   m_ObjectHideFlags: 0

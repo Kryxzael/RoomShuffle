@@ -26,6 +26,9 @@ public class PopNumber : MonoBehaviour
     [Tooltip("The curve used to lerp the values")]
     public AnimationCurve AnimationCurve;
 
+    [Tooltip("If the object should be flipped by the camera")]
+    public bool Flip = true;
+
     /* *** */
 
     private TextMeshPro _textMeshPro;
@@ -60,7 +63,10 @@ public class PopNumber : MonoBehaviour
             );
 
             //Override for flipped camera
-            transform.localScale = transform.localScale.SetX(transform.localScale.x * (FlipCamera.IsFlipped ? -1f : 1f));
+            if (Flip)
+            {
+                transform.localScale = transform.localScale.SetX(transform.localScale.x * (FlipCamera.IsFlipped ? -1f : 1f));
+            }
 
             transform.position = Vector3.Lerp(
                 a: startPosition, 

@@ -16,6 +16,8 @@ using UnityEngine;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class EradicationProgress : MonoBehaviour
 {
+    public bool UseOnlyOnSpeedRunMode = false;
+    
     private TextMeshProUGUI _label;
 
     [Tooltip("The formatting string used to display the text")]
@@ -28,8 +30,18 @@ public class EradicationProgress : MonoBehaviour
 
     private void Update()
     {
-        if (Commons.RoomGenerator.CurrentRoomConfig.Class != RoomClass.Eradication)
+
+        if (UseOnlyOnSpeedRunMode && !Commons.SpeedRunMode)
             return;
+
+        if (!UseOnlyOnSpeedRunMode && Commons.SpeedRunMode)
+            return;
+
+        if (Commons.RoomGenerator.CurrentRoomConfig.Class != RoomClass.Eradication)
+        {
+            _label.text = "";
+            return;
+        }
 
         _label.text = string.Format(EradicationTextFormat, arg0: FindObjectsOfType<EnemyBase>().Length);
     }

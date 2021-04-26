@@ -78,7 +78,6 @@ public class RoomGenerator : MonoBehaviour
     /// The history of the room generator
     /// </summary>
     public RoomHistory History = new RoomHistory();
- 
 
     private void Awake()
     {
@@ -99,6 +98,16 @@ public class RoomGenerator : MonoBehaviour
     /// </summary>
     public void GenerateNext()
     {
+        
+        /*
+         *  Add to seconds to speedrun timer
+         */
+
+        if (Commons.SpeedRunMode && History.Any())
+        {
+            Commons.CountdownTimer.AddTime(History.First().Layout.TimerEffectSeconds / 2);
+        }
+
         /*
          * Destroy current room and background
          */

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,6 +65,10 @@ public static class Commons
         () => GameObject.FindWithTag("CountdownTimer").GetComponent<Timer>()
     );
     
+    private static RenewableLazy<TextMeshProUGUI> _secondaryUIText { get; } = new RenewableLazy<TextMeshProUGUI>(
+        () => GameObject.FindWithTag("SecondaryUIText").GetComponent<TextMeshProUGUI>()
+    );
+    
     private static RenewableLazy<GameObject> _redCoinsCountdownTimerUI { get; } = new RenewableLazy<GameObject>(
         () => GameObject.FindWithTag("RedCoinsCountdownTimer")
     );
@@ -109,6 +113,11 @@ public static class Commons
     /// Gets the game's transition system
     /// </summary>
     public static TransitionController TransitionController => _transitionController.Value;
+    
+    /// <summary>
+    /// If the game should be in speedrun mode
+    /// </summary>
+    public static bool SpeedRunMode;
 
     /*
      * Player
@@ -149,6 +158,11 @@ public static class Commons
     /// Gets the CountdownTimer in UI
     /// </summary>
     public static Timer CountdownTimer => _countdownTimerUI.Value;
+    
+    /// <summary>
+    /// Gets the CountdownTimer in UI
+    /// </summary>
+    public static TextMeshProUGUI SecondaryUIText => _secondaryUIText.Value;
     
     /// <summary>
     /// Gets the CountdownTimer in UI

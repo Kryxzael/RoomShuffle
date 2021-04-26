@@ -8,8 +8,17 @@ using UnityEngine.UI;
 /// </summary>
 public class Exit : MonoBehaviour
 {
+
+    [Tooltip("If the exit should enable speedrun mode")]
+    public bool EnableSpeedRunMode = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (EnableSpeedRunMode)
+        {
+            Commons.SpeedRunMode = true;
+            Commons.CountdownTimer.ResetCountdown(10);
+        }
+
         //The player has reached the room's exit
         if (collision.gameObject.IsPlayer())
         {

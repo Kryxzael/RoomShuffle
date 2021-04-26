@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3469888029550492064}
   - component: {fileID: 3469888029550492065}
   - component: {fileID: 3469888029550492066}
+  - component: {fileID: 7727853473548900012}
   m_Layer: 5
   m_Name: NegativePopNumber
   m_TagString: Untagged
@@ -175,3 +176,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7727853473548900012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469888029550492068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdad30e59ba58044395326909f00c53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

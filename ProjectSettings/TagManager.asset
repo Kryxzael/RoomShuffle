@@ -11,6 +11,7 @@ TagManager:
   - CurrencyText
   - RedCoinsCountdownTimer
   - AudioManager
+  - SecondaryUIText
   layers:
   - Default
   - TransparentFX

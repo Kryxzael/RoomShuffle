@@ -148,17 +148,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.0031967163
       value: 0.49764252
-      inSlope: 1.3938874
-      outSlope: 1.3938874
+      inSlope: 0.575286
+      outSlope: 0.575286
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.34983766
-      value: 0.9897327
-      inSlope: 0.13736904
-      outSlope: 0.13736904
+      time: 0.3519739
+      value: 0.7019672
+      inSlope: 0.013408661
+      outSlope: 0.013408661
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -166,8 +166,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.85203415
       value: 0.4276998
-      inSlope: -0.3017646
-      outSlope: -0.3017646
+      inSlope: -0.016424268
+      outSlope: -0.016424268
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -714,8 +714,8 @@ GameObject:
   - component: {fileID: 2087861861}
   - component: {fileID: 2087861860}
   m_Layer: 5
-  m_Name: SecondaryTimer
-  m_TagString: Untagged
+  m_Name: SecondaryUIText
+  m_TagString: SecondaryUIText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
