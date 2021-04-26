@@ -19,8 +19,27 @@ public class RoomLayoutCollection : ScriptableObject
     public List<RoomLayout> BossRooms = new List<RoomLayout>();
 
     [Header("== TRANSITIONAL ROOMS ==")]
-    public List<RoomLayout> TransitionRooms = new List<RoomLayout>();
-    public List<RoomLayout> CrossroadRooms = new List<RoomLayout>();
+    public RoomLayout TransitionLeftToTop;
+    public RoomLayout TransitionLeftToBottom;
+
+    [Space]
+    public RoomLayout TransitionRightToTop;
+    public RoomLayout TransitionRightToBottom;
+
+    [Space]
+    public RoomLayout TransitionTopToLeft;
+    public RoomLayout TransitionTopToRight;
+
+    [Space]
+    public RoomLayout TransitionBottomToLeft;
+    public RoomLayout TransitionBottomToRight;
+
+    [Space]
+    public RoomLayout TransitionBottomToBottom;
+    public RoomLayout TransitionTopToTop;
+    public RoomLayout TransitionLeftToLeft;
+    public RoomLayout TransitionRightToRight;
+
     public List<RoomLayout> RespiteRooms = new List<RoomLayout>();
 
     [Header("== SPECIAL ROOMS ==")]
@@ -29,51 +48,57 @@ public class RoomLayoutCollection : ScriptableObject
     public List<RoomLayout> SecretRooms = new List<RoomLayout>();
 
     /// <summary>
-    /// Gets a transition room between the last and the next room
+    /// Gets the transition room that would fit between a room with the provided exit side and another room with the provided entrance side
     /// </summary>
-    /// <param name="last"></param>
-    /// <param name="next"></param>
+    /// <param name="preTransitionExit"></param>
+    /// <param name="postTransitionEntrance"></param>
     /// <returns></returns>
-    public (RoomLayout layout, bool shouldFlip, EntranceExitSides entranceSide, EntranceExitSides exitSide) CreateTransition(RoomParameters last, RoomLayout next, System.Random random)
+    public RoomLayout GetTransitionRoomByDirections(EntranceExitSides preTransitionExit, EntranceExitSides postTransitionEntrance)
     {
-        //Start with the next room, to see if no transition room is needed
-        var candidate = next;
-
-        //Choose the entrance position based on the last exit position
-        var entrance = last.Exit switch
+        if (preTransitionExit == EntranceExitSides.Bottom)
         {
-            EntranceExitSides.Top => EntranceExitSides.Bottom,
-            EntranceExitSides.Right => EntranceExitSides.Left,
-            EntranceExitSides.Bottom => EntranceExitSides.Top,
-            EntranceExitSides.Left => EntranceExitSides.Left, //Right-entranced rooms are just flipped
-            _ => throw new InvalidOperationException()
-        };
-
-        //Choose if the room is flipped
-        bool shouldFlip = last.Exit switch
-        {
-            EntranceExitSides.Top => random.Next(2) == 0,
-            EntranceExitSides.Right => last.FlipHorizontal,
-            EntranceExitSides.Bottom => random.Next(2) == 0,
-            EntranceExitSides.Left => !last.FlipHorizontal,
-            _ => throw new InvalidOperationException()
-        };
-
-        //Choose the exit position
-        //var exit = next.GetRandomExit(random, entrance);
-        var exit = next.GetRandomExit(random, EntranceExitSides.None);
-
-        //If the current candidate does not have the provided entrance or exit, choose a new candidate (transition room)
-        while (!candidate.EntranceSides.HasFlag(entrance) || !candidate.ExitSides.HasFlag(exit))
-        {
-            //Choose a random transition room
-            candidate = TransitionRooms[random.Next(TransitionRooms.Count)];
-
-            //Choose a new exit based on the next room's available exits
-            //Note: This call makes it so that multiple transitions may spawn after each other and could probably be optimized
-            exit = candidate.GetRandomExit(random, entrance);
+            return postTransitionEntrance switch
+            {
+                EntranceExitSides.Bottom => TransitionTopToTop,
+                EntranceExitSides.Right => TransitionTopToLeft,
+                EntranceExitSides.Left => TransitionTopToRight,
+                _ => null
+            };
         }
 
-        return (candidate, shouldFlip, entrance, exit);
+        else if (preTransitionExit == EntranceExitSides.Top)
+        {
+            return postTransitionEntrance switch
+            {
+                EntranceExitSides.Top => TransitionBottomToBottom,
+                EntranceExitSides.Right => TransitionBottomToLeft,
+                EntranceExitSides.Left => TransitionBottomToRight,
+                _ => null
+            };
+        }
+
+        else if (preTransitionExit == EntranceExitSides.Left)
+        {
+            return postTransitionEntrance switch
+            {
+                EntranceExitSides.Left => TransitionRightToRight,
+                EntranceExitSides.Top => TransitionRightToBottom,
+                EntranceExitSides.Bottom => TransitionRightToTop,
+                _ => null
+            };
+        }
+
+        else if (preTransitionExit == EntranceExitSides.Right)
+        {
+            return postTransitionEntrance switch
+            {
+                EntranceExitSides.Right => TransitionLeftToLeft,
+                EntranceExitSides.Top => TransitionLeftToBottom,
+                EntranceExitSides.Bottom => TransitionLeftToTop,
+                _ => null
+            };
+        }
+
+        return null;
     }
 }

@@ -19,6 +19,10 @@ public static class Commons
         () => Object.FindObjectOfType<RoomEffectController>()
     );
 
+    private static RenewableLazy<TransitionController> _transitionController { get; } = new RenewableLazy<TransitionController>(
+        () => Object.FindObjectOfType<TransitionController>()
+    );
+
     /* *** */
 
     private static RenewableLazy<GameObject> _playerManager { get; } = new RenewableLazy<GameObject>(
@@ -100,6 +104,11 @@ public static class Commons
     /// Gets the room effect controller of the scene
     /// </summary>
     public static RoomEffectController RoomEffectController => _roomEffectController.Value;
+
+    /// <summary>
+    /// Gets the game's transition system
+    /// </summary>
+    public static TransitionController TransitionController => _transitionController.Value;
 
     /*
      * Player

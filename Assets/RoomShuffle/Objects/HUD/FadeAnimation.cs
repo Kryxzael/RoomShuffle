@@ -6,31 +6,31 @@ using UnityEngine.UI;
 
 public class FadeAnimation : MonoBehaviour
 {
-    public RawImage FadeScreen;
+    public Image FadeScreen;
+    public Mask FadeMask;
 
     public float FadeTime = 0.5f;
 
-    public void BeginFade(Func<IEnumerator> onBetweenFades)
+    public void BeginFade(Func<IEnumerator> onBetweenFades, Func<IEnumerator> onBeforeFade = null, Func<IEnumerator> onAfterFade = null)
     {
         StartCoroutine(CoFade());
 
         IEnumerator CoFade()
         {
-            var color = FadeScreen.color;
+            if (onBeforeFade != null)
+                yield return onBeforeFade();
 
             /*
              * Fade out
              */
 
-            for (float i = FadeScreen.color.a; i <= 1f; i += Time.deltaTime / FadeTime)
+            for (float i = FadeMask.transform.localScale.x; i > 0f; i -= Time.unscaledDeltaTime / FadeTime)
             {
-                color.a = i;
-                FadeScreen.color = color;
+                FadeMask.transform.localScale = new Vector3(i, i, 1f);
                 yield return new WaitForEndOfFrame();
             }
 
-            color.a = 1f;
-            FadeScreen.color = color;
+            FadeMask.transform.localScale = new Vector3(0.0001f, 0.0001f, 1f);
 
             /*
              * Execute handler
@@ -41,15 +41,16 @@ public class FadeAnimation : MonoBehaviour
             /*
              * Fade in
              */
-            for (float i = FadeScreen.color.a; i >= 0f; i -= Time.deltaTime / FadeTime)
+            for (float i = FadeMask.transform.localScale.x; i <= 1f; i += Time.unscaledDeltaTime / FadeTime)
             {
-                color.a = i;
-                FadeScreen.color = color;
+                FadeMask.transform.localScale = new Vector3(i, i, 1f);
                 yield return new WaitForEndOfFrame();
             }
 
-            color.a = 0f;
-            FadeScreen.color = color;
+            FadeMask.transform.localScale = Vector3.one;
+
+            if (onAfterFade != null)
+                yield return onAfterFade();
         }
     }
 
