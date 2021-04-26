@@ -39,6 +39,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LivingTime: 0.1
+--- !u!114 &-6243177296239520106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68695632109433767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90cd7303371855449499df9672f2648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmackSpeed: 0.1
+  SmackMaxSize: {x: 3, y: 3, z: 3}
+  SmackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.5011517
+      outSlope: 0.5011517
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0095215
+      value: 0.5059234
+      inSlope: 0.5011517
+      outSlope: 0.5011517
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &-1991183142901176283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +90,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
+--- !u!114 &1455097435913219977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68695632109433767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b5afa89fa0b6f488718c32e323247a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmackOnStart: 1
+  SmackOnEnable: 0
 --- !u!61 &8587147193739072524
 BoxCollider2D:
   m_ObjectHideFlags: 0

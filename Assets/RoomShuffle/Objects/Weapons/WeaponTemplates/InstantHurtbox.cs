@@ -19,13 +19,18 @@ public class InstantHurtbox : WeaponTemplate
 
     protected override void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction)
     {
+        float rotation = Ammunition.name.Equals("InstantHurtbox") ? UnityEngine.Random.Range(0f, 360f) : 0f;
+
         Projectile newAmmo = Instantiate(
             original: Ammunition,
             position: shooter.GetProjectilesSpawnPoint() + (direction * Distance),
-            rotation: Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f))
+            rotation: Quaternion.Euler(0f, 0f, rotation)
         );
 
-        //newAmmo.Direction = direction;
+        if (rotation == 0)
+        {
+            newAmmo.Direction = direction;   
+        }
 
         WeaponFireHurtbox hurtbox = newAmmo.GetComponentInChildren<WeaponFireHurtbox>();
         hurtbox.Shooter = shooter;

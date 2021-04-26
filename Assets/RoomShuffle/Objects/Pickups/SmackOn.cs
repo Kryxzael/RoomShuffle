@@ -16,11 +16,11 @@ public class SmackOn : MonoBehaviour
     private void Start()
     {
         if (SmackOnStart)
-            _textSmack.Smack();
+            _textSmack.Smack(transform.localScale.x);
     }
     private void OnEnable()
     {
         if (SmackOnEnable)
-            _textSmack.Smack();
+            _textSmack.Smack(transform.localScale.x);
     }
 }
