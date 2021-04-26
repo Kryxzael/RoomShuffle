@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 680402638022792320}
   - component: {fileID: 4280482282808589427}
   - component: {fileID: 5478196027095690663}
-  - component: {fileID: 4140713115511507907}
+  - component: {fileID: 455246537785434223}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -290,8 +290,8 @@ MonoBehaviour:
   MaxAscensionSpeed: 10
   MaxSinkSpeed: 5
   MaxHorizontalSpeed: 5
---- !u!70 &4140713115511507907
-CapsuleCollider2D:
+--- !u!61 &455246537785434223
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -303,9 +303,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008777877, y: -0.07654961}
-  m_Size: {x: 0.31424502, y: 0.8470132}
-  m_Direction: 0
+  m_Offset: {x: 0.015791755, y: -0.09370819}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21469358, y: 0.7462638}
+  m_EdgeRadius: 0.05
 --- !u!1 &8174467094398225650
 GameObject:
   m_ObjectHideFlags: 0
