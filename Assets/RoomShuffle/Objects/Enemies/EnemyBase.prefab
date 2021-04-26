@@ -388,7 +388,7 @@ MonoBehaviour:
   Hitbox: {fileID: 449207418701386351}
   Hurtbox: {fileID: 6549580918581412365}
   SpriteRenderer: {fileID: 8132680883320540839}
-  Collider: {fileID: 0}
+  Collider: {fileID: 894127540491368612}
   HitboxHurtboxCollider: {fileID: 3955319330377783456}
   Rigidbody: {fileID: 7478987885904739896}
   Light: {fileID: 4531955745375408205}
