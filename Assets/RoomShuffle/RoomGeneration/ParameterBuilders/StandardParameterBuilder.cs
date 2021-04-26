@@ -52,7 +52,6 @@ public class StandardParameterBuilder : ParameterBuilder
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
         RoomParameters output = new RoomParameters();
-        RoomLayout nextLayout;
 
         output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
 
@@ -83,28 +82,28 @@ public class StandardParameterBuilder : ParameterBuilder
         if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick(random))
         {
             output.Class = RoomClass.Shop;
-            nextLayout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
+            output.Layout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
         }
 
         //Time for a puzzle
         else if (history.RoomsSinceClass(RoomClass.Puzzle) >= PuzzleFrequency.Pick(random))
         {
             output.Class = RoomClass.Puzzle;
-            nextLayout = NextLayout(ref _puzzleLayoutEnumerator, Rooms.PuzzleRooms, random);
+            output.Layout = NextLayout(ref _puzzleLayoutEnumerator, Rooms.PuzzleRooms, random);
         }
 
         //Time for a eradication room
         else if (history.RoomsSinceClass(RoomClass.Eradication) >= EradicationFrequency.Pick(random))
         {
             output.Class = RoomClass.Eradication;
-            nextLayout = NextLayout(ref _eradicationLayoutEnumerator, Rooms.EradicationRooms, random);
+            output.Layout = NextLayout(ref _eradicationLayoutEnumerator, Rooms.EradicationRooms, random);
         }
 
         //Pick a platforming room
         else
         {
             output.Class = RoomClass.Platforming;
-            nextLayout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
+            output.Layout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
         }
         /*
          * Weapon enumerator
@@ -112,30 +111,37 @@ public class StandardParameterBuilder : ParameterBuilder
         output.WeaponEnumerator = WeaponTemplates
             .OrderBy(i => random.Next())
             .GetEnumerator();
-            
-        
+
+
         /*
-         * Glue rooms together
+         * Glue rooms together with transitions
          */
 
         //Something's in the queue, consume it
         if (_queuedLayout != null)
         {
             output.Class = _queuedClass.Value;
-            nextLayout = _queuedLayout;
+            output.Layout = _queuedLayout;
             _queuedLayout = null;
         }
 
-        //Choose entrance direction, flip state and potentially create a transition room between the last and the queued room
-        (output.Layout, output.FlipHorizontal, output.Entrance, output.Exit) = Rooms.CreateTransition(history.First(), nextLayout, random);
+        //Choose a random entrance and exit
+        output.Entrance = output.Layout.GetRandomEntrance(random);
+        output.Exit = output.Layout.GetRandomExit(random, output.Entrance);
 
-        //If the output's layout is different from what the previous function returned, then a transition has been made
-        //Queue the next layout to have it be generated next
-        if (output.Layout != nextLayout)
+        /*
+         * Check if the room requires a transition
+         */
+        var transitionLayout = Rooms.GetTransitionRoomByDirections(history.First().Exit, output.Entrance);
+
+        //If it does, queue the room and use the transition instead
+        if (transitionLayout)
         {
             _queuedClass = output.Class;
-            _queuedLayout = nextLayout;
+            _queuedLayout = output.Layout;
+
             output.Class = RoomClass.Transition;
+            output.Layout = transitionLayout;
         }
 
         /*
@@ -148,7 +154,7 @@ public class StandardParameterBuilder : ParameterBuilder
                 .GetEnumValues()
                 .Cast<RoomEffects>()
                 .Except(new[] { RoomEffects.None })
-                .Where(i => !nextLayout.ExcludedEffects.HasFlag(i))
+                .Where(i => !output.Layout.ExcludedEffects.HasFlag(i))
                 .OrderBy(i => random.Next())
                 .FirstOrDefault();
         }

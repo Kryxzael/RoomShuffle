@@ -24,9 +24,6 @@ public class LoadLevelDebugPage : DebugPage
         if (Button("Shops ... "))
             caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Shops", Commons.RoomGenerator.RoomParameterBuilder.Rooms.ShopRooms));
 
-        if (Button("Transitions ... "))
-            caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Transitions", Commons.RoomGenerator.RoomParameterBuilder.Rooms.TransitionRooms));
-
         if (Button("Respite ... "))
             caller.NavigationStack.Push(new LoadLevelFromListDebugPage("Respite", Commons.RoomGenerator.RoomParameterBuilder.Rooms.RespiteRooms));
 
