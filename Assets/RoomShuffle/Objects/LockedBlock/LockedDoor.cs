@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using RoomShuffle.Defaults;
 using UnityEngine;
 
 /// <summary>
@@ -7,10 +9,17 @@ using UnityEngine;
 /// </summary>
 public class LockedDoor : MonoBehaviour
 {
-    private bool _playerInRange;
+    public bool _playerInRange { get; private set; }
+
+    private MultiSoundPlayer _multiSoundPlayer;
 
     [Tooltip("The room parameter override object that will generate the secret room")]
     public ParameterBuilderOverride GeneratorOverride;
+
+    private void Start()
+    {
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
+    }
 
     private void Update()
     {
@@ -22,6 +31,10 @@ public class LockedDoor : MonoBehaviour
 
                 Commons.RoomGenerator.RoomParameterBuilderOverrides.Push(Instantiate(GeneratorOverride));
                 Commons.RoomGenerator.GenerateNext();
+            }
+            else
+            {
+                _multiSoundPlayer.PlaySound();
             }
         }
     }

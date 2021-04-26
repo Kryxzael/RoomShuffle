@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,11 +17,11 @@ public class SmackOn : MonoBehaviour
     private void Start()
     {
         if (SmackOnStart)
-            _textSmack.Smack(transform.localScale.x);
+            _textSmack.Smack(Math.Max(transform.localScale.x,1f));
     }
     private void OnEnable()
     {
         if (SmackOnEnable)
-            _textSmack.Smack(transform.localScale.x);
+            _textSmack.Smack(Math.Max(transform.localScale.x,1f));
     }
 }
