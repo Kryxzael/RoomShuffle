@@ -142,6 +142,10 @@ public class StandardParameterBuilder : ParameterBuilder
 
             output.Class = RoomClass.Transition;
             output.Layout = transitionLayout;
+
+            //Transition will have a new entrance-exit
+            output.Entrance = transitionLayout.EntranceSides;
+            output.Exit = transitionLayout.ExitSides;
         }
 
         /*

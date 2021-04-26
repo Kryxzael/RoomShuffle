@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
+//Taken from https://unitycodemonkey.com/video.php?v=XJJl19N2KFM
 public class CutoutMaskUI : Image
 {
     public override Material materialForRendering

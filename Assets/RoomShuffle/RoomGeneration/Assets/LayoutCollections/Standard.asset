@@ -63,11 +63,18 @@ MonoBehaviour:
   - {fileID: 2410021266094607295, guid: 0d057eb3049c7b54eb249e39813b1d88, type: 3}
   - {fileID: 614226423617783542, guid: 39c17ed2a8f9810409c56439a2c4933f, type: 3}
   BossRooms: []
-  TransitionRooms:
-  - {fileID: 2084406279729262953, guid: c91c38dcfc21ae043b53e9e0814dabab, type: 3}
-  - {fileID: 4928483466949914506, guid: bbe0a9db9159aa94c816291edc4b5c2e, type: 3}
-  - {fileID: 4928483466949914506, guid: 26b90b093fb28364bbde734c128d725e, type: 3}
-  CrossroadRooms: []
+  TransitionLeftToTop: {fileID: 4928483466949914506, guid: bbe0a9db9159aa94c816291edc4b5c2e, type: 3}
+  TransitionLeftToBottom: {fileID: 4928483466949914506, guid: 2a4913b9484478b4ead7f9e120ab85ac, type: 3}
+  TransitionRightToTop: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionRightToBottom: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionTopToLeft: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionTopToRight: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionBottomToLeft: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionBottomToRight: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionBottomToBottom: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionTopToTop: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionLeftToLeft: {fileID: 4928483466949914506, guid: b61e7fd70e1615646b099a14ad707a70, type: 3}
+  TransitionRightToRight: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
   RespiteRooms: []
   StartingRooms:
   - {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}

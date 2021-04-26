@@ -14,6 +14,8 @@ public class Entrance : MonoBehaviour
     /// </summary>
     public void SpawnPlayer()
     {
-        Commons.InstantiateInCurrentLevel(Player, transform.position);
+        const float NUDGE = 0.25f;
+
+        Commons.InstantiateInCurrentLevel(Player, transform.position + Vector3.up * NUDGE);
     }
 }

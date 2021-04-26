@@ -44,7 +44,7 @@ public class DemoParameterBuilder : ParameterBuilder
         do
         {
             output.Exit = output.Layout.GetRandomExit(random, EntranceExitSides.None);
-        } while (output.Entrance == output.Exit);
+        } while (output.Entrance == output.Exit && output.Layout.EntranceSides != output.Layout.ExitSides);
 
         return output;
     }

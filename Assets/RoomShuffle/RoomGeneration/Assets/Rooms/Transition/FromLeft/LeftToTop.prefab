@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1308038168735935817, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: m_Name
-      value: FromLeft
+      value: LeftToTop
       objectReference: {fileID: 0}
     - target: {fileID: 2073700076939989529, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -435,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: ExitSides
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: EntranceSides
@@ -24766,6 +24766,10 @@ PrefabInstance:
     - target: {fileID: 6809356456265893778, guid: c8eb7cbfec9b6df4ba037c6a4d0ecee6, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[19].Y
       value: -20000100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988579876073434817, guid: c8eb7cbfec9b6df4ba037c6a4d0ecee6, type: 3}
+      propertyPath: SpawnChance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6988579876073434817, guid: c8eb7cbfec9b6df4ba037c6a4d0ecee6, type: 3}
       propertyPath: SpawnWhenExitIs
