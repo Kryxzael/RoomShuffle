@@ -23,10 +23,16 @@ public abstract class ProgressionController : MonoBehaviour
     public virtual void LevelUpHealth()
     {
         HealthLevel++;
+
+        if (this is EnemyProgression)
+            Debug.Log("Enemy HP++");
     }
     
     public virtual void LevelUpDamage()
     {
         DamageLevel++;
+
+        if (this is EnemyProgression)
+            Debug.Log("Enemy DMG++");
     }
 }

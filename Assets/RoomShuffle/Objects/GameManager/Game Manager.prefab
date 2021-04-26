@@ -589,6 +589,8 @@ MonoBehaviour:
   UseRandomSeed: 1
   RoomParameterBuilder: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
   Backgrounds: []
+  EnemyHealthUpFrequency: 5
+  EnemyDamageUpFrequency: 5
 --- !u!114 &2390164727809682978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,15 +641,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1356627622781255366, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0020462
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 1356627622781255366, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0020462
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 1356627622781255366, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0020462
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2273225430703054338, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_fontSize

@@ -32,6 +32,13 @@ public class RoomGenerator : MonoBehaviour
     [Tooltip("Gets the backgrounds to use for the different room themes")]
     public List<RoomThemeBackgroundMapping> Backgrounds = new List<RoomThemeBackgroundMapping>();
 
+    [Header("Enemy Levels")]
+    [Tooltip("How often the enemies will level up their health. Not counting safe rooms")]
+    public int EnemyHealthUpFrequency = 1;
+
+    [Tooltip("How often the enemies will level up their damage. Not counting safe rooms")]
+    public int EnemyDamageUpFrequency = 3;
+
     /* *** */
 
     /// <summary>
@@ -183,10 +190,19 @@ public class RoomGenerator : MonoBehaviour
         //Flip camera
         FlipCamera.IsFlipped = CurrentRoomConfig.FlipHorizontal;
 
-        //Increase room number
-        if (!parameters.Class.IsSafeRoom())
+        if (!parameters.Class.IsSafeRoom()) 
+        {
+            //Increase room number
             CurrentRoomNumber++;
 
+            //Level up enemies
+            if (CurrentRoomNumber % EnemyHealthUpFrequency == 0)
+                Commons.EnemyProgression.LevelUpHealth();
+
+            if (CurrentRoomNumber % EnemyDamageUpFrequency == 0)
+                Commons.EnemyProgression.LevelUpDamage();
+        }
+            
         //Spawn the player
         FindObjectOfType<Entrance>().SpawnPlayer();
     }

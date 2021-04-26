@@ -14,8 +14,7 @@ public class EnemyProgression : ProgressionController
     /// <returns></returns>
     public int GetMaximumHealthFor(int baseHealth)
     {
-        //TODO: How was this calculated again?
-        return baseHealth;
+        return baseHealth + 100 * HealthLevel;
     }
 
     /// <summary>
@@ -25,6 +24,6 @@ public class EnemyProgression : ProgressionController
     /// <returns></returns>
     public override int GetScaledDamage(int baseDamage)
     {
-        return baseDamage; //TODO
+        return (int)(baseDamage + 0.2f * DamageLevel);
     }
 }
