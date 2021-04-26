@@ -38,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -168.24, y: 0}
-  m_SizeDelta: {x: 326.28, y: 128.714}
+  m_AnchoredPosition: {x: -131.66446, y: 0}
+  m_SizeDelta: {x: 253.1289, y: 128.714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6135625
 CanvasRenderer:
@@ -163,33 +163,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmackSpeed: 0.007
-  SmackMaxSize: {x: 1, y: 1, z: 1}
+  SmackMaxSize: {x: 2, y: 2, z: 2}
   SmackCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.49560547
-      inSlope: 1.9947315
-      outSlope: 1.9947315
+      inSlope: 1.7182542
+      outSlope: 1.7182542
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.2516255
-      value: 0.9975308
-      inSlope: 0.083613634
-      outSlope: 0.083613634
+      time: 0.2590718
+      value: 0.9407567
+      inSlope: 0.080545545
+      outSlope: 0.080545545
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.66325366
-      value: 0.2452786
-      inSlope: 0.044912994
-      outSlope: 0.044912994
+      time: 0.6589812
+      value: 0.3180325
+      inSlope: -0.070875645
+      outSlope: -0.070875645
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -197,8 +197,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.8202537
       value: 0.54629946
-      inSlope: 0.8166735
-      outSlope: 0.8166735
+      inSlope: 0.5657143
+      outSlope: 0.5657143
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -403,6 +403,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b03fc77feaf7954e92b015d8d35e559, type: 3}
   PlayAll: 0
   MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
   PlayOnEnable: 0
   PlayOnStart: 0
   PlayOnDisable: 0
@@ -992,8 +993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 774, y: -238}
-  m_SizeDelta: {x: 331.3752, y: 175.11}
+  m_AnchoredPosition: {x: 881.17255, y: -238}
+  m_SizeDelta: {x: 117.0304, y: 175.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2021762658
 GameObject:
