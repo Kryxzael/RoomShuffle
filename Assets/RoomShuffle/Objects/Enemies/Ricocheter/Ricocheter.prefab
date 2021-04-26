@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.34309864
       objectReference: {fileID: 0}
+    - target: {fileID: 7478987885904739896, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478987885904739896, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8132680883320540839, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Sprite
       value: 

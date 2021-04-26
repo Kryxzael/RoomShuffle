@@ -12,8 +12,11 @@ public class DVDEnemy : EnemyScript
     [Tooltip("The angle the enemy will fly in")] [Range(0,90)]
     public float Degree;
 
+
     private void Start()
     {
+        Enemy.Rigidbody.gravityScale = 0;
+
         //Creates a vector from the "Degree" variable
         _direction = new Vector2(
             x: Mathf.Cos((Mathf.PI / 180) * Degree), 
@@ -26,6 +29,8 @@ public class DVDEnemy : EnemyScript
 
     private void Update()
     {
+        
+        
         //make sure velocity is never zero in any direction
         if (Enemy.Rigidbody.velocity.x == 0)
         {
@@ -57,8 +62,8 @@ public class DVDEnemy : EnemyScript
         //Checks right sides
         if (Enemy.Rigidbody.velocity.x > 0)
         {
-            RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.right, RAYCAST_DISTANCE);
-            RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.right, RAYCAST_DISTANCE);
+            RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
 
             if (rightUp || rightDown)
                 flipX = true;
@@ -67,8 +72,8 @@ public class DVDEnemy : EnemyScript
         //Checks left sides
         else if (Enemy.Rigidbody.velocity.x < 0)
         {
-            RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.left, RAYCAST_DISTANCE);
-            RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.left, RAYCAST_DISTANCE);
+            RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
             
             if (leftDown || leftUp)
                 flipX = true;
@@ -77,8 +82,8 @@ public class DVDEnemy : EnemyScript
         //Checks top
         if (Enemy.Rigidbody.velocity.y > 0)
         {
-            RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE);
-            RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE);
+            RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
             
             if (upLeft || upRight)
                 flipY = true;
@@ -87,8 +92,8 @@ public class DVDEnemy : EnemyScript
         //Checks bottom
         else if (Enemy.Rigidbody.velocity.y < 0)
         {
-            RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE);
-            RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE);
+            RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
             
             if (downLeft || downRight)
                 flipY = true;
@@ -108,7 +113,10 @@ public class DVDEnemy : EnemyScript
     /// </summary>
     private void FlipToVelocityDirection()
     {
-        if (Enemy.Flippable.DirectionSign != Math.Sign(Enemy.Rigidbody.velocity.x) && Mathf.Approximately(Enemy.Rigidbody.velocity.x, 0))
+        if (Enemy.Flippable.DirectionSign != Math.Sign(Enemy.Rigidbody.velocity.x) &&
+            !(Math.Abs(Enemy.Rigidbody.velocity.x) < 0.001f))
+        {
             Enemy.Flippable.Flip();
+        }
     }
 }
