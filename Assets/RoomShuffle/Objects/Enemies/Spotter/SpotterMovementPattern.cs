@@ -87,6 +87,7 @@ public class SpotterMovementPattern : EnemyScript
 
             case SpotterPlayerRelationship.BlindChasing:
                 Enemy.Rigidbody.SetVelocityX(Math.Sign(_spotPlayer.BlindChaseDirection.x) * Commons.GetEffectValue(RunSpeed, EffectValueType.EnemySpeed));
+                FlipToVector2(transform.Position2D() + _spotPlayer.BlindChaseDirection);
                 _animator.Animation = ChaseAnimation;
                 break;
 

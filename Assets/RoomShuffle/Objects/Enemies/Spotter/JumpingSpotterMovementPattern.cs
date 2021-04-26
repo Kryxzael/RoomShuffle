@@ -98,7 +98,7 @@ public class JumpingSpotterMovementPattern : EnemyScript
                 break;
             
             case SpotterPlayerRelationship.BlindChasing:
-                FlipToVector2(_spotPlayer.BlindChaseDirection);
+                FlipToVector2(transform.Position2D() + _spotPlayer.BlindChaseDirection);
                 JumpToSign(Math.Sign(_spotPlayer.BlindChaseDirection.x));
                 break;
 
