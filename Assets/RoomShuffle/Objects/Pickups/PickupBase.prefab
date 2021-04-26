@@ -214,8 +214,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.162}
-  m_SizeDelta: {x: 4.7606, y: 0.9194}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 6.1981, y: 0.9194}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8521292595979217118
 MeshRenderer:
@@ -236,7 +236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 3933581563958626510, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,8 +280,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press <sprite=0> to pick up
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
+  m_sharedMaterial: {fileID: 3933581563958626510, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -543,9 +543,21 @@ PrefabInstance:
       value: '0 <sprite=0> '
       objectReference: {fileID: 0}
     - target: {fileID: 5690166193303761803, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
+    - target: {fileID: 5690166193303761803, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
       propertyPath: m_spriteAsset
       value: 
       objectReference: {fileID: 11400000, guid: 474cb1b546da6f24db8b2711414fdace, type: 2}
+    - target: {fileID: 5690166193303761803, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3933581563958626510, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
+    - target: {fileID: 5690166193303761804, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 3933581563958626510, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78527a7b5fec78c4e971af1d924bc845, type: 3}
 --- !u!1 &461654146341380666 stripped

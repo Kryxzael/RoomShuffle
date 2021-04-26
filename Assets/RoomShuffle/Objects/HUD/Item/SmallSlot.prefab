@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 8772336172320459677, guid: ce35cdf55924847428926c286617dc22, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
+    - target: {fileID: 8772336172320459677, guid: ce35cdf55924847428926c286617dc22, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3933581563958626510, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
     m_RemovedComponents:
     - {fileID: 7894060838431737435, guid: ce35cdf55924847428926c286617dc22, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce35cdf55924847428926c286617dc22, type: 3}

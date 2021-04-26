@@ -65,16 +65,16 @@ MonoBehaviour:
   BossRooms: []
   TransitionLeftToTop: {fileID: 4928483466949914506, guid: bbe0a9db9159aa94c816291edc4b5c2e, type: 3}
   TransitionLeftToBottom: {fileID: 4928483466949914506, guid: 2a4913b9484478b4ead7f9e120ab85ac, type: 3}
-  TransitionRightToTop: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionRightToBottom: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionTopToLeft: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionTopToRight: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionBottomToLeft: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionBottomToRight: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionBottomToBottom: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
-  TransitionTopToTop: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionRightToTop: {fileID: 3025892820980777233, guid: e69cd54e3245f6641adccaefe9e36450, type: 3}
+  TransitionRightToBottom: {fileID: 5974749356178856281, guid: 4062a4ed1e7984940aec4251633ef7e9, type: 3}
+  TransitionTopToLeft: {fileID: 4928483466949914506, guid: 26b90b093fb28364bbde734c128d725e, type: 3}
+  TransitionTopToRight: {fileID: 4928483466949914506, guid: 8f80ed3e3d3bc0b42aa0c0eb1798c127, type: 3}
+  TransitionBottomToLeft: {fileID: 2084406279729262953, guid: 21add070ab866cd43b75dfb669bb7b65, type: 3}
+  TransitionBottomToRight: {fileID: 2084406279729262953, guid: c91c38dcfc21ae043b53e9e0814dabab, type: 3}
+  TransitionBottomToBottom: {fileID: 2084406279729262953, guid: f966a10deda5e7c458ce928954e1b7a9, type: 3}
+  TransitionTopToTop: {fileID: 4928483466949914506, guid: 1e06684c9eeabaf4cb321613706f2d3a, type: 3}
   TransitionLeftToLeft: {fileID: 4928483466949914506, guid: b61e7fd70e1615646b099a14ad707a70, type: 3}
-  TransitionRightToRight: {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
+  TransitionRightToRight: {fileID: 5974749356178856281, guid: 341ef69bac9b4f64494c16101b6cc538, type: 3}
   RespiteRooms: []
   StartingRooms:
   - {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}

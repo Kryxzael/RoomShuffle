@@ -218,7 +218,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                SetColor(Color.white);
+                SetColor(Color.black);
                 
                 if (UseGUI)
                     transform.localScale = Vector3.one * 1f;
@@ -264,7 +264,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                SetColor(Color.white);
+                SetColor(Color.black);
             }
 
             yield return new WaitForSeconds((CurrentSeconds < 1.5f ? 1.5f : CurrentSeconds)/BlinkingTime);

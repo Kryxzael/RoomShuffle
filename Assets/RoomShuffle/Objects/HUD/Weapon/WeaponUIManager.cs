@@ -79,7 +79,13 @@ public class WeaponUIManager : MonoBehaviour
             }
             else
             {
-                _durabilityTextMeshPro[i].text = inventory.WeaponSlots[i].Durability.ToString();
+                _durabilityTextMeshPro[i].text = inventory.WeaponSlots[i].Durability.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+                if (inventory.WeaponSlots[i].Durability <= 0)
+                    _durabilityTextMeshPro[i].color = Color.red;
+
+                else
+                    _durabilityTextMeshPro[i].color = Color.white;
             }
         }
     }
