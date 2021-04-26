@@ -19,10 +19,9 @@ public class Elevator : MonoBehaviour
         var manager = GetComponentInParent<ElevatorManager>();
         Transform lastCheckpoint = null;
 
+        //If there's no elevator manager: return
         if (!manager)
-        {
-            Debug.Log("There is a heckin elevator cart at " + this.transform.position);
-        }
+            yield break;
 
         //Set size of cart
         var spriteRenderer = GetComponent<SpriteRenderer>();
