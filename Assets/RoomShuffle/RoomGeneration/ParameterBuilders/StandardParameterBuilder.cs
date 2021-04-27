@@ -40,8 +40,10 @@ public class StandardParameterBuilder : ParameterBuilder
     private IEnumerator<RoomLayout> _eradicationLayoutEnumerator;
 
     [NonSerialized]
+    private bool _hasQueue;
     private RoomLayout _queuedLayout;
-    private RoomClass? _queuedClass;
+    private RoomClass _queuedClass;
+    private bool _queuedFlipState;
 
     /// <summary>
     /// <inheritdoc />
@@ -105,6 +107,7 @@ public class StandardParameterBuilder : ParameterBuilder
             output.Class = RoomClass.Platforming;
             output.Layout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
         }
+
         /*
          * Weapon enumerator
          */
@@ -112,17 +115,24 @@ public class StandardParameterBuilder : ParameterBuilder
             .OrderBy(i => random.Next())
             .GetEnumerator();
 
+        /*
+         * Flip
+         */
+
+        output.FlipHorizontal = random.Next(2) == 0;
+
 
         /*
          * Glue rooms together with transitions
          */
 
         //Something's in the queue, consume it
-        if (_queuedLayout != null)
+        if (_hasQueue)
         {
-            output.Class = _queuedClass.Value;
+            output.Class = _queuedClass;
             output.Layout = _queuedLayout;
-            _queuedLayout = null;
+            output.FlipHorizontal = _queuedFlipState;
+            _hasQueue = false;
         }
 
         //Choose a random entrance and exit
@@ -132,16 +142,19 @@ public class StandardParameterBuilder : ParameterBuilder
         /*
          * Check if the room requires a transition
          */
-        var transitionLayout = Rooms.GetTransitionRoomByDirections(history.First().Exit, output.Entrance);
+        var transitionLayout = Rooms.GetTransitionRoomByDirections(history.First().Exit, output.Entrance, history.First().FlipHorizontal, output.FlipHorizontal);
 
         //If it does, queue the room and use the transition instead
         if (transitionLayout)
         {
+            _hasQueue = true;
             _queuedClass = output.Class;
             _queuedLayout = output.Layout;
+            _queuedFlipState = output.FlipHorizontal;
 
             output.Class = RoomClass.Transition;
             output.Layout = transitionLayout;
+            output.FlipHorizontal = false;
 
             //Transition will have a new entrance-exit
             output.Entrance = transitionLayout.EntranceSides;

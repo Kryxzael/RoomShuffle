@@ -53,8 +53,32 @@ public class RoomLayoutCollection : ScriptableObject
     /// <param name="preTransitionExit"></param>
     /// <param name="postTransitionEntrance"></param>
     /// <returns></returns>
-    public RoomLayout GetTransitionRoomByDirections(EntranceExitSides preTransitionExit, EntranceExitSides postTransitionEntrance)
+    public RoomLayout GetTransitionRoomByDirections(EntranceExitSides preTransitionExit, EntranceExitSides postTransitionEntrance, bool preTransitionExitFlipped, bool postTransitionEntranceFlipped)
     {
+        if (preTransitionExitFlipped)
+        {
+            preTransitionExit = preTransitionExit switch
+            {
+                EntranceExitSides.Top => EntranceExitSides.Top,
+                EntranceExitSides.Right => EntranceExitSides.Left,
+                EntranceExitSides.Bottom => EntranceExitSides.Bottom,
+                EntranceExitSides.Left => EntranceExitSides.Right,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        if (postTransitionEntranceFlipped)
+        {
+            postTransitionEntrance = postTransitionEntrance switch
+            {
+                EntranceExitSides.Top => EntranceExitSides.Top,
+                EntranceExitSides.Right => EntranceExitSides.Left,
+                EntranceExitSides.Bottom => EntranceExitSides.Bottom,
+                EntranceExitSides.Left => EntranceExitSides.Right,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
         if (preTransitionExit == EntranceExitSides.Bottom)
         {
             return postTransitionEntrance switch

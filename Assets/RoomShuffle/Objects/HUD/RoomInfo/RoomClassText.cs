@@ -34,8 +34,6 @@ public class RoomClassText : MonoBehaviour
             RoomClass.Eradication => "Eradication",
             RoomClass.Puzzle => "Puzzle",
             RoomClass.Secret => "Secret",
-            RoomClass.Crossroads => "",
-            RoomClass.Boss => "Boss",
             _ => throw new NotImplementedException(),
         };
     }
