@@ -777,15 +777,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.999247
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.999247
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.999247
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_AnchoredPosition.x
