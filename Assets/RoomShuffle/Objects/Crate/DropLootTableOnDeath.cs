@@ -40,6 +40,12 @@ public class DropLootTableOnDeath : MonoBehaviour
          */
 
         foreach (var i in candidate.Table.GetLootItems())
-            Commons.InstantiateInCurrentLevel(i, transform.Position2D() + Random.insideUnitCircle * SpawningRadius);
+        {
+            ChasePlayer newObject = Commons.InstantiateInCurrentLevel(i, transform.Position2D() + Random.insideUnitCircle * SpawningRadius).GetComponent<ChasePlayer>();
+
+            if (newObject)
+                newObject.BeginChase();
+        }
+            
     }
 }
