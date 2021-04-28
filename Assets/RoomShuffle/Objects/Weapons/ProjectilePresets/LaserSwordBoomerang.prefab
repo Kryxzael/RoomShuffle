@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4670741879340441384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127145713867747775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 18
-  Pushbackforce: 1000
-  SpeedCap: 20
 --- !u!1 &2050191226877860777
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +130,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4670741879340441384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127145713867747775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed16026e9cb42b4c84d56ef39738f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 18
+  Pushbackforce: 1000
+  SpeedCap: 20
 --- !u!114 &116993796901568299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyFireOn: 0
-  BaseDamage: 5
+  BaseDamage: 10
   _hurtBox: {fileID: 8522294838040778441}
 --- !u!1001 &5097567243550274338
 PrefabInstance:
