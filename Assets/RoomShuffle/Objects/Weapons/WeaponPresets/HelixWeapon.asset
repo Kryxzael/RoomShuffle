@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 8
+      Pickrate: 1
+    - Item: 12
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 33
       Pickrate: 1
   Range:
     Minimum: 13

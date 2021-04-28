@@ -16,7 +16,7 @@ MonoBehaviour:
   SplitterProjectile: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
   BlastCount: 3
   SplittingProjectileRange: 1.5
-  SplittingProjectileDamage: 5
+  SplittingProjectileDamage: 80
   TimeBetweenEachSplit: 0.2
 --- !u!114 &1066865070864948186
 MonoBehaviour:

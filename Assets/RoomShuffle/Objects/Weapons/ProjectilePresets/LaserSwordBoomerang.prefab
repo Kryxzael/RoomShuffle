@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyFireOn: 0
-  BaseDamage: 10
+  BaseDamage: 25
   _hurtBox: {fileID: 8522294838040778441}
 --- !u!1001 &5097567243550274338
 PrefabInstance:

@@ -26,3 +26,4 @@ MonoBehaviour:
   Cooldown: 0.22
   Icon: {fileID: -1058106716612752769, guid: 965ea8f027e9ea348b3d5040f5807d43, type: 3}
   Ammunition: {fileID: -1991183142901176283, guid: 1d2fffbc8d2ce854585020e99200b87c, type: 3}
+  Distance: 2

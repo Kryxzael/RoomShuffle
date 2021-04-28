@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 10
+      Pickrate: 1
+    - Item: 15
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 999
+    - Item: 200
+      Pickrate: 1
+    - Item: 300
       Pickrate: 1
   Range:
     Minimum: 8

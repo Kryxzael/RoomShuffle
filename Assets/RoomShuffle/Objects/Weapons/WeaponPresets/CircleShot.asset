@@ -14,16 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 5
+    - Item: 10
+      Pickrate: 1
+    - Item: 15
+      Pickrate: 1
+    - Item: 18
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 99
+    - Item: 40
+      Pickrate: 1
+    - Item: 50
       Pickrate: 1
   Range:
     Minimum: 5
-    Maximum: 15
-  Cooldown: 1
+    Maximum: 10
+  Cooldown: 0.25
   Icon: {fileID: 7569684938147083892, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
   Ammunition: {fileID: 5488346669195408484, guid: 2e986e2c228192f49aa3ae9b98bd5ea6, type: 3}
   BlastCount: 30

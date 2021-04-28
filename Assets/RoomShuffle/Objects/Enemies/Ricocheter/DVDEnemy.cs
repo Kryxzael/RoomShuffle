@@ -15,8 +15,6 @@ public class DVDEnemy : EnemyScript
 
     private void Start()
     {
-        Enemy.Rigidbody.gravityScale = 0;
-
         //Creates a vector from the "Degree" variable
         _direction = new Vector2(
             x: Mathf.Cos((Mathf.PI / 180) * Degree), 
@@ -62,8 +60,8 @@ public class DVDEnemy : EnemyScript
         //Checks right sides
         if (Enemy.Rigidbody.velocity.x > 0)
         {
-            RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
-            RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D rightUp = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
+            RaycastHit2D rightDown = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.right, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
 
             if (rightUp || rightDown)
                 flipX = true;
@@ -72,8 +70,8 @@ public class DVDEnemy : EnemyScript
         //Checks left sides
         else if (Enemy.Rigidbody.velocity.x < 0)
         {
-            RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
-            RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D leftUp = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
+            RaycastHit2D leftDown = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.left, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
             
             if (leftDown || leftUp)
                 flipX = true;
@@ -82,8 +80,8 @@ public class DVDEnemy : EnemyScript
         //Checks top
         if (Enemy.Rigidbody.velocity.y > 0)
         {
-            RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
-            RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D upLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
+            RaycastHit2D upRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.max.y), Vector2.up, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
             
             if (upLeft || upRight)
                 flipY = true;
@@ -92,8 +90,8 @@ public class DVDEnemy : EnemyScript
         //Checks bottom
         else if (Enemy.Rigidbody.velocity.y < 0)
         {
-            RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
-            RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundOnly);
+            RaycastHit2D downLeft = Physics2D.Raycast(new Vector2(bounds.min.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
+            RaycastHit2D downRight = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, RAYCAST_DISTANCE, Commons.Masks.GroundAndBlockers);
             
             if (downLeft || downRight)
                 flipY = true;

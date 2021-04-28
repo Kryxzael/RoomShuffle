@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b851f1b2199074fbb3b214060ef9dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 2
 --- !u!114 &8725642578972096819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,12 +228,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioClips: []
-  Channel: 0
-  PlayBoth: 0
-  _OnEnable: 0
-  _OnStart: 0
-  _OnDisable: 0
-  _OnDestroy: 0
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
   ClipIndex: 0
 --- !u!114 &1965883503017609956
 MonoBehaviour:
@@ -248,10 +250,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioClips: []
-  Channel: 0
-  PlayBoth: 0
-  _OnEnable: 0
-  _OnStart: 0
-  _OnDisable: 0
-  _OnDestroy: 0
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
   ClipIndex: 0

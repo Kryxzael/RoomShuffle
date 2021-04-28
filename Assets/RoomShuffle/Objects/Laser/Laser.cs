@@ -116,7 +116,12 @@ public class Laser : MonoBehaviour
             /*
              * Apply hurtbox
              */
+            bool lastQueriesStartInCollidersState = Physics2D.queriesStartInColliders;
+            Physics2D.queriesStartInColliders = true;
+
             RaycastHit2D[] hits = Physics2D.RaycastAll(start, transform.up, Vector2.Distance(start, end), Commons.Masks.HitboxesHurtboxes);
+
+            Physics2D.queriesStartInColliders = lastQueriesStartInCollidersState;
 
             //For each hitbox that was hit, deal damage with the hurtbox
             foreach (var i in hits)

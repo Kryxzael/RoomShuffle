@@ -63,6 +63,16 @@ public class SplittingProjectile : Projectile
         _time += Time.deltaTime;
     }
 
+    protected override bool IsOutOfRange()
+    {
+        bool isOutOfRange = base.IsOutOfRange();
+
+        if (isOutOfRange)
+            Split();
+
+        return isOutOfRange;
+    }
+
     //Spawn a bunch of projectiles
     private void Split()
     {
@@ -97,7 +107,5 @@ public class SplittingProjectile : Projectile
         //Unity doesn't like that
         if (_isQuitting)
             return;
-
-        Split();
     }
 }
