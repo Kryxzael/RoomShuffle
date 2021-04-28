@@ -40,10 +40,7 @@ public class StandardParameterBuilder : ParameterBuilder
     private IEnumerator<RoomLayout> _eradicationLayoutEnumerator;
 
     [NonSerialized]
-    private bool _hasQueue;
-    private RoomLayout _queuedLayout;
-    private RoomClass _queuedClass;
-    private bool _queuedFlipState;
+    private RoomParameters _queued;
 
     /// <summary>
     /// <inheritdoc />
@@ -56,6 +53,86 @@ public class StandardParameterBuilder : ParameterBuilder
         RoomParameters output = new RoomParameters();
 
         output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
+
+        /*
+         * Room Class and Queued Layout
+         */
+
+        //A room has been queued
+        if (_queued != null)
+        {
+            output = _queued;
+            _queued = null;
+        }
+
+        //No room is queued
+        else
+        {
+            //Time for a shop
+            if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick(random))
+            {
+                output.Class = RoomClass.Shop;
+                output.Layout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
+            }
+
+            //Time for a puzzle
+            else if (history.RoomsSinceClass(RoomClass.Puzzle) >= PuzzleFrequency.Pick(random))
+            {
+                output.Class = RoomClass.Puzzle;
+                output.Layout = NextLayout(ref _puzzleLayoutEnumerator, Rooms.PuzzleRooms, random);
+            }
+
+            //Time for a eradication room
+            else if (history.RoomsSinceClass(RoomClass.Eradication) >= EradicationFrequency.Pick(random))
+            {
+                output.Class = RoomClass.Eradication;
+                output.Layout = NextLayout(ref _eradicationLayoutEnumerator, Rooms.EradicationRooms, random);
+            }
+
+            //Pick a platforming room
+            else
+            {
+                output.Class = RoomClass.Platforming;
+                output.Layout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
+            }
+
+            /*
+             * Weapon enumerator
+             */
+            output.WeaponEnumerator = WeaponTemplates
+                .OrderBy(i => random.Next())
+                .GetEnumerator();
+
+            /*
+             * Flip
+             */
+
+            output.FlipHorizontal = random.Next(2) == 0;
+
+            //Choose a random entrance and exit
+            output.Entrance = output.Layout.GetRandomEntrance(random);
+            output.Exit = output.Layout.GetRandomExit(random, output.Entrance);
+        }
+
+        /*
+         * Check if the room requires a transition
+         */
+        var transitionLayout = Rooms.GetTransitionRoomByDirections(history.First().Exit, output.Entrance, history.First().FlipHorizontal, output.FlipHorizontal);
+
+        //If it does, queue the room and use the transition instead
+        if (transitionLayout)
+        {
+            _queued = output;
+            output = new RoomParameters();
+
+            output.Class = RoomClass.Transition;
+            output.Layout = transitionLayout;
+            output.FlipHorizontal = false;
+
+            //Transition will have a new entrance-exit
+            output.Entrance = transitionLayout.EntranceSides;
+            output.Exit = transitionLayout.ExitSides;
+        }
 
         /*
          * Room Theme
@@ -74,91 +151,6 @@ public class StandardParameterBuilder : ParameterBuilder
         else
         {
             output.Theme = history.First().Theme;
-        }
-
-        /*
-         * Room Class and Queued Layout
-         */
-
-        //Time for a shop
-        if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick(random))
-        {
-            output.Class = RoomClass.Shop;
-            output.Layout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
-        }
-
-        //Time for a puzzle
-        else if (history.RoomsSinceClass(RoomClass.Puzzle) >= PuzzleFrequency.Pick(random))
-        {
-            output.Class = RoomClass.Puzzle;
-            output.Layout = NextLayout(ref _puzzleLayoutEnumerator, Rooms.PuzzleRooms, random);
-        }
-
-        //Time for a eradication room
-        else if (history.RoomsSinceClass(RoomClass.Eradication) >= EradicationFrequency.Pick(random))
-        {
-            output.Class = RoomClass.Eradication;
-            output.Layout = NextLayout(ref _eradicationLayoutEnumerator, Rooms.EradicationRooms, random);
-        }
-
-        //Pick a platforming room
-        else
-        {
-            output.Class = RoomClass.Platforming;
-            output.Layout = NextLayout(ref _platformLayoutEnumerator, Rooms.PlatformingRooms, random);
-        }
-
-        /*
-         * Weapon enumerator
-         */
-        output.WeaponEnumerator = WeaponTemplates
-            .OrderBy(i => random.Next())
-            .GetEnumerator();
-
-        /*
-         * Flip
-         */
-
-        output.FlipHorizontal = random.Next(2) == 0;
-
-
-        /*
-         * Glue rooms together with transitions
-         */
-
-        //Something's in the queue, consume it
-        if (_hasQueue)
-        {
-            output.Class = _queuedClass;
-            output.Layout = _queuedLayout;
-            output.FlipHorizontal = _queuedFlipState;
-            _hasQueue = false;
-        }
-
-        //Choose a random entrance and exit
-        output.Entrance = output.Layout.GetRandomEntrance(random);
-        output.Exit = output.Layout.GetRandomExit(random, output.Entrance);
-
-        /*
-         * Check if the room requires a transition
-         */
-        var transitionLayout = Rooms.GetTransitionRoomByDirections(history.First().Exit, output.Entrance, history.First().FlipHorizontal, output.FlipHorizontal);
-
-        //If it does, queue the room and use the transition instead
-        if (transitionLayout)
-        {
-            _hasQueue = true;
-            _queuedClass = output.Class;
-            _queuedLayout = output.Layout;
-            _queuedFlipState = output.FlipHorizontal;
-
-            output.Class = RoomClass.Transition;
-            output.Layout = transitionLayout;
-            output.FlipHorizontal = false;
-
-            //Transition will have a new entrance-exit
-            output.Entrance = transitionLayout.EntranceSides;
-            output.Exit = transitionLayout.ExitSides;
         }
 
         /*
