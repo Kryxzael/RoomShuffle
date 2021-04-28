@@ -180,6 +180,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: BaseHealth
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: BaseContactDamage
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: StartingDirection
       value: -1
       objectReference: {fileID: 0}

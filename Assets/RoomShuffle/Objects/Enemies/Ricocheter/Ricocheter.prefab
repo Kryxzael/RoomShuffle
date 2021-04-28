@@ -80,6 +80,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3375038303658136201, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: BaseHealth
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: BaseContactDamage
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: RigidbodyStarupMode
       value: 1
       objectReference: {fileID: 0}

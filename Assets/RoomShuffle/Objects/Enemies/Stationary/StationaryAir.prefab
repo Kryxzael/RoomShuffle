@@ -198,6 +198,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5875395181630150645, guid: 753f2b26851c12d4db0a0356a5ea0c3f, type: 3}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: BaseHealth
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: BaseContactDamage
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: StartingDirection
       value: 0
       objectReference: {fileID: 0}
