@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Describes the relationship between a spotter
+/// Describes the relationship between a spotter and the player
 /// </summary>
 public enum SpotterPlayerRelationship
 {
@@ -35,7 +35,7 @@ public enum SpotterPlayerRelationship
     BlindChasing,
 
     /// <summary>
-    /// The spotter has seen the player but has lost them before it could enter chasing mode
+    /// The spotter has lost track of the player
     /// </summary>
     Puzzled
 }

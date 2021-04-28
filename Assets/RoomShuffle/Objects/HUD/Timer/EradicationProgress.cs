@@ -37,6 +37,9 @@ public class EradicationProgress : MonoBehaviour
         if (!UseOnlyOnSpeedRunMode && Commons.SpeedRunMode)
             return;
 
+        if (Commons.CurrentRoomEffects == RoomEffects.Timer)
+            return;
+
         if (Commons.RoomGenerator.CurrentRoomConfig.Class != RoomClass.Eradication)
         {
             _label.text = "";

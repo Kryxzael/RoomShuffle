@@ -289,9 +289,21 @@ public class Timer : MonoBehaviour
     /// <param name="text"></param>
     private void SetText(string text)
     {
+
         if (UseGUI)
         {
+            if (!TMP_GUI)
+            {
+                Debug.Log("TMP_GUI is not set");
+                return;
+            }
             TMP_GUI.text = text;
+            return;
+        }
+
+        if (!TMP)
+        {
+            Debug.Log("TMP is not set");
             return;
         }
 

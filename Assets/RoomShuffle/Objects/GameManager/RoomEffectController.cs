@@ -156,7 +156,7 @@ public class RoomEffectController : MonoBehaviour
         
         if (enabled)
         {
-            Commons.CountdownTimer.StartCountdown(room.Layout.TimerEffectSeconds);
+            Commons.CountdownTimer.ResetCountdown(room.Layout.TimerEffectSeconds);
         }
         else
         {
