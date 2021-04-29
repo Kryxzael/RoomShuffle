@@ -91,4 +91,13 @@ public class WeaponInstance
     {
         return Template.ToString();
     }
+
+    /// <summary>
+    /// Gets the text to display when displaying the damage the weapon deals
+    /// </summary>
+    /// <returns></returns>
+    public string GetDisplayedDamage()
+    {
+        return string.Format(Template.DamageDisplayFormat, Commons.PlayerProgression.GetScaledDamage(BaseDamage));
+    }
 }

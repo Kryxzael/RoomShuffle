@@ -27,6 +27,8 @@ MonoBehaviour:
     Maximum: 9
   Cooldown: 0.8
   Icon: {fileID: -3422229986052813780, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: 18
+  DamageDisplayFormat: '{0}'
   AmmunitionList:
   - {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
   Height: 1

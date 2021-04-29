@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     public const int MAX_WEAPON_SLOTS = 2;
 
     //The weapon to use if the player tries to fire an empty weapon
-    private WeaponInstance _fallbackWeaponInstance;
+    public WeaponInstance FallbackWeaponInstance;
 
     [Header("Weapons")]
     [Tooltip("The weapons the player is carrying")]
@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        _fallbackWeaponInstance = FallbackWeapon.CreateWeaponInstance();
+        FallbackWeaponInstance = FallbackWeapon.CreateWeaponInstance();
     }
 
     private void Update()
@@ -84,9 +84,9 @@ public class Inventory : MonoBehaviour
             //Player does not hold a weapon, use fallback if available
             if (SelectedWeapon == null || (SelectedWeapon.Durability == 0 && !Cheats.InfiniteAmmo))
             {
-                if (_fallbackWeaponInstance.CanFire(ignoreDurability: true))
+                if (FallbackWeaponInstance.CanFire(ignoreDurability: true))
                 {
-                    _fallbackWeaponInstance.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
+                    FallbackWeaponInstance.Fire(this.GetPlayer().GetComponent<WeaponShooterBase>());
                     LastFireTime = DateTime.Now;
                 }
                     

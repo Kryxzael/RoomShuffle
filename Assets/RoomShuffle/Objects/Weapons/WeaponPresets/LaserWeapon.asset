@@ -23,9 +23,11 @@ MonoBehaviour:
     - Item: 15
       Pickrate: 1
   Range:
-    Minimum: 0
-    Maximum: 0
+    Minimum: Infinity
+    Maximum: Infinity
   Cooldown: 1
   Icon: {fileID: 4806463276367451825, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: 1 laser
+  DamageDisplayFormat: Laser Damage
   Ammunition: {fileID: -8431960660060657411, guid: 14e05188311a68b479cca26dcaa7f6f6, type: 3}
   Distance: 2

@@ -31,6 +31,8 @@ MonoBehaviour:
     Maximum: 15
   Cooldown: 0.5
   Icon: {fileID: -761887118410055393, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: 6
+  DamageDisplayFormat: '{0}'
   Ammunition: {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
   ClusterCount: 6
   WaitTime: 0.04

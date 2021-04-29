@@ -24,9 +24,16 @@ public abstract class WeaponTemplate : ScriptableObject
     [Tooltip("The amount of time (in seconds) the player must wait until they can re-fire the weapon")]
     public float Cooldown;
 
+    [Header("Displayed Stats")]
     [Tooltip("The Weapon Icon")]
     public Sprite Icon;
-    
+
+    [Tooltip("The amount of projectiles that will be displayed to appear when the weapon is fired")]
+    public string DisplayedProjectileCount;
+
+    [Tooltip("The formating string used to show the amount of damage the weapon does")]
+    public string DamageDisplayFormat = "{0}";
+
     /* *** */
 
     /// <summary>
@@ -74,5 +81,5 @@ public abstract class WeaponTemplate : ScriptableObject
     /// Fires the weapon from the provided weapon shooter
     /// </summary>
     /// <param name="direction"></param>
-    protected abstract void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction);    
+    protected abstract void OnFire(WeaponInstance instance, WeaponShooterBase shooter, Vector2 direction);
 }

@@ -25,6 +25,8 @@ MonoBehaviour:
     Maximum: 30
   Cooldown: 0.75
   Icon: {fileID: 4247077973319795576, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: 1 + 2 lasers
+  DamageDisplayFormat: Laser Damage
   Ammunition: {fileID: -9111506526529088046, guid: 16d2a4089b6f0dc49a518999c9522b85, type: 3}
   MaxAngle: 0
   BlastCount: 1

@@ -25,6 +25,8 @@ MonoBehaviour:
     Maximum: 4
   Cooldown: 0.05
   Icon: {fileID: 8789762969407134151, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: Spray
+  DamageDisplayFormat: '{0}'
   Ammunition: {fileID: 2993959103662649049, guid: 529b271c69fe5734a94302c9d194775d, type: 3}
   MaxAngle: 360
   BlastCount: 10
