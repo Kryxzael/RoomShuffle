@@ -26,9 +26,9 @@ public class RoomHistory : IEnumerable<RoomParameters>
     /// </summary>
     /// <param name="class"></param>
     /// <returns></returns>
-    public int RoomsSinceClass(RoomClass @class)
+    public int RoomsSinceClass(RoomClass @class, bool includeSafes = false)
     {
-        return RoomsSinceMatchOfPredicate(i => i.Class == @class);
+        return RoomsSinceMatchOfPredicate(i => i.Class == @class, includeSafes);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class RoomHistory : IEnumerable<RoomParameters>
     /// </summary>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public int RoomsSinceMatchOfPredicate(Func<RoomParameters, bool> predicate)
+    public int RoomsSinceMatchOfPredicate(Func<RoomParameters, bool> predicate, bool includeSafes = false)
     {
         var count = 0;
 
@@ -60,7 +60,7 @@ public class RoomHistory : IEnumerable<RoomParameters>
                 return count;
 
 
-            if (!i.Class.IsSafeRoom())
+            if (!i.Class.IsSafeRoom() || includeSafes)
                 count++;
         }
 

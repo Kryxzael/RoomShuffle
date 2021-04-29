@@ -22,7 +22,6 @@ public class SecretRoomOverride : ParameterBuilderOverride
         {
             Class = RoomClass.Secret,
             Effect = RoomEffects.None,
-            EnemySet = null,
             Entrance = EntranceExitSides.Left,
             Exit = EntranceExitSides.Right,
             FlipHorizontal = random.Next(2) == 0,

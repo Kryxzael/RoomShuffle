@@ -12,9 +12,19 @@ public class RoomParameters
     public RoomLayout Layout;
     public RoomTheme Theme;
     public RoomEffects Effect;
-    public EnemySet EnemySet;
     public bool FlipHorizontal;
     public IEnumerator<WeaponTemplate> WeaponEnumerator;
+    public List<EnemyWithSpawnRate> GroundEnemies;
+    public List<EnemyWithSpawnRate> AirEnemies;
     public EntranceExitSides Entrance;
     public EntranceExitSides Exit;
+
+    [Serializable]
+    public class EnemyWithSpawnRate
+    {
+        public EnemyBase Enemy;
+
+        [Range(0f, 1f)]
+        public float SpawnRate = 1f;
+    }
 }

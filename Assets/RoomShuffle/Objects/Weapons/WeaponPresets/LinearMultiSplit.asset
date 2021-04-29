@@ -18,7 +18,9 @@ MonoBehaviour:
       Pickrate: 1
   MaxDurability:
     Candidates:
-    - Item: 100
+    - Item: 25
+      Pickrate: 1
+    - Item: 28
       Pickrate: 1
   Range:
     Minimum: 12

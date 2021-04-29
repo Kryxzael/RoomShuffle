@@ -52,7 +52,8 @@ public class StandardParameterBuilder : ParameterBuilder
     {
         RoomParameters output = new RoomParameters();
 
-        output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
+        output.GroundEnemies = GroundEnemies;
+        output.AirEnemies = AirEnemies;
 
         /*
          * Room Class and Queued Layout
@@ -69,7 +70,7 @@ public class StandardParameterBuilder : ParameterBuilder
         else
         {
             //Time for a shop
-            if (history.RoomsSinceClass(RoomClass.Shop) >= ShopFrequency.Pick(random))
+            if (history.RoomsSinceClass(RoomClass.Shop, includeSafes: true) >= ShopFrequency.Pick(random))
             {
                 output.Class = RoomClass.Shop;
                 output.Layout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
@@ -185,7 +186,8 @@ public class StandardParameterBuilder : ParameterBuilder
 
         return new RoomParameters
         {
-            EnemySet = EnemySets[random.Next(EnemySets.Count)],
+            GroundEnemies = this.GroundEnemies,
+            AirEnemies = this.AirEnemies,
             Theme = (RoomTheme)random.Next(1, typeof(RoomTheme).GetEnumValues().Length),
             Class = RoomClass.Starting,
             Layout = layout,

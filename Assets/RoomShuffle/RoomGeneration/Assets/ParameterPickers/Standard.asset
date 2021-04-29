@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: Standard
   m_EditorClassIdentifier: 
   Rooms: {fileID: 11400000, guid: baff7d1c45fd74343b6f1fd25840f934, type: 2}
-  EnemySets:
-  - {fileID: 11400000, guid: 4c7baf1e546ef9c45ba154e5c5a465ea, type: 2}
-  - {fileID: 11400000, guid: f6184e4c9b2e52f41b3ba3aa66674a51, type: 2}
-  - {fileID: 11400000, guid: 24e1910c96dc857459dfca06f2d414df, type: 2}
   WeaponTemplates:
   - {fileID: 11400000, guid: 7e7d8dead0594514dabd4e4d6d705bde, type: 2}
   - {fileID: 11400000, guid: f6ddb48003c69e44fabc7c70bf617929, type: 2}
@@ -50,6 +46,32 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b733ed6c187418b4b89b6e79886bc89f, type: 2}
   - {fileID: 11400000, guid: 7056b3696f4971645942bf04bab34b7c, type: 2}
   - {fileID: 11400000, guid: 1dc29f38168bf3149921990212b067d6, type: 2}
+  GroundEnemies:
+  - Enemy: {fileID: 2024479703142445076, guid: c7aca51d2a06d5347b047c97b306a7e0, type: 3}
+    SpawnRate: 1
+  - Enemy: {fileID: 2024479703142445076, guid: 6b2b2348458ab364588fa5593c609422, type: 3}
+    SpawnRate: 1
+  - Enemy: {fileID: 2024479703142445076, guid: 4ccc3b1c8b6801f4d9e90bd37937a699, type: 3}
+    SpawnRate: 1
+  - Enemy: {fileID: 1627287831938529181, guid: fc059a345da170c4980d64abe8185025, type: 3}
+    SpawnRate: 0.15
+  - Enemy: {fileID: 3760092823517641919, guid: d3665581d99607348b56b4ea275015fd, type: 3}
+    SpawnRate: 0.25
+  - Enemy: {fileID: 1627287831938529181, guid: 5ade41709d27e254cb05fd5cad82eb6d, type: 3}
+    SpawnRate: 0.25
+  - Enemy: {fileID: 1708076884739158924, guid: 62dd17b19cb51c84094c243fa0e7a9a3, type: 3}
+    SpawnRate: 0.5
+  - Enemy: {fileID: 1951632956595313075, guid: 73eb61f525868204baeecca8c4929458, type: 3}
+    SpawnRate: 1
+  AirEnemies:
+  - Enemy: {fileID: 2136839923881057966, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
+    SpawnRate: 1
+  - Enemy: {fileID: 2136839923881057966, guid: 79351766bd1ca9547a06331e43ab95e3, type: 3}
+    SpawnRate: 1
+  - Enemy: {fileID: 2302160342496548190, guid: e4c04100f450a6a469b4f97bb32b5573, type: 3}
+    SpawnRate: 0.75
+  - Enemy: {fileID: 7260927858460754246, guid: a555910c90707b14d8054e4e3a3adce3, type: 3}
+    SpawnRate: 0.33
   ShopFrequency:
     Minimum: 5
     Maximum: 10

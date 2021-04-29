@@ -89,6 +89,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.12458535
       objectReference: {fileID: 0}
+    - target: {fileID: 1104641263068939290, guid: 629be960b28b727418def72be1739e90, type: 3}
+      propertyPath: LootTables.Array.data[0].Table
+      value: 
+      objectReference: {fileID: 11400000, guid: 953deb638c351784dbb681be50d17581, type: 2}
     - target: {fileID: 3955319330377783456, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Size.x
       value: 1.2303351

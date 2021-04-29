@@ -17,19 +17,10 @@ public class EnemySpawnPoint : MonoBehaviour
     [Tooltip("Will the spawned enemy be airborne")]
     public bool SpawnAirborne;
 
-    [Tooltip("Will the spawned be a secondary enemy")]
-    public bool SpawnSecondaryEnemy;
-
-    private void Start()
-    {
-        //Spawn the enemy on startup
-        SpawnEnemy();
-    }
-
     /// <summary>
     /// Spawns an enemy at or around the spawn point
     /// </summary>
-    public GameObject SpawnEnemy()
+    public EnemyBase SpawnEnemy(System.Random random, IList<RoomParameters.EnemyWithSpawnRate> groundEnemies, IList<RoomParameters.EnemyWithSpawnRate> airEnemies)
     {
         /*
          * Pick spawn location
@@ -49,33 +40,21 @@ public class EnemySpawnPoint : MonoBehaviour
          * Instantiate the enemy
          */
 
-        //No generated room == no enemy sets
-        if (Commons.RoomGenerator.CurrentRoomConfig == null)
-            throw new InvalidOperationException("Enemy Spawn Points cannot be used outside a generated room");
-
-        var spawnSet = Commons.RoomGenerator.CurrentRoomConfig.EnemySet;
-        GameObject prefab;
+        RoomParameters.EnemyWithSpawnRate candidate;
 
         //Chose enemy to spawn based on settings
-        if (SpawnAirborne)
+        do
         {
-            if (SpawnSecondaryEnemy)
-                prefab = spawnSet.SecondaryAir;
+            if (SpawnAirborne)
+                candidate = airEnemies[random.Next(airEnemies.Count)];
 
-            else
-                prefab = spawnSet.PrimaryAir;
-        }
-        else
-        {
-            if (SpawnSecondaryEnemy)
-                prefab = spawnSet.SecondaryGround;
+            else 
+                candidate = groundEnemies[random.Next(groundEnemies.Count)];
 
-            else
-                prefab = spawnSet.PrimaryGround;
-        }
+        } while (random.Next() < candidate.SpawnRate);
 
         //Spawn and return the enemy
-        return Commons.InstantiateInCurrentLevel(prefab, spawnPosition);
+        return Commons.InstantiateInCurrentLevel(candidate.Enemy, spawnPosition);
     }
 
     private void OnDrawGizmos()
@@ -92,7 +71,6 @@ public class EnemySpawnPoint : MonoBehaviour
         else
         {
             Gizmos.DrawWireCube(transform.position, new Vector3(SpawningRadius * 2f, 1f, 1f));
-            
         }
     }
 }

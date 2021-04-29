@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage:
     Candidates:
-    - Item: 25
+    - Item: 20
       Pickrate: 1
   MaxDurability:
     Candidates:

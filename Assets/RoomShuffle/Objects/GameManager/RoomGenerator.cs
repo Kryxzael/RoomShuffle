@@ -184,6 +184,10 @@ public class RoomGenerator : MonoBehaviour
         foreach (var i in CurrentRoomObject.GetComponentsInChildren<OptionalObjectGroup>())
             i.Select(RoomRng);
 
+        //Spawn enemies
+        foreach (var i in CurrentRoomObject.GetComponentsInChildren<EnemySpawnPoint>())
+            i.SpawnEnemy(RoomRng, parameters.GroundEnemies, parameters.AirEnemies);
+
         //Set up room effects
         Commons.RoomEffectController.OnRoomStart(parameters);
 

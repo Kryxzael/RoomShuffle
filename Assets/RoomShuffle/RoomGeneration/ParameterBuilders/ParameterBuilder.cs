@@ -16,11 +16,15 @@ public abstract class ParameterBuilder : ScriptableObject
     [Tooltip("The generators available rooms")]
     public RoomLayoutCollection Rooms;
 
-    [Tooltip("The generators available enemy sets")]
-    public List<EnemySet> EnemySets;
-
     [Tooltip("The weapons that can spawn in the room")]
     public List<WeaponTemplate> WeaponTemplates;
+
+    [Header("Enemies")]
+    [Tooltip("The enemies that can spawn grounded in the room")]
+    public List<RoomParameters.EnemyWithSpawnRate> GroundEnemies;
+
+    [Tooltip("The enemies that can spawn airborne in the room")]
+    public List<RoomParameters.EnemyWithSpawnRate> AirEnemies;
 
     /// <summary>
     /// Gets the next room parameters to use when generating a room

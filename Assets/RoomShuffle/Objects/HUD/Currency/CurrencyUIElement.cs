@@ -60,18 +60,23 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
         private IEnumerator CoCount(int startValue)
         {
             int count = startValue;
+            bool lastTickPlayedSound = false;
 
             while (count != _lastKnownCurrencyValue)
             {
                 if (count > _lastKnownCurrencyValue)
                 {
                     count--;
-                    _multiSoundPlayer.PlaySound(0);
+
+                    if (lastTickPlayedSound = !lastTickPlayedSound)
+                        _multiSoundPlayer.PlaySound(0);
                 }
                 else
                 {
                     count++;
-                    _multiSoundPlayer.PlaySound(1);
+
+                    if (lastTickPlayedSound = !lastTickPlayedSound)
+                        _multiSoundPlayer.PlaySound(1);
                 }
 
                 SetLabel(count.ToString());
@@ -79,14 +84,14 @@ namespace Assets.RoomShuffle.Objects.HUD.Currency
                 if (_smack != null)
                     _smack.Smack();
 
-                yield return new WaitForSecondsRealtime(0.1f);
+                yield return new WaitForSecondsRealtime(0.05f);
             }
 
             _counterRunning = false;
         }
         
         /// <summary>
-        /// Sets the label for curreny and adds the desired sprite
+        /// Sets the label for currency and adds the desired sprite
         /// </summary>
         /// <param name="text"></param>
         private void SetLabel(string text)

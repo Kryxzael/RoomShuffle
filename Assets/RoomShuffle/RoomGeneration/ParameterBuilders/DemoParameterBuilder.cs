@@ -27,6 +27,9 @@ public class DemoParameterBuilder : ParameterBuilder
         }
 
         var output = new RoomParameters();
+
+        output.GroundEnemies = GroundEnemies;
+        output.AirEnemies = AirEnemies;
         output.Class = RoomClass.Platforming;
         output.Layout = _currentRoom.Current;
         output.Theme = typeof(RoomTheme).GetEnumValues() //Absolutely disgusting, but it's for testing so it's ok
@@ -35,7 +38,6 @@ public class DemoParameterBuilder : ParameterBuilder
             .OrderBy(i => random.Next())
             .First();
 
-        output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
         output.Effect = RoomEffects.None;
         output.FlipHorizontal = random.Next(2) == 0;
         output.WeaponEnumerator = WeaponTemplates.OrderBy(i => random.Next()).GetEnumerator();
