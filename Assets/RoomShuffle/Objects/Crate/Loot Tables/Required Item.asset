@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe200689328cfb4ebc34a28b8ff4a62, type: 3}
+  m_Name: Required Item
+  m_EditorClassIdentifier: 
+  HealthPickup: {fileID: 7430920579416788093, guid: b3333d6a96995fa4689d73547ee28ee5, type: 3}
+  MaxHealthPickup: {fileID: 7430920579416788093, guid: 1dff4b15637152f40b4164785412adbf, type: 3}
+  WeaponPickup: {fileID: 5956370961099561825, guid: 413f77547bd1c404ebe478f25274b9df, type: 3}
+  WeaponRepairPickup: {fileID: 4205078315579385821, guid: bc11c821ae5bf2c4494049fa1e87c3b2, type: 3}
+  LargeCurrency: {fileID: 6671356171363614601, guid: 6b13a09d74b48774280c51aa3f602258, type: 3}
+  SmallCurrency: {fileID: 6671356171363614601, guid: 1e44836a1ffaea1418697ec5a4ecad60, type: 3}

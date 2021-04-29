@@ -75,7 +75,8 @@ MonoBehaviour:
   TransitionTopToTop: {fileID: 4928483466949914506, guid: 1e06684c9eeabaf4cb321613706f2d3a, type: 3}
   TransitionLeftToLeft: {fileID: 4928483466949914506, guid: b61e7fd70e1615646b099a14ad707a70, type: 3}
   TransitionRightToRight: {fileID: 5974749356178856281, guid: 341ef69bac9b4f64494c16101b6cc538, type: 3}
-  RespiteRooms: []
+  RespiteRooms:
+  - {fileID: 175062878375977997, guid: 0c019f0970d3b56459b3ee8e1ad7d6c2, type: 3}
   StartingRooms:
   - {fileID: 6667954375096041687, guid: 7fc07f46ea150f645989fd3e9bae5a42, type: 3}
   ShopRooms:
