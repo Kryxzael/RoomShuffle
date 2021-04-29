@@ -23,6 +23,11 @@ public class InventoryDisplayPage : DebugPage
             caller.NavigationStack.Push(new GiveWeaponDebugPage());
         }
 
+        if (Button("Give Powerup ..."))
+        {
+            caller.NavigationStack.Push(new GivePowerUpDebugPage());
+        }
+
         Separator();
 
         if (Button("Give $$$"))
