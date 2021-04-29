@@ -36,6 +36,7 @@ public class RequiredItemLootTable : LootTable
         {
             if (UnityEngine.Random.value >= 0.75f)
                 yield return WeaponRepairPickup;
+
             else
                 yield return WeaponPickup;
         }
