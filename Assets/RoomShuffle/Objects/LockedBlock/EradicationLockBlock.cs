@@ -24,6 +24,8 @@ public class EradicationLockBlock : MonoBehaviour
 
     private void LateUpdate()
     {
+        Commons.SoundtrackPlayer.AddTrigger(this, 0.5f);
+
         if (EnemiesLeft == 0)
             Destroy(gameObject);
     }

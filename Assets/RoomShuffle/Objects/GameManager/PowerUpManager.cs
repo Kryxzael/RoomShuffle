@@ -37,7 +37,7 @@ public class PowerUpManager : MonoBehaviour
     [Tooltip("How long the player will have the invincibility power-up for")]
     public float InvincibilityTime = 15f;
 
-    private void Update()
+    private void Update() 
     {
         //Decrease timers (unless in a safe-room
         if (!Commons.RoomGenerator.CurrentRoomConfig.Class.IsSafeRoom())
@@ -46,9 +46,17 @@ public class PowerUpManager : MonoBehaviour
                 _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
         }
 
+        if (HasPowerUp(PowerUp.AttackUp))
+        {
+            Commons.SoundtrackPlayer.AddTrigger(PowerUp.AttackUp, 0.5f);
+        }
 
         if (HasPowerUp(PowerUp.Invincibility))
+        {
             Commons.PlayerHealth.DefensePercentage = 1f;
+            Commons.SoundtrackPlayer.AddTrigger(PowerUp.Invincibility, 0.5f);
+        }
+            
 
         else if (HasPowerUp(PowerUp.DefenseUp))
             Commons.PlayerHealth.DefensePercentage = DefenseStrength;

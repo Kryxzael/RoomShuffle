@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
     public float CurrentSeconds { get; set; }
     
     //if the timer is running
-    private bool _timerIsRunning = false;
+    public bool TimerIsRunning { get; private set; } = false;
 
     private TextMeshProUGUI TMP_GUI;
 
@@ -72,11 +72,11 @@ public class Timer : MonoBehaviour
     /// </summary>
     public void StartStopwatch()
     {
-        if (_timerIsRunning)
+        if (TimerIsRunning)
             return;
             
         StartCoroutine(CoStartTimer());
-        _timerIsRunning = true;
+        TimerIsRunning = true;
     }
     
     /// <summary>
@@ -94,7 +94,7 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         StopAllCoroutines();
-        _timerIsRunning = false;
+        TimerIsRunning = false;
     }
     
     /// <summary>
@@ -103,11 +103,11 @@ public class Timer : MonoBehaviour
     /// <param name="seconds"></param>
     public void StartCountdown(float seconds)
     {
-        if (_timerIsRunning)
+        if (TimerIsRunning)
             return;
         
         StartCoroutine(CoStartCountdown(seconds));
-        _timerIsRunning = true;
+        TimerIsRunning = true;
     }
     
     /// <summary>
@@ -126,7 +126,7 @@ public class Timer : MonoBehaviour
     public void StopCountdown()
     {
         StopAllCoroutines();
-        _timerIsRunning = false;
+        TimerIsRunning = false;
     }
 
     /// <summary>

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ public class SoundtrackPlayer : MonoBehaviour
 
     private readonly Dictionary<object, float> AdrenalineTriggers = new Dictionary<object, float>();
 
+    public MusicChannels OverrideChannels;
+
     private void Start()
     {
         Level1Player.Play();
@@ -27,8 +30,51 @@ public class SoundtrackPlayer : MonoBehaviour
 
     }
 
-    private void Update()
+    private void Update()  
     {
+        Level1Player.pitch = 1f;
+        Level2Player.pitch = 1f;
+
+        Level1AdrenalinePlayer.pitch = 1f;
+        Level2AdrenalinePlayer.pitch = 1f;
+
+        if (Commons.SpeedRunMode)
+        {
+            Level1Player.pitch += 0.12f;
+            Level2Player.pitch += 0.12f;
+
+            Level1AdrenalinePlayer.pitch += 0.12f;
+            Level2AdrenalinePlayer.pitch += 0.12f;
+        }
+
+        if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)
+        {
+            Level1Player.pitch += 0.12f;
+            Level2Player.pitch += 0.12f;
+
+            Level1AdrenalinePlayer.pitch += 0.12f;
+            Level2AdrenalinePlayer.pitch += 0.12f;
+        }
+
+        if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 5)
+        {
+            Level1Player.pitch += 0.12f;
+            Level2Player.pitch += 0.12f;
+
+            Level1AdrenalinePlayer.pitch += 0.12f;
+            Level2AdrenalinePlayer.pitch += 0.12f;
+        }
+
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
+        {
+            Level1Player.pitch *= 0.75f;
+            Level2Player.pitch *= 0.75f;
+
+            Level1AdrenalinePlayer.pitch *= 0.75f;
+            Level2AdrenalinePlayer.pitch *= 0.75f;
+
+        }
+
         foreach (var i in AdrenalineTriggers.ToArray())
         {
             AdrenalineTriggers[i.Key] = i.Value - Time.deltaTime;
@@ -39,7 +85,15 @@ public class SoundtrackPlayer : MonoBehaviour
             }
         }
 
-        if (AdrenalineTriggers.Any())
+        if (OverrideChannels != MusicChannels.None)
+        {
+            Level1Player.volume = LerpVolume(Level1Player.volume, OverrideChannels.HasFlag(MusicChannels.Level1) ? 1f : 0f);
+            Level2Player.volume = LerpVolume(Level2Player.volume, OverrideChannels.HasFlag(MusicChannels.Level2) ? 1f : 0f);
+            Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, OverrideChannels.HasFlag(MusicChannels.Level1Adrenaline) ? 1f : 0f);
+            Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, OverrideChannels.HasFlag(MusicChannels.Level2Adrenaline) ? 1f : 0f);
+        }
+
+        else if (AdrenalineTriggers.Any())
         {
             Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 1f);
             Level1Player.volume = LerpVolume(Level1Player.volume, 0f);
@@ -47,7 +101,7 @@ public class SoundtrackPlayer : MonoBehaviour
 
             if (Commons.RoomGenerator.CurrentRoomConfig?.Class.IsSafeRoom() != false)
             {
-                Level2AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 0f);
+                Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, 0f);
             }
             else
             {
@@ -96,5 +150,15 @@ public class SoundtrackPlayer : MonoBehaviour
             yield return new WaitForSeconds(afterTime);
             AdrenalineTriggers.Remove(key);
         }
+    }
+
+    [Flags]
+    public enum MusicChannels
+    {
+        None = 0x0,
+        Level1 = 0x1,
+        Level2 = 0x2,
+        Level1Adrenaline = 0x4,
+        Level2Adrenaline = 0x8,
     }
 }
