@@ -91,92 +91,100 @@ public class SpotPlayer : EnemyScript
 
     void Update()
     {
-        //If the no-target cheat is enabled, the spotter will never see the player
-        if (Cheats.NoTarget || Commons.PlayerHealth.IsDead)
+        try
         {
-            State = SpotterPlayerRelationship.OutOfRadius;
-            return;
-        }
-
-        float distanceToPlayer = Vector2.Distance(_player.Value.transform.position, transform.position);   
-        ReactionTimeLeft = Mathf.Clamp(ReactionTimeLeft, 0, Commons.GetEffectValue(ReactionTime, EffectValueType.EnemyWaitTime));
-        
-        //The player is in the enemy's spotting distance (or chasing spotting distance)
-        if (distanceToPlayer < SpottingRadius || 
-            (State == SpotterPlayerRelationship.Chasing && distanceToPlayer < SpottingRadius * SpottingRadiusChasingScale))
-        {
-
-            if (BlindChaseTimeLeft > 0)
+            //If the no-target cheat is enabled, the spotter will never see the player
+            if (Cheats.NoTarget || Commons.PlayerHealth.IsDead)
             {
-                State = SpotterPlayerRelationship.BlindChasing;
-                BlindChaseTimeLeft -= Time.deltaTime;
-            }
-            else
-            {
-                State = SpotterPlayerRelationship.HiddenInRadius;
+                State = SpotterPlayerRelationship.OutOfRadius;
+                return;
             }
 
-            //Checks vision cone of enemy. If a raycast towards the player hits it, the player is spotted. If not, something's in the way
+            float distanceToPlayer = Vector2.Distance(_player.Value.transform.position, transform.position);
+            ReactionTimeLeft = Mathf.Clamp(ReactionTimeLeft, 0, Commons.GetEffectValue(ReactionTime, EffectValueType.EnemyWaitTime));
 
-            RaycastHit2D[] hits;
-            hits = Physics2D.RaycastAll(Enemy.Collider.bounds.center, _player.Value.transform.position - transform.position, distanceToPlayer);
-
-            //TODO: Should probably detect using layers, not tags
-            bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && (x.transform.gameObject.tag != "Projectile") && x.transform.gameObject.tag != "Player");
-
-            if (inSight)
+            //The player is in the enemy's spotting distance (or chasing spotting distance)
+            if (distanceToPlayer < SpottingRadius ||
+                (State == SpotterPlayerRelationship.Chasing && distanceToPlayer < SpottingRadius * SpottingRadiusChasingScale))
             {
-                State = SpotterPlayerRelationship.Spotted;
 
-                ReactionTimeLeft -= Time.deltaTime;
-
-                //The enemy has spotted the player for long enough and is now chasing
-                if (ReactionTimeLeft <= 0)
+                if (BlindChaseTimeLeft > 0)
                 {
-                    State = SpotterPlayerRelationship.Chasing;
-                    
-                    //resets the blind chasing counter
-                    BlindChaseTimeLeft = BlindChaseTime;
-                    
-                    UpdateBlindChaseDirection();
-                }
-            }
-
-            //Something's in the way
-            else
-            {
-                ReactionTimeLeft += Time.deltaTime;
-            }
-        }
-
-        //The player is not in the spotting distance
-        else
-        {
-            // The enemy is blindly chasing the player
-            if (BlindChaseTimeLeft > 0)
-            {
-                State = SpotterPlayerRelationship.BlindChasing;
-                BlindChaseTimeLeft -= Time.deltaTime;
-            }
-            // the enemy is done blindly chasing the player
-            else
-            {
-                if (ReactionTimeLeft <= 0)
-                {
-                    ReactionTimeLeft = 0;
-                }
-                ReactionTimeLeft += Time.deltaTime;
-                
-                if (ReactionTimeLeft >= Commons.GetEffectValue(ReactionTime, EffectValueType.EnemyWaitTime))
-                {
-                    State = SpotterPlayerRelationship.OutOfRadius;
+                    State = SpotterPlayerRelationship.BlindChasing;
+                    BlindChaseTimeLeft -= Time.deltaTime;
                 }
                 else
                 {
-                    State = SpotterPlayerRelationship.Puzzled;
+                    State = SpotterPlayerRelationship.HiddenInRadius;
+                }
+
+                //Checks vision cone of enemy. If a raycast towards the player hits it, the player is spotted. If not, something's in the way
+
+                RaycastHit2D[] hits;
+                hits = Physics2D.RaycastAll(Enemy.Collider.bounds.center, _player.Value.transform.position - transform.position, distanceToPlayer);
+
+                //TODO: Should probably detect using layers, not tags
+                bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && (x.transform.gameObject.tag != "Projectile") && x.transform.gameObject.tag != "Player");
+
+                if (inSight)
+                {
+                    State = SpotterPlayerRelationship.Spotted;
+
+                    ReactionTimeLeft -= Time.deltaTime;
+
+                    //The enemy has spotted the player for long enough and is now chasing
+                    if (ReactionTimeLeft <= 0)
+                    {
+                        State = SpotterPlayerRelationship.Chasing;
+
+                        //resets the blind chasing counter
+                        BlindChaseTimeLeft = BlindChaseTime;
+
+                        UpdateBlindChaseDirection();
+                    }
+                }
+
+                //Something's in the way
+                else
+                {
+                    ReactionTimeLeft += Time.deltaTime;
                 }
             }
-            
+
+            //The player is not in the spotting distance
+            else
+            {
+                // The enemy is blindly chasing the player
+                if (BlindChaseTimeLeft > 0)
+                {
+                    State = SpotterPlayerRelationship.BlindChasing;
+                    BlindChaseTimeLeft -= Time.deltaTime;
+                }
+                // the enemy is done blindly chasing the player
+                else
+                {
+                    if (ReactionTimeLeft <= 0)
+                    {
+                        ReactionTimeLeft = 0;
+                    }
+                    ReactionTimeLeft += Time.deltaTime;
+
+                    if (ReactionTimeLeft >= Commons.GetEffectValue(ReactionTime, EffectValueType.EnemyWaitTime))
+                    {
+                        State = SpotterPlayerRelationship.OutOfRadius;
+                    }
+                    else
+                    {
+                        State = SpotterPlayerRelationship.Puzzled;
+                    }
+                }
+
+            }
+        }
+        finally
+        {
+            if (InPursuit)
+                Commons.SoundtrackPlayer.AddTrigger(this, 2.5f);
         }
     }
 
@@ -219,5 +227,10 @@ public class SpotPlayer : EnemyScript
         Gizmos.DrawWireSphere(Enemy.Collider.bounds.center, SpottingRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(Enemy.Collider.bounds.center, SpottingRadius * SpottingRadiusChasingScale);
+    }
+
+    private void OnDestroy()
+    {
+        Commons.SoundtrackPlayer.RemoveTrigger(this);
     }
 }

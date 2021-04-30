@@ -33,6 +33,10 @@ public static class Commons
         () => GameObject.FindWithTag("AudioManager")
     );
 
+    private static RenewableLazy<SoundtrackPlayer> _soundtrackPlayer { get; } = new RenewableLazy<SoundtrackPlayer>(
+        () => GameObject.FindObjectOfType<SoundtrackPlayer>()
+    );
+
     private static RenewableLazy<PlayerProgression> _playerProgression { get; } = new RenewableLazy<PlayerProgression>(
         () => PlayerManager.GetComponent<PlayerProgression>()
     );
@@ -193,6 +197,11 @@ public static class Commons
     /// Gets the enemy progression controller of the scene
     /// </summary>
     public static EnemyProgression EnemyProgression => _enemyProgression.Value;
+
+    /// <summary>
+    /// Gets the soundtrack player
+    /// </summary>
+    public static SoundtrackPlayer SoundtrackPlayer => _soundtrackPlayer.Value;
 
     /// <summary>
     /// Spawns the provided object and parents it to the currently loaded level

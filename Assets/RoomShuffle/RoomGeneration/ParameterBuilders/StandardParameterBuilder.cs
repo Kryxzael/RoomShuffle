@@ -51,9 +51,6 @@ public class StandardParameterBuilder : ParameterBuilder
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
         RoomParameters output;
-    
-        output.GroundEnemies = GroundEnemies;
-        output.AirEnemies = AirEnemies;
 
         /*
          * Room Class and Queued Layout
@@ -72,7 +69,8 @@ public class StandardParameterBuilder : ParameterBuilder
             output = new RoomParameters();
 
             //Choose random enemy set
-            output.EnemySet = EnemySets[random.Next(EnemySets.Count)];
+            output.GroundEnemies = GroundEnemies;
+            output.AirEnemies = AirEnemies;
 
             //Time for a shop
             if (history.RoomsSinceClass(RoomClass.Shop, includeSafes: true) >= ShopFrequency.Pick(random))
