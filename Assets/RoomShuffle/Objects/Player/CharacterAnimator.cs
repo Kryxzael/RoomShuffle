@@ -41,6 +41,7 @@ public class CharacterAnimator : MonoBehaviour
     private SpriteAnimator _spriteAnimator;
     private WallJump _wallJump;
     private Flippable _flippable;
+    private SpriteRenderer _spriteRenderer;
 
     private RenewableLazy<PlayerWeaponShooter> _playerShooter = new RenewableLazy<PlayerWeaponShooter>(() => FindObjectOfType<PlayerWeaponShooter>());
 
@@ -50,6 +51,7 @@ public class CharacterAnimator : MonoBehaviour
         _spriteAnimator = GetComponent<SpriteAnimator>();
         _flippable = GetComponent<Flippable>();
         _wallJump = GetComponent<WallJump>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -65,6 +67,24 @@ public class CharacterAnimator : MonoBehaviour
             _flippable.Direction = Direction1D.Right;
             _spriteAnimator.Animation = Idle;
             return;
+        }
+
+        /*
+         * Change player's color based on power up
+         */
+
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
+        {
+            Color currentColor = _spriteRenderer.color;
+            Color.RGBToHSV(currentColor, out float hue, out _, out _);
+            hue += 0.005f;
+            hue %= 1f;
+
+            _spriteRenderer.color = Color.HSVToRGB(hue, 1f, 1f);
+        } 
+        else
+        {
+            _spriteRenderer.color = new Color(1f, 1f, 1f, _spriteRenderer.color.a);
         }
 
         /*
