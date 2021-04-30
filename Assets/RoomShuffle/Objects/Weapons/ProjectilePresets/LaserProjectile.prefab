@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3838528766248490060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831466014978973620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c491525f10d4345bdbbf9aa1d46927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FriendlyFireOn: 0
+  BaseDamage: 5
+  _hurtBox: {fileID: 8607221160332809425}
 --- !u!61 &4731243971794411631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52,21 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LivingTime: 0.3
---- !u!114 &3838528766248490060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2831466014978973620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c491525f10d4345bdbbf9aa1d46927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FriendlyFireOn: 0
-  BaseDamage: 5
-  _hurtBox: {fileID: 8607221160332809425}
 --- !u!61 &8587147193739072524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -199,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Positions.Array.data[1].z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 645605772960603219, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 69657648604158465, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
