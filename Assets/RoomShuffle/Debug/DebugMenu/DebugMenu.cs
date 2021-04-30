@@ -17,6 +17,9 @@ public class DebugMenu : MonoBehaviour
     //The current run output
     private List<string> _currentRun = new List<string>();
 
+    [Tooltip("Items that can be spawned through debug mode")]
+    public List<GameObject> SpawnableItems;
+
     /// <summary>
     /// Gets the current debug page
     /// </summary>
@@ -93,20 +96,31 @@ public class DebugMenu : MonoBehaviour
     private void OnGUI()
     {
         //Draws the list
-        DrawList(new string[] { "==DEBUG MODE==", CurrentPage.Header, "" }.Concat(_currentRun).ToArray());
+        DrawList(new string[] { "==DEBUG MODE==", CurrentPage.Header, "" }.Concat(_currentRun).ToArray(), NavigationStack.Peek().SelectedIndex);
     }
 
     /// <summary>
     /// Draws a list of strings to the top right corner of the screen
     /// </summary>
     /// <param name="texts"></param>
-    private void DrawList(string[] texts)
+    private void DrawList(string[] texts, int index)
     {
-        for (int i = 0; i < texts.Length; i++)
-        {
+        const int DISPLAYED_LINES = 10;
+        const int HEADER_SIZE = 3;
+
+        for (int i = 0; i < Mathf.Min(texts.Length, DISPLAYED_LINES + HEADER_SIZE); i++)
+        { 
             const int VERTICAL_OFFSET = 100;
-            const float VERTICAL_PADDING = 20f;
+            const float VERTICAL_PADDING = 20f; 
             const float SHADOW_OFFSET = 2.5f;
+
+            int adjustedIndex = i;
+
+            if (index >= DISPLAYED_LINES)
+                adjustedIndex = i + index + HEADER_SIZE - DISPLAYED_LINES - 2;
+
+            if (adjustedIndex >= texts.Length)
+                break;
 
             //Shadow
             {
@@ -114,7 +128,7 @@ public class DebugMenu : MonoBehaviour
                 style.alignment = TextAnchor.UpperLeft;
                 style.normal.textColor = Color.black;
 
-                GUI.Label(new Rect(SHADOW_OFFSET, i * VERTICAL_PADDING + SHADOW_OFFSET + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[i], style);
+                GUI.Label(new Rect(SHADOW_OFFSET, i * VERTICAL_PADDING + SHADOW_OFFSET + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[adjustedIndex], style);
             }
 
             //Text
@@ -123,7 +137,7 @@ public class DebugMenu : MonoBehaviour
                 style.alignment = TextAnchor.UpperLeft;
                 style.normal.textColor = Color.white;
 
-                GUI.Label(new Rect(0f, i * VERTICAL_PADDING + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[i], style);
+                GUI.Label(new Rect(0f, i * VERTICAL_PADDING + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[adjustedIndex], style);
             }
         }
     }

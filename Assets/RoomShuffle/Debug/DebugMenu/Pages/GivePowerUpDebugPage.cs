@@ -12,9 +12,13 @@ public class GivePowerUpDebugPage : DebugPage
     {
         foreach (PowerUp i in typeof(PowerUp).GetEnumValues())
         {
-            if (Button(i.ToString()))
+            if (Toggle(i.ToString(), Commons.PowerUpManager.HasPowerUp(i)))
             {
-                Commons.PowerUpManager.GrantPowerUp(i);
+                if (Commons.PowerUpManager.HasPowerUp(i))
+                    Commons.PowerUpManager.RevokePowerup(i);
+
+                else
+                    Commons.PowerUpManager.GrantPermanentPowerup(i);
             }
         }
     }

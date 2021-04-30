@@ -45,7 +45,12 @@ public class HomeDebugPage : DebugPage
                     Cheats.HealthCheat = Cheats.HealthCheatType.None;
                 break;
         }
-        
+
+        if (Button("Spawn Item ..."))
+            caller.NavigationStack.Push(new SpawnItemDebugPage());
+
+        if (Button("Spawn Enemy ..."))
+            caller.NavigationStack.Push(new SpawnEnemyDebugPage());
 
         if (Button("Room Generation ..."))
             caller.NavigationStack.Push(new RoomGenerationDebugPage());

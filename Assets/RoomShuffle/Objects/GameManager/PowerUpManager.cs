@@ -75,6 +75,24 @@ public class PowerUpManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Grants a power-up with infinite duration
+    /// </summary>
+    /// <param name="i"></param>
+    public void GrantPermanentPowerup(PowerUp powerup)
+    {
+        _powerUpsWithTimers[powerup] = float.PositiveInfinity;
+    }
+
+    /// <summary>
+    /// Removes a power-up
+    /// </summary>
+    /// <param name="powerup"></param>
+    public void RevokePowerup(PowerUp powerup)
+    {
+        _powerUpsWithTimers[powerup] = 0f;
+    }
+
+    /// <summary>
     /// Gets how much time a specific power-up has left
     /// </summary>
     /// <param name="powerup"></param>

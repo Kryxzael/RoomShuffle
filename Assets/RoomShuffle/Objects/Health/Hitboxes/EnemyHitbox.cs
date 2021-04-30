@@ -77,7 +77,7 @@ public class EnemyHitbox : Hitbox
         if (!(hurtbox is PlayerInvincibilityHurtbox))
             MakeEnemyBlindChase();
 
-        if (!(hurtbox is GlobalHurtbox))
+        if (!(hurtbox is GlobalHurtbox) && hurtbox.GetDamage(this) != 0)
             Commons.SoundtrackPlayer.AddTrigger(this, 5f);
 
         //Dead men don't scream
