@@ -45,7 +45,7 @@ public class RoomEffectText : MonoBehaviour
             RoomEffects.ReverseControls => "Reversed Controls",
             RoomEffects.Icy => "Slippery",
             RoomEffects.Timer => "Time Limit",
-            _ => throw new NotImplementedException(),
+            _ => "Multiple",
         };
 
         if (!lastText.Equals(_label.text))
