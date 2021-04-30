@@ -110,7 +110,7 @@ public class DebugMenu : MonoBehaviour
 
         for (int i = 0; i < Mathf.Min(texts.Length, DISPLAYED_LINES + HEADER_SIZE); i++)
         { 
-            const int VERTICAL_OFFSET = 100;
+            const int VERTICAL_OFFSET = 125;
             const float VERTICAL_PADDING = 20f; 
             const float SHADOW_OFFSET = 2.5f;
 
