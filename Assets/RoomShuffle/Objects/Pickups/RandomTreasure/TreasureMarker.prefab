@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2018382130771371863}
   - component: {fileID: 7784415940440409949}
   m_Layer: 0
-  m_Name: TresureMarker
+  m_Name: TreasureMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,3 +114,9 @@ MonoBehaviour:
     Item: {fileID: 4205078315579385821, guid: bc11c821ae5bf2c4494049fa1e87c3b2, type: 3}
   - Spawnrate: 0.4
     Item: {fileID: 5956370961099561825, guid: 413f77547bd1c404ebe478f25274b9df, type: 3}
+  - Spawnrate: 0.75
+    Item: {fileID: 7108815616648741702, guid: e7fc05d9c5cdce84fad118cd24bbcf4b, type: 3}
+  - Spawnrate: 0.75
+    Item: {fileID: 591263941064537959, guid: 6ce1b8d21c041e9429ed912ce90f7fa1, type: 3}
+  - Spawnrate: 0.75
+    Item: {fileID: 7155091690890664625, guid: 851ad46b65509234a97467982df5d3d2, type: 3}
