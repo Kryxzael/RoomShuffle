@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Represents an effect that can be applied to a room
 /// </summary>
+[Flags]
 public enum RoomEffects
 {
     /// <summary>
