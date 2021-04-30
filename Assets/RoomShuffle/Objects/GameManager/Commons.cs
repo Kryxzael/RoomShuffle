@@ -300,6 +300,26 @@ public static class Commons
         public static readonly LayerMask GroundAndBlockers = LayerMask.GetMask("Ground", "Crate", "Enemy Blocker");
         public static readonly LayerMask HitboxesHurtboxes = LayerMask.GetMask("Hitbox Hurtbox");
     }
+    
+    /// <summary>
+    /// Checks if the vector is on screen
+    /// </summary>
+    /// <param name="startPosition"></param>
+    /// <param name="endPosition"></param>
+    /// <returns></returns>
+    static public bool IsVectorOnScreen(Vector2 position, Camera camera)
+    {
+        if (!camera)
+        {
+            return false;
+        }
+
+        float height = 2f * camera.orthographicSize;
+        float width = height * camera.aspect;
+        Bounds cameraBounds = new Bounds(camera.transform.position, new Vector3(width, height, 0));
+        return cameraBounds.Contains(new Vector3(position.x, position.y, camera.transform.position.z));
+
+    }
 }
 
 /// <summary>

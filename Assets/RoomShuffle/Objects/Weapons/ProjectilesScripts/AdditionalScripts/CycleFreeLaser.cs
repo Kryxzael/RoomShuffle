@@ -115,7 +115,7 @@ public class CycleFreeLaser : MonoBehaviour
             _lineRenderer.material = ChargingMaterial;
         }
 
-        _isVisible = IsLaserOnScreen(start, end) || _isVisible;
+        _isVisible = IsLaserOnScreen(start, end);
 
         if (IsOn && _isVisible)
         {
@@ -135,33 +135,16 @@ public class CycleFreeLaser : MonoBehaviour
     /// <returns></returns>
     private bool IsLaserOnScreen(Vector2 startPosition, Vector2 endPosition)
     {
-        if (!_mainCamera)
-        {
-            return false;
-        }
-
         float height = 2f * _mainCamera.orthographicSize;
         float width = height * _mainCamera.aspect;
-        Bounds cameraBounds = new Bounds(_mainCamera.transform.position, new Vector3(width, height, 0));
-        
+        Bounds cameraBounds = new Bounds(_mainCamera.transform.Position2D(), new Vector3(width, height, 0));
         Ray ray = new Ray(startPosition, endPosition - startPosition);
-            
         bool intersecting = cameraBounds.IntersectRay(ray, out float length);
-
-        return (length <= Vector2.Distance(startPosition, endPosition) && intersecting);
+        
+        return (length <= Vector2.Distance(startPosition, endPosition) && intersecting) || Commons.IsVectorOnScreen(startPosition, _mainCamera);
 
     }
-    
-    private void OnBecameVisible()
-    {
-        _isVisible = true;
-    }
 
-    private void OnBecameInvisible()
-    {
-        _isVisible = false;
-    }
-    
     private void OnDestroy()
     {
         _laserAudio.RemoveLaser(gameObject);

@@ -137,7 +137,7 @@ public class Laser : MonoBehaviour
             //Set firing material
             _lineRenderer.material = FiringMaterial;
 
-            _isVisible = IsLaserOnScreen(start, end) || _isVisible;
+            _isVisible = IsLaserOnScreen(start, end);
 
         }
 
@@ -169,24 +169,13 @@ public class Laser : MonoBehaviour
     {
         float height = 2f * _mainCamera.orthographicSize;
         float width = height * _mainCamera.aspect;
-        Bounds cameraBounds = new Bounds(_mainCamera.transform.position, new Vector3(width, height, 0));
+        Bounds cameraBounds = new Bounds(_mainCamera.transform.Position2D(), new Vector3(width, height, 0));
         
         Ray ray = new Ray(startPosition, endPosition - startPosition);
             
         bool intersecting = cameraBounds.IntersectRay(ray, out float length);
+        return (length <= Vector2.Distance(startPosition, endPosition) && intersecting) || Commons.IsVectorOnScreen(startPosition, _mainCamera);
 
-        return (length <= Vector2.Distance(startPosition, endPosition) && intersecting);
-
-    }
-
-    private void OnBecameVisible()
-    {
-        _isVisible = true;
-    }
-
-    private void OnBecameInvisible()
-    {
-        _isVisible = false;
     }
 
     private void OnDestroy()

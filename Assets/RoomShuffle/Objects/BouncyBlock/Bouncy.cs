@@ -57,7 +57,7 @@ public class Bouncy : MonoBehaviour
          * Sound
          */
 
-        if (IsBounceOnScreen(collision.contacts.First().point, _mainCamera))
+        if (Commons.IsVectorOnScreen(collision.contacts.First().point, _mainCamera))
         {
             //Play sound at normal volume if collision is player
             if (collision.gameObject.IsPlayer())
@@ -115,25 +115,5 @@ public class Bouncy : MonoBehaviour
             _jumpController.Value.CaptureSuccessfulJumpSnapshot();
         }
         
-    }
-    
-    /// <summary>
-    /// Checks if the laser is intersecting with the camera.
-    /// </summary>
-    /// <param name="startPosition"></param>
-    /// <param name="endPosition"></param>
-    /// <returns></returns>
-    static public bool IsBounceOnScreen(Vector2 position, Camera camera)
-    {
-        if (!camera)
-        {
-            return false;
-        }
-
-        float height = 2f * camera.orthographicSize;
-        float width = height * camera.aspect;
-        Bounds cameraBounds = new Bounds(camera.transform.position, new Vector3(width, height, 0));
-        return cameraBounds.Contains(new Vector3(position.x, position.y, camera.transform.position.z));
-
     }
 }
