@@ -73,16 +73,28 @@ public class WeaponUIManager : MonoBehaviour
     {
         for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
         {
-            if (inventory.WeaponSlots[i] == null)
+            var weapon = inventory.WeaponSlots[i];
+
+            if (weapon == null)
             {
                 _durabilityTextMeshPro[i].text = "";
             }
             else
             {
-                _durabilityTextMeshPro[i].text = inventory.WeaponSlots[i].Durability.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                _durabilityTextMeshPro[i].text = weapon.Durability.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
-                if (inventory.WeaponSlots[i].Durability <= 0)
+                if (weapon.Durability <= 0)
                     _durabilityTextMeshPro[i].color = Color.red;
+
+                else if (weapon.Durability <= weapon.MaxDurability / 4f)
+                    _durabilityTextMeshPro[i].color = new Color(1f, 0.25f, 0f);
+
+                else if (weapon.Durability <= weapon.MaxDurability / 2f)
+                    _durabilityTextMeshPro[i].color = new Color(1f, 1f, 0f);
+
+                else if (weapon.Durability <= weapon.MaxDurability / 1.5f)
+                    _durabilityTextMeshPro[i].color = new Color(1f, 1f, 0.5f);
+
 
                 else
                     _durabilityTextMeshPro[i].color = Color.white;
