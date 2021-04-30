@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'DAMAGE LEVEL: <size="15%">{0}</size>'
+  m_text: 'ATTACK LEVEL: <size="15%">{0}</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
   m_sharedMaterial: {fileID: 3933581563958626510, guid: a49e66f26673f4a4b893d5d9c45ba569, type: 2}
@@ -2264,7 +2264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -36}
   m_SizeDelta: {x: 369.7036, y: 407.7648}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5762634946995582040
@@ -2403,7 +2403,7 @@ RectTransform:
   m_GameObject: {fileID: 7535277052135119165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999247, y: 0.999247, z: 0.999247}
+  m_LocalScale: {x: 1.0000044, y: 1.0000044, z: 1.0000044}
   m_Children: []
   m_Father: {fileID: 6087545699989896824}
   m_RootOrder: 0

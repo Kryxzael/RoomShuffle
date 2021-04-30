@@ -1408,7 +1408,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Backgrounds.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Backgrounds.Array.data[0].Theme
@@ -1419,6 +1419,30 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[2].Theme
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[3].Theme
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[4].Theme
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[5].Theme
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[6].Theme
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[7].Theme
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Backgrounds.Array.data[0].Background
       value: 
       objectReference: {fileID: 6700715351123667358, guid: 942a331eedafe0d45aacb52ac9e5623b, type: 3}
@@ -1426,9 +1450,37 @@ PrefabInstance:
       propertyPath: Backgrounds.Array.data[1].Background
       value: 
       objectReference: {fileID: 6700715351123667358, guid: 8c088e51ab70b3f4a9a5b0797b73733f, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[2].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 8c088e51ab70b3f4a9a5b0797b73733f, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[3].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 8c088e51ab70b3f4a9a5b0797b73733f, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[4].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 8c088e51ab70b3f4a9a5b0797b73733f, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[5].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 8c088e51ab70b3f4a9a5b0797b73733f, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[6].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: a9fafa577552c5a408476a5605e01799, type: 3}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: Backgrounds.Array.data[7].Background
+      value: 
+      objectReference: {fileID: 6700715351123667358, guid: 2b41dee0ddd6b9446b749224be4d2753, type: 3}
     - target: {fileID: 8732169254791963091, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -36
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732169254791963091, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
