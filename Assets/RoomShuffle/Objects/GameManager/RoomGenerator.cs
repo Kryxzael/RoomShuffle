@@ -49,7 +49,7 @@ public class RoomGenerator : MonoBehaviour
     /// <summary>
     /// Gets or sets the number that is displayed as the room count
     /// </summary>
-    public int CurrentRoomNumber { get; set; }
+    public int CurrentRoomNumber { get; set; } = 0;
 
     /// <summary>
     /// The random number generator used to generate rooms
@@ -105,16 +105,6 @@ public class RoomGenerator : MonoBehaviour
     /// </summary>
     public void GenerateNext()
     {
-        
-        /*
-         *  Add to seconds to speedrun timer
-         */
-
-        if (Commons.SpeedRunMode && History.Any())
-        {
-            Commons.CountdownTimer.AddTime(History.First().Layout.TimerEffectSeconds / 2);
-        }
-
         /*
          * Destroy current room and background
          */
@@ -196,9 +186,6 @@ public class RoomGenerator : MonoBehaviour
 
         if (!parameters.Class.IsSafeRoom()) 
         {
-            //Increase room number
-            CurrentRoomNumber++;
-
             //Level up enemies
             if (CurrentRoomNumber % EnemyHealthUpFrequency == 0)
                 Commons.EnemyProgression.LevelUpHealth();
@@ -218,7 +205,22 @@ public class RoomGenerator : MonoBehaviour
         else
         {
             FindObjectsOfType<Light>().Single(i => i.type == LightType.Directional).intensity = 1f;
+        }
 
+        /*
+         *  Add to seconds to speedrun timer
+         */
+
+        if (Commons.SpeedRunMode && History.Any())
+        {
+            var add = parameters.Layout.TimerEffectSeconds;
+
+            if (Commons.CountdownTimer.CurrentSeconds > Mathf.Max(10, 30 - CurrentRoomNumber))
+            {
+                add *= 0.5f;
+            }
+
+            Commons.CountdownTimer.AddTime(add);
         }
     }
 

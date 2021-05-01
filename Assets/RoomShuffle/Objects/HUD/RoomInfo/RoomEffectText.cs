@@ -41,7 +41,6 @@ public class RoomEffectText : MonoBehaviour
             RoomEffects.FastFoe => "Fast-Foe",
             RoomEffects.LargeEnemies => "Large Enemies",
             RoomEffects.LargeProjectiles => "Large Projectiles",
-            RoomEffects.Backlit => "Back-lit",
             RoomEffects.ReverseControls => "Reversed Controls",
             RoomEffects.Icy => "Slippery",
             RoomEffects.Timer => "Time Limit",

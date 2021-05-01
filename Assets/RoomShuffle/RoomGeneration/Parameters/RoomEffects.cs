@@ -46,11 +46,6 @@ public enum RoomEffects
     LargeProjectiles = 0x20,
 
     /// <summary>
-    /// All lights will be disabled and you can only see silhouettes
-    /// </summary>
-    Backlit = 0x40,
-
-    /// <summary>
     /// The player's input controls will be reversed
     /// </summary>
     ReverseControls = 0x80,

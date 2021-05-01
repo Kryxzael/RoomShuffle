@@ -58,7 +58,6 @@ public class RoomEffectController : MonoBehaviour
         LowGravity(fx.HasFlag(RoomEffects.LowGravity));
         Darkness(fx.HasFlag(RoomEffects.Darkness));
         LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
-        //Backlit(fx.HasFlag(RoomEffects.Backlit));
         Timer(fx.HasFlag(RoomEffects.Timer), room);
     }
 
@@ -131,22 +130,6 @@ public class RoomEffectController : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the back-lit effect
-    /// </summary>
-    /// <param name="enabled"></param>
-    private void Backlit(bool enabled)
-    {
-        //TODO: This should be removed when we get backgrounds
-        if (Camera.main)
-            Camera.main.backgroundColor = enabled ? Color.white : Color.black;
-
-        foreach (Light i in FindObjectsOfType<Light>(includeInactive: false))
-        {
-            i.enabled = !enabled;
-        }
-    }
-
-    /// <summary>
     /// Sets the timer effect
     /// </summary>
     private void Timer(bool enabled, RoomParameters room)
@@ -156,7 +139,7 @@ public class RoomEffectController : MonoBehaviour
         
         if (enabled)
         {
-            Commons.CountdownTimer.ResetCountdown(room.Layout.TimerEffectSeconds);
+            Commons.CountdownTimer.ResetCountdown(room.Layout.TimerEffectSeconds * 2f);
         }
         else
         {

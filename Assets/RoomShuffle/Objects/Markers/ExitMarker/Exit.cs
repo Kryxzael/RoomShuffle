@@ -8,6 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Exit : MonoBehaviour
 {
+    private const float SPEEDRUN_START_TIME = 30f;
 
     [Tooltip("If the exit should enable speedrun mode")]
     public bool EnableSpeedRunMode = false;
@@ -16,15 +17,18 @@ public class Exit : MonoBehaviour
         if (EnableSpeedRunMode)
         {
             Commons.SpeedRunMode = true;
-            Commons.CountdownTimer.ResetCountdown(10);
+            Commons.CountdownTimer.ResetCountdown(SPEEDRUN_START_TIME);
         }
+
+        //Increase room number
+        if (!Commons.RoomGenerator.CurrentRoomConfig.Class.IsSafeRoom())
+            Commons.RoomGenerator.CurrentRoomNumber++;
 
         //The player has reached the room's exit
         if (collision.gameObject.IsPlayer())
         {
             //Fade out and generate a new room
-
             Commons.TransitionController.CreateTransitionToNextRoom();
-        } 
+        }
     }
 }
