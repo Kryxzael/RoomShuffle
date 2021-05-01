@@ -21,15 +21,6 @@ public class TextError : MonoBehaviour
 
     private MultiSoundPlayer _multiSoundPlayer;
 
-    //TODO remove the nonsense in update... or just the whole update method
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            ErrorLerp();
-        }
-    }
-
     public void Awake()
     {
         TMP = GetComponent<TextMeshProUGUI>();

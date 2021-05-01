@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class ParticleExplosion : MonoBehaviour
 {
+    private float _lastExplosionTime;
+
     [Tooltip("The amount of rigidbodies to spawn when a big explosion is created")]
     public RandomValueBetween ParticleCount;
 
@@ -43,6 +45,11 @@ public class ParticleExplosion : MonoBehaviour
     /// </summary>
     public void Explode(int particleCount)
     {
+        if (Time.unscaledTime - _lastExplosionTime < 0.5f)
+            return;
+
+        _lastExplosionTime = Time.unscaledTime;
+
         for (int i = 0; i < particleCount; i++)
         {
             var particle = Commons.InstantiateInCurrentLevel(Particles[Random.Range(0, Particles.Count)], transform.position);

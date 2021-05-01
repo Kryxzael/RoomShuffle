@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyFireOn: 0
-  BaseDamage: 5
+  BaseDamage: 10
   _hurtBox: {fileID: 0}
 --- !u!114 &8576165844091056654
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyFireOn: 0
-  BaseDamage: 5
+  BaseDamage: 10
   _hurtBox: {fileID: 0}
 --- !u!114 &8100239553731747577
 MonoBehaviour:

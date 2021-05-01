@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyFireOn: 0
-  BaseDamage: 5
+  BaseDamage: 15
   _hurtBox: {fileID: 8607221160332809425}
 --- !u!61 &4731243971794411631
 BoxCollider2D:

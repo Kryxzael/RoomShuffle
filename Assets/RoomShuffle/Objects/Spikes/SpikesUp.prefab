@@ -11,10 +11,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1829799556434204645, guid: d9a493154ee60d9449ea0e2c7ea147a4, type: 3}
-      propertyPath: Damage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1829799556434204646, guid: d9a493154ee60d9449ea0e2c7ea147a4, type: 3}
       propertyPath: m_RootOrder
       value: 0

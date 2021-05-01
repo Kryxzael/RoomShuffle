@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyFireOn: 1
-  BaseDamage: 15
+  BaseDamage: 20
   _hurtBox: {fileID: 8607221160332809425}
 --- !u!114 &4176049167187557990
 MonoBehaviour:
@@ -183,6 +183,14 @@ PrefabInstance:
       propertyPath: Damage
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 69657648604158469, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+      propertyPath: IgnoreIFrames
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 69657648604158469, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+      propertyPath: OverridePlayerDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 69657648604158470, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: CycleTime
       value: 1.5
@@ -198,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c0c4c7f3d34e1bc4b8a95cc8ae8450a4, type: 2}
+      objectReference: {fileID: 2100000, guid: 12d861709a857504f9f21d30fcf9f786, type: 2}
     - target: {fileID: 69657648604158471, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: 0

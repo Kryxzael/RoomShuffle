@@ -8,6 +8,8 @@ using UnityEngine;
 
 public abstract class WeaponPickupBase : PickupScript
 {
+    public PickupBase DroppableWeaponPrefab;
+
     /// <summary>
     /// Gets the weapon to pick up
     /// </summary>
@@ -38,8 +40,11 @@ public abstract class WeaponPickupBase : PickupScript
             }
         }
 
-        //If no free slots are found, overwrite the existing one
+        //If no free slots are found, drop current weapon, and replace it with the new one
+        var droppedWeapon = Commons.InstantiateInCurrentLevel(DroppableWeaponPrefab, GetComponentInParent<PickupBase>().transform.position).GetComponentInChildren<DroppedWeaponPickup>();
+        droppedWeapon.Weapon = Commons.Inventory.WeaponSlots[Commons.Inventory.SelectedWeaponSlot];
+
+        
         Commons.Inventory.WeaponSlots[Commons.Inventory.SelectedWeaponSlot] = instance;
-        //TODO: Drop the current weapon in this case
     }
 }

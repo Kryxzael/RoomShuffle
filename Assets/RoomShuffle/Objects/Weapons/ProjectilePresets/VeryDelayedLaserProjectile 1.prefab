@@ -153,6 +153,14 @@ PrefabInstance:
       propertyPath: Damage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 69657648604158469, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+      propertyPath: IgnoreIFrames
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 69657648604158469, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
+      propertyPath: OverridePlayerDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 69657648604158470, guid: 6b0ff6a92a89c5e49b81bfca1d1e2d72, type: 3}
       propertyPath: CycleTime
       value: 1.5

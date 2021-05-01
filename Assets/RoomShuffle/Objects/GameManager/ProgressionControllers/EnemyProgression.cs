@@ -24,6 +24,6 @@ public class EnemyProgression : ProgressionController
     /// <returns></returns>
     public override int GetScaledDamage(int baseDamage)
     {
-        return (int)(baseDamage + 0.2f * DamageLevel);
+        return (int)(baseDamage + 0.2f * baseDamage * DamageLevel);
     }
 }

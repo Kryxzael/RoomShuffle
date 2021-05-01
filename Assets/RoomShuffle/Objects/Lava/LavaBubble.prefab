@@ -93,10 +93,11 @@ GameObject:
   - component: {fileID: 9070233326875120540}
   - component: {fileID: 5626727776115146840}
   - component: {fileID: 5043547057660456323}
-  - component: {fileID: 4936150866126801863}
   - component: {fileID: 7082643705932762707}
   - component: {fileID: 2424637447877790062}
   - component: {fileID: -1601130660850992794}
+  - component: {fileID: 810991436517052463}
+  - component: {fileID: 4219059157021357390}
   m_Layer: 12
   m_Name: LavaBubble
   m_TagString: Untagged
@@ -206,6 +207,7 @@ MonoBehaviour:
     JungleSprite: {fileID: 0}
     CloudSprite: {fileID: 0}
     FactorySprite: {fileID: 0}
+    DesertSprite: {fileID: 0}
     DefaultAnimation: {fileID: 11400000, guid: 661eb1e74265e254c89b67637a4b0a38, type: 2}
     GrassAnimation: {fileID: 11400000, guid: b1b24d6eaf005684399159f0ef2042f3, type: 2}
     SnowAnimation: {fileID: 11400000, guid: 8b97ccab41923a74bbc62d7909227230, type: 2}
@@ -215,32 +217,7 @@ MonoBehaviour:
     JungleAnimation: {fileID: 11400000, guid: b1b24d6eaf005684399159f0ef2042f3, type: 2}
     CloudAnimation: {fileID: 11400000, guid: 8b97ccab41923a74bbc62d7909227230, type: 2}
     FactoryAnimation: {fileID: 11400000, guid: 661eb1e74265e254c89b67637a4b0a38, type: 2}
---- !u!61 &4936150866126801863
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5573411307234604180}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2308383}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 1}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 6.5, y: 6.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5383234}
-  m_EdgeRadius: 0
+    DesertAnimation: {fileID: 0}
 --- !u!114 &7082643705932762707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +258,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1.07
   Magnitude: 0.05
+--- !u!114 &810991436517052463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573411307234604180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips: []
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
+  ClipIndex: 0
+--- !u!58 &4219059157021357390
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573411307234604180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0069241524}
+  serializedVersion: 2
+  m_Radius: 3.0630422

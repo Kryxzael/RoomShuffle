@@ -63,7 +63,7 @@ public class Laser : MonoBehaviour
         _mainCamera = Camera.main;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         /*
          * Figure out if the laser should be on

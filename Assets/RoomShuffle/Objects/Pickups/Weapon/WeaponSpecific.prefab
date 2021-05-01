@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5969881040732613181, guid: ffe34ff34a926bc4481801126dd78eb3, type: 3}
+      propertyPath: DroppableWeaponPrefab
+      value: 
+      objectReference: {fileID: 4164408779397905166, guid: 28c713a765162e14e83afeb0a259fb97, type: 3}
     - target: {fileID: 6835535039304838995, guid: ffe34ff34a926bc4481801126dd78eb3, type: 3}
       propertyPath: m_Sprite
       value: 

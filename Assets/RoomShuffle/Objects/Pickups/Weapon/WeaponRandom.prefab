@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bea04e0837a6a4084a568cc41e2d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DroppableWeaponPrefab: {fileID: 4164408779397905166, guid: 28c713a765162e14e83afeb0a259fb97, type: 3}
 --- !u!1001 &5410885615838084544
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -92,6 +92,8 @@ public class RoomGenerator : MonoBehaviour
             Seed = UnityEngine.Random.Range(0, int.MaxValue);
 
         RoomRng = new SysRandom(Seed);
+
+        Commons.SpeedRunMode = false;
     }
 
     private void Start()
@@ -187,10 +189,10 @@ public class RoomGenerator : MonoBehaviour
         if (!parameters.Class.IsSafeRoom()) 
         {
             //Level up enemies
-            if (CurrentRoomNumber % EnemyHealthUpFrequency == 0)
+            if ((CurrentRoomNumber + 1) % EnemyHealthUpFrequency == 0)
                 Commons.EnemyProgression.LevelUpHealth();
 
-            if (CurrentRoomNumber % EnemyDamageUpFrequency == 0)
+            if ((CurrentRoomNumber + 1) % EnemyDamageUpFrequency == 0)
                 Commons.EnemyProgression.LevelUpDamage();
         }
             
@@ -215,7 +217,7 @@ public class RoomGenerator : MonoBehaviour
         {
             var add = parameters.Layout.TimerEffectSeconds;
 
-            if (Commons.CountdownTimer.CurrentSeconds > Mathf.Max(10, 30 - CurrentRoomNumber))
+            if (Commons.CountdownTimer.CurrentSeconds > Mathf.Max(10, 20 - CurrentRoomNumber))
             {
                 add *= 0.5f;
             }
