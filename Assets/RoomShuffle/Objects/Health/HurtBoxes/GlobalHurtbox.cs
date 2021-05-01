@@ -17,7 +17,7 @@ public class GlobalHurtbox : HurtBox
     /// <summary>
     /// <inheritdoc />
     /// </summary>
-    public override bool IgnoresInvincibilityFrames => true;
+    public override bool IgnoresInvincibilityFrames => false;
 
     /// <summary>
     /// <inheritdoc />
@@ -30,7 +30,10 @@ public class GlobalHurtbox : HurtBox
     /// <returns></returns>
     public override int GetDamage(Hitbox target)
     {
-        return Damage;
+        if (target is PlayerHitbox)
+            return Commons.EnemyProgression.GetScaledDamage(Damage);
+
+        return Commons.PlayerProgression.GetScaledDamage(Damage);
     }
 
     /// <summary>
