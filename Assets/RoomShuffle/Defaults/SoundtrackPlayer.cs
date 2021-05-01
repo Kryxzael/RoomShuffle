@@ -45,6 +45,9 @@ public class SoundtrackPlayer : MonoBehaviour
 
     private void Update()  
     {
+        const float PITCH_INCREMENT = 0.12f;
+        const float DEFAULT_HZ = 22_000f;
+
         Level1Player.pitch = 1f;
         Level2Player.pitch = 1f;
 
@@ -53,44 +56,51 @@ public class SoundtrackPlayer : MonoBehaviour
 
         if (Commons.SpeedRunMode)
         {
-            Level1Player.pitch += 0.12f;
-            Level2Player.pitch += 0.12f;
+            Level1Player.pitch += PITCH_INCREMENT;
+            Level2Player.pitch += PITCH_INCREMENT;
 
-            Level1AdrenalinePlayer.pitch += 0.12f;
-            Level2AdrenalinePlayer.pitch += 0.12f;
+            Level1AdrenalinePlayer.pitch += PITCH_INCREMENT;
+            Level2AdrenalinePlayer.pitch += PITCH_INCREMENT;
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)
         {
-            Level1Player.pitch += 0.12f;
-            Level2Player.pitch += 0.12f;
+            Level1Player.pitch += PITCH_INCREMENT;
+            Level2Player.pitch += PITCH_INCREMENT;
 
-            Level1AdrenalinePlayer.pitch += 0.12f;
-            Level2AdrenalinePlayer.pitch += 0.12f;
+            Level1AdrenalinePlayer.pitch += PITCH_INCREMENT;
+            Level2AdrenalinePlayer.pitch += PITCH_INCREMENT;
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 5)
         {
-            Level1Player.pitch += 0.12f;
-            Level2Player.pitch += 0.12f;
+            Level1Player.pitch += PITCH_INCREMENT;
+            Level2Player.pitch += PITCH_INCREMENT;
 
-            Level1AdrenalinePlayer.pitch += 0.12f;
-            Level2AdrenalinePlayer.pitch += 0.12f;
+            Level1AdrenalinePlayer.pitch += PITCH_INCREMENT;
+            Level2AdrenalinePlayer.pitch += PITCH_INCREMENT;
         }
 
         if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
         {
-            Level1Player.pitch *= 0.75f;
-            Level2Player.pitch *= 0.75f;
+            const float SLOWDOWN_PLAYBACK_SPEED = 0.75f;
 
-            Level1AdrenalinePlayer.pitch *= 0.75f;
-            Level2AdrenalinePlayer.pitch *= 0.75f;
+            Level1Player.pitch *= SLOWDOWN_PLAYBACK_SPEED;
+            Level2Player.pitch *= SLOWDOWN_PLAYBACK_SPEED;
+
+            Level1AdrenalinePlayer.pitch *= SLOWDOWN_PLAYBACK_SPEED;
+            Level2AdrenalinePlayer.pitch *= SLOWDOWN_PLAYBACK_SPEED;
 
         }
 
         if (_playerRigidbody.Value && Water.IsSubmerged(_playerRigidbody.Value))
         {
-            float shift = Mathf.Sin(Time.time * 12.5f) * 0.02f;
+            const float UNDERWATER_VIBRATO_AMPLITUDE = 0.02f;
+            const float UNDERWATER_VIBRATO_FREQUENCY = 12.5f;
+            const float UNDERWATER_MUFFLE_HZ = 1500f;
+            
+
+            float shift = Mathf.Sin(Time.time * UNDERWATER_VIBRATO_FREQUENCY) * UNDERWATER_VIBRATO_AMPLITUDE;
 
             Level1Player.pitch += shift;
             Level2Player.pitch += shift;
@@ -99,12 +109,12 @@ public class SoundtrackPlayer : MonoBehaviour
             Level2AdrenalinePlayer.pitch += shift;
 
             Mixer.GetFloat("LowCut", out float currentLowCut);
-            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, 1500f, 5f));
+            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, UNDERWATER_MUFFLE_HZ, 5f));
         }
         else
         {
             Mixer.GetFloat("LowCut", out float currentLowCut);
-            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, 22_000));
+            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, DEFAULT_HZ));
         }
 
         foreach (var i in AdrenalineTriggers.ToArray())

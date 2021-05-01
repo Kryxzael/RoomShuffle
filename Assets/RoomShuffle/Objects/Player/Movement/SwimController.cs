@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RoomShuffle.Defaults;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +12,13 @@ using UnityEngine;
 /// Lets the player swim in water
 /// </summary>
 [RequireComponent(typeof(SpriteAnimator))]
+[RequireComponent(typeof(MultiSoundPlayer))]
 public class SwimController : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     public bool _lastSubmergeState;
     public SpriteAnimator _animator;
+    public MultiSoundPlayer _multiSoundPlayer;
 
     /* *** */
 
@@ -38,6 +42,7 @@ public class SwimController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<SpriteAnimator>();
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
     }
 
     private void Update()
@@ -70,6 +75,9 @@ public class SwimController : MonoBehaviour
 
             //Restart the swim stroke
             _animator.RestartAnimation();
+
+            //Play sound
+            _multiSoundPlayer.PlaySound(index: 1, volume: 0.25f);
         }
 
         //Clamp speeds

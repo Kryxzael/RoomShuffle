@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RoomShuffle.Defaults;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,11 +15,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Flippable))]
+[RequireComponent(typeof(MultiSoundPlayer))]
 public class WallJump : MonoBehaviour
 {
     private Rigidbody2D _rigid;
     private Collider2D _collider;
     private Flippable _flippable;
+    private MultiSoundPlayer _multiSoundPlayer;
 
     [Tooltip("The force that will be applied by a wall jump")]
     public float WallJumpForce = 10f;
@@ -32,6 +36,7 @@ public class WallJump : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _flippable = GetComponent<Flippable>();
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
     }
 
     private void Update()
@@ -53,6 +58,9 @@ public class WallJump : MonoBehaviour
             {
                 _rigid.velocity = _rigid.velocity.SetY(0f);
                 _rigid.AddForce((wallNormal.Value + Vector2.up * 0.75f).normalized * WallJumpForce, ForceMode2D.Impulse);
+
+                //Plays jump sound
+                _multiSoundPlayer.PlaySound(index: 0, volume: 0.25f);
             }
 
             //Restrict maximum falling speed

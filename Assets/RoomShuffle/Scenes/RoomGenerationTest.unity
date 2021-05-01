@@ -301,6 +301,7 @@ MonoBehaviour:
   Level2Player: {fileID: 1357337543}
   Level1AdrenalinePlayer: {fileID: 1077664020}
   Level2AdrenalinePlayer: {fileID: 819939217}
+  Mixer: {fileID: 24100000, guid: 54712c181c5f95d41a6bd9869ded50d5, type: 2}
   OverrideChannels: 0
 --- !u!1 &819939215
 GameObject:

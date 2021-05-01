@@ -7,12 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
+using RoomShuffle.Defaults;
 
 /// <summary>
 /// Controls the player's jump
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Flippable))]
+[RequireComponent(typeof(MultiSoundPlayer))]
 public class JumpController : MonoBehaviour
 {
     [Header("Force")]
@@ -36,6 +38,7 @@ public class JumpController : MonoBehaviour
 
     private Rigidbody2D _rigid;
     private Flippable _flippable;
+    private MultiSoundPlayer _multiSoundPlayer;
 
     //The amount of milliseconds the player must have been airborne before mercy frames and buffered inputs will be counted
     private const float DOUBLE_JUMP_PREVENTION_MILLIS = 250f;
@@ -59,6 +62,7 @@ public class JumpController : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _flippable = GetComponent<Flippable>();
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
 
         //Sets up the default ground mask for OnGround2D()
         CommonExtensions.DefaultGroundMask = Commons.Masks.GroundOnly;
@@ -152,6 +156,9 @@ public class JumpController : MonoBehaviour
 
         //Set the initial jump velocity
         _rigid.SetVelocityY(JumpForce);
+
+        //Plays jump sound
+        _multiSoundPlayer.PlaySound(index: 0, volume: 0.25f);
 
         //Switches solidity of JumpSwitchBlocks
         foreach (var i in FindObjectsOfType<JumpSwitchBase>())

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 4280482282808589427}
   - component: {fileID: 5478196027095690663}
   - component: {fileID: 455246537785434223}
+  - component: {fileID: 6519433039818131722}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lastSubmergeState: 0
   _animator: {fileID: 0}
+  _multiSoundPlayer: {fileID: 0}
   SwimForce: 10
   JumpOutForce: 20
   MaxAscensionSpeed: 10
@@ -316,6 +318,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21469358, y: 0.7462638}
   m_EdgeRadius: 0.05
+--- !u!114 &6519433039818131722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829438793687919276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: c5607befd8136af4bb97d76dfc7b2591, type: 3}
+  - {fileID: 8300000, guid: f686ddd6f0a39e947843530af4b7ac3a, type: 3}
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
+  ClipIndex: 0
 --- !u!1 &8174467094398225650
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +448,7 @@ GameObject:
   - component: {fileID: 3065580280250307300}
   - component: {fileID: 3432185508647361718}
   - component: {fileID: 6878442154085066215}
+  - component: {fileID: 6239986003773840514}
   m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
@@ -522,6 +549,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e3e06e25feae647846245ac332ba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6239986003773840514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682947945238927355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0.2
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
+  ClipIndex: 0
 --- !u!1 &8999811931387121829
 GameObject:
   m_ObjectHideFlags: 0

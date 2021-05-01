@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RoomShuffle.Defaults;
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ using UnityEngine;
 /// <summary>
 /// Represents water that the player can swim in
 /// </summary>
+[RequireComponent(typeof(MultiSoundPlayer))]
 public class Water : MonoBehaviour
 {
     private static HashSet<Rigidbody2D> _bodiesInWater = new HashSet<Rigidbody2D>();
@@ -20,12 +23,22 @@ public class Water : MonoBehaviour
     [Range(0f, 1f)]
     public float GravityMultiplier = 0.5f;
 
+    private MultiSoundPlayer _multiSoundPlayer;
+
+    private void Awake()
+    {
+        _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.attachedRigidbody && !IsSubmerged(collision.attachedRigidbody))
         {
             collision.attachedRigidbody.gravityScale *= GravityMultiplier;
             _bodiesInWater.Add(collision.attachedRigidbody);
+
+            if (collision.gameObject.IsPlayer())
+                _multiSoundPlayer.PlaySound(volume: 0.5f);
         }
     }
 
@@ -35,6 +48,9 @@ public class Water : MonoBehaviour
         {
             collision.attachedRigidbody.gravityScale /= GravityMultiplier;
             _bodiesInWater.Remove(collision.attachedRigidbody);
+
+            if (collision.gameObject.IsPlayer())
+                _multiSoundPlayer.PlaySound(volume: 0.5f);
         }
     }
 
