@@ -93,7 +93,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 40.5, y: 1.5, z: 0}
-  - {x: 40.5, y: 201.5, z: 0}
+  - {x: 40.5, y: 57.000004, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -102,7 +102,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.7039623
+        value: 0.4999981
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -143,7 +143,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 100
+  OverridePlayerDamage: -1
 --- !u!1 &2891591638330546037
 GameObject:
   m_ObjectHideFlags: 0
