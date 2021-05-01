@@ -185,6 +185,13 @@ public class HealthUIManager : MonoBehaviour
         
         HeartCounterHeart.SetHeartFillPercentage(fillAmount);
         filledHeartsCounter.setCounter((health / HealthController.HP_PER_HEART) - (int)fillAmount);
+        
+        //in the case of death!
+        if (health == 0)
+        {
+            HeartCounterHeart.SetHeartFillPercentage(0);
+            filledHeartsCounter.setCounter(0);
+        }
     }
 
 
