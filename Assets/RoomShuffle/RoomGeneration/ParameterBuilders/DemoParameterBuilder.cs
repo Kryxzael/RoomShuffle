@@ -38,7 +38,7 @@ public class DemoParameterBuilder : ParameterBuilder
             .OrderBy(i => random.Next())
             .First();
 
-        output.Effect = RoomEffects.None;
+        output.Effect = RoomEffects.Darkness | RoomEffects.Timer;
         output.FlipHorizontal = random.Next(2) == 0;
         output.WeaponEnumerator = WeaponTemplates.OrderBy(i => random.Next()).GetEnumerator();
         output.Entrance = output.Layout.GetRandomEntrance(random);

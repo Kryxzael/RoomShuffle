@@ -17,10 +17,10 @@ public class MusicZone : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_holders.Any())
+        if (_holders.Contains(this))
             Commons.SoundtrackPlayer.OverrideChannels = Channels;
 
-        else
+        else if (!_holders.Any())
             Commons.SoundtrackPlayer.OverrideChannels = SoundtrackPlayer.MusicChannels.None;
     }
 

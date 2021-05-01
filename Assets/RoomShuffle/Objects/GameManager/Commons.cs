@@ -297,6 +297,7 @@ public static class Commons
     public static class Masks
     {
         public static readonly LayerMask GroundOnly = LayerMask.GetMask("Ground", "Crate");
+        public static readonly LayerMask GroundAndEmancipators = LayerMask.GetMask("Ground", "Projectile Blocker");
         public static readonly LayerMask GroundAndBlockers = LayerMask.GetMask("Ground", "Crate", "Enemy Blocker");
         public static readonly LayerMask HitboxesHurtboxes = LayerMask.GetMask("Hitbox Hurtbox");
     }

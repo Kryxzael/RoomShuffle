@@ -53,20 +53,6 @@ public class Timer : MonoBehaviour
         
     }
 
-    //TODO Remove this nonsense in update
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            AddTime(10);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SubtractTime(5);
-        }
-    }
-
     /// <summary>
     /// Starts a stopwatch if the timer isn't running
     /// </summary>

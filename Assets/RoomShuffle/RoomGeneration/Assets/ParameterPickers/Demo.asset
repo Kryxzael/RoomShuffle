@@ -54,4 +54,4 @@ MonoBehaviour:
   - Enemy: {fileID: 2136839923881057966, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
     SpawnRate: 1
   DemoRoomProgression:
-  - {fileID: 614226423617783542, guid: 39c17ed2a8f9810409c56439a2c4933f, type: 3}
+  - {fileID: 110700131586179316, guid: 2136825620dc8564390f73df29015843, type: 3}
