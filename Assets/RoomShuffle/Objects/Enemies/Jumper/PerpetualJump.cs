@@ -37,7 +37,13 @@ public class PerpetualJump : MonoBehaviour
 
             //Apply fast-foe effect
             if (AffectedByFastFoe)
+            {
+                //The Geteffectvalue function returns NaN if the waitTime is zero. because: 1/0 = infinity and 0/0 = NaN
+                waitTime = waitTime == 0 ? 1 : waitTime;
                 waitTime = Commons.GetEffectValue(waitTime, EffectValueType.EnemyWaitTime);
+            }
+
+            
 
             //Reset animation on landing
             if (this.OnGround2D())
@@ -55,6 +61,11 @@ public class PerpetualJump : MonoBehaviour
 
                 time += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
+
+                //If the player doesn't have the slowdown poerup anymore: break the cycle
+                if (!Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
+                    break;
+                
             }
 
             //Reset waiting
