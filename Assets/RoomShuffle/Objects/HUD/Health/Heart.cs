@@ -10,8 +10,15 @@ using Image = UnityEngine.UI.Image;
 /// </summary>
 public class Heart : MonoBehaviour
 {
+    public Sprite ContainerImageNormal;
+    public Sprite FillImageNormal;
+
+    public Sprite ContainerImageDanger;
+    public Sprite FillImageDanger;
+
     //The image that will be the cake or pie of the heart, representing the fullness of the heart
     private Image cakeImage;
+    private Image containerImage;
 
     //The smack component
     private TextSmack _smack;
@@ -20,6 +27,7 @@ public class Heart : MonoBehaviour
 
     void Awake()
     {
+        containerImage = transform.Find("Background").GetComponent<Image>();
         cakeImage = transform.Find("Cake").GetComponent<Image>();
     }
 
@@ -28,6 +36,20 @@ public class Heart : MonoBehaviour
         //start smack animation on start
         _smack = GetComponent<TextSmack>();
         _smack.Smack();
+    }
+
+    private void Update()
+    {
+        if (Commons.PlayerHealth.Health - Commons.PlayerHealth.GetSoftDeathDamage() <= 0)
+        {
+            containerImage.sprite = ContainerImageDanger;
+            cakeImage.sprite = FillImageDanger;
+        }
+        else
+        {
+            containerImage.sprite = ContainerImageNormal;
+            cakeImage.sprite = FillImageNormal;
+        }
     }
 
     /// <summary>
@@ -39,7 +61,7 @@ public class Heart : MonoBehaviour
         //return if the health hasn't changed
         if (cakeImage.fillAmount == percentage)
             return;
-        
+
         //set fill amount
         cakeImage.fillAmount = percentage;
 
