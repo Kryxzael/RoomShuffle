@@ -86,7 +86,7 @@ public class Laser : MonoBehaviour
         var end = start + transform.up * MAX_DISTANCE;
 
         //If the laser is obstructed by something, that thing will be the end point
-        var raycastHit = Physics2D.Raycast(transform.position, transform.up, MAX_DISTANCE, Commons.Masks.GroundAndEmancipators);
+        var raycastHit = Physics2D.Raycast(transform.position, transform.up, MAX_DISTANCE, Commons.Masks.GroundOnly);
 
         if (raycastHit)
             end = raycastHit.point;
