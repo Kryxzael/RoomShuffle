@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Plays the game's soundtrack
@@ -16,7 +17,19 @@ public class SoundtrackPlayer : MonoBehaviour
     public AudioSource Level1AdrenalinePlayer;
     public AudioSource Level2AdrenalinePlayer;
 
+    public AudioMixer Mixer;
+
     private readonly Dictionary<object, float> AdrenalineTriggers = new Dictionary<object, float>();
+
+    private RenewableLazy<Rigidbody2D> _playerRigidbody = new RenewableLazy<Rigidbody2D>(() =>
+    {
+        var player = CommonExtensions.GetPlayer();
+
+        if (player)
+            return player.GetComponent<Rigidbody2D>();
+
+        return null;
+    });
 
     public MusicChannels OverrideChannels;
 
@@ -75,6 +88,25 @@ public class SoundtrackPlayer : MonoBehaviour
 
         }
 
+        if (_playerRigidbody.Value && Water.IsSubmerged(_playerRigidbody.Value))
+        {
+            float shift = Mathf.Sin(Time.time * 12.5f) * 0.02f;
+
+            Level1Player.pitch += shift;
+            Level2Player.pitch += shift;
+
+            Level1AdrenalinePlayer.pitch += shift;
+            Level2AdrenalinePlayer.pitch += shift;
+
+            Mixer.GetFloat("LowCut", out float currentLowCut);
+            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, 1500f, 5f));
+        }
+        else
+        {
+            Mixer.GetFloat("LowCut", out float currentLowCut);
+            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, 22_000));
+        }
+
         foreach (var i in AdrenalineTriggers.ToArray())
         {
             AdrenalineTriggers[i.Key] = i.Value - Time.deltaTime;
@@ -123,15 +155,14 @@ public class SoundtrackPlayer : MonoBehaviour
                 Level2Player.volume = LerpVolume(Level2Player.volume, 1f);
             }
         }
-        
     }
-    private float LerpVolume(float current, float target)
+    private float LerpVolume(float current, float target, float speedMultiplier = 1f)
     {
         if (target > current)
-            return Mathf.Lerp(current, target, 0.025f);
+            return Mathf.Lerp(current, target, 0.025f * speedMultiplier);
 
         else if (target < current)
-            return Mathf.Lerp(current, target, 0.01f);
+            return Mathf.Lerp(current, target, 0.01f * speedMultiplier);
 
         return current;
     }
