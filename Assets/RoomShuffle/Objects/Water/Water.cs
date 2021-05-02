@@ -61,6 +61,11 @@ public class Water : MonoBehaviour
     /// <returns></returns>
     public static bool IsSubmerged(Rigidbody2D body)
     {
-        return _bodiesInWater.Contains(body);
+        return Cheats.SwimCheat switch
+        {
+            Cheats.SwimCheatType.AlwaysSwim => true,
+            Cheats.SwimCheatType.NeverSwim => false,
+            _ => _bodiesInWater.Contains(body),
+        };
     }
 }

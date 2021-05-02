@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DroppableWeaponPrefab: {fileID: 4164408779397905166, guid: 28c713a765162e14e83afeb0a259fb97, type: 3}
+  EmptyWeaponMaterial: {fileID: 2100000, guid: 3848d6911d3202649ab1cec02d76b6c7, type: 2}
+  NonEmptyWeaponMaterial: {fileID: 2100000, guid: 9271c43467c6afb4db7c7a5aa539772b, type: 2}
 --- !u!1001 &6527431953122253067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,6 +74,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 576b12555bbfec64e84420e9e1facab5, type: 3}
+    - target: {fileID: 6835535039304838995, guid: ffe34ff34a926bc4481801126dd78eb3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34ca7b195c6f5d14ea09a741977560bc, type: 2}
     m_RemovedComponents:
     - {fileID: 5969881040732613181, guid: ffe34ff34a926bc4481801126dd78eb3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ffe34ff34a926bc4481801126dd78eb3, type: 3}

@@ -39,7 +39,12 @@ public static class Cheats
     /// <summary>
     /// Sets the health cheat of the player
     /// </summary>
-    public static HealthCheatType HealthCheat { get; set; } = HealthCheatType.Godmode;
+    public static HealthCheatType HealthCheat { get; set; } = HealthCheatType.None;
+
+    /// <summary>
+    /// Sets the swim cheat
+    /// </summary>
+    public static SwimCheatType SwimCheat { get; set; } = SwimCheatType.None;
 
     /// <summary>
     /// Represents a way to cheat the player's health
@@ -60,5 +65,26 @@ public static class Cheats
         /// The player's health will never drop below 1
         /// </summary>
         BuddhaMode
+    }
+
+    /// <summary>
+    /// Represents a way to cheat the game's swimming mechanics
+    /// </summary>
+    public enum SwimCheatType
+    {
+        /// <summary>
+        /// No swim cheat is enabled
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// The game will always treat objects as if they were underwater
+        /// </summary>
+        AlwaysSwim,
+
+        /// <summary>
+        /// The game will never treat objects as if they were underwater
+        /// </summary>
+        NeverSwim
     }
 }

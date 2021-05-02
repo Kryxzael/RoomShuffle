@@ -14,6 +14,21 @@ public class DroppedWeaponPickup : WeaponPickupBase
     [Tooltip("The dropped weapon")]
     public WeaponInstance Weapon;
 
+    public Material EmptyWeaponMaterial;
+    public Material NonEmptyWeaponMaterial;
+
+    protected override void Start()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+
+        base.Start();
+
+        if (Weapon.Durability == 0)
+            spriteRenderer.material = EmptyWeaponMaterial;
+        else
+            spriteRenderer.material = NonEmptyWeaponMaterial;
+    }
+
     public override WeaponInstance GetWeapon()
     {
         return Weapon;

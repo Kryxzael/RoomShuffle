@@ -46,6 +46,24 @@ public class HomeDebugPage : DebugPage
                 break;
         }
 
+        switch (Cheats.SwimCheat)
+        {
+            case Cheats.SwimCheatType.None:
+                if (Button("Cheat Swimming: [ ]"))
+                    Cheats.SwimCheat = Cheats.SwimCheatType.AlwaysSwim;
+                break;
+
+            case Cheats.SwimCheatType.AlwaysSwim:
+                if (Button("Cheat Swimming: [Always]"))
+                    Cheats.SwimCheat = Cheats.SwimCheatType.NeverSwim;
+                break;
+
+            case Cheats.SwimCheatType.NeverSwim:
+                if (Button("Cheat Swimming: [Never]"))
+                    Cheats.SwimCheat = Cheats.SwimCheatType.None;
+                break;
+        }
+
         if (Button("Spawn Item ..."))
             caller.NavigationStack.Push(new SpawnItemDebugPage());
 
