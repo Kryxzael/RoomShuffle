@@ -44,31 +44,34 @@ public class SoundtrackPlayer : MonoBehaviour
         const float PITCH_INCREMENT = 0.12f;
         const float PITCH_INCREMENT_SMALL = 0.03f;
 
-        DoForAllChannels(i => i.pitch = 1f);
+        float pitch = 1f;
+        
 
         if (Commons.SpeedRunMode)
         {
-            DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
+            pitch += PITCH_INCREMENT;
 
-            for (int i = 1; i < Mathf.Max(Commons.RoomGenerator.CurrentRoomNumber, 10); i++)
-                DoForAllChannels(i => i.pitch += PITCH_INCREMENT_SMALL);
+            for (int i = 1; i < Mathf.Min(Commons.RoomGenerator.CurrentRoomNumber, 10); i++)
+                pitch += PITCH_INCREMENT_SMALL;
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)
         {
-            DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
+            pitch += PITCH_INCREMENT;
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 5)
         {
-            DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
+            pitch += PITCH_INCREMENT;
         }
 
         if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
         {
             const float SLOWDOWN_PLAYBACK_SPEED = 0.75f;
-            DoForAllChannels(i => i.pitch *= SLOWDOWN_PLAYBACK_SPEED);
+            pitch *= SLOWDOWN_PLAYBACK_SPEED;
         }
+
+        DoForAllChannels(i => i.pitch = pitch);
 
         foreach (var i in AdrenalineTriggers.ToArray())
         {

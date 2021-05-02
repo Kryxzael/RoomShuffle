@@ -63,6 +63,12 @@ MonoBehaviour:
     SpawnRate: 0.5
   - Enemy: {fileID: 1951632956595313075, guid: 73eb61f525868204baeecca8c4929458, type: 3}
     SpawnRate: 1
+  - Enemy: {fileID: 2827394192199919730, guid: a13e0e1758e51f74f835214a1b1c7998, type: 3}
+    SpawnRate: 0.25
+  - Enemy: {fileID: 2827394192199919730, guid: 9405baf294e28a448bf6790489f4748a, type: 3}
+    SpawnRate: 0.2
+  - Enemy: {fileID: 2827394192199919730, guid: c059a052d75304d43a5261541f5a7061, type: 3}
+    SpawnRate: 0.15
   AirEnemies:
   - Enemy: {fileID: 2136839923881057966, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
     SpawnRate: 1
