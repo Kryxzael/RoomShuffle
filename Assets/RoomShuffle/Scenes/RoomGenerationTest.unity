@@ -1212,17 +1212,25 @@ PrefabInstance:
       propertyPath: SlowDownTimeScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1636370513975752729, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: InvincibilityJumpMultiplier
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636370513975752729, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: InvincibilitySpeedMultiplier
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0002193
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0002193
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0002193
+      value: 1.0000044
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_AnchoredPosition.x

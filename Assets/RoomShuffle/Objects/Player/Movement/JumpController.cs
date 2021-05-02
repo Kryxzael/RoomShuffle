@@ -154,8 +154,19 @@ public class JumpController : MonoBehaviour
         //The amount of real-time seconds that have passed since the start of the jump
         float seconds = 0f;
 
+        //Gets the jump force to apply
+        float jumpForce = JumpForce;
+        float jumpReleaseForce = JumpReleaseForce;
+
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
+        {
+            jumpForce *= Commons.PowerUpManager.InvincibilityJumpMultiplier;
+            jumpReleaseForce *= Commons.PowerUpManager.InvincibilityJumpMultiplier;
+        }
+            
+
         //Set the initial jump velocity
-        _rigid.SetVelocityY(JumpForce);
+        _rigid.SetVelocityY(jumpForce);
 
         //Plays jump sound
         _multiSoundPlayer.PlaySound(index: 0, volume: 0.25f);
@@ -171,20 +182,20 @@ public class JumpController : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 //The player has hit a ceiling. Stop
-                if (_rigid.velocity.y < JumpForce / 2f && !Cheats.MoonJump)
+                if (_rigid.velocity.y < jumpForce / 2f && !Cheats.MoonJump)
                 {
                     yield break;
                 }
 
                 //Keep the players jump
-                _rigid.SetVelocityY(JumpForce);
+                _rigid.SetVelocityY(jumpForce);
             }
 
             //The player has let go of the jump button
             else
             {
-                if (_rigid.velocity.y > JumpReleaseForce)
-                    _rigid.SetVelocityY(JumpReleaseForce);
+                if (_rigid.velocity.y > jumpReleaseForce)
+                    _rigid.SetVelocityY(jumpReleaseForce);
 
                 yield break;
             }

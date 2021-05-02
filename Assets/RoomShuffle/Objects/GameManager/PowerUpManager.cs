@@ -20,6 +20,12 @@ public class PowerUpManager : MonoBehaviour
     [Tooltip("The timescale of the game in slow-down mode")]
     public float SlowDownTimeScale = 0f;
 
+    [Tooltip("By what factor to multiply the player's movement speed when invincible")]
+    public float InvincibilitySpeedMultiplier = 1.5f;
+
+    [Tooltip("By what factor to multiply the player's jumping speed when invincible")]
+    public float InvincibilityJumpMultiplier = 1.5f;
+
     [Tooltip("The amount (percentage) of damage a player with the defense-up power-up will absorb")]
     [Range(0f, 1f)]
     public float DefenseStrength = 0.5f;

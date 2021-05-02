@@ -38,12 +38,10 @@ public class GroundController : MonoBehaviour
     /* *** */
 
     private Rigidbody2D _rigid;
-    private Collider2D _collider;
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -113,6 +111,10 @@ public class GroundController : MonoBehaviour
 
         //Horizontal
         var maxSpeed = Commons.GetEffectValue(MaxSpeed, EffectValueType.PlayerMaxSpeed);
+
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
+            maxSpeed *= Commons.PowerUpManager.InvincibilitySpeedMultiplier;
+
         _rigid.SetVelocityX(currentX => Mathf.Clamp(currentX, -maxSpeed, maxSpeed));
     }
 
