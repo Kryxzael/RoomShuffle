@@ -36,17 +36,13 @@ public class ShootOnSight : MonoBehaviour
 
     private void Update()
     {
-        switch (_spotter.State)
+        if (_spotter.InPursuit)
         {
-            case SpotterPlayerRelationship.Chasing:
-            case SpotterPlayerRelationship.BlindChasing:
-                if (WeaponInstance.CanFire(ignoreDurability: true))
-                {
-                    _shooter.SetAim(_spotter.BlindChaseDirection);
-                    WeaponInstance.Fire(_shooter);
-                }
-                    
-                return;
+            if (WeaponInstance.CanFire(ignoreDurability: true))
+            {
+                _shooter.SetAim(_spotter.BlindChaseDirection);
+                WeaponInstance.Fire(_shooter);
+            }
         }
     }
 }

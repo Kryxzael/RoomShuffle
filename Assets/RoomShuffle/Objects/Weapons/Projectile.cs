@@ -96,8 +96,10 @@ public abstract class Projectile : MonoBehaviour
         if (collision.gameObject.GetComponentInChildren<WeaponFireHurtbox>() is WeaponFireHurtbox hurtbox && hurtbox.Shooter == _hurtBox.Shooter)
             return;
 
+        var hitbox = collision.gameObject.GetComponentInParent<Hitbox>();
+
         //The bullet has hit a hitbox
-        if (collision.gameObject.GetComponentInParent<Hitbox>())
+        if (hitbox && hitbox.SusceptibleTo.HasFlag(_hurtBox.GetTargets()))
         {
             //The bullet should destroy itself
             if (DestroyOnHitboxContact)

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70892cd666e3042459b9a039a40a5d9c, type: 3}
+  m_Name: BoomerangCircle;Shot
+  m_EditorClassIdentifier: 
+  BaseDamage:
+    Candidates:
+    - Item: 25
+      Pickrate: 1
+  MaxDurability:
+    Candidates:
+    - Item: 15
+      Pickrate: 1
+    - Item: 20
+      Pickrate: 1
+    - Item: 25
+      Pickrate: 0.5
+  Range:
+    Minimum: 5
+    Maximum: 5
+  Cooldown: 4
+  Icon: {fileID: -3087264978319007404, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: 30
+  DamageDisplayFormat: '{0}'
+  Ammunition: {fileID: 4670741879340441384, guid: ea7e29f5965b73d47a8aea4c6fed32ea, type: 3}
+  BlastCount: 15

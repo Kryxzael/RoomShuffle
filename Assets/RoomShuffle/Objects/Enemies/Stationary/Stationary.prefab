@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8472303341817602793, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: RigidbodyStarupMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747412442085526250, guid: 629be960b28b727418def72be1739e90, type: 3}
       propertyPath: m_Name

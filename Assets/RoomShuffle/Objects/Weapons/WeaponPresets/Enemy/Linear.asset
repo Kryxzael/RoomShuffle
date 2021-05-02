@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2220bcd224c52a498d3e5e6d2a6b36f, type: 3}
+  m_Name: Linear
+  m_EditorClassIdentifier: 
+  BaseDamage:
+    Candidates:
+    - Item: 50
+      Pickrate: 1
+  MaxDurability:
+    Candidates:
+    - Item: 100
+      Pickrate: 1
+  Range:
+    Minimum: 4
+    Maximum: 4
+  Cooldown: 2
+  Icon: {fileID: -3381449088394115441, guid: d613f9f821614fd41b1ef4e613fa5096, type: 3}
+  DisplayedProjectileCount: 1 rapid
+  DamageDisplayFormat: '{0}'
+  Ammunition: {fileID: 5488346669195408484, guid: bf701b2aced73a64082bba012cb19459, type: 3}
+  MaxAngle: 0
+  BlastCount: 1

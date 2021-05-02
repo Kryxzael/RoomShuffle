@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 550
   TimeBeforeStart: 0
-  AffectedByFastFoe: 1
+  AffectedByFastFoe: 0
 --- !u!1 &4030095956609810926
 GameObject:
   m_ObjectHideFlags: 0
