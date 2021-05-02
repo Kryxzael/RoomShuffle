@@ -42,12 +42,16 @@ public class SoundtrackPlayer : MonoBehaviour
     private void Update()  
     {
         const float PITCH_INCREMENT = 0.12f;
+        const float PITCH_INCREMENT_SMALL = 0.03f;
 
         DoForAllChannels(i => i.pitch = 1f);
 
         if (Commons.SpeedRunMode)
         {
             DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
+
+            for (int i = 1; i < Mathf.Max(Commons.RoomGenerator.CurrentRoomNumber, 10); i++)
+                DoForAllChannels(i => i.pitch += PITCH_INCREMENT_SMALL);
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)

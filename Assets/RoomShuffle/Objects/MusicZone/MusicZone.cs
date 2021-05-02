@@ -48,4 +48,12 @@ public class MusicZone : MonoBehaviour
         else if (collider is CircleCollider2D)
             Gizmos.DrawWireSphere(collider.bounds.center, collider.bounds.size.magnitude / 2f);
     }
+
+    private void OnDestroy()
+    {
+        _holders.Remove(this);
+
+        if (!_holders.Any())
+            Commons.SoundtrackPlayer.OverrideChannels = SoundtrackPlayer.MusicChannels.None;
+    }
 }

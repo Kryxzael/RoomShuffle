@@ -481,7 +481,7 @@ MonoBehaviour:
     JungleSprite: {fileID: -6095331046095953541, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
     CloudSprite: {fileID: -3515633774369559798, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
     FactorySprite: {fileID: 5470801890448593414, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
-    DesertSprite: {fileID: 0}
+    DesertSprite: {fileID: 7472559059951828267, guid: 6b7446512f2c9254fbf670bd35e1c23e, type: 3}
     DefaultAnimation: {fileID: 0}
     GrassAnimation: {fileID: 0}
     SnowAnimation: {fileID: 0}
@@ -535,11 +535,12 @@ MonoBehaviour:
   AudioClips:
   - {fileID: 8300000, guid: 82faaacbc83ff284bb47af6e2ae317ed, type: 3}
   - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
-  Channel: 11
-  PlayBothClips: 0
-  OverrideAudio: 1
-  _OnEnable: 0
-  _OnStart: 0
-  _OnDisable: 0
-  _OnDestroy: 0
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
   ClipIndex: 0
