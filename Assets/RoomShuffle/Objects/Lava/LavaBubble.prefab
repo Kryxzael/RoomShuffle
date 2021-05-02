@@ -217,7 +217,7 @@ MonoBehaviour:
     JungleAnimation: {fileID: 11400000, guid: b1b24d6eaf005684399159f0ef2042f3, type: 2}
     CloudAnimation: {fileID: 11400000, guid: 8b97ccab41923a74bbc62d7909227230, type: 2}
     FactoryAnimation: {fileID: 11400000, guid: 661eb1e74265e254c89b67637a4b0a38, type: 2}
-    DesertAnimation: {fileID: 0}
+    DesertAnimation: {fileID: 11400000, guid: a4c6c3d78eaf3c24193326f1af05d6a2, type: 2}
 --- !u!114 &7082643705932762707
 MonoBehaviour:
   m_ObjectHideFlags: 0

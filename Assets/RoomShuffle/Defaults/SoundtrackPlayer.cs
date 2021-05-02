@@ -17,7 +17,8 @@ public class SoundtrackPlayer : MonoBehaviour
     public AudioSource Level1AdrenalinePlayer;
     public AudioSource Level2AdrenalinePlayer;
 
-    public AudioMixer Mixer;
+    public AudioSource Level1UnderwaterPlayer;
+    public AudioSource Level2UnderwaterPlayer;
 
     private readonly Dictionary<object, float> AdrenalineTriggers = new Dictionary<object, float>();
 
@@ -35,86 +36,34 @@ public class SoundtrackPlayer : MonoBehaviour
 
     private void Start()
     {
-        Level1Player.Play();
-        Level2Player.Play();
-
-        Level1AdrenalinePlayer.Play();
-        Level2AdrenalinePlayer.Play();
-
+        DoForAllChannels(i => i.Play());
     }
 
     private void Update()  
     {
         const float PITCH_INCREMENT = 0.12f;
-        const float DEFAULT_HZ = 22_000f;
 
-        Level1Player.pitch = 1f;
-        Level2Player.pitch = 1f;
-
-        Level1AdrenalinePlayer.pitch = 1f;
-        Level2AdrenalinePlayer.pitch = 1f;
+        DoForAllChannels(i => i.pitch = 1f);
 
         if (Commons.SpeedRunMode)
         {
-            Level1Player.pitch += PITCH_INCREMENT;
-            Level2Player.pitch += PITCH_INCREMENT;
-
-            Level1AdrenalinePlayer.pitch += PITCH_INCREMENT;
-            Level2AdrenalinePlayer.pitch += PITCH_INCREMENT;
+            DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)
         {
-            Level1Player.pitch += PITCH_INCREMENT;
-            Level2Player.pitch += PITCH_INCREMENT;
-
-            Level1AdrenalinePlayer.pitch += PITCH_INCREMENT;
-            Level2AdrenalinePlayer.pitch += PITCH_INCREMENT;
+            DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
         }
 
         if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 5)
         {
-            Level1Player.pitch += PITCH_INCREMENT;
-            Level2Player.pitch += PITCH_INCREMENT;
-
-            Level1AdrenalinePlayer.pitch += PITCH_INCREMENT;
-            Level2AdrenalinePlayer.pitch += PITCH_INCREMENT;
+            DoForAllChannels(i => i.pitch += PITCH_INCREMENT);
         }
 
         if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
         {
             const float SLOWDOWN_PLAYBACK_SPEED = 0.75f;
-
-            Level1Player.pitch *= SLOWDOWN_PLAYBACK_SPEED;
-            Level2Player.pitch *= SLOWDOWN_PLAYBACK_SPEED;
-
-            Level1AdrenalinePlayer.pitch *= SLOWDOWN_PLAYBACK_SPEED;
-            Level2AdrenalinePlayer.pitch *= SLOWDOWN_PLAYBACK_SPEED;
-
-        }
-
-        if (_playerRigidbody.Value && Water.IsSubmerged(_playerRigidbody.Value))
-        {
-            const float UNDERWATER_VIBRATO_AMPLITUDE = 0.02f;
-            const float UNDERWATER_VIBRATO_FREQUENCY = 12.5f;
-            const float UNDERWATER_MUFFLE_HZ = 1500f;
-            
-
-            float shift = Mathf.Sin(Time.time * UNDERWATER_VIBRATO_FREQUENCY) * UNDERWATER_VIBRATO_AMPLITUDE;
-
-            Level1Player.pitch += shift;
-            Level2Player.pitch += shift;
-
-            Level1AdrenalinePlayer.pitch += shift;
-            Level2AdrenalinePlayer.pitch += shift;
-
-            Mixer.GetFloat("LowCut", out float currentLowCut);
-            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, UNDERWATER_MUFFLE_HZ, 5f));
-        }
-        else
-        {
-            Mixer.GetFloat("LowCut", out float currentLowCut);
-            Mixer.SetFloat("LowCut", LerpVolume(currentLowCut, DEFAULT_HZ));
+            DoForAllChannels(i => i.pitch *= SLOWDOWN_PLAYBACK_SPEED);
         }
 
         foreach (var i in AdrenalineTriggers.ToArray())
@@ -133,13 +82,37 @@ public class SoundtrackPlayer : MonoBehaviour
             Level2Player.volume = LerpVolume(Level2Player.volume, OverrideChannels.HasFlag(MusicChannels.Level2) ? 1f : 0f);
             Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, OverrideChannels.HasFlag(MusicChannels.Level1Adrenaline) ? 1f : 0f);
             Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, OverrideChannels.HasFlag(MusicChannels.Level2Adrenaline) ? 1f : 0f);
+            Level1UnderwaterPlayer.volume = LerpVolume(Level1UnderwaterPlayer.volume, OverrideChannels.HasFlag(MusicChannels.Level1Underwater) ? 1f : 0f);
+            Level2UnderwaterPlayer.volume = LerpVolume(Level2UnderwaterPlayer.volume, OverrideChannels.HasFlag(MusicChannels.Level2Underwater) ? 1f : 0f);
         }
 
+        //Play underwater music
+        else if (_playerRigidbody.Value && Water.IsSubmerged(_playerRigidbody.Value))
+        {
+            Level1UnderwaterPlayer.volume = LerpVolume(Level1UnderwaterPlayer.volume, 1f);
+            Level1Player.volume = LerpVolume(Level1Player.volume, 0f);
+            Level2Player.volume = LerpVolume(Level2Player.volume, 0f);
+            Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 0f);
+            Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, 0f);
+
+            if (Commons.RoomGenerator.CurrentRoomConfig?.Class.IsSafeRoom() != false)
+            {
+                Level2UnderwaterPlayer.volume = LerpVolume(Level2UnderwaterPlayer.volume, 0f);
+            }
+            else
+            {
+                Level2UnderwaterPlayer.volume = LerpVolume(Level2UnderwaterPlayer.volume, 1f);
+            }
+        }
+
+        //Play adrenaline music
         else if (AdrenalineTriggers.Any())
         {
             Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 1f);
             Level1Player.volume = LerpVolume(Level1Player.volume, 0f);
             Level2Player.volume = LerpVolume(Level2Player.volume, 0f);
+            Level1UnderwaterPlayer.volume = LerpVolume(Level1UnderwaterPlayer.volume, 0f);
+            Level2UnderwaterPlayer.volume = LerpVolume(Level2UnderwaterPlayer.volume, 0f);
 
             if (Commons.RoomGenerator.CurrentRoomConfig?.Class.IsSafeRoom() != false)
             {
@@ -150,11 +123,15 @@ public class SoundtrackPlayer : MonoBehaviour
                 Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, 1f);
             }
         }
+
+        //Play normal music
         else
         {
             Level1Player.volume = LerpVolume(Level1Player.volume, 1f);
             Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 0f);
             Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, 0f);
+            Level1UnderwaterPlayer.volume = LerpVolume(Level1UnderwaterPlayer.volume, 0f);
+            Level2UnderwaterPlayer.volume = LerpVolume(Level2UnderwaterPlayer.volume, 0f);
 
             if (Commons.RoomGenerator.CurrentRoomConfig?.Class.IsSafeRoom() != false)
             {
@@ -165,6 +142,18 @@ public class SoundtrackPlayer : MonoBehaviour
                 Level2Player.volume = LerpVolume(Level2Player.volume, 1f);
             }
         }
+    }
+
+    private void DoForAllChannels(Action<AudioSource> action)
+    {
+        action(Level1Player);
+        action(Level2Player);
+
+        action(Level1AdrenalinePlayer);
+        action(Level2AdrenalinePlayer);
+
+        action(Level1UnderwaterPlayer);
+        action(Level2UnderwaterPlayer);
     }
     private float LerpVolume(float current, float target, float speedMultiplier = 1f)
     {
@@ -201,5 +190,7 @@ public class SoundtrackPlayer : MonoBehaviour
         Level2 = 0x2,
         Level1Adrenaline = 0x4,
         Level2Adrenaline = 0x8,
+        Level1Underwater = 0x10,
+        Level2Underwater = 0x20,
     }
 }

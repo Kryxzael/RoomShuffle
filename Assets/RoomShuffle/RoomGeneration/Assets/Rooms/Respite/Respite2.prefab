@@ -13170,7 +13170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.9279
+      value: 23.929104
       objectReference: {fileID: 0}
     - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13178,7 +13178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.34
+      value: 8.84
       objectReference: {fileID: 0}
     - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13215,6 +13215,75 @@ PrefabInstance:
     - target: {fileID: 6831487318895296033, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
       propertyPath: Channels
       value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+--- !u!1001 &7832003041813580533
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8312978678989558030}
+    m_Modifications:
+    - target: {fileID: 278993918903057260, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_Name
+      value: MusicZone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 42.6753
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 23.929104
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164984189028169367, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831487318895296033, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}
+      propertyPath: Channels
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f3c707ecc9891f41baf46c65fd17ff3, type: 3}

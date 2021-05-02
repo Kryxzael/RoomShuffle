@@ -72,8 +72,15 @@ public class StandardParameterBuilder : ParameterBuilder
             output.GroundEnemies = GroundEnemies;
             output.AirEnemies = AirEnemies;
 
+            //The player need help, slot in a respite room
+            if ((RequiredItemLootTable.InNeedOfHealth() && random.Next(3) == 0) || (RequiredItemLootTable.InNeedOfWeapons() && random.Next(3) == 0) || (RequiredItemLootTable.InNeedOfMoney() && random.Next(10) == 0))
+            {
+                output.Class = RoomClass.Respite;
+                output.Layout = Rooms.RespiteRooms[random.Next(Rooms.RespiteRooms.Count)];
+            }
+
             //Time for a shop
-            if (history.RoomsSinceClass(RoomClass.Shop, includeSafes: true) >= ShopFrequency.Pick(random))
+            else if (history.RoomsSinceClass(RoomClass.Shop, includeSafes: true) >= ShopFrequency.Pick(random))
             {
                 output.Class = RoomClass.Shop;
                 output.Layout = Rooms.ShopRooms[random.Next(Rooms.ShopRooms.Count)];
