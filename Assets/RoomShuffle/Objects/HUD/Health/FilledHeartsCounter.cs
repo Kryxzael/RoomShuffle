@@ -6,56 +6,30 @@ using UnityEngine;
 
 public class FilledHeartsCounter : MonoBehaviour
 {
-    public TextMeshProUGUI PositivePop;
-    public TextMeshProUGUI NegativePop;
-
     private TextMeshProUGUI TMP;
-    private int _lastFilledHearts = 0;
+    private int _lastFilledHearts;
 
     private void Start()
     {
-        TMP = this.GetComponent<TextMeshProUGUI>();
+        TMP = GetComponent<TextMeshProUGUI>();
     }
 
-    public void setCounter(int number)
+    /// <summary>
+    /// Sets the heartcounter count
+    /// </summary>
+    /// <param name="number"></param>
+    public void SetCounter(int number)
     {
+        //if theres has been no chenges: return
         if (_lastFilledHearts == number)
         {
             return;
         }
-
-        //Uncomment this if you want to show popping numbers!
-        //int difference = number - _lastFilledHearts;
-        //popNumber(difference);
-
-        TMP.text = number + "+";
-        _lastFilledHearts = number;
-    }
-
-    public void popNumber(int number)
-    {
-        if (number > 0)
-        {
-            TextMeshProUGUI instance = Instantiate(
-                original: PositivePop, 
-                position: transform.position,
-                rotation: Quaternion.identity,
-                parent: transform
-            );
-                
-            instance.text = "+" + number;
-        }
         
-        else if (number < 0)
-        {
-            TextMeshProUGUI instance = Instantiate(
-                original: NegativePop, 
-                position: transform.position,
-                rotation: Quaternion.identity,
-                parent: transform
-            );
-                
-            instance.text = number.ToString();
-        }
+        //sets text
+        TMP.text = number + "+";
+        
+        //set last state
+        _lastFilledHearts = number;
     }
 }

@@ -54,7 +54,6 @@ public class WeaponUIManager : MonoBehaviour
         UpdateCoolDown(inventory);
         UpsizeSelectedWeapon(inventory);
         AutoEquipWeapon(inventory);
-        AutoSwitchWeapon(inventory);
         UpdateDurabilityCounter(inventory);
         
         //Update array keeping track of last durability
@@ -193,48 +192,6 @@ public class WeaponUIManager : MonoBehaviour
                     _image[i].sprite = _weapon[i].Template.Icon;
                     _imageCopy[i].sprite = _weapon[i].Template.Icon;
                 }
-            }
-        }
-    }
-
-    /// <summary>
-    /// Automatically switches weapon to the next slot if the selcted weapon ammo has just been emptied
-    /// </summary>
-    /// <param name="inventory"></param>
-    private void AutoSwitchWeapon(Inventory inventory)
-    {
-        if (inventory.SelectedWeapon == null)
-            return;
-
-        if (inventory.SelectedWeapon.Durability > 0)
-            return;
-
-        bool weaponsWithDurability = false;
-        for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
-        {
-            if (inventory.WeaponSlots[i]?.Durability > 0)
-            {
-                weaponsWithDurability = true;
-                break;
-            }
-        }
-
-        if (!weaponsWithDurability)
-            return;
-        
-        for (int i = 0; i < Inventory.MAX_WEAPON_SLOTS; i++)
-        {
-            if (_lastDurability[i] > 0 && inventory.WeaponSlots[i].Durability <= 0)
-            {
-                while (inventory.WeaponSlots[inventory.SelectedWeaponSlot].Durability <= 0)
-                {
-                    inventory.SelectedWeaponSlot++;
-                    if (inventory.SelectedWeaponSlot >= Inventory.MAX_WEAPON_SLOTS)
-                    {
-                        inventory.SelectedWeaponSlot -= Inventory.MAX_WEAPON_SLOTS;
-                    }
-                }
-                break;
             }
         }
     }

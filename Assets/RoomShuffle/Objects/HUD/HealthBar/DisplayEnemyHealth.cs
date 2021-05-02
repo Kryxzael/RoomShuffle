@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class DisplayEnemyHealth : EnemyScript
 {
-    [Tooltip("The numbers that will pop up when hit")]
-    public TextMeshPro PopNumbers;
-    
     private int _lastHealth;
     private TextMeshPro _healthBarText;
     private Transform _healthBar;

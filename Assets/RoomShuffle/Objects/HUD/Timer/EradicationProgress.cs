@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using TMPro;
-
+﻿using TMPro;
 using UnityEngine;
-
-//TODO: This script is (probably) highly incompatible with the timer script. Shome mutual exclusivity should be ensured here
 
 /// <summary>
 /// Displays the amount of enemies remaining in an eradication room on a GUI label
@@ -16,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class EradicationProgress : MonoBehaviour
 {
-    public bool UseOnlyOnSpeedRunMode = false;
+    public bool UseOnlyOnSpeedRunMode;
     
     private TextMeshProUGUI _label;
 

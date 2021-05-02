@@ -21,15 +21,18 @@ public class CircularMotion : MonoBehaviour
     {
         _pivotPoint = transform.position;
 
+        //if the object has an "Arm" (something that visually appears to hold the object)
         if (Arm)
         {
+            //create arm instance
             GameObject instance = Instantiate(Arm, transform.position, Quaternion.identity, transform.parent);
             _armTransform = instance;
-        }
-
-        if (_armTransform)
-        {
-           _armTransform.GetComponent<SpriteRenderer>().size = new Vector2(1, Radius);
+            
+            if (_armTransform)
+            {
+                //make arm the length of the radius
+                _armTransform.GetComponent<SpriteRenderer>().size = new Vector2(1, Radius);
+            }
         }
     }
     
@@ -42,12 +45,13 @@ public class CircularMotion : MonoBehaviour
 
         transform.localPosition =  new Vector3(x, y, 0);
 
-        float RotationDistance = (float) Math.PI * 2;
+        //The length of a rotation
+        float rotationDistance = (float) Math.PI * 2;
 
         //Keeps the _time variable low
-        if (_time > RotationDistance)
+        if (_time > rotationDistance)
         {
-            _time -= RotationDistance;
+            _time -= rotationDistance;
         }
 
         //Rotate Arm
@@ -55,7 +59,7 @@ public class CircularMotion : MonoBehaviour
         {
             float parentRotation = transform.parent.GetEuler().z;
             
-            _armTransform.transform.rotation = Quaternion.Euler(new Vector3(0,0, _time * (360 / RotationDistance) - 90 + parentRotation));
+            _armTransform.transform.rotation = Quaternion.Euler(new Vector3(0,0, _time * (360 / rotationDistance) - 90 + parentRotation));
         }
     }
 

@@ -40,30 +40,35 @@ public class ContactBlockGroup : MonoBehaviour
 
         _lastNumberOfOffBlocks = _blocks.Count(x => x.On == false);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        //get number of blocks that are turned on
         int currentNumberOfOffBlocks = _blocks.Count(x => x.On == false);
 
+        //If all blocks are on
         if (currentNumberOfOffBlocks == 0 && _lastNumberOfOffBlocks > 0)
         {
+            //Play "tada" sound
             _multiSoundPlayer.PlaySound(1);
             _prize.SetActive(true);
             _blocks.ForEach(x => x.Lock());
         }
         
-        //positive
+        //positive: The number of on-blocks have gone up
         else if (currentNumberOfOffBlocks < _lastNumberOfOffBlocks)
         {
+            //play spound with increased pitch
             _multiSoundPlayer.PlaySound(0, 1 + ((_blocks.Count - currentNumberOfOffBlocks) / (float)_blocks.Count));
         }
-        //Negative
+        //Negative : The number of on- blocks have gone down
         else if (currentNumberOfOffBlocks > _lastNumberOfOffBlocks)
         {
+            //play sound with decreased pitch
             _multiSoundPlayer.PlaySound(0, 1 + ((_blocks.Count - currentNumberOfOffBlocks) / (float)_blocks.Count));
         }
 
+        //update last state
         _lastNumberOfOffBlocks = currentNumberOfOffBlocks;
         
 

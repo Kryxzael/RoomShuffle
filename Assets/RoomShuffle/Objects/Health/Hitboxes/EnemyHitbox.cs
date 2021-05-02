@@ -94,9 +94,6 @@ public class EnemyHitbox : Hitbox
         //Create damage pop-up
         CreateDamagePopNumber(damage);
         
-
-
-        //TODO: Temporary. Health controller should probably handle deaths
         if (_health.IsDead)
         {
             //Explode

@@ -49,8 +49,7 @@ public class PlayerHitbox : Hitbox
 
         GrantInvincibilityFrames();
         Commons.PlayerHealth.DealDamage(hurtbox.GetDamage(this));
-
-        //TODO: Move this?
+        
         if (Commons.PlayerHealth.IsDead)
         {
             if (_exploder)

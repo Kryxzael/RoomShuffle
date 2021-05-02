@@ -32,7 +32,7 @@ public class ContactSwitch : MonoBehaviour
         //Set the corresponding sprite to the "On" bariable
         _sprite.sprite = On ? OnSprite : OffSprite;
 
-        //Combinations of the booleans
+        //Combinations of the booleans (inputs)
         if (TriggerOnTop && !TriggerOnSides && !TriggerOnBottom)
         {
             TopOnly();
@@ -99,6 +99,10 @@ public class ContactSwitch : MonoBehaviour
         _sprite.sprite = NeutralSprite;
         _locked = true;
     }
+    
+    /*
+     * Methods for the combinations of blockers for each block beneath
+     */
 
     private void TopOnly()
     {

@@ -33,6 +33,7 @@ public class Button : MonoBehaviour
             }
         }
 
+        //start the button as unpressed
         Pressed = false;
         buttonUp.SetActive(true);
         buttonDown.SetActive(false);

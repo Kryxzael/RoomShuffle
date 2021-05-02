@@ -17,13 +17,12 @@ public class Heart : MonoBehaviour
     public Sprite FillImageDanger;
 
     //The image that will be the cake or pie of the heart, representing the fullness of the heart
+    //The names are outdated as we use batteries instead of cakes
     private Image cakeImage;
     private Image containerImage;
 
     //The smack component
     private TextSmack _smack;
-
-    private float _lastFillAmount = 0;
 
     void Awake()
     {
@@ -40,6 +39,7 @@ public class Heart : MonoBehaviour
 
     private void Update()
     {
+        //if the player is near death, set the container images to the "danger" -variant
         if (Commons.PlayerHealth.Health - Commons.PlayerHealth.GetSoftDeathDamage() <= 0)
         {
             containerImage.sprite = ContainerImageDanger;
@@ -64,17 +64,5 @@ public class Heart : MonoBehaviour
 
         //set fill amount
         cakeImage.fillAmount = percentage;
-
-        //update last fill amount
-        _lastFillAmount = percentage;
-    }
-
-    /// <summary>
-    /// Return the fillamount of the heart
-    /// </summary>
-    /// <returns></returns>
-    public float GetFillAmount()
-    {
-        return cakeImage.fillAmount;
     }
 }

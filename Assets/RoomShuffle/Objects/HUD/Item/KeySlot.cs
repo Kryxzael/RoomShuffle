@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum KeyTypeUI
@@ -29,6 +27,7 @@ public class KeySlot : ItemUIManager
     // Update is called once per frame
     void Update()
     {
+        //Find type of keys
         switch (KeyType)
         {
             case KeyTypeUI.General:
@@ -50,6 +49,7 @@ public class KeySlot : ItemUIManager
         //if the player has any keys
         if (_currentNumberOfKeys > 0)
         {
+            //Set image to key sprite and smack
             Text.text = _currentNumberOfKeys.ToString();
             _textSmack.Smack();
             Image.sprite = _keySprite;
@@ -63,6 +63,7 @@ public class KeySlot : ItemUIManager
         }
         else
         {
+            //Disable image and set text to nothing
             Text.text = "";
             if (Image.enabled)
             {

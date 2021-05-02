@@ -117,14 +117,14 @@ public class RoomEffectController : MonoBehaviour
             {
                 float height = collider.bounds.size.y;
 
-                //TODO: This assumes that the object is pivoted at its center
+                //This assumes that the object is pivoted at its center
                 if (enabled)
                 {
                     i.transform.TranslateY(height / 2);
                     i.transform.localScale *= LargeEnemiesGrowMultiplier;
                 }
 
-                //TODO: Disabling this effect does nothing
+                //Disabling this effect does nothing
             }
         }
     }

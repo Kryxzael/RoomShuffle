@@ -15,14 +15,18 @@ public class ButtonGroup : MonoBehaviour
     private bool _lastState = false;
     void Start()
     {
+        
+        //get all children in button group
         foreach (Transform child in transform)
         {
             if (child.name.Equals("Buttons"))
             {
+                //if the child is called button, add to button group
                 child.Cast<Transform>().ForEach(x => _buttonList.Add(x.GetComponent<Button>()));
                 continue;
             }
 
+            //Set fields to children
             switch (child.name)
             {
                 case "EnableOnPressed":
@@ -40,6 +44,7 @@ public class ButtonGroup : MonoBehaviour
             }
         }
         
+        //initialise starting positions
         _enableForeverOnPressed.SetActive(false);
         _disableForeverOnPressed.SetActive(true);
         _enableOnPressed.SetActive(false);
@@ -48,15 +53,17 @@ public class ButtonGroup : MonoBehaviour
     
     void LateUpdate()
     {
-        bool AllButtonsArePressed = _buttonList.TrueForAll(x => x.Pressed);
+        //true if all the buttons in the group is pressed
+        bool _allButtonsArePressed = _buttonList.TrueForAll(x => x.Pressed);
 
         //No changes have been made
-        if (AllButtonsArePressed == _lastState)
+        if (_allButtonsArePressed == _lastState)
             return;
         
-        //changes have been made
-        if (AllButtonsArePressed)
+        //all buttons are pressed
+        if (_allButtonsArePressed)
         {
+            //if it is the first time all buttons have been pressed
             if (_firstPress)
             {
                 _enableForeverOnPressed.SetActive(true);
@@ -66,12 +73,14 @@ public class ButtonGroup : MonoBehaviour
             _enableOnPressed.SetActive(true);
             _disableOnPressed.SetActive(false);
         }
+        //Not all buttons are pressed
         else
         {
             _enableOnPressed.SetActive(false);
             _disableOnPressed.SetActive(true);
         }
 
-        _lastState = AllButtonsArePressed;
+        //Update laststate
+        _lastState = _allButtonsArePressed;
     }
 }
