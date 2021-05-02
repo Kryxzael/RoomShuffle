@@ -173,7 +173,7 @@ public class StickyBoy : EnemyScript
         else if (checkDirection == 0)
             checkDirection = 4;
         
-        //TODO: Convert to Direction4
+        //This should be converted to Direction4
         switch (checkDirection)
         {
             case 2: 

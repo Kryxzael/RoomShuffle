@@ -9,9 +9,6 @@ using UnityEngine;
 //A script that let's the player drop through platformEffector2D platforms
 public class DropThroughPlatform : DetectObjectsOn
 {
-    [Tooltip("What action the player must take to fall through")]
-    public FallThroughAction Action = FallThroughAction.Down;
-
     private PlatformEffector2D _platformEffector2D;
 
     //True if the player was chrouching last frame
@@ -40,28 +37,12 @@ public class DropThroughPlatform : DetectObjectsOn
             return;
         }
 
-        //What action should be taken to fall through platform
-        switch (Action)
-        {
-            //Crouching
-            case FallThroughAction.Down:
-                if (Input.GetAxisRaw("Vertical") < 0f && _crouchingLastFrame == false)
-                {
-                    StartCoroutine(CoNoSurfaceArc());
-                }
 
-                break;
-            
-            //Crouching and jumping
-            case FallThroughAction.DownAndJump:
-                if (Input.GetAxisRaw("Vertical") < 0f && Input.GetButtonDown("Jump"))
-                {
-                    //TODO This doesn't work because the player just jumps ):
-                    StartCoroutine(CoNoSurfaceArc());
-                }
-                break;
+        if (Input.GetAxisRaw("Vertical") < 0f && _crouchingLastFrame == false)
+        {
+            StartCoroutine(CoNoSurfaceArc());
         }
-        
+
         _crouchingLastFrame = checkCrouch();
     }
 

@@ -76,9 +76,6 @@ public class RedCoinsTrail : MonoBehaviour
         if (currentNumberOfChildren < _lastNumberOfChildren)
         {
             _lastNumberOfChildren = currentNumberOfChildren;
-            
-            //when a pickup has been picked up: make sound
-            //TODO Make pickup sound
         }
 
         foreach (SpriteRenderer spriteRenderer in _spriteRenderers)
@@ -108,7 +105,5 @@ public class RedCoinsTrail : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(PlayerTimerInstance);
-        
-        //TODO Make final pickup sound
     }
 }

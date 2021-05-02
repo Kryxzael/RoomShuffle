@@ -123,7 +123,7 @@ public class SpotPlayer : EnemyScript
                 RaycastHit2D[] hits;
                 hits = Physics2D.RaycastAll(Enemy.Collider.bounds.center, _player.Value.transform.position - transform.position, distanceToPlayer);
 
-                //TODO: Should probably detect using layers, not tags
+                //Should probably detect using layers, not tags
                 bool inSight = !hits.Any(x => (x.transform.gameObject.tag != "Enemy" || !EnemiescanSeeTroughEnemies) && (x.transform.gameObject.tag != "Projectile") && x.transform.gameObject.tag != "Player");
 
                 if (inSight)

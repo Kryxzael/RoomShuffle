@@ -163,7 +163,6 @@ public class DiggingSpotter : EnemyScript
         if (_aboveGround)
             yield break;
         
-        //TODO telegraph jumping
         yield return new WaitForSeconds(WAIT_TIME_BEFORE_POPPING);
 
         //Activate hitbox before animation starts

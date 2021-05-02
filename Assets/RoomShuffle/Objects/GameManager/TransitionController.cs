@@ -44,7 +44,7 @@ public class TransitionController : MonoBehaviour
 
         yield return new WaitUntil(() => Input.anyKeyDown);
 
-        //TODO: Restart game somehow
+        //resets the game
         SceneManager.LoadScene("RoomGenerationTest");
     }
 

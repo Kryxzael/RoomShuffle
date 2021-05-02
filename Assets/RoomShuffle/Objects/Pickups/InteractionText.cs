@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -8,10 +7,9 @@ using UnityEngine;
 public class InteractionText : MonoBehaviour
 {
     private TextMeshPro TMP;
-    private bool _controllerConnected = false;
+    private bool _controllerConnected;
     private PickupBase _pickupBase;
     
-    //TODO change all of these to the correct sprites
     private const string KEYBOARD_SPRITE_DOWN = "<sprite=1>";
     private const string KEYBOARD_SPRITE_UP = "<sprite=0>";
     private const string CONTROLLER_SPRITE_DOWN = "<sprite=3>";

@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeAnimation : MonoBehaviour
 {
-    public Image FadeScreen;
     public Mask FadeMask;
 
     public float FadeTime = 0.5f;
