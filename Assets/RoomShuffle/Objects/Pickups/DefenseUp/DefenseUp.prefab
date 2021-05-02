@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4050438772846708374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345275638706994060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675c826f3aaaf32418b80bf7b1165ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUp: 2
+--- !u!114 &7542944441249303534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345275638706994060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac7f9aa478c9c4f8b166cf3fe4a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: fbdad25b7e6dcb04580ed4cac477d119, type: 3}
+  PlayAll: 0
+  MinimumTimeBetweenSounds: 0
+  LimitAudio: 0
+  PlayOnEnable: 0
+  PlayOnStart: 0
+  PlayOnDisable: 0
+  PlayOnDestroy: 0
+  PlayOnUpdate: 0
+  ClipIndex: 0
 --- !u!114 &7859164630791334622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animation: {fileID: 11400000, guid: 1bdde3b84f096ae49883ed7d7acb04b5, type: 2}
   PlaybackSpeed: 1
---- !u!114 &4050438772846708374
+--- !u!114 &7256042232245000469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,10 +59,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7345275638706994060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675c826f3aaaf32418b80bf7b1165ad0, type: 3}
+  m_Script: {fileID: 11500000, guid: c7852148b0061bc4588642f84d7b0161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerUp: 2
+  ClipIndex: 0
 --- !u!1001 &7487855299111577020
 PrefabInstance:
   m_ObjectHideFlags: 0
