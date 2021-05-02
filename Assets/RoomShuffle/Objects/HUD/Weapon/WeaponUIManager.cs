@@ -43,6 +43,8 @@ public class WeaponUIManager : MonoBehaviour
             _durabilityTextMeshPro[i] = DurabilityText[i].GetComponent<TextMeshProUGUI>();
         }
         
+        //Set selected slot to zero
+        Commons.Inventory.SelectedWeaponSlot = 0;
     }
     
     void Update()
@@ -53,7 +55,8 @@ public class WeaponUIManager : MonoBehaviour
         UpdateWeaponImage(inventory);
         UpdateCoolDown(inventory);
         UpsizeSelectedWeapon(inventory);
-        AutoEquipWeapon(inventory);
+        //We have disabled Auto equip weapon
+        //AutoEquipWeapon(inventory);
         UpdateDurabilityCounter(inventory);
         
         //Update array keeping track of last durability
