@@ -33,7 +33,7 @@ public class TransitionController : MonoBehaviour
         Camera.main.transform.SetParent(FindObjectOfType<GeneratedRoom>().transform);
 
         //Destroy player object
-        Destroy(this.GetPlayer());
+        this.GetPlayer().SetActive(false);
 
         //Wait for dramatic effect
         const float GAME_OVER_WAIT_TIME = 2f;

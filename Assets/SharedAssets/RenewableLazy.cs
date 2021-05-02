@@ -73,7 +73,15 @@ public class RenewableLazy<T>
     /// </summary>
     public T Renew()
     {
-        _value = Selector();
+        try
+        {
+            _value = Selector();
+        }
+        catch (NullReferenceException)
+        {
+            _value = default;
+        }
+
         return _value;
     }
 

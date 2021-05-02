@@ -53,7 +53,8 @@ public class MusicZone : MonoBehaviour
     {
         _holders.Remove(this);
 
-        if (!_holders.Any())
+        //Commons.SoundtrackPlayer is null if the game is reloading
+        if (!_holders.Any() && Commons.SoundtrackPlayer)
             Commons.SoundtrackPlayer.OverrideChannels = SoundtrackPlayer.MusicChannels.None;
     }
 }
