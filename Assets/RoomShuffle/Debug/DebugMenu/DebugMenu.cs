@@ -121,7 +121,7 @@ public class DebugMenu : MonoBehaviour
     /// <param name="texts"></param>
     private void DrawList(string[] texts, int index)
     {
-        const int DISPLAYED_LINES = 10;
+        const int DISPLAYED_LINES = 15;
         const int HEADER_SIZE = 3;
 
         for (int i = 0; i < Mathf.Min(texts.Length, DISPLAYED_LINES + HEADER_SIZE); i++)
