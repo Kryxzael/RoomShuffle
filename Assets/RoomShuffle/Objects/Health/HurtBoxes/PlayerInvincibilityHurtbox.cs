@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// The hurtbox the player has that is active when the player is invincible
 /// </summary>
-public class PlayerInvincibilityHurtbox : HurtBox
+public class PlayerInvincibilityHurtbox : Hurtbox
 {
     public override bool IgnoresInvincibilityFrames => true;
     public override bool ContinuousDamage => true;

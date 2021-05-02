@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileLaserHitbox : HurtBox
+public class ProjectileLaserHitbox : Hurtbox
 {
     [Tooltip("If the laser should hurt the player")]
     public bool FriendlyFireOn;

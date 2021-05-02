@@ -34,7 +34,7 @@ public class PlayerHitbox : Hitbox
     /// <inheritdoc />
     /// </summary>
     /// <param name="hurtbox"></param>
-    protected override void OnReceiveDamage(HurtBox hurtbox)
+    protected override void OnReceiveDamage(Hurtbox hurtbox)
     {
         //Dead men don't scream
         if (Commons.PlayerHealth.IsDead)

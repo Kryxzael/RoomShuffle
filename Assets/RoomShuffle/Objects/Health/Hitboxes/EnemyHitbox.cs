@@ -66,7 +66,7 @@ public class EnemyHitbox : Hitbox
     /// <inheritdoc />
     /// </summary>
     /// <param name="hurtbox"></param>
-    protected override void OnReceiveDamage(HurtBox hurtbox)
+    protected override void OnReceiveDamage(Hurtbox hurtbox)
     {
         //Play damage sound
         if (_multiSoundPlayer && !(hurtbox is PlayerInvincibilityHurtbox && !Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility)))

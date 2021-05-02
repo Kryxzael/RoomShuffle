@@ -7,11 +7,11 @@ using UnityEngine;
 /// </summary>
 [ExecuteInEditMode]
 [RequireComponent(typeof(LineRenderer))]
-[RequireComponent(typeof(HurtBox))]
+[RequireComponent(typeof(Hurtbox))]
 public class CycleFreeLaser : MonoBehaviour
 {
     private LineRenderer _lineRenderer;
-    private HurtBox _hurtbox;
+    private Hurtbox _hurtbox;
     private LaserAudio _laserAudio;
 
     private bool _isVisible;
@@ -48,7 +48,7 @@ public class CycleFreeLaser : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
 
         //The hurtbox of this object isn't used normally (with collision) but is applied by the laser programmatically
-        _hurtbox = GetComponent<HurtBox>();
+        _hurtbox = GetComponent<Hurtbox>();
 
         _laserAudio = Commons.AudioManager.GetComponent<LaserAudio>();
         _mainCamera = Camera.main;

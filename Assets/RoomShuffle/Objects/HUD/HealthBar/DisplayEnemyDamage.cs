@@ -15,7 +15,7 @@ using UnityEngine;
 public class DisplayEnemyDamage : MonoBehaviour
 {
     private TextMeshPro _text;
-    public HurtBox Hurtbox;
+    public Hurtbox Hurtbox;
 
     //The damage the enemy will deal
     private int _cachedDamage;

@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// A hurtbox that soft-kills the player and kills anything else
 /// </summary>
-public class SoftKillHurtbox : HurtBox
+public class SoftKillHurtbox : Hurtbox
 {
     /// <summary>
     /// <inheritdoc />

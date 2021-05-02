@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// A simple hurtbox that damages all types of objects
 /// </summary>
-public class GlobalHurtbox : HurtBox
+public class GlobalHurtbox : Hurtbox
 {
     [Tooltip("The amount of damage the hurtbox will do")]
     public int Damage;

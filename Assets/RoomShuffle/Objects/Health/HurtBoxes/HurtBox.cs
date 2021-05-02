@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// Represents a trigger with the ability to hurt something
 /// </summary>
-public abstract class HurtBox : MonoBehaviour
+public abstract class Hurtbox : MonoBehaviour
 {
     /// <summary>
     /// Whether this hurtbox will ignore a hitbox's invisibility frames

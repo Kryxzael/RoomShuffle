@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// The hurtbox on a projectile or other weapon attack type
 /// </summary>
-public class WeaponFireHurtbox : HurtBox
+public class WeaponFireHurtbox : Hurtbox
 {
     /// <summary>
     /// The object that shot the hurtbox

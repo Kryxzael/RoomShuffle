@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// A hurtbox that deals damage to the player when it comes in contact with it
 /// </summary>
-public class EnemyContactHurtbox : HurtBox
+public class EnemyContactHurtbox : Hurtbox
 {
     /// <summary>
     /// The base damage the hurtbox will deal

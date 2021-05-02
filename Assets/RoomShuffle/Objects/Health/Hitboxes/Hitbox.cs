@@ -83,13 +83,13 @@ public abstract class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<HurtBox>() is HurtBox hurt && hurt)
+        if (collision.GetComponent<Hurtbox>() is Hurtbox hurt && hurt)
             TryDealDamageBy(hurt);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<HurtBox>() is HurtBox hurt && hurt && hurt.ContinuousDamage)
+        if (other.GetComponent<Hurtbox>() is Hurtbox hurt && hurt && hurt.ContinuousDamage)
             TryDealDamageBy(hurt);
     }
 
@@ -97,7 +97,7 @@ public abstract class Hitbox : MonoBehaviour
     /// Lets the provided hurtbox damage the hitbox
     /// </summary>
     /// <param name="hurtbox"></param>
-    public void TryDealDamageBy(HurtBox hurtbox)
+    public void TryDealDamageBy(Hurtbox hurtbox)
     {
         if ((HasInvincibilityFrames && !hurtbox.IgnoresInvincibilityFrames) || !hurtbox.GetTargets().HasFlag(SusceptibleTo))
             return;
@@ -106,5 +106,5 @@ public abstract class Hitbox : MonoBehaviour
         OnReceiveDamage(hurtbox);
     }
 
-    protected abstract void OnReceiveDamage(HurtBox hurtbox);
+    protected abstract void OnReceiveDamage(Hurtbox hurtbox);
 }
