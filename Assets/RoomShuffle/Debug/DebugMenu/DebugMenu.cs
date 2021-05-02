@@ -10,6 +10,11 @@ using UnityEngine;
 public class DebugMenu : MonoBehaviour
 {
     /// <summary>
+    /// Gets or sets whether the debug menu is currently visible
+    /// </summary>
+    public bool IsOpen { get; set; }
+
+    /// <summary>
     /// Gets the current navigation stack of debug pages
     /// </summary>
     public Stack<DebugPage> NavigationStack { get; } = new Stack<DebugPage>();
@@ -33,6 +38,7 @@ public class DebugMenu : MonoBehaviour
 
     private void Update()
     {
+
         //If the navigation stack somehow is empty, return to home
         if (!NavigationStack.Any())
             NavigationStack.Push(new HomeDebugPage());
@@ -47,7 +53,7 @@ public class DebugMenu : MonoBehaviour
         //Click Down
         if (Input.GetAxisRaw("DebugVertical") == -1)
         {
-            if (lastFrameHeldButton)
+            if (lastFrameHeldButton || !IsOpen)
                 return;
 
             CurrentPage.SelectedIndex = Mathf.Min(++CurrentPage.SelectedIndex, _currentRun.Count - 1);
@@ -56,7 +62,7 @@ public class DebugMenu : MonoBehaviour
         //Click Up
         else if (Input.GetAxisRaw("DebugVertical") == 1)
         {
-            if (lastFrameHeldButton)
+            if (lastFrameHeldButton || !IsOpen)
                 return;
 
             CurrentPage.SelectedIndex = Mathf.Max(--CurrentPage.SelectedIndex, 0);
@@ -68,7 +74,11 @@ public class DebugMenu : MonoBehaviour
             if (lastFrameHeldButton)
                 return;
 
-            _currentRun = CurrentPage.Run(this, true);
+            if (!IsOpen)
+                IsOpen = true;
+
+            else
+                _currentRun = CurrentPage.Run(this, true);
         }
 
         //Click Back (Left)
@@ -79,6 +89,8 @@ public class DebugMenu : MonoBehaviour
 
             if (NavigationStack.Count > 1)
                 NavigationStack.Pop();
+            else
+                IsOpen = false;
 
             _currentRun = CurrentPage.Run(this, false);
         }
@@ -95,6 +107,10 @@ public class DebugMenu : MonoBehaviour
 
     private void OnGUI()
     {
+        //Debug menu is hidden. So don't show it
+        if (!IsOpen)
+            return;
+
         //Draws the list
         DrawList(new string[] { "==DEBUG MODE==", CurrentPage.Header, "" }.Concat(_currentRun).ToArray(), NavigationStack.Peek().SelectedIndex);
     }
