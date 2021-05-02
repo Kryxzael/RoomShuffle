@@ -10,21 +10,25 @@ public class WeaponUIManager : MonoBehaviour
 
 {
     [Tooltip("The UI images that contains the weapon icon")]
-    public GameObject[] WeaponImage = new GameObject[Inventory.MAX_WEAPON_SLOTS];
+    public Image[] WeaponImage = new Image[Inventory.MAX_WEAPON_SLOTS];
     
     [Tooltip("The copy if the UI images that contains the weapon icon")]
-    public GameObject[] WeaponImageCopy = new GameObject[Inventory.MAX_WEAPON_SLOTS];
+    public Image[] WeaponImageCopy = new Image[Inventory.MAX_WEAPON_SLOTS];
     
     [Tooltip("The object containing the weapon image and weapon image copy")]
     public GameObject[] WeaponImageGroup = new GameObject[Inventory.MAX_WEAPON_SLOTS];
     
     [Tooltip("The TextMeshPro objects describing durability per weapon")]
     public GameObject[] DurabilityText = new GameObject[Inventory.MAX_WEAPON_SLOTS];
+
+    public Material SelectedMaterial;
+    public Material UnselectedMaterial;
+
+    public Sprite blankSprite;
     
     /*
      * Private variables used for faster caching 
      */
-    public Sprite blankSprite;
     private WeaponInstance[] _weapon = new WeaponInstance[Inventory.MAX_WEAPON_SLOTS];
     private Image[] _image = new Image[Inventory.MAX_WEAPON_SLOTS];
     private Image[] _imageCopy = new Image[Inventory.MAX_WEAPON_SLOTS];
@@ -135,10 +139,17 @@ public class WeaponUIManager : MonoBehaviour
             {
                 WeaponImageGroup[i].transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
                 WeaponImageGroup[i].transform.rotation = Quaternion.Euler(0,0,15);
+
+                WeaponImage[i].material = SelectedMaterial;
+                WeaponImageCopy[i].material = SelectedMaterial;
                 continue;
             }
+
             WeaponImageGroup[i].transform.localScale = Vector3.one;
             WeaponImageGroup[i].transform.rotation = Quaternion.Euler(0,0,0);
+
+            WeaponImage[i].material = UnselectedMaterial;
+            WeaponImageCopy[i].material = UnselectedMaterial;
         }
         
     }
