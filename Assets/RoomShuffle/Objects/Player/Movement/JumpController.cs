@@ -190,8 +190,8 @@ public class JumpController : MonoBehaviour
             }
                 
 
-            seconds += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            seconds += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
     }
     

@@ -78,7 +78,7 @@ public class GroundController : MonoBehaviour
         if (input > 0.25f)
         {
             //Player is currently moving in the opposite direction, decelerate them
-            if (_rigid.velocity.x < 0)
+            if (_rigid.velocity.x < -0.05f)
                 Decelerate(dec, 0f);
 
             //Apply momentum
@@ -90,7 +90,7 @@ public class GroundController : MonoBehaviour
         else if (input < -0.25f)
         {
             //Player is currently moving in the opposite direction, decelerate them
-            if (_rigid.velocity.x > 0)
+            if (_rigid.velocity.x > 0.05f)
                 Decelerate(dec, 0f);
 
             //Apply momentum
@@ -103,14 +103,10 @@ public class GroundController : MonoBehaviour
         {
             Decelerate(dec, minSpeed);
         }
+    }
 
-        /*
-         * Draw debug info
-         */
-        DebugScreenDrawer.Enable("velx", "VelX: " + _rigid.velocity.x);
-        DebugScreenDrawer.Enable("vely", "VelY: " + _rigid.velocity.y);
-        DebugScreenDrawer.Enable("joy", string.Join(", ", Input.GetJoystickNames()));
-
+    private void FixedUpdate()
+    {
         /*
          * Clamp speed
          */
@@ -118,8 +114,6 @@ public class GroundController : MonoBehaviour
         //Horizontal
         var maxSpeed = Commons.GetEffectValue(MaxSpeed, EffectValueType.PlayerMaxSpeed);
         _rigid.SetVelocityX(currentX => Mathf.Clamp(currentX, -maxSpeed, maxSpeed));
-
-        DebugScreenDrawer.Enable("gravity", "gravity: " + _rigid.gravityScale.ToString("P"));
     }
 
     /// <summary>
@@ -129,16 +123,12 @@ public class GroundController : MonoBehaviour
     /// <param name="minimumSpeed"></param>
     private void Decelerate(float force, float minimumSpeed)
     {
-        //The player is not moving
-        if (_rigid.velocity.x == 0)
-            return;
-
         //The player is moving to the right. Apply force to the left
-        else if (_rigid.velocity.x > 0)
+        if (_rigid.velocity.x > 0)
             _rigid.SetVelocityX(currentX => Mathf.Max(minimumSpeed, currentX - force * Time.deltaTime));
 
         //The player is moving to the left. Apply force to the right
-        else
+        else if (_rigid.velocity.x < 0)
             _rigid.SetVelocityX(currentX => Mathf.Min(-minimumSpeed, currentX + force * Time.deltaTime));
     }
 }

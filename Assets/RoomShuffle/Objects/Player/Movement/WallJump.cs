@@ -56,8 +56,8 @@ public class WallJump : MonoBehaviour
             //If the player attempts to jump while next to a wall, create a wall jump
             if (Input.GetButtonDown("Jump") && !this.OnGround2D())
             {
-                _rigid.velocity = _rigid.velocity.SetY(0f);
-                _rigid.AddForce((wallNormal.Value + Vector2.up * 0.75f).normalized * WallJumpForce, ForceMode2D.Impulse);
+                _rigid.SetVelocityY(0f);
+                _rigid.velocity = (wallNormal.Value + Vector2.up * 0.75f).normalized * WallJumpForce;
 
                 //Plays jump sound
                 _multiSoundPlayer.PlaySound(index: 0, volume: 0.25f);
