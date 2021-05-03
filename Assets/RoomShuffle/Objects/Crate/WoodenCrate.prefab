@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a5d6471295873fc4da729ea7367cf3ae, type: 3}
   PlayAll: 0
   MinimumTimeBetweenSounds: 0.117
+  LimitAudio: 0
   PlayOnEnable: 0
   PlayOnStart: 0
   PlayOnDisable: 0
@@ -97,6 +98,10 @@ PrefabInstance:
     - target: {fileID: 7483995740942935619, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
       propertyPath: MaximumHealth
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436267474268975168, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}
+      propertyPath: TriggersAdrenalineMusic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c5679a1eb89f44f8b7191751a48adc, type: 3}

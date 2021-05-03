@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvincibilityFramesInSeconds: 0
   DamageTextPrefab: {fileID: 7639935985091447328, guid: 9239f1f5db9b7fa4e99d4d995034caca, type: 3}
+  TriggersAdrenalineMusic: 0
 --- !u!114 &5473697764776778003
 MonoBehaviour:
   m_ObjectHideFlags: 0

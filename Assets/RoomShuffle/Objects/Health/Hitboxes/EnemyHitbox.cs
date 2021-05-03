@@ -18,6 +18,9 @@ public class EnemyHitbox : Hitbox
     /* *** */
     public PopNumber DamageTextPrefab;
 
+    [Tooltip("If true, the hitbox will change the music when hurt")]
+    public bool TriggersAdrenalineMusic = true;
+
     /// <summary>
     /// <inheritdoc />
     /// </summary>
@@ -77,7 +80,7 @@ public class EnemyHitbox : Hitbox
         if (!(hurtbox is PlayerInvincibilityHurtbox))
             MakeEnemyBlindChase();
 
-        if (!(hurtbox is GlobalHurtbox) && hurtbox.GetDamage(this) != 0)
+        if (TriggersAdrenalineMusic && !(hurtbox is GlobalHurtbox) && hurtbox.GetDamage(this) != 0)
             Commons.SoundtrackPlayer.AddTrigger(this, 5f);
 
         //Dead men don't scream
