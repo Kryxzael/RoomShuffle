@@ -78,6 +78,8 @@ MonoBehaviour:
     SpawnRate: 0.75
   - Enemy: {fileID: 7260927858460754246, guid: a555910c90707b14d8054e4e3a3adce3, type: 3}
     SpawnRate: 0.33
+  - Enemy: {fileID: 1708076884739158924, guid: 75596c0d538db1843b93947a39f0956d, type: 3}
+    SpawnRate: 1
   ShopFrequency:
     Minimum: 5
     Maximum: 10
