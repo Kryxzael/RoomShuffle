@@ -200,7 +200,7 @@ public class RoomGenerator : MonoBehaviour
         FindObjectOfType<Entrance>().SpawnPlayer();
 
         //Set light level
-        if (parameters.Theme == RoomTheme.Cave || parameters.Theme == RoomTheme.Volcano)
+        if (parameters.Theme == RoomTheme.Cave || parameters.Theme == RoomTheme.Volcano || parameters.Theme == RoomTheme.Snow)
         {
             FindObjectsOfType<Light>().Single(i => i.type == LightType.Directional).intensity = 0.25f;
         }

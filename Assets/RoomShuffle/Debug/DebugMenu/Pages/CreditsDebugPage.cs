@@ -12,6 +12,7 @@ public class CreditsDebugPage : DebugPage
     {
         ReadOnly("-- D E V E L O P E D   B Y --");
         ReadOnly("KASPER RAMSKJELL");
+        ReadOnly("Player Movement System Developer");
         ReadOnly("Room Generation System Developer");
         ReadOnly("Weapon System Developer");
         ReadOnly("Hitbox/Hurtbox System Developer");
@@ -22,12 +23,12 @@ public class CreditsDebugPage : DebugPage
         ReadOnly("TORMOD KVITBERG");
         ReadOnly("Enemy Programming");
         ReadOnly("Weapon Designer");
-        ReadOnly("Audio System");
+        ReadOnly("Audio System Developer");
         ReadOnly("HUD Programmer");
         ReadOnly("Level Designer");
         ReadOnly("Website Builder");
         Separator();
-        ReadOnly("MAIJA U.");
+        ReadOnly("MAIJA ULEBERG");
         ReadOnly("Player, Enemy and Background artist");
         Separator();
         ReadOnly("FREDRIK HAUGEN");

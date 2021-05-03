@@ -16,7 +16,6 @@ public class RoomLayoutCollection : ScriptableObject
     public List<RoomLayout> PlatformingRooms = new List<RoomLayout>();
     public List<RoomLayout> PuzzleRooms = new List<RoomLayout>();
     public List<RoomLayout> EradicationRooms = new List<RoomLayout>();
-    public List<RoomLayout> BossRooms = new List<RoomLayout>();
 
     [Header("== TRANSITIONAL ROOMS ==")]
     public RoomLayout TransitionLeftToTop;

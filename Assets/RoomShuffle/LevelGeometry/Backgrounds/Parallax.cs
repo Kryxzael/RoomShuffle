@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class Parallax : MonoBehaviour
 {
-    [Range(0f, 1f)]
+    [Range(-1f, 1f)]
     public float ParalaxDepth = 1f;
 
     /* *** */
