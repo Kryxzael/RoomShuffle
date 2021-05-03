@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6615903282889198696}
   - component: {fileID: 1328159283757382188}
+  - component: {fileID: 7078259568362064537}
   m_Layer: 0
   m_Name: CloudMassive (1)
   m_TagString: Untagged
@@ -82,6 +83,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7078259568362064537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469794702998345901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &1823813351018698570
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 623449888154977246}
   - component: {fileID: 6061248046023134493}
+  - component: {fileID: 7199188997465506345}
   m_Layer: 0
   m_Name: CloudMassive (6)
   m_TagString: Untagged
@@ -164,6 +183,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7199188997465506345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823813351018698570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &2522042786356487253
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 24337605591569399}
   - component: {fileID: 8428257246825749920}
+  - component: {fileID: 264037454804438136}
   m_Layer: 0
   m_Name: CloudMassive (10)
   m_TagString: Untagged
@@ -246,6 +283,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &264037454804438136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522042786356487253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &3705102734493351800
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644700941378358551}
   - component: {fileID: 5403445772724725207}
+  - component: {fileID: 7363605083297397231}
   m_Layer: 0
   m_Name: CloudMassive (11)
   m_TagString: Untagged
@@ -385,6 +440,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7363605083297397231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133112507785979009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &5019832583407112043
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5387680065915980378}
   - component: {fileID: 1264970880290823221}
+  - component: {fileID: 2446332339610232616}
   m_Layer: 0
   m_Name: CloudMassive (3)
   m_TagString: Untagged
@@ -467,6 +540,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2446332339610232616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5019832583407112043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &6051471273242145550
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846352583166406519}
   - component: {fileID: 6625685274339517052}
+  - component: {fileID: 84249147386282562}
   m_Layer: 0
   m_Name: CloudMassive
   m_TagString: Untagged
@@ -549,6 +640,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &84249147386282562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051471273242145550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &6154681907621133598
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144079612346828502}
   - component: {fileID: 8232868954143945986}
+  - component: {fileID: 8396157288092342380}
   m_Layer: 0
   m_Name: CloudMassive (4)
   m_TagString: Untagged
@@ -631,6 +740,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8396157288092342380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154681907621133598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &6435755599532082549
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7224663437560656982}
   - component: {fileID: 846771111322065630}
+  - component: {fileID: 2638778046871652439}
   m_Layer: 0
   m_Name: CloudMassive (8)
   m_TagString: Untagged
@@ -713,6 +840,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2638778046871652439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435755599532082549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &6769685035413404420
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,6 +867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4420950386913386331}
   - component: {fileID: 7407804967048911024}
+  - component: {fileID: 2465012945614320319}
   m_Layer: 0
   m_Name: CloudMassive (5)
   m_TagString: Untagged
@@ -795,6 +940,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2465012945614320319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769685035413404420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &7135389975852637217
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169551111870593885}
   - component: {fileID: 7921616577172856686}
+  - component: {fileID: 8876365202185509774}
   m_Layer: 0
   m_Name: CloudMassive (12)
   m_TagString: Untagged
@@ -877,6 +1040,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8876365202185509774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135389975852637217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &8222310209341894170
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +1067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5908815574543645235}
   - component: {fileID: 6141119299904802012}
+  - component: {fileID: 2002624990814311736}
   m_Layer: 0
   m_Name: CloudMassive (2)
   m_TagString: Untagged
@@ -959,6 +1140,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2002624990814311736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222310209341894170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &8750625902951866860
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +1167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886845855349330108}
   - component: {fileID: 2360671183846214578}
+  - component: {fileID: 5005141112578635737}
   m_Layer: 0
   m_Name: CloudMassive (9)
   m_TagString: Untagged
@@ -1041,6 +1240,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5005141112578635737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750625902951866860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &9105092341857199531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2624589233332179398}
   - component: {fileID: 3372890154391430238}
+  - component: {fileID: 1803718902372552733}
   m_Layer: 0
   m_Name: CloudMassive (7)
   m_TagString: Untagged
@@ -1123,3 +1340,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1803718902372552733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105092341857199531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 0.25
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
