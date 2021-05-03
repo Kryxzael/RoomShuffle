@@ -19,6 +19,9 @@ public class LockedDoor : MonoBehaviour
     private void Start()
     {
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
+
+        if (UnityEngine.Random.value <= 0.5f)
+            Destroy(gameObject);
     }
 
     private void Update()
