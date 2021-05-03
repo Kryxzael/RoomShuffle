@@ -83,6 +83,9 @@ public class SoundtrackPlayer : MonoBehaviour
             }
         }
 
+        //Resyncronize channels
+        DoForAllChannels(i => i.timeSamples = Level1Player.timeSamples);
+
         if (OverrideChannels != MusicChannels.None)
         {
             Level1Player.volume = LerpVolume(Level1Player.volume, OverrideChannels.HasFlag(MusicChannels.Level1) ? 1f : 0f);
