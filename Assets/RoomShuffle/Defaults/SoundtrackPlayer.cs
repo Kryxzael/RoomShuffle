@@ -39,7 +39,7 @@ public class SoundtrackPlayer : MonoBehaviour
         DoForAllChannels(i => i.Play());
     }
 
-    private void Update()  
+    private void FixedUpdate()  
     {
         const float PITCH_INCREMENT = 0.12f;
         const float PITCH_INCREMENT_SMALL = 0.03f;
@@ -162,13 +162,14 @@ public class SoundtrackPlayer : MonoBehaviour
         action(Level1UnderwaterPlayer);
         action(Level2UnderwaterPlayer);
     }
+
     private float LerpVolume(float current, float target, float speedMultiplier = 1f)
     {
         if (target > current)
-            return Mathf.Lerp(current, target, 0.025f * speedMultiplier);
+            return Mathf.Lerp(current, target, 0.075f * speedMultiplier);
 
         else if (target < current)
-            return Mathf.Lerp(current, target, 0.01f * speedMultiplier);
+            return Mathf.Lerp(current, target, 0.05f * speedMultiplier);
 
         return current;
     }
