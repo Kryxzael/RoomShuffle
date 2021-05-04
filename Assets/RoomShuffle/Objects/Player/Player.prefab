@@ -695,5 +695,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 7829438793687919273}
-  Deadzone: {x: 0, y: 0}
-  Smoothening: 0.757
