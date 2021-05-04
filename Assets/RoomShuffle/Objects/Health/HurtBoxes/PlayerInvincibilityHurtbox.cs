@@ -16,7 +16,7 @@ public class PlayerInvincibilityHurtbox : Hurtbox
     {
         //Infinite damage when invincible
         if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
-            return int.MaxValue;
+            return 9999999;
 
         //No damage otherwise
         return 0;

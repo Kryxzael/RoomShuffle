@@ -99,7 +99,7 @@ public class PowerUpManager : MonoBehaviour
     /// <param name="i"></param>
     public void GrantPermanentPowerup(PowerUp powerup)
     {
-        _powerUpsWithTimers[powerup] = float.PositiveInfinity;
+        _powerUpsWithTimers[powerup] = 9999999f;
     }
 
     /// <summary>

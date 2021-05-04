@@ -287,7 +287,7 @@ public class SoundtrackPlayer : MonoBehaviour
     /// </summary>
     /// <param name="key"></param>
     /// <param name="time"></param>
-    public void AddAdrenalineTrigger(object key, float time = float.PositiveInfinity)
+    public void AddAdrenalineTrigger(object key, float time = 9999999f)
     {
         _adrenalineTriggers[key] = time;
     }

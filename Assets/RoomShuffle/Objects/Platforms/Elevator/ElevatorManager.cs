@@ -103,15 +103,15 @@ public class ElevatorManager : MonoBehaviour
     private IEnumerator Start()
     {
         //Sets the amount of elevators to spawn
-        float numberOfElevators = NumberOfCarts;
+        int numberOfElevators = NumberOfCarts;
 
         if (numberOfElevators <= INFINITE_ELEVATORS)
-            numberOfElevators = float.PositiveInfinity;
+            numberOfElevators = 9999999;
 
         //Elevator set to loop mode. Carts should be spawned with equal spacing
         if (EOLOption == EndOfLineOption.Loop)
         {
-            if (float.IsInfinity(numberOfElevators))
+            if (numberOfElevators == 9999999)
             {
                 Debug.LogWarning("Looping elevator cannot have infinite carts");
                 yield break;
