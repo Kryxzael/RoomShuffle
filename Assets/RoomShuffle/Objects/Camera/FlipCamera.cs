@@ -20,7 +20,9 @@ public class FlipCamera : MonoBehaviour
 
     /* *** */
 
-    new private Camera camera;
+#pragma warning disable
+    private Camera camera;
+#pragma warning restore
 
     void Awake()
     {

@@ -40,6 +40,9 @@ public class ShootOnSight : MonoBehaviour
 
     private void Update()
     {
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
+            return;
+
         //Shoot the player as quickly as possible when spotted
         if (_spotter.InPursuit)
         {

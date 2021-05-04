@@ -11,6 +11,12 @@ using UnityEngine.Audio;
 /// </summary>
 public class SoundtrackPlayer : MonoBehaviour
 {
+    //How often the channels should resyncronize with each other
+    const float RESYNC_FREQUENCY = 5f;
+
+    //How many seconds have passed since the last time the music channels have been resyncronized
+    float _timeSinceMusicResync = 0f;
+
     //Keeps track of what objects are triggereing adrenaline, and for how long
     private readonly Dictionary<object, float> _adrenalineTriggers = new Dictionary<object, float>();
 
@@ -36,17 +42,42 @@ public class SoundtrackPlayer : MonoBehaviour
 
     public MusicChannels OverrideChannels;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        Level1Player.clip.LoadAudioData();
+        yield return new WaitWhile(() => Level1Player.clip.loadState == AudioDataLoadState.Unloaded || Level1Player.clip.loadState == AudioDataLoadState.Loading);
+
+        Level2Player.clip.LoadAudioData();
+        yield return new WaitWhile(() => Level2Player.clip.loadState == AudioDataLoadState.Unloaded || Level2Player.clip.loadState == AudioDataLoadState.Loading);
+
+        Level1AdrenalinePlayer.clip.LoadAudioData();
+        yield return new WaitWhile(() => Level1AdrenalinePlayer.clip.loadState == AudioDataLoadState.Unloaded || Level1AdrenalinePlayer.clip.loadState == AudioDataLoadState.Loading);
+
+        Level2AdrenalinePlayer.clip.LoadAudioData();
+        yield return new WaitWhile(() => Level2AdrenalinePlayer.clip.loadState == AudioDataLoadState.Unloaded || Level2AdrenalinePlayer.clip.loadState == AudioDataLoadState.Loading);
+
+        Level1UnderwaterPlayer.clip.LoadAudioData();
+        yield return new WaitWhile(() => Level1UnderwaterPlayer.clip.loadState == AudioDataLoadState.Unloaded || Level1UnderwaterPlayer.clip.loadState == AudioDataLoadState.Loading);
+
+        Level2UnderwaterPlayer.clip.LoadAudioData();
+        yield return new WaitWhile(() => Level2UnderwaterPlayer.clip.loadState == AudioDataLoadState.Unloaded || Level2UnderwaterPlayer.clip.loadState == AudioDataLoadState.Loading);
+
         //Play all channels at startup
         DoForAllChannels(i => i.Play());
     }
 
     private void FixedUpdate()
     {
+        _timeSinceMusicResync += Time.fixedDeltaTime;
+
+        if (_timeSinceMusicResync > RESYNC_FREQUENCY)
+        {
+            ResyncChannels();
+            _timeSinceMusicResync = 0f;
+        }
+
         AdjustPitches();
-        ResyncChannels();
-        TrickAdrenalineCounters();
+        TickAdrenalineCounters();
         SetChannelsVolumes();
     }
 
@@ -55,29 +86,28 @@ public class SoundtrackPlayer : MonoBehaviour
     /// </summary>
     private void ResyncChannels()
     {
-        attemptResync(Level2Player);
+        AttemptResync(Level2Player);
 
-        attemptResync(Level1AdrenalinePlayer);
-        attemptResync(Level2AdrenalinePlayer);
+        AttemptResync(Level1AdrenalinePlayer);
+        AttemptResync(Level2AdrenalinePlayer);
 
-        attemptResync(Level1UnderwaterPlayer);
-        attemptResync(Level2UnderwaterPlayer);
+        AttemptResync(Level1UnderwaterPlayer);
+        AttemptResync(Level2UnderwaterPlayer);    
+    }
 
-
-        void attemptResync(AudioSource target)
-        {
-            //How many samples desynced a channel must be for a resync to happen
-            const int RESYNC_TREASHOLD = 10;
-
-            if (Mathf.Abs(Level1Player.timeSamples - target.timeSamples) > RESYNC_TREASHOLD)
-                target.timeSamples = Level1Player.timeSamples;
-        }
+    /// <summary>
+    /// Attempts to syncronize the sample time of an audio source to the level 1 player
+    /// </summary>
+    /// <param name="target"></param>
+    private void AttemptResync(AudioSource target)
+    {
+        target.timeSamples = Level1Player.timeSamples;
     }
 
     /// <summary>
     /// Decreases the adrenaline counters that are currently active and removes stale ones.
     /// </summary>
-    private void TrickAdrenalineCounters()
+    private void TickAdrenalineCounters()
     {
         foreach (var i in _adrenalineTriggers.ToArray())
         {
