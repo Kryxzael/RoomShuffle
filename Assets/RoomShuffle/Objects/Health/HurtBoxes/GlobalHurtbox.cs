@@ -14,6 +14,7 @@ public class GlobalHurtbox : Hurtbox
     [Tooltip("The amount of damage the hurtbox will do")]
     public int Damage;
 
+    [Tooltip("When set to something other than -1, this value will be used when the global hurtbox deals damage to the player")]
     public int OverridePlayerDamage = -1;
 
     /// <summary>
@@ -32,6 +33,7 @@ public class GlobalHurtbox : Hurtbox
     /// <returns></returns>
     public override int GetDamage(Hitbox target)
     {
+        //Deal damage from enemy to player
         if (target is PlayerHitbox)
         {
             if (OverridePlayerDamage != -1)
@@ -40,7 +42,7 @@ public class GlobalHurtbox : Hurtbox
             return Commons.EnemyProgression.GetScaledDamage(Damage);
         }
             
-
+        //Deal damage from player to enemy
         return Commons.PlayerProgression.GetScaledDamage(Damage);
     }
 

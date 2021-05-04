@@ -121,15 +121,27 @@ public class DebugMenu : MonoBehaviour
     /// <param name="texts"></param>
     private void DrawList(string[] texts, int index)
     {
+        //How many lines to display (excluding header)
         const int DISPLAYED_LINES = 15;
+
+        //Size of the header
         const int HEADER_SIZE = 3;
 
+        //For each line to draw (always 0 --> maxiumum of DISPLAYED LINES + HEADER SIZE)
         for (int i = 0; i < Mathf.Min(texts.Length, DISPLAYED_LINES + HEADER_SIZE); i++)
         { 
+            //The menu's offset from the top of the screen
             const int VERTICAL_OFFSET = 125;
+
+            //The offset between each line
             const float VERTICAL_PADDING = 20f; 
+
+            //By how much the shadow drawn under the text will be offset
             const float SHADOW_OFFSET = 2.5f;
 
+            /*
+             * Adjust index for scrolling 
+             */
             int adjustedIndex = i;
 
             if (index >= DISPLAYED_LINES)
@@ -138,7 +150,9 @@ public class DebugMenu : MonoBehaviour
             if (adjustedIndex >= texts.Length)
                 break;
 
-            //Shadow
+            /*
+             * Draw Shadow
+             */
             {
                 GUIStyle style = new GUIStyle();
                 style.alignment = TextAnchor.UpperLeft;
@@ -147,7 +161,9 @@ public class DebugMenu : MonoBehaviour
                 GUI.Label(new Rect(SHADOW_OFFSET, i * VERTICAL_PADDING + SHADOW_OFFSET + VERTICAL_OFFSET, Screen.width, VERTICAL_PADDING), texts[adjustedIndex], style);
             }
 
-            //Text
+            /*
+             * Draw Text
+             */
             {
                 GUIStyle style = new GUIStyle();
                 style.alignment = TextAnchor.UpperLeft;

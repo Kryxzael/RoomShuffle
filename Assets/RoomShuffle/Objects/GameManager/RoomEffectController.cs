@@ -12,6 +12,10 @@ using UnityEngine.VFX;
 /// </summary>
 public class RoomEffectController : MonoBehaviour
 {
+    //The default gravity level as defined by the physics settings
+    private Vector2 _defaultGravity = new Vector2(0, -60);
+
+    /* *** */
 
     [Header("Low Gravity")]
     [Tooltip("The percentage of normal gravity that will be applied when low gravity is enabled")]
@@ -43,11 +47,6 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("By how much the player's maximum ground speed will be multiplied when icy is enabled")]
     public float IcyGroundMaxSpeedMultiplier = 1.2f;
 
-    /* *** */
-
-    //The default gravity level as defined by the physics settings
-    private Vector2 _defaultGravity = new Vector2(0, -60);
-
     /// <summary>
     /// Runs when a new room is generated
     /// </summary>
@@ -63,20 +62,26 @@ public class RoomEffectController : MonoBehaviour
 
     private void Update()
     {
+        //What happens when the timer ends
         if ((Commons.CurrentRoomEffects.HasFlag(RoomEffects.Timer) || Commons.SpeedRunMode) && Commons.CountdownTimer.CurrentSeconds <= 0)
         {
+            //In speedrun mode. Kill the player
             if (Commons.SpeedRunMode)
             {
                 Commons.PlayerHealth.Kill();
             }
+
+            //Otherwise, deal damage and respawn
             else
             {
                 Commons.PlayerHealth.SoftKill(); 
                 Commons.RespawnPlayer();
             }
 
+            //Stop the countdown
             Commons.CountdownTimer.StopCountdown();
 
+            //Reset the timer if the player is still alive
             if (Commons.PlayerHealth.IsAlive)
                 Timer(true, Commons.RoomGenerator.CurrentRoomConfig);
         }
@@ -88,6 +93,7 @@ public class RoomEffectController : MonoBehaviour
     /// <param name="enabled"></param>
     private void LowGravity(bool enabled)
     {
+        //Set gravity settings
         if (enabled)
             Physics2D.gravity = _defaultGravity * LowGravityMultiplier;
 
@@ -101,6 +107,7 @@ public class RoomEffectController : MonoBehaviour
     /// <param name="enabled"></param>
     private void Darkness(bool enabled)
     {
+        //Disable all suns
         foreach (Light i in FindObjectsOfType<Light>().Where(i => i.type == LightType.Directional))
             i.enabled = !enabled;
     }
@@ -111,6 +118,7 @@ public class RoomEffectController : MonoBehaviour
     /// <param name="enabled"></param>
     private void LargeEnemies(bool enabled)
     {
+        //Supersize all enemies
         foreach (var i in FindObjectsOfType<EnemyBase>())
         {
             if (i.GetComponentInChildren<Collider2D>() is Collider2D collider)
@@ -134,13 +142,17 @@ public class RoomEffectController : MonoBehaviour
     /// </summary>
     private void Timer(bool enabled, RoomParameters room)
     {
+        //The timer effect must NOT be combined with speedrun mode
         if (Commons.SpeedRunMode)
             return;
         
+        //Set the timer based on the current room's counter
         if (enabled)
         {
             Commons.CountdownTimer.ResetCountdown(room.Layout.TimerEffectSeconds * 2f);
         }
+
+        //Hide the timer if no timer effect is present
         else
         {
             Commons.CountdownTimer.StopCountdown();

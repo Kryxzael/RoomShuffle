@@ -175,6 +175,7 @@ public class StandardParameterBuilder : ParameterBuilder
                 .Cast<RoomEffects>()
                 .Except(new[] { RoomEffects.None })
                 .Where(i => !output.Layout.ExcludedEffects.HasFlag(i))
+                .Where(i => !(Commons.SpeedRunMode && i == RoomEffects.Timer))
                 .OrderBy(i => random.Next())
                 .FirstOrDefault();
         }

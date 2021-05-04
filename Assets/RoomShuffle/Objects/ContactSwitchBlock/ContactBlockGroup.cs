@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework.Constraints;
-using RoomShuffle.Defaults;
+
 using UnityEngine;
 
+/// <summary>
+/// Groups contact switches into an AND gate
+/// </summary>
 public class ContactBlockGroup : MonoBehaviour
 {
+    //The blocks in the contact switch group
     private List<ContactSwitch> _blocks = new List<ContactSwitch>();
+
+    //The prize to spawn when all contact switches are active
     private GameObject _prize;
 
-    private bool prizeSpawned = false;
+    //How many blocks were unactivated last frame
+    private int _lastNumberOfUnactivatedBlocks;
 
-    private int _lastNumberOfOffBlocks;
+    /* *** */
 
     private MultiSoundPlayer _multiSoundPlayer;
+
     void Start()
     {
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
@@ -36,18 +44,20 @@ public class ContactBlockGroup : MonoBehaviour
             }
         }
         
+        //Disable prize
         _prize.SetActive(false);
 
-        _lastNumberOfOffBlocks = _blocks.Count(x => x.On == false);
+        //Count the amount of inactive blocks
+        _lastNumberOfUnactivatedBlocks = _blocks.Count(x => !x.On);
     }
     
     void Update()
     {
-        //get number of blocks that are turned on
-        int currentNumberOfOffBlocks = _blocks.Count(x => x.On == false);
+        //get number of blocks that are turned off
+        int currentNumberOfOffBlocks = _blocks.Count(x => !x.On);
 
         //If all blocks are on
-        if (currentNumberOfOffBlocks == 0 && _lastNumberOfOffBlocks > 0)
+        if (currentNumberOfOffBlocks == 0 && _lastNumberOfUnactivatedBlocks > 0)
         {
             //Play "tada" sound
             _multiSoundPlayer.PlaySound(1);
@@ -56,20 +66,21 @@ public class ContactBlockGroup : MonoBehaviour
         }
         
         //positive: The number of on-blocks have gone up
-        else if (currentNumberOfOffBlocks < _lastNumberOfOffBlocks)
+        else if (currentNumberOfOffBlocks < _lastNumberOfUnactivatedBlocks)
         {
             //play spound with increased pitch
             _multiSoundPlayer.PlaySound(0, 1 + ((_blocks.Count - currentNumberOfOffBlocks) / (float)_blocks.Count));
         }
-        //Negative : The number of on- blocks have gone down
-        else if (currentNumberOfOffBlocks > _lastNumberOfOffBlocks)
+
+        //Negative: The number of on- blocks have gone down
+        else if (currentNumberOfOffBlocks > _lastNumberOfUnactivatedBlocks)
         {
             //play sound with decreased pitch
             _multiSoundPlayer.PlaySound(0, 1 + ((_blocks.Count - currentNumberOfOffBlocks) / (float)_blocks.Count));
         }
 
         //update last state
-        _lastNumberOfOffBlocks = currentNumberOfOffBlocks;
+        _lastNumberOfUnactivatedBlocks = currentNumberOfOffBlocks;
         
 
     }

@@ -184,7 +184,7 @@ public class SpotPlayer : EnemyScript
         finally
         {
             if (InPursuit)
-                Commons.SoundtrackPlayer.AddTrigger(this, 2.5f);
+                Commons.SoundtrackPlayer.AddAdrenalineTrigger(this, 2.5f);
         }
     }
 

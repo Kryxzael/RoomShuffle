@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Base class for tiles that can be animated
+/// Base class for tiles that can be animated with SpriteAnimators
 /// </summary>
 public abstract class AnimatableTileBase : TileBase
 {
@@ -15,15 +15,17 @@ public abstract class AnimatableTileBase : TileBase
 
     public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
     {
-        //Sets the collider and sprite of the tile
+        //Sets the internal collider and sprite of the tile
         tileData.colliderType = CollisionType;
         tileData.sprite = GetStaticSprite();
     }
 
     public override bool GetTileAnimationData(Vector3Int position, ITilemap tilemap, ref TileAnimationData tileAnimationData)
     {
+        //Gets the animation to use
         SpriteAnimation animation = GetAnimation();
 
+        //No animation
         if (animation == null)
             return false;
 

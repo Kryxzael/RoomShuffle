@@ -11,81 +11,91 @@ using UnityEngine.Audio;
 /// </summary>
 public class SoundtrackPlayer : MonoBehaviour
 {
+    //Keeps track of what objects are triggereing adrenaline, and for how long
+    private readonly Dictionary<object, float> _adrenalineTriggers = new Dictionary<object, float>();
+
+    //The player's rigidbody object (for detecting being underwater)
+    private RenewableLazy<Rigidbody2D> _playerRigidbody = new RenewableLazy<Rigidbody2D>(() => CommonExtensions.GetPlayer().GetComponent<Rigidbody2D>());
+
+    /* *** */
+
+    /*
+     * The audio-sources that play the soundtrack
+     */
+    [Header("Standard Soundtrack")]
     public AudioSource Level1Player;
     public AudioSource Level2Player;
 
+    [Header("Adrenaline Soundtrack")]
     public AudioSource Level1AdrenalinePlayer;
     public AudioSource Level2AdrenalinePlayer;
 
+    [Header("Underwater Soundtrack")]
     public AudioSource Level1UnderwaterPlayer;
     public AudioSource Level2UnderwaterPlayer;
-
-    private readonly Dictionary<object, float> AdrenalineTriggers = new Dictionary<object, float>();
-
-    private RenewableLazy<Rigidbody2D> _playerRigidbody = new RenewableLazy<Rigidbody2D>(() =>
-    {
-        var player = CommonExtensions.GetPlayer();
-
-        if (player)
-            return player.GetComponent<Rigidbody2D>();
-
-        return null;
-    });
 
     public MusicChannels OverrideChannels;
 
     private void Start()
     {
+        //Play all channels at startup
         DoForAllChannels(i => i.Play());
     }
 
-    private void FixedUpdate()  
+    private void FixedUpdate()
     {
-        const float PITCH_INCREMENT = 0.12f;
-        const float PITCH_INCREMENT_SMALL = 0.03f;
+        AdjustPitches();
+        ResyncChannels();
+        TrickAdrenalineCounters();
+        SetChannelsVolumes();
+    }
 
-        float pitch = 1f;
-        
+    /// <summary>
+    /// Attempts to fix audio desynchronization should they occur
+    /// </summary>
+    private void ResyncChannels()
+    {
+        attemptResync(Level2Player);
 
-        if (Commons.SpeedRunMode)
+        attemptResync(Level1AdrenalinePlayer);
+        attemptResync(Level2AdrenalinePlayer);
+
+        attemptResync(Level1UnderwaterPlayer);
+        attemptResync(Level2UnderwaterPlayer);
+
+
+        void attemptResync(AudioSource target)
         {
-            pitch += PITCH_INCREMENT;
+            //How many samples desynced a channel must be for a resync to happen
+            const int RESYNC_TREASHOLD = 10;
 
-            for (int i = 1; i < Mathf.Min(Commons.RoomGenerator.CurrentRoomNumber, 10); i++)
-                pitch += PITCH_INCREMENT_SMALL;
+            if (Mathf.Abs(Level1Player.timeSamples - target.timeSamples) > RESYNC_TREASHOLD)
+                target.timeSamples = Level1Player.timeSamples;
         }
+    }
 
-        if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)
+    /// <summary>
+    /// Decreases the adrenaline counters that are currently active and removes stale ones.
+    /// </summary>
+    private void TrickAdrenalineCounters()
+    {
+        foreach (var i in _adrenalineTriggers.ToArray())
         {
-            pitch += PITCH_INCREMENT;
-        }
+            _adrenalineTriggers[i.Key] = i.Value - Time.deltaTime;
 
-        if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 5)
-        {
-            pitch += PITCH_INCREMENT;
-        }
-
-        if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
-        {
-            const float SLOWDOWN_PLAYBACK_SPEED = 0.75f;
-            pitch *= SLOWDOWN_PLAYBACK_SPEED;
-        }
-
-        DoForAllChannels(i => i.pitch = pitch);
-
-        foreach (var i in AdrenalineTriggers.ToArray())
-        {
-            AdrenalineTriggers[i.Key] = i.Value - Time.deltaTime;
-
-            if (AdrenalineTriggers[i.Key] <= 0)
+            if (_adrenalineTriggers[i.Key] <= 0)
             {
-                AdrenalineTriggers.Remove(i.Key);
+                _adrenalineTriggers.Remove(i.Key);
             }
         }
 
-        //Resyncronize channels
-        DoForAllChannels(i => i.timeSamples = Level1Player.timeSamples);
+    }
 
+    /// <summary>
+    /// Calculates and sets the volume levels of the channels
+    /// </summary>
+    private void SetChannelsVolumes()
+    {
         if (OverrideChannels != MusicChannels.None)
         {
             Level1Player.volume = LerpVolume(Level1Player.volume, OverrideChannels.HasFlag(MusicChannels.Level1) ? 1f : 0f);
@@ -116,7 +126,7 @@ public class SoundtrackPlayer : MonoBehaviour
         }
 
         //Play adrenaline music
-        else if (AdrenalineTriggers.Any())
+        else if (_adrenalineTriggers.Any())
         {
             Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 1f);
             Level1Player.volume = LerpVolume(Level1Player.volume, 0f);
@@ -154,6 +164,61 @@ public class SoundtrackPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adjusts the pitches of the sound players for timers and power-ups
+    /// </summary>
+    private void AdjustPitches()
+    {
+        //By how much the pitch should increase when the timer is active
+        const float PITCH_INCREMENT = 0.12f;
+
+        //By how much the pitch changes every room in speedrun mode
+        const float PITCH_INCREMENT_SMALL = 0.03f;
+
+        /*
+         * Calculate pitches
+         */
+        float pitch = 1f;
+
+        //Increase speed for each room (up to 10) when speedrun mode is active
+        if (Commons.SpeedRunMode)
+        {
+            pitch += PITCH_INCREMENT;
+
+            for (int i = 1; i < Mathf.Min(Commons.RoomGenerator.CurrentRoomNumber, 10); i++)
+                pitch += PITCH_INCREMENT_SMALL;
+        }
+
+        //Increase speed if the timer is running low
+        if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 10)
+        {
+            pitch += PITCH_INCREMENT;
+        }
+
+        //Increase speed if the timer is running lower
+        if (Commons.CountdownTimer.TimerIsRunning && Commons.CountdownTimer.CurrentSeconds <= 5)
+        {
+            pitch += PITCH_INCREMENT;
+        }
+
+        //Decrease speed if the slow-down effect is enabled
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
+        {
+            //By how much the speed will be multiplied when the slow-down power-up is enabled
+            const float SLOWDOWN_PLAYBACK_SPEED = 0.75f;
+            pitch *= SLOWDOWN_PLAYBACK_SPEED;
+        }
+
+        /*
+         * Apply pitch change
+         */
+        DoForAllChannels(i => i.pitch = pitch);
+    }
+
+    /// <summary>
+    /// Runs the provided delegate on every audio source
+    /// </summary>
+    /// <param name="action"></param>
     private void DoForAllChannels(Action<AudioSource> action)
     {
         action(Level1Player);
@@ -166,22 +231,42 @@ public class SoundtrackPlayer : MonoBehaviour
         action(Level2UnderwaterPlayer);
     }
 
+    /// <summary>
+    /// Performs pre-configured linear interpolations for volumes (and sometimes pitches)
+    /// </summary>
+    /// <param name="current"></param>
+    /// <param name="target"></param>
+    /// <param name="speedMultiplier"></param>
+    /// <returns></returns>
     private float LerpVolume(float current, float target, float speedMultiplier = 1f)
     {
+        //Fade volume in
         if (target > current)
             return Mathf.Lerp(current, target, 0.075f * speedMultiplier);
 
+        //Fade out
         else if (target < current)
             return Mathf.Lerp(current, target, 0.05f * speedMultiplier);
 
+        //Make no change
         return current;
     }
 
-    public void AddTrigger(object key, float time = float.PositiveInfinity)
+    /// <summary>
+    /// Registers the provided object as triggering adrenaline soundtrack for the provided amount of time
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="time"></param>
+    public void AddAdrenalineTrigger(object key, float time = float.PositiveInfinity)
     {
-        AdrenalineTriggers[key] = time;
+        _adrenalineTriggers[key] = time;
     }
 
+    /// <summary>
+    /// Stops the provided object from triggering adrenaline soundtrack
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="time"></param>
     public void RemoveTrigger(object key, float afterTime = 0f)
     {
         StartCoroutine(CoRemoveTrigger());
@@ -189,19 +274,50 @@ public class SoundtrackPlayer : MonoBehaviour
         IEnumerator CoRemoveTrigger()
         {
             yield return new WaitForSeconds(afterTime);
-            AdrenalineTriggers.Remove(key);
+            _adrenalineTriggers.Remove(key);
         }
     }
 
+
+    /// <summary>
+    /// Enumeration representation of the channels of the soundtrack. Supports multiple values
+    /// </summary>
     [Flags]
     public enum MusicChannels
     {
+        /// <summary>
+        /// No channels
+        /// </summary>
         None = 0x0,
+
+        /// <summary>
+        /// The standard background channel
+        /// </summary>
         Level1 = 0x1,
+
+        /// <summary>
+        /// The adrenaline foreground channel
+        /// </summary>
         Level2 = 0x2,
+
+        /// <summary>
+        /// The adrenaline background channel
+        /// </summary>
         Level1Adrenaline = 0x4,
+
+        /// <summary>
+        /// The standard foreground channel
+        /// </summary>
         Level2Adrenaline = 0x8,
+
+        /// <summary>
+        /// The underwater background channel
+        /// </summary>
         Level1Underwater = 0x10,
+
+        /// <summary>
+        /// The underwater foreground channel
+        /// </summary>
         Level2Underwater = 0x20,
     }
 }

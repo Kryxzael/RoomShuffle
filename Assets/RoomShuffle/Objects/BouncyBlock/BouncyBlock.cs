@@ -2,12 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using RoomShuffle.Defaults;
 using UnityEngine;
 
-public class Bouncy : MonoBehaviour
+/// <summary>
+/// Makes an object push other objects away at high speeds
+/// </summary>
+public class BouncyBlock : MonoBehaviour
 {
-    [Tooltip("The minimum speed the block will push you in")]
+    //The maximum speed the player has normally
+    private float _playerMaxSpeed;
+
+    //For how many more seconds the player's max-speed will be adjusted (after bouncing horizontally)
+    private float _noSpeedCapTimeLeft = 0;
+
+    //The main camera in the scene
+    private Camera _mainCamera;
+
+    /* *** */
+
+    private MultiSoundPlayer _multiSoundPlayer;
+    private RenewableLazy<GroundController> _playerGroundController = new RenewableLazy<GroundController>(() => CommonExtensions.GetPlayer().GetComponent<GroundController>());
+    private RenewableLazy<JumpController> _playerJumpController = new RenewableLazy<JumpController>(() => CommonExtensions.GetPlayer().GetComponent<JumpController>());
+
+    /* *** */
+
+    [Tooltip("The minimum speed the block will push you at")]
     public float MinimumPushBackVelocity;
     
     [Tooltip("The amount your velocity will be multiplied with when holding jump")]
@@ -16,37 +35,27 @@ public class Bouncy : MonoBehaviour
     [Tooltip("The amount of time the player will not have a speed cap")]
     public float NoSpeedCapTime;
 
-    private float _playerMaxSpeed;
-    private float _noSpeedCapTimeLeft = 0;
-    private Camera _mainCamera;
-
-    private MultiSoundPlayer _multiSoundPlayer;
-
-    private RenewableLazy<GroundController> _playerGroundController = new RenewableLazy<GroundController>(() => CommonExtensions.GetPlayer().GetComponent<GroundController>());
-    private RenewableLazy<JumpController> _jumpController = new RenewableLazy<JumpController>(() => CommonExtensions.GetPlayer().GetComponent<JumpController>());
-
 
     private void Start()
     {
         _playerMaxSpeed = _playerGroundController.Value.MaxSpeed;
-
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
-        
         _mainCamera = Camera.main;
     }
 
     private void Update()
     {
-
-        //Adjust player maximum horizontal speed 
+        //Adjust player maximum horizontal speed if it is supposed to be adjusted
         if (_noSpeedCapTimeLeft > 0)
         {
+            //The max-speed of the player gradually returns to normal
             float percentage = ( _noSpeedCapTimeLeft / NoSpeedCapTime) * 10;
             _noSpeedCapTimeLeft -= Time.deltaTime;
             _playerGroundController.Value.MaxSpeed = (_playerMaxSpeed * percentage) + _playerMaxSpeed;
         }
         else
         {
+            //Keep the player's maximum speed normal
             _playerGroundController.Value.MaxSpeed = _playerMaxSpeed;
         }
     }
@@ -57,6 +66,7 @@ public class Bouncy : MonoBehaviour
          * Sound
          */
 
+        //If block is visible
         if (Commons.IsVectorOnScreen(collision.contacts.First().point, _mainCamera))
         {
             //Play sound at normal volume if collision is player
@@ -64,10 +74,11 @@ public class Bouncy : MonoBehaviour
             {
                 _multiSoundPlayer.PlaySound();
             }
+
             //Play sound at 40% volume
             else if (!collision.gameObject.GetComponent<Projectile>())
             {
-                _multiSoundPlayer.PlaySound(0,1,0.4f);
+                _multiSoundPlayer.PlaySound(volume: 0.4f);
             }
         }
 
@@ -78,7 +89,7 @@ public class Bouncy : MonoBehaviour
         ContactPoint2D contact = collision.GetContact(0);
         Vector2 relativeVelocity = collision.relativeVelocity;
         
-        //If the collsision is from the side
+        //If the collision is from the side
         if (contact.normal.x != 0)
         {
             //if the collision is with a player: disable the speed cap for a little while
@@ -93,7 +104,8 @@ public class Bouncy : MonoBehaviour
             //Invert and add velocity
             collision.rigidbody.SetVelocityX(pushBack * -direction);
         }
-        //if the collsision is from top or bottom
+
+        //if the collision is from top or bottom
         else
         {
             int direction = Math.Sign(relativeVelocity.y);
@@ -102,17 +114,18 @@ public class Bouncy : MonoBehaviour
             //if the collision is with a player: check if the player is holding jump
             if (collision.gameObject == this.GetPlayer())
             {
-                //If the player is hoding jump: multiply the verical speed
+                //If the player is holding jump: multiply the vertical speed
                 if (Input.GetButton("Jump"))
                 {
                     pushBack *= HoldingJumpScale;
                 }
+
+                //Tell jump controller not to allow double jumps
+                _playerJumpController.Value.CaptureSuccessfulJumpSnapshot();
             }
             
             //Invert and add velocity
             collision.rigidbody.SetVelocityY(pushBack * -direction);
-            
-            _jumpController.Value.CaptureSuccessfulJumpSnapshot();
         }
         
     }

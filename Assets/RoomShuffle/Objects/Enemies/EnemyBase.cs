@@ -39,6 +39,7 @@ public sealed class EnemyBase : MonoBehaviour
 
     private void Start()
     {
+        //Initialize the enemy
         HealthController.MaximumHealth = Commons.EnemyProgression.GetMaximumHealthFor(BaseHealth);
         HealthController.Health = HealthController.MaximumHealth;
 
@@ -64,11 +65,29 @@ public sealed class EnemyBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The initial configuration of an enemy's rigidbody
+    /// </summary>
     public enum RigidbodyMode
     {
+        /// <summary>
+        /// The rigidbody will act like normal
+        /// </summary>
         Normal,
+
+        /// <summary>
+        /// The rigidbody will act like normal, but have no graivyt
+        /// </summary>
         NoGravity,
+
+        /// <summary>
+        /// The enemy will not move
+        /// </summary>
         Static,
+
+        /// <summary>
+        /// Don't change any rigidbody settings
+        /// </summary>
         DontOverride,
     }
 }

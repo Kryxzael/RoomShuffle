@@ -7,13 +7,16 @@ using UnityEngine;
 /// </summary>
 public class DontFlip : MonoBehaviour
 {
+    /// <summary>
+    /// The last flip state of the camera
+    /// </summary>
     private bool _lastCameraFlipState;
 
-    // Update is called once per frame
     void Update()
     {
         if (FlipCamera.IsFlipped != _lastCameraFlipState)
         {
+            //Scale object to -1x its current size
             _lastCameraFlipState = FlipCamera.IsFlipped;
             transform.localScale = transform.localScale.SetX(-transform.localScale.x);
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// Implements a loot table
+/// Implements a loot table, which is a collection of items that can be dropped by an enemy or crate
 /// </summary>
 public abstract class LootTable : ScriptableObject
 {

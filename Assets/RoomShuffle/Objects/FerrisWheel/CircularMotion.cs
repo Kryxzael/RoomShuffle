@@ -3,8 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Makes an object move in a circle
+/// </summary>
 public class CircularMotion : MonoBehaviour
 {
+    private float _time;
+    private Vector3 _pivotPoint;
+    private GameObject _armTransform;
+
+    /* *** */
+
     [Tooltip("The speed of the object")] 
     public float Speed;
 
@@ -14,9 +23,6 @@ public class CircularMotion : MonoBehaviour
     [Tooltip("The 'arms' that points to the pivot point")]
     public GameObject Arm;
 
-    private float _time;
-    private Vector3 _pivotPoint;
-    private GameObject _armTransform;
     void Start()
     {
         _pivotPoint = transform.position;

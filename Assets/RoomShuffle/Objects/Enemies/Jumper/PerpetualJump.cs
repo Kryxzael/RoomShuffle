@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// Causes an object to perpetually jump whenever it touches the ground
+/// Causes an object to perpetually jump whenever it touches the ground or at a fixed interval
 /// </summary>
 [RequireComponent(typeof(SpriteAnimation))]
 public class PerpetualJump : MonoBehaviour
@@ -43,8 +43,6 @@ public class PerpetualJump : MonoBehaviour
                 waitTime = Commons.GetEffectValue(waitTime, EffectValueType.EnemyWaitTime);
             }
 
-            
-
             //Reset animation on landing
             if (this.OnGround2D())
                 animator.RestartAnimation();
@@ -62,7 +60,7 @@ public class PerpetualJump : MonoBehaviour
                 time += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
 
-                //If the player doesn't have the slowdown poerup anymore: break the cycle
+                //If the player doesn't have the slowdown power-up anymore: break the cycle
                 if (!Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
                     break;
                 

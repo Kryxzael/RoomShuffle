@@ -14,18 +14,12 @@ public class FollowTransform : MonoBehaviour
     [Tooltip("The object to follow")]
     public Transform Target;
 
-    [Tooltip("The maximum distance between the camera and the target before the camera starts to follow the target")]
-    public Vector2 Deadzone;
-
-    [Tooltip("How smooth the camera motion will be. 0 is no smoothening")]
-    [Range(0f, 1f)]
-    public float Smoothening;
-
     private void Update()
     {
         if (!Target)
             return;
 
+        //Update the position
         transform.position = Target.transform.position.SetZ(transform.position.z);
     }
 }

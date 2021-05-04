@@ -12,6 +12,24 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(LimitedMovementRadius), typeof(SpriteAnimator))]
 public class SpotterMovementPattern : EnemyScript
 {
+    //how much time is left of the GoHomeTime
+    private float _goHomeTimeLeft;
+
+    //The remaining fumble wait time
+    private float _fumbleCurrentWaitTime;
+
+    //If the current fumble mode is walking
+    private bool _fumbleWalk = true;
+
+    /* *** */
+
+    private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
+    private SpotPlayer _spotPlayer;
+    private LimitedMovementRadius _limitedMovementRadius;
+    private SpriteAnimator _animator;
+
+    /* *** */
+
     [Tooltip("The speed the spotter will move at when fumbling")]
     public float WalkSpeed;
 
@@ -29,22 +47,6 @@ public class SpotterMovementPattern : EnemyScript
     public SpriteAnimation WalkAnimation;
     public SpriteAnimation SpotAnimation;
     public SpriteAnimation ChaseAnimation;
-
-    //how much time is left of the GoHomeTime
-    private float _goHomeTimeLeft;
-    
-    //The remaining fumble wait time
-    private float _fumbleCurrentWaitTime;
-
-    //If the current fumble mode is walking
-    private bool _fumbleWalk = true;
-
-    /* *** */
-
-    private RenewableLazy<GameObject> _player = new RenewableLazy<GameObject>(() => CommonExtensions.GetPlayer());
-    private SpotPlayer _spotPlayer;
-    private LimitedMovementRadius _limitedMovementRadius;
-    private SpriteAnimator _animator;
 
     void Start()
     {

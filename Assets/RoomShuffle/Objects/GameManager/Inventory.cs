@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// Handles the state of the player's inventory
+/// Handles the state of the player's weapons, currency and keys
 /// </summary>
 public class Inventory : MonoBehaviour
 {
@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
         /*
          * Weapon firing
          */
-        if (Input.GetButton("Fire"))
+        if (Input.GetButton("Fire") && Commons.PlayerHealth.IsAlive)
         {
             //Player does not hold a weapon, use fallback if available
             if (SelectedWeapon == null || (SelectedWeapon.Durability == 0 && !Cheats.InfiniteAmmo))
@@ -108,11 +108,7 @@ public class Inventory : MonoBehaviour
          */
         if (Input.GetButtonDown("QuickSwitchWeapon"))
         {
-            SelectedWeaponSlot++;
-            if (SelectedWeaponSlot >= MAX_WEAPON_SLOTS)
-            {
-                SelectedWeaponSlot -= MAX_WEAPON_SLOTS;
-            }
+            SelectedWeaponSlot = (SelectedWeaponSlot + 1) % MAX_WEAPON_SLOTS;
         }
         if (Input.GetButtonDown("SwitchToWeapon1"))
         {
@@ -122,7 +118,5 @@ public class Inventory : MonoBehaviour
         {
             SelectedWeaponSlot = 1;
         }
-
-        
     }
 }

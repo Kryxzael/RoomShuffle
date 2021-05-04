@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
+/// <summary>
+/// Shows a list of level classes that levels can be loaded from
+/// </summary>
 public class LoadLevelDebugPage : DebugPage
 {
     public override string Header { get; } = "Load Level";
@@ -32,6 +35,9 @@ public class LoadLevelDebugPage : DebugPage
     }
 }
 
+/// <summary>
+/// Lets the player load a specific level from a list of rooms
+/// </summary>
 public class LoadLevelFromListDebugPage : DebugPage
 {
     public override string Header { get; }
@@ -43,13 +49,14 @@ public class LoadLevelFromListDebugPage : DebugPage
         Layouts = layouts.OrderBy(i => i.name);
     }
 
-
     protected override void RunItems(DebugMenu caller)
     {
+        //Create a button for each room
         foreach (var i in Layouts)
         {
             if (Button(i.name))
             {
+                //When a room is selected. Create a SpecificRoomOverride with the room and push it to the generator
                 var roomOverride = ScriptableObject.CreateInstance<SpecificRoomOverride>();
                 roomOverride.Init(i, Commons.RoomGenerator.RoomParameterBuilder);
 

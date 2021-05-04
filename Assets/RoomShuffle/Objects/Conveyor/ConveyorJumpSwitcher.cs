@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// A controller that makes a conveyor switch its direction when 
+/// A controller that makes a conveyor switch its direction when the player jumps
 /// </summary>
 [RequireComponent(typeof(Flippable))]
 public class ConveyorJumpSwitcher : JumpSwitchBase
 {
     private Flippable _flippable;
+
+    /* *** */
 
     [Tooltip("Is this script enabled")]
     public bool IsEnabled;

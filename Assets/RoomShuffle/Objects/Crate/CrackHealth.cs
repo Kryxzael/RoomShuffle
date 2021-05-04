@@ -16,6 +16,8 @@ public class CrackHealth : MonoBehaviour
     private HealthController _health;
 
     /* *** */
+
+    [Tooltip("The sequence of crack sprites to show, from least damaged to most damaged")]
     public List<Sprite> CrackingSprites = new List<Sprite>();
 
     private void Awake()
@@ -34,6 +36,7 @@ public class CrackHealth : MonoBehaviour
         if (float.IsNaN(healthPercent) || float.IsInfinity(healthPercent))
             return;
 
+        //Set cracking sprite
         _renderer.sprite = CrackingSprites[highestIndex - (int)(healthPercent * highestIndex)];
     }
 }

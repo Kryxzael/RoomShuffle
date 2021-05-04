@@ -9,6 +9,12 @@ using UnityEngine;
 /// </summary>
 public class PopNumber : MonoBehaviour
 {
+    private TextMeshPro _textMeshPro;
+    private TextMeshProUGUI _textMeshProUGUI;
+    private Vector3 _originalPosition;
+
+    /* *** */
+
     [Header("End Values")]
     [Tooltip("The scale the label with have at the end of its lifetime")]
     public Vector3 EndSize = Vector3.one * 2f;
@@ -29,17 +35,12 @@ public class PopNumber : MonoBehaviour
     [Tooltip("If the object should be flipped by the camera")]
     public bool Flip = true;
 
-    /* *** */
-
-    private TextMeshPro _textMeshPro;
-    private TextMeshProUGUI _textMeshProUGUI;
-    private Vector3 _originalPosition;
-
     private void Start()
     {
         _originalPosition = transform.position;
         _textMeshPro = GetComponent<TextMeshPro>();
 
+        //If no text mesh is found, use GUI text mesh
         if (!_textMeshPro)
         {
             _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
@@ -51,11 +52,21 @@ public class PopNumber : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine: Runs the pop-number animation
+    /// </summary>
+    /// <param name="startPosition"></param>
+    /// <param name="startSize"></param>
+    /// <param name="startColor"></param>
+    /// <returns></returns>
     private IEnumerator CoPopNumber(Vector3 startPosition, Vector3 startSize, Color startColor)
     {
         float lerpTime = 0f;
         while (lerpTime < AnimationLength)
         {
+            /*
+             * Animate scale
+             */
             transform.localScale = Vector3.Lerp(
                 a: startSize, 
                 b: EndSize, 
@@ -68,12 +79,18 @@ public class PopNumber : MonoBehaviour
                 transform.localScale = transform.localScale.SetX(transform.localScale.x * (FlipCamera.IsFlipped ? -1f : 1f));
             }
 
+            /*
+             * Animate position
+             */
             transform.position = Vector3.Lerp(
                 a: startPosition, 
                 b: _originalPosition + RelativeEndPosition,
                 t: AnimationCurve.Evaluate(lerpTime)
             );
 
+            /*
+             * Animate color
+             */
             if (!_textMeshPro)
             {
                 _textMeshProUGUI.color = Color.Lerp(startColor, EndColor, AnimationCurve.Evaluate(lerpTime));
@@ -88,6 +105,7 @@ public class PopNumber : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         
+        //When animation is done, destory it
         Destroy(gameObject);
     }
 }

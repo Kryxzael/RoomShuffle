@@ -28,13 +28,16 @@ public class RoomGenerationDebugPage : DebugPage
 
         if (Commons.RoomGenerator.CurrentRoomConfig != null)
         {
+            //Room Theme toggle (NOTE: This does not change the background or lighting settings)
             if (Button("Room Theme [" + Commons.RoomGenerator.CurrentRoomConfig.Theme + "]"))
             {
+                //Cycle the room theme
                 int max = System.Enum.GetValues(typeof(RoomTheme)).Length;
                 int current = (int)Commons.RoomGenerator.CurrentRoomConfig.Theme;
 
                 Commons.RoomGenerator.CurrentRoomConfig.Theme = (RoomTheme)((current + 1) % max);
 
+                //Reload the tilemap
                 foreach (Tilemap i in Object.FindObjectsOfType<Tilemap>())
                     i.RefreshAllTiles();
             }

@@ -1,4 +1,4 @@
-﻿using RoomShuffle.Defaults;
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -52,11 +52,13 @@ public class PlayerHitbox : Hitbox
         
         if (Commons.PlayerHealth.IsDead)
         {
+            //Player is dead. Explode
             if (_exploder)
                 _exploder.ExplodeBig();
         }
         else
         {
+            //Player was hurt. Splinter
             if (_exploder && !hurtbox.IgnoresInvincibilityFrames)
                 _exploder.ExplodeSmall();
         }

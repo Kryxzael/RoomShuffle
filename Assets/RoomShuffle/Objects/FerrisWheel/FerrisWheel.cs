@@ -4,8 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Creates a ferris-wheel-like structure of circular motion objects
+/// </summary>
 public class FerrisWheel : MonoBehaviour
 {
+    //List of all circularMotions on the ferris wheel
+    private List<CircularMotion> circularMotionObjects = new List<CircularMotion>();
+
+    //The time used to keep track of the "breathing"
+    private float _breathTime;
+
+    /* *** */
+
     [Tooltip("The speed of the ferris wheel object")]
     public float Speed;
 
@@ -41,12 +52,6 @@ public class FerrisWheel : MonoBehaviour
     [Tooltip("The 'arms' that points to the pivot point")]
     public GameObject Arm;
 
-    //List of all circularMotions on the ferris wheel
-    private List<CircularMotion> cmList = new List<CircularMotion>();
-    
-    //The time used to keep track of the "breathing"
-    private float _time;
-
     void Start()
     {
 
@@ -65,7 +70,7 @@ public class FerrisWheel : MonoBehaviour
 
 
             //Add object to list
-            cmList.Add(circularMotion);
+            circularMotionObjects.Add(circularMotion);
 
             //sets the angle
             circularMotion.SetAngle(360 / (NumberOfPlatforms + NumberOfBlankSpace) * i);
@@ -85,19 +90,19 @@ public class FerrisWheel : MonoBehaviour
 
     private void Update()
     {
-        _time += Time.deltaTime;
+        _breathTime += Time.deltaTime;
         
         //foreach circularmotion on the ferris wheel
-        foreach (CircularMotion cm in cmList)
+        foreach (CircularMotion cm in circularMotionObjects)
         {
             //Edit the radius of the circularmotion to expand or shrink (from 1 * BreathAmplitude to -1 * Breathamplitude)
-            cm.Radius = Radius + (float)Math.Sin(_time * BreathSpeed) * BreathAmplitude;
+            cm.Radius = Radius + (float)Math.Sin(_breathTime * BreathSpeed) * BreathAmplitude;
         }
         
         //Keeps the _time variable low
-        if (_time > (float)Math.PI * 2)
+        if (_breathTime > (float)Math.PI * 2)
         {
-            _time -= (float)Math.PI * 2;
+            _breathTime -= (float)Math.PI * 2;
         }
     }
 

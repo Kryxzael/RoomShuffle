@@ -12,16 +12,20 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyWeaponShooter), typeof(SpotPlayer))]
 public class ShootOnSight : MonoBehaviour
 {
-    private EnemyWeaponShooter _shooter;
-    private SpotPlayer _spotter;
-
-    [Tooltip("The weapon template that the enemy will get")]
-    public WeaponTemplate Weapon;
-
     /// <summary>
     /// Gets the weapon that will be fired
     /// </summary>
     public WeaponInstance WeaponInstance { get; private set; }
+
+    /* *** */
+
+    private EnemyWeaponShooter _shooter;
+    private SpotPlayer _spotter;
+
+    /* *** */
+
+    [Tooltip("The weapon template that the enemy will get")]
+    public WeaponTemplate Weapon;
 
     private void Awake()
     {
@@ -36,6 +40,7 @@ public class ShootOnSight : MonoBehaviour
 
     private void Update()
     {
+        //Shoot the player as quickly as possible when spotted
         if (_spotter.InPursuit)
         {
             if (WeaponInstance.CanFire(ignoreDurability: true))

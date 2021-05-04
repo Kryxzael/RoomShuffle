@@ -20,6 +20,9 @@ public abstract class ProgressionController : MonoBehaviour
     /// <returns></returns>
     public abstract int GetScaledDamage(int baseDamage);
 
+    /// <summary>
+    /// Increases the progression's health level
+    /// </summary>
     public virtual void LevelUpHealth()
     {
         HealthLevel++;
@@ -27,7 +30,10 @@ public abstract class ProgressionController : MonoBehaviour
         if (this is EnemyProgression)
             Debug.Log("Enemy HP++");
     }
-    
+
+    /// <summary>
+    /// Increases the progression's damage level
+    /// </summary>
     public virtual void LevelUpDamage()
     {
         DamageLevel++;

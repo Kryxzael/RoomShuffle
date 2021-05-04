@@ -28,6 +28,7 @@ public class StationaryLookAt : MonoBehaviour
         {
             int rotationIndex;
 
+            //The enemy sees the player
             if (spotter.InPursuit)
             {
                 //This is just so that if the enemy sees the player eye-to-eye, they shouldn't look up
@@ -40,6 +41,8 @@ public class StationaryLookAt : MonoBehaviour
                 yield return new WaitForEndOfFrame();
 
             }
+
+            //The enemy does not see the player. Look in a random direction
             else
             {
                 do
@@ -51,7 +54,7 @@ public class StationaryLookAt : MonoBehaviour
                 yield return new WaitForSeconds(Commons.GetEffectValue(LookAroundInterval.Pick(), EffectValueType.EnemyWaitTime));
             }
 
-            //Update sprite to look at the player
+            //Update sprite to look at (or for) the player
             renderer.sprite = rotationIndex switch
             {
                 -2 => LookDownLeftSprite,

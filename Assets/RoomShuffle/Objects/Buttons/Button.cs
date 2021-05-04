@@ -1,18 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using RoomShuffle.Defaults;
 using UnityEngine;
 
+/// <summary>
+/// A button that can activate events when held down/pressed
+/// </summary>
 public class Button : MonoBehaviour
 {
-    public bool Pressed { get; set; }
-
     //Sprite and collision for the button down state
-    private GameObject buttonDown;
-    
+    private GameObject _buttonDown;
+
     //Sprite and collision for the button up state
-    private GameObject buttonUp;
+    private GameObject _buttonUp;
+
+    /// <summary>
+    /// Gets or sets whether the button is currently pressed
+    /// </summary>
+    public bool Pressed { get; set; }    
+
+    /* *** */
 
     private MultiSoundPlayer _multiSoundPlayer;
 
@@ -25,23 +32,18 @@ public class Button : MonoBehaviour
         {
             if (child.name.Equals("ButtonUp"))
             {
-                buttonUp = child.gameObject;
+                _buttonUp = child.gameObject;
             }
             else if (child.name.Equals("ButtonDown"))
             {
-                buttonDown = child.gameObject;
+                _buttonDown = child.gameObject;
             }
         }
 
         //start the button as unpressed
         Pressed = false;
-        buttonUp.SetActive(true);
-        buttonDown.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Press();
+        _buttonUp.SetActive(true);
+        _buttonDown.SetActive(false);
     }
     
     private void OnTriggerStay2D(Collider2D other)
@@ -55,7 +57,7 @@ public class Button : MonoBehaviour
     }
 
     /// <summary>
-    /// sets the button to be pressed if it isn't already
+    /// Sets the button to be pressed if it isn't already
     /// </summary>
     public void Press()
     {
@@ -63,11 +65,11 @@ public class Button : MonoBehaviour
             return;
         
         Pressed = true;
-        buttonUp.SetActive(false);
-        buttonDown.SetActive(true);
+        _buttonUp.SetActive(false);
+        _buttonDown.SetActive(true);
         
         //Make pressed sound
-        _multiSoundPlayer.PlaySound(0,1.3f);
+        _multiSoundPlayer.PlaySound(volume: 1.3f);
     }
 
     /// <summary>
@@ -79,8 +81,8 @@ public class Button : MonoBehaviour
             return;
 
         Pressed = false;
-        buttonUp.SetActive(true);
-        buttonDown.SetActive(false);
+        _buttonUp.SetActive(true);
+        _buttonDown.SetActive(false);
         
         //Make depressed sound
         _multiSoundPlayer.PlaySound();

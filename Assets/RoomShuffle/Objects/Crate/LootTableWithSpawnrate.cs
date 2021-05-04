@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
+/// <summary>
+/// Maps a loot table to a spawn percentage
+/// </summary>
 [Serializable]
 public class LootTableWithSpawnrate
 {

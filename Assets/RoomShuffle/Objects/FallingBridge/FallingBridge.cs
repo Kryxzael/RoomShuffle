@@ -12,13 +12,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class FallingBridge : MonoBehaviour
 {
+    //Holds the initial state of the bridge's transform before it drops, so that it can respawn
     private StoredTransform _respawnConfig;
-    private Rigidbody2D _rigidbody;
-    
+
     /// <summary>
     /// Whether the bridge has fallen
     /// </summary>
     public bool Fallen { get; private set; }
+
+    /* *** */
+
+    private Rigidbody2D _rigidbody;
 
     /* *** */
 
@@ -44,19 +48,27 @@ public class FallingBridge : MonoBehaviour
         Invoke(nameof(MakeFall), FallDelay);
     }
 
+    /// <summary>
+    /// Makes the bridge fall
+    /// </summary>
     public void MakeFall()
     {
+        //Create a random rotation force
         const float MAX_RANDOM_TORQUE = 10f;
-
         float randomTorque = UnityEngine.Random.Range(-MAX_RANDOM_TORQUE, MAX_RANDOM_TORQUE);
 
+        //Makes the object fall
         Fallen = true;
         _rigidbody.bodyType = RigidbodyType2D.Dynamic;
         _rigidbody.AddTorque(randomTorque);
 
+        //Schedule object to respawn
         Invoke(nameof(Respawn), RespawnDelay);
     }
 
+    /// <summary>
+    /// Resets the bridge to its original location
+    /// </summary>
     public void Respawn()
     {
         Fallen = false;
@@ -65,7 +77,7 @@ public class FallingBridge : MonoBehaviour
     }
 
     /// <summary>
-    /// Stores the position, rotation and scale of an object
+    /// Stores the position, rotation and scale of an object. Unity transforms cannot exist outside of objects, so this is a custom one.
     /// </summary>
     private struct StoredTransform
     {

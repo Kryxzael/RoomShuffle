@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
-using RoomShuffle.Defaults;
+
 
 /// <summary>
 /// Controls the player's jump

@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Relayes collision to a contact switch if enabled
+/// </summary>
 public class ContactBlocker : MonoBehaviour
 {
     private ContactSwitch _contactSwitch;

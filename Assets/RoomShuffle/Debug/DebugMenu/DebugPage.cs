@@ -60,13 +60,16 @@ public abstract class DebugPage
     /// <returns></returns>
     protected bool Button(string label)
     {
+        //Increases what line we are at
         _currentRunIndex++;
 
+        //Draw label
         if (SelectedIndex == _currentRunIndex)
             _currentRunOutput.Add($">> {label} <<");
         else
             _currentRunOutput.Add(label);
 
+        //Return whether the button was clicked, allowing buttons to be placed in if-s
         return _currentRunClicking && _currentRunIndex == SelectedIndex;
     }
 
@@ -90,8 +93,10 @@ public abstract class DebugPage
     /// <returns></returns>
     protected void ReadOnly(string label)
     {
+        //Increases what line we are at
         _currentRunIndex++;
 
+        //Draw label
         if (SelectedIndex == _currentRunIndex)
             _currentRunOutput.Add($"[[ {label} ]]");
         else

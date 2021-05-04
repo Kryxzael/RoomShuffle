@@ -12,6 +12,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Loot Tables/Required Item Loot Table")]
 public class RequiredItemLootTable : LootTable
 {
+    /*
+     * The droppable items
+     */
+
     public GameObject HealthPickup;
     public GameObject MaxHealthPickup;
     public GameObject WeaponPickup;
@@ -67,6 +71,7 @@ public class RequiredItemLootTable : LootTable
     /// <returns></returns>
     public static bool InNeedOfWeapons()
     {
+        //Maps the player's weapons to booleans based on whether they are low or not
         bool[] ammoIsLow = new bool[Commons.Inventory.WeaponSlots.Length];
 
         for (int i = 0; i < ammoIsLow.Length; i++)
@@ -83,6 +88,7 @@ public class RequiredItemLootTable : LootTable
             }
         }
 
+        //If all weapons are low on ammo, the player needs a new weapon
         return ammoIsLow.All(i => i);
     }
 

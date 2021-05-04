@@ -12,8 +12,13 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class LockedCamera : MonoBehaviour
 {
+    //The camera
     private Camera _cam;
+
+    //The top left corner restriction object
     private RenewableLazy<CameraStopPoint> _topLeftPoint = new RenewableLazy<CameraStopPoint>(() => FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.TopLeft));
+
+    //The bottom right corner restriction object
     private RenewableLazy<CameraStopPoint> _bottomRightPoint = new RenewableLazy<CameraStopPoint>(() => FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.BottomRight));
 
     private void Awake()
@@ -24,6 +29,7 @@ public class LockedCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        //Don't lock in noclip mode or if there are no camera restrictions
         if (_topLeftPoint.Value == null || _bottomRightPoint.Value == null || Cheats.Noclip)
             return;
 

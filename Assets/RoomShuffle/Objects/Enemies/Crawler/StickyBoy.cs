@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// An enemy pattern that can spot the player and chase them
 /// </summary>
+[Obsolete]
 public class StickyBoy : EnemyScript
 {
     [Tooltip("The speed the stickyboy will move at")]

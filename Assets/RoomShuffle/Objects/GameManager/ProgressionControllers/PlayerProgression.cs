@@ -41,6 +41,9 @@ public class PlayerProgression : ProgressionController
         return (int)scaledDamage;
     }
 
+    /// <summary>
+    /// <inheritdoc />
+    /// </summary>
     public override void LevelUpHealth()
     {
         base.LevelUpHealth();

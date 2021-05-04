@@ -13,14 +13,17 @@ public class SnapToBottomLeftCornerOfRoom : MonoBehaviour
 {
     private void Start()
     {
+        //Find anchor zone of the room
         var anchorTopLeft = FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.TopLeft);
         var anchorBottomRight = FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.BottomRight);
 
+        //Missing anchors
         if (!anchorBottomRight || !anchorTopLeft)
         {
             Debug.LogWarning("Background parallax layer cannot be aligned because the current room is missing its camera stop points");
         }
 
+        //Snaps the object
         //This assumes that the sprite is anchored at the bottom left corner
         transform.position = new Vector3(anchorTopLeft.transform.position.x, anchorBottomRight.transform.position.y, 0f);
     }

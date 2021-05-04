@@ -13,11 +13,15 @@ public class HomeDebugPage : DebugPage
 
     protected override void RunItems(DebugMenu caller)
     {
+        //Credits
         if (Button("Credits"))
             caller.NavigationStack.Push(new CreditsDebugPage());
 
         Separator();
 
+        /*
+         * Cheats
+         */
         if (Toggle("Moon Jump", Cheats.MoonJump))
             Cheats.MoonJump = !Cheats.MoonJump;
 
@@ -69,6 +73,9 @@ public class HomeDebugPage : DebugPage
                 break;
         }
 
+        /*
+         * Sub-menus
+         */
         if (Button("Spawn Item ..."))
             caller.NavigationStack.Push(new SpawnItemDebugPage());
 

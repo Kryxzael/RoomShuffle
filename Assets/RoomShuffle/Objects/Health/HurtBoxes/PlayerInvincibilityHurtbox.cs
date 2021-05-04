@@ -14,9 +14,11 @@ public class PlayerInvincibilityHurtbox : Hurtbox
 
     public override int GetDamage(Hitbox target)
     {
+        //Infinite damage when invincible
         if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
             return int.MaxValue;
 
+        //No damage otherwise
         return 0;
     }
 

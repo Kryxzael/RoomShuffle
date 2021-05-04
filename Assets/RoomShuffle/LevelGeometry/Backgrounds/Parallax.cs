@@ -11,32 +11,35 @@ using UnityEngine;
 /// </summary>
 public class Parallax : MonoBehaviour
 {
-    [Range(-1f, 1f)]
-    public float ParalaxDepth = 1f;
+    //The camera to follow
+    private static RenewableLazy<Camera> _camera = new RenewableLazy<Camera>(() => Camera.main);
+
+    //The camera's position last frame
+    private Vector3? _lastCameraPosition;
 
     /* *** */
 
-    private static RenewableLazy<Camera> _camera = new RenewableLazy<Camera>(() => Camera.main);
-    private Vector3? _lastCameraPosition;
+    [Tooltip("The perceived depth of the object. 1 = Always follows camera. 0 = Normal object")]
+    [Range(-1f, 1f)]
+    public float ParalaxDepth = 1f;
 
 
     private void LateUpdate()
     {
-        /*
-         * Set layer position based on camera position
-         */
-
         var cam = _camera.Value;
 
+        //If no camera's are rendering, stop. This can happen in level transitions.
         if (!cam)
             return;
 
+        //If this is the first frame, calibrate parallax here.
         if (_lastCameraPosition == null)
         {
             _lastCameraPosition = cam.transform.position;
             return;
         }
 
+        //Offset object based on camera's motion
         transform.Translate((cam.transform.position - _lastCameraPosition.Value) * ParalaxDepth);
         _lastCameraPosition = cam.transform.position;
     }

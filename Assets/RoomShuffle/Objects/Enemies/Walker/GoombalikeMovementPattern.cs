@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+/// <summary>
+/// Makes an object move back and forth, turing when it hits a wall
+/// </summary>
 public class GoombalikeMovementPattern : EnemyScript
 {
     public float WalkSpeed;

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Main implementation of a animatable tile
+/// Main implementation of a tile that can use a SpriteAnimation as its texture
 /// </summary>
 [CreateAssetMenu(menuName = "2D/Animatible Tile")]
 public class AnimatableTile : AnimatableTileBase

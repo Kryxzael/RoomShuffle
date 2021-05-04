@@ -9,7 +9,7 @@ using UnityEngine;
 public class ThemedTile : AnimatableTileBase
 {
     /// <summary>
-    /// Gets the sprites and animation to use
+    /// Gets the sprites and animations to use
     /// </summary>
     public ThemedAnimationCollection Visuals;
 

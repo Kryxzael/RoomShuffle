@@ -1,3 +1,5 @@
+//TODO: Remove this class
+
 //#define USE_CUSTOM_GRAVITY
 
 using System.Collections;

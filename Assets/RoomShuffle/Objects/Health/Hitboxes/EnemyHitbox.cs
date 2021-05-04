@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using RoomShuffle.Defaults;
+
 using TMPro;
 
 using UnityEngine;
@@ -9,13 +9,14 @@ using UnityEngine;
 /// </summary>
 public class EnemyHitbox : Hitbox
 {
+
     private HealthController _health;
-
     private MultiSoundPlayer _multiSoundPlayer;
-
     private SpotPlayer _spotPlayer;
 
     /* *** */
+
+    [Tooltip("The number that will appear when the enemy receives damage")]
     public PopNumber DamageTextPrefab;
 
     [Tooltip("If true, the hitbox will change the music when hurt")]
@@ -29,13 +30,10 @@ public class EnemyHitbox : Hitbox
     protected override void Awake()
     {
         base.Awake();
+
         _health = GetComponentInParent<HealthController>();
-
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
-
-        _spotPlayer = transform.parent.transform.Cast<Transform>().FirstOrDefault(x => x.name.Equals("Body"))
-            ?.gameObject
-            .GetComponent<SpotPlayer>();
+        _spotPlayer = GetComponentInChildren<SpotPlayer>();
     }
 
     /// <summary>
@@ -44,23 +42,29 @@ public class EnemyHitbox : Hitbox
     /// <param name="damage"></param>
     public void CreateDamagePopNumber(int damage)
     {
+        //By how much the number can be randomly offset horizontally
         const float POP_NUMBER_RANDOM_X_OFFSET = 1f;
+        const string INFINITY_SYMBOL = "\x221E";
 
+        //Don't show pop-up if no damage was taken
         if (damage <= 0)
             return;
 
+        //Calculate offsets
         float verticalOffset = 1f;
         float horizontalOffset = RandomValueBetween.Symetrical(POP_NUMBER_RANDOM_X_OFFSET).Pick();
 
+        //Spawn object
         TextMeshPro instance = Commons.InstantiateInCurrentLevel(
             original: DamageTextPrefab,
             position: transform.position + Vector3.up * verticalOffset + Vector3.right * horizontalOffset
         ).GetComponent<TextMeshPro>();
 
+        //Set damage text
         string damageText = damage.ToString();
 
         if (damage >= 10000)
-            damageText = "\x221E";
+            damageText = INFINITY_SYMBOL;
 
         instance.text = $"-{damageText}";
     }
@@ -81,7 +85,7 @@ public class EnemyHitbox : Hitbox
             MakeEnemyBlindChase();
 
         if (TriggersAdrenalineMusic && !(hurtbox is GlobalHurtbox) && hurtbox.GetDamage(this) != 0)
-            Commons.SoundtrackPlayer.AddTrigger(this, 5f);
+            Commons.SoundtrackPlayer.AddAdrenalineTrigger(this, 5f);
 
         //Dead men don't scream
         if (_health.IsDead)
@@ -122,6 +126,9 @@ public class EnemyHitbox : Hitbox
             
     }
 
+    /// <summary>
+    /// Makes an enemy with a SpotPlayer script start blind-chasing when fired at
+    /// </summary>
     private void MakeEnemyBlindChase()
     {
         if (!_spotPlayer)

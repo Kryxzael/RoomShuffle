@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using RoomShuffle.Defaults;
+
 using UnityEngine;
 
 namespace RoomShuffle.Objects.Pickups

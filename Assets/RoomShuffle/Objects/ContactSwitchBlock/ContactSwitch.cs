@@ -1,11 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using RoomShuffle.Defaults;
+using System.Linq;
+
 using UnityEngine;
 
+/// <summary>
+/// A switch that is activated/deactivated on collision with the player
+/// </summary>
 public class ContactSwitch : MonoBehaviour
 {
+    //Is the state of the switch locked
+    private bool _locked;
+
+    /* *** */
+
+    private SpriteRenderer _sprite;
+
+    /* *** */
+
     [Tooltip("If the block should start 'On'")]
     public bool On = false;
     
@@ -19,55 +32,54 @@ public class ContactSwitch : MonoBehaviour
     public bool TriggerOnSides = true;
     public bool TriggerOnBottom = true;
 
-    private List<GameObject> _triggerBoxes = new List<GameObject>();
-
-    private SpriteRenderer _sprite;
-    private bool _locked;
-
     private void Start()
     {
-        
         _sprite = GetComponent<SpriteRenderer>();
         
-        //Set the corresponding sprite to the "On" bariable
+        //Set the sprite corresponding to the "On" variable
         _sprite.sprite = On ? OnSprite : OffSprite;
 
-        //Combinations of the booleans (inputs)
+        /*
+         * Sets configurations based on the trigger sides
+         */
+        string enabledChildObject;
+
         if (TriggerOnTop && !TriggerOnSides && !TriggerOnBottom)
         {
-            TopOnly();
+            enabledChildObject = "Top";
         }
 
         else if (!TriggerOnTop && TriggerOnSides && !TriggerOnBottom)
         {
-            SidesOnly();
+            enabledChildObject = "Sides";
         }
 
         else if (TriggerOnTop && TriggerOnSides && !TriggerOnBottom)
         {
-            TopAndSides();
+            enabledChildObject = "TopAndSides";
         }
 
         else if (!TriggerOnTop && TriggerOnSides && TriggerOnBottom)
         {
-            BottomAndSides();
+            enabledChildObject = "BottomAndSides";
         }
         
         else if (!TriggerOnTop && !TriggerOnSides && TriggerOnBottom)
         {
-            Bottom();
+            enabledChildObject = "Bottom";
         }
         
         else if (TriggerOnTop && !TriggerOnSides && TriggerOnBottom)
         {
-            TopAndBottom();
+            enabledChildObject = "TopAndBottom";
         }
         else
         {
-           All(); 
+            enabledChildObject = "All";
         }
 
-        
+        //Enable child object
+        transform.Cast<Transform>().Single(i => i.name == enabledChildObject).gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -76,7 +88,6 @@ public class ContactSwitch : MonoBehaviour
     /// <param name="collider"></param>
     public void TriggerSwitch(Collider2D collider)
     {
-
         if (_locked)
             return;
 
@@ -92,99 +103,11 @@ public class ContactSwitch : MonoBehaviour
     }
 
     /// <summary>
-    /// Locks the block so that it can't be switched from on and off anymore.
+    /// Locks the block so that it can't be switched anymore.
     /// </summary>
     public void Lock()
     {
         _sprite.sprite = NeutralSprite;
         _locked = true;
-    }
-    
-    /*
-     * Methods for the combinations of blockers for each block beneath
-     */
-
-    private void TopOnly()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("Top"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
-    }
-
-    private void SidesOnly()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("Sides"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
-    }
-
-    private void TopAndSides()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("TopAndSides"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
-    }
-
-    private void BottomAndSides()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("BottomAndSides"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
-    }
-
-    private void All()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("All"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
-    }
-    
-    private void Bottom()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("Bottom"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
-    }
-    
-    private void TopAndBottom()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("TopAndBottom"))
-            {
-                child.gameObject.SetActive(true);
-                break;
-            }
-        }
     }
 }

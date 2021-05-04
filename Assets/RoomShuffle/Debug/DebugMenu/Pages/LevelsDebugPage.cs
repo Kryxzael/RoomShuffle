@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Allows the player to level up and change their health values
+/// </summary>
 public class LevelsDebugPage : DebugPage
 {
     public override string Header { get; } = "Levels";

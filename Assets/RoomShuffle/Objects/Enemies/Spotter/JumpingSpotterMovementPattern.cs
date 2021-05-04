@@ -9,6 +9,29 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(LimitedMovementRadius), typeof(SpriteAnimator))]
 public class JumpingSpotterMovementPattern : EnemyScript
 {
+    //The remaining ground time
+    private float _groundTimeLeft;
+
+    //how much time is left of the GoHomeTime
+    private float _goHomeTimeLeft;
+
+    //Is the player on the ground
+    private bool grounded;
+
+    //how many fumble jumps are left
+    private int _fumbleJumpsLeft;
+
+    //at which time while grounded the enemy will potentially flip
+    private float _flipTime;
+
+    /* *** */
+
+    private Vector2 _direction;
+    private SpotPlayer _spotPlayer;
+    private LimitedMovementRadius _limitedMovementRadius;
+    private SpriteAnimator _animator;
+
+    /* *** */
 
     [Tooltip("The angle the enemy will jump in")] [Range(0,90)]
     public float Degree;
@@ -25,6 +48,7 @@ public class JumpingSpotterMovementPattern : EnemyScript
     [Tooltip("The amount of if time in seconds the enemy will attempt to go home after loosing sight of the player")]
     public float GoHomeTime;
 
+    //The jumping spotter changes its animation every time it jumps. This keeps track of which animation was last played
     private bool _lastAnimationWas1;
 
     [Header("Animations")]
@@ -33,28 +57,6 @@ public class JumpingSpotterMovementPattern : EnemyScript
     public SpriteAnimation SpotAnimation;
     public SpriteAnimation ChaseAnimation1;
     public SpriteAnimation ChaseAnimation2;
-
-    //The remaining ground time
-    private float _groundTimeLeft;
-
-    //how much time is left of the GoHomeTime
-    private float _goHomeTimeLeft;
-    
-    //Is the player on the ground
-    private bool grounded;
-    
-    //how many fumble jumps are left
-    private int _fumbleJumpsLeft;
-    
-    //at which time while grounded the enemy will potentially flip
-    private float _flipTime;
-
-    /* *** */
-
-    private Vector2 _direction;
-    private SpotPlayer _spotPlayer; 
-    private LimitedMovementRadius _limitedMovementRadius;
-    private SpriteAnimator _animator;
 
     void Start()
     {

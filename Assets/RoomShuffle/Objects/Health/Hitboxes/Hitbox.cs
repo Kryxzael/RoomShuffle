@@ -14,6 +14,8 @@ public abstract class Hitbox : MonoBehaviour
 {
     private SpriteRenderer _renderer; //Optional
 
+    /* *** */
+
     [Tooltip("The amount of seconds the object will be invincible")]
     public float InvincibilityFramesInSeconds = 5f;
 
@@ -83,12 +85,14 @@ public abstract class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Deal damage if collision was with hurtbox
         if (collision.GetComponent<Hurtbox>() is Hurtbox hurt && hurt)
             TryDealDamageBy(hurt);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        //Deal damage if collision was with hurtbox that deals continuous damage
         if (other.GetComponent<Hurtbox>() is Hurtbox hurt && hurt && hurt.ContinuousDamage)
             TryDealDamageBy(hurt);
     }
@@ -99,6 +103,7 @@ public abstract class Hitbox : MonoBehaviour
     /// <param name="hurtbox"></param>
     public void TryDealDamageBy(Hurtbox hurtbox)
     {
+        //The hurtbox cannot deal damage to this hitbox
         if ((HasInvincibilityFrames && !hurtbox.IgnoresInvincibilityFrames) || !hurtbox.GetTargets().HasFlag(SusceptibleTo))
             return;
 
@@ -106,5 +111,9 @@ public abstract class Hitbox : MonoBehaviour
         OnReceiveDamage(hurtbox);
     }
 
+    /// <summary>
+    /// Executed when this hitbox receives damage by a hurtbox
+    /// </summary>
+    /// <param name="hurtbox"></param>
     protected abstract void OnReceiveDamage(Hurtbox hurtbox);
 }

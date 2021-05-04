@@ -6,31 +6,11 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Holds sprites and animations for different themes
+/// Holds sprites and animations that change based on room themes
 /// </summary>
 [Serializable]
 public class ThemedAnimationCollection
 {
-    //Holds the last fetched room generator instance.
-    private static RoomGenerator _bufferedRoomGenerator;
-
-    /// <summary>
-    /// Gets the current room generator, or null if there is one
-    /// </summary>
-    private static RoomGenerator RoomGenerator
-    {
-        get
-        {
-            //There is no buffered room generator, or it has been destroyed, try to fetch a new one
-            if (_bufferedRoomGenerator == null)
-                _bufferedRoomGenerator = UnityEngine.Object.FindObjectOfType<RoomGenerator>();
-
-            return _bufferedRoomGenerator;
-        }
-    }
-
-    /* *** */
-
     [Header("Sprites")]
     [Tooltip("The fallback sprite that is used when no recognized theme is found")]
     public Sprite DefaultSprite;
@@ -83,9 +63,10 @@ public class ThemedAnimationCollection
     /// <returns></returns>
     private (Sprite sprite, SpriteAnimation animation) GetCurrentThemeResources()
     {
-        if (RoomGenerator != null && RoomGenerator.History.Any())
+        //Gets sprites/animations based on the last room of the room generator
+        if (Commons.RoomGenerator && Commons.RoomGenerator.History.Any())
         {
-            return RoomGenerator.CurrentRoomConfig.Theme switch
+            return Commons.RoomGenerator.CurrentRoomConfig.Theme switch
             {
                 RoomTheme.Grass => (GrassSprite, GrassAnimation),
                 RoomTheme.Snow => (SnowSprite, SnowAnimation),

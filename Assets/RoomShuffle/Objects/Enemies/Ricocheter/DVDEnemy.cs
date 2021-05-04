@@ -2,9 +2,15 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// An enemy (or object9 that bounces of walls
+/// </summary>
 public class DVDEnemy : EnemyScript
 {
+    //The current direction the enemy is traveling in
     private Vector2 _direction;
+
+    /* *** */
 
     [Tooltip("How fast the enemy will fly")]
     public float FlySpeed;
@@ -27,9 +33,7 @@ public class DVDEnemy : EnemyScript
 
     private void Update()
     {
-        
-        
-        //make sure velocity is never zero in any direction
+        //make sure velocity is never zero on any axis
         if (Enemy.Rigidbody.velocity.x == 0)
         {
             Enemy.Rigidbody.SetVelocityX(1);

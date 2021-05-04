@@ -13,32 +13,14 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(LimitedMovementRadius), typeof(FlyingSpotterMovementPattern))]
 public class FlyingSpotterMovementPattern : EnemyScript
 {
-    [Tooltip("The speed the spotter will fly at when fumbling")]
-    public float FlyingSpeed;
-
-    [Tooltip("The speed the spotter will fly at when chasing")]
-    public float ChaseSpeed;
-
-    [Tooltip("The amount of time the spotter can move or wait before choosing a new action when fumbling")]
-    public RandomValueBetween FumbleWaitTime = new RandomValueBetween(3f, 7f);
-    
-    [Tooltip("The amount of time the enemy will use to try to get to the home zone")]
-    public float GoHomeWaitTime;
-
     //The remaining fumble wait time
     private float _fumbleCurrentWaitTime;
-    
+
     //The remaning time the enemy will attempt to go into the home zone
     private float _goHomeCurrentWaitTime;
 
     //If the current fumble mode is flying
     private bool _fumbleFly = true;
-
-    [Header("Animations")]
-    public SpriteAnimation IdleAnimation;
-    public SpriteAnimation FlyAnimation;
-    public SpriteAnimation SpotAnimation;
-    public SpriteAnimation ChaseAnimation;
 
     /* *** */
 
@@ -47,6 +29,26 @@ public class FlyingSpotterMovementPattern : EnemyScript
     private SpriteAnimator _animator;
     private Vector2 _flyDirection;
     private LimitedMovementRadius _limitedMovementRadius;
+
+    /* *** */
+
+    [Tooltip("The speed the spotter will fly at when fumbling")]
+    public float FlyingSpeed;
+
+    [Tooltip("The speed the spotter will fly at when chasing")]
+    public float ChaseSpeed;
+
+    [Tooltip("The amount of time the spotter can move or wait before choosing a new action when fumbling")]
+    public RandomValueBetween FumbleWaitTime = new RandomValueBetween(3f, 7f);
+
+    [Tooltip("The amount of time the enemy will use to try to get to the home zone")]
+    public float GoHomeWaitTime;
+
+    [Header("Animations")]
+    public SpriteAnimation IdleAnimation;
+    public SpriteAnimation FlyAnimation;
+    public SpriteAnimation SpotAnimation;
+    public SpriteAnimation ChaseAnimation;
 
     private void Start()
     {

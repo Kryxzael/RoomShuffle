@@ -11,10 +11,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the transition between levels and game overs
+/// </summary>
 public class TransitionController : MonoBehaviour
 {
+    //Has the player died before?
     private bool _playerDied = false;
 
+    /* *** */
+
+    [Tooltip("The text label that shows the GAME OVER text")]
     public TextMeshProUGUI GameOverText;
 
     private void Update()
@@ -27,6 +34,10 @@ public class TransitionController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine: Triggers the game over sequence
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator OnPlayerDied()
     {
         //Detach the camera
@@ -58,6 +69,11 @@ public class TransitionController : MonoBehaviour
         fade.BeginFade(() => CoGenerateAndMoveScreenPlayer(fade), () => CoGenerateAndMoveScreenPlayerPre(fade), CoGenerateAndMoveScreenPlayerPost);
     }
 
+    /// <summary>
+    /// Coroutine: Runs before a room transition
+    /// </summary>
+    /// <param name="fade"></param>
+    /// <returns></returns>
     private IEnumerator CoGenerateAndMoveScreenPlayerPre(FadeAnimation fade)
     {
         //The world-space player
@@ -93,12 +109,22 @@ public class TransitionController : MonoBehaviour
         yield break;
     }
 
+    /// <summary>
+    /// Coroutine: Runs after a room transition
+    /// </summary>
+    /// <param name="fade"></param>
+    /// <returns></returns>
     private IEnumerator CoGenerateAndMoveScreenPlayerPost()
     {
         Time.timeScale = 1f;
         yield break;
     }
 
+    /// <summary>
+    /// Coroutine: Runs durring a room transition
+    /// </summary>
+    /// <param name="fade"></param>
+    /// <returns></returns>
     private IEnumerator CoGenerateAndMoveScreenPlayer(FadeAnimation fade)
     {
         //The world-space player

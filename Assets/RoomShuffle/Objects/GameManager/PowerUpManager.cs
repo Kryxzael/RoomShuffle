@@ -11,7 +11,14 @@ using UnityEngine;
 /// </summary>
 public class PowerUpManager : MonoBehaviour
 {
+    //Keeps track of the active power-ups and their timers
     private Dictionary<PowerUp, float> _powerUpsWithTimers = new Dictionary<PowerUp, float>();
+
+    /* *** */
+
+    /*
+     * Settings
+     */
 
     [Header("Power-Up Settings")]
     [Tooltip("By what factor to multiply the player's base damage when Attack-Up is active")]
@@ -30,6 +37,10 @@ public class PowerUpManager : MonoBehaviour
     [Range(0f, 1f)]
     public float DefenseStrength = 0.5f;
 
+    /*
+     * Timers
+     */
+
     [Header("Max Times")]
     [Tooltip("How long the player will have the attack-up power-up for")]
     public float AttackUpTime = 15f;
@@ -45,25 +56,27 @@ public class PowerUpManager : MonoBehaviour
 
     private void Update() 
     {
-        //Decrease timers (unless in a safe-room
+        //Decrease timers (unless in a safe-room)
         if (!Commons.RoomGenerator.CurrentRoomConfig.Class.IsSafeRoom())
         {
             foreach (var (key, value) in _powerUpsWithTimers.Select(i => (i.Key, i.Value)).ToArray())
                 _powerUpsWithTimers[key] = Math.Max(0f, value - Time.unscaledDeltaTime);
         }
 
+        //Attack up should trigger adrenaline
         if (HasPowerUp(PowerUp.AttackUp))
         {
-            Commons.SoundtrackPlayer.AddTrigger(PowerUp.AttackUp, 0.5f);
+            Commons.SoundtrackPlayer.AddAdrenalineTrigger(PowerUp.AttackUp, 0.5f);
         }
 
+        //Attack up should trigger adrenaline and increase defense
         if (HasPowerUp(PowerUp.Invincibility))
         {
             Commons.PlayerHealth.DefensePercentage = 1f;
-            Commons.SoundtrackPlayer.AddTrigger(PowerUp.Invincibility, 0.5f);
+            Commons.SoundtrackPlayer.AddAdrenalineTrigger(PowerUp.Invincibility, 0.5f);
         }
             
-
+        //Defense-up should increase defense-up
         else if (HasPowerUp(PowerUp.DefenseUp))
             Commons.PlayerHealth.DefensePercentage = DefenseStrength;
 

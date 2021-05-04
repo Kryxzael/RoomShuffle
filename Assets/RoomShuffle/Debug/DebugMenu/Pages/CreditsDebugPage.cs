@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// A credits page, accessible through the debug menu
+/// </summary>
 public class CreditsDebugPage : DebugPage
 {
     public override string Header { get; } = "Game Credits";

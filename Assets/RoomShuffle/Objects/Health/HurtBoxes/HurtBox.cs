@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// Represents a trigger with the ability to hurt something
+/// Represents a trigger with the ability to hurt hitboxes
 /// </summary>
 public abstract class Hurtbox : MonoBehaviour
 {

@@ -3,16 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Groups multiple buttons together to form an AND gate
+/// </summary>
 public class ButtonGroup : MonoBehaviour
 {
+    //All buttons in the button group
     private List<Button> _buttonList = new List<Button>();
+
+    //This game object will only be active when all buttons in group are pressed
     private GameObject _enableOnPressed;
+
+    //This game object will only be inactive when all buttons in group are pressed
     private GameObject _disableOnPressed;
+
+    //This game object will be activated when all buttons in group are pressed
     private GameObject _enableForeverOnPressed;
+
+    //This game object will be deactivated when all buttons in group are pressed
     private GameObject _disableForeverOnPressed;
 
+    //If true, the buttons have not been pressed yet.
     private bool _firstPress = true;
+
+    //The state of the group last frame
     private bool _lastState = false;
+
+
+
     void Start()
     {
         
@@ -44,7 +62,7 @@ public class ButtonGroup : MonoBehaviour
             }
         }
         
-        //initialise starting positions
+        //initialize starting positions
         _enableForeverOnPressed.SetActive(false);
         _disableForeverOnPressed.SetActive(true);
         _enableOnPressed.SetActive(false);
@@ -56,11 +74,11 @@ public class ButtonGroup : MonoBehaviour
         //true if all the buttons in the group is pressed
         bool _allButtonsArePressed = _buttonList.TrueForAll(x => x.Pressed);
 
-        //No changes have been made
+        //No changes have been made since last frame
         if (_allButtonsArePressed == _lastState)
             return;
         
-        //all buttons are pressed
+        //All buttons are pressed
         if (_allButtonsArePressed)
         {
             //if it is the first time all buttons have been pressed
@@ -70,9 +88,11 @@ public class ButtonGroup : MonoBehaviour
                 _disableForeverOnPressed.SetActive(false);
                 _firstPress = false;
             }
+
             _enableOnPressed.SetActive(true);
             _disableOnPressed.SetActive(false);
         }
+
         //Not all buttons are pressed
         else
         {
