@@ -28,11 +28,6 @@ public class QuitText : MonoBehaviour
             _timePassed = EscapeTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _timePassed = EscapeTime;
-        }
-
         //If the player just pressed esc
         if (_timePassed >= 0)
         {
@@ -58,6 +53,11 @@ public class QuitText : MonoBehaviour
         else
         {
             _tmp.text = "[Esc]";
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _timePassed = EscapeTime;
         }
     }
 }
