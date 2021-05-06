@@ -39,7 +39,7 @@ public class SoftKillHurtbox : Hurtbox
         }
 
         //Anything else should just be killed
-        return int.MaxValue;
+        return 9999999f;
     }
 
     /// <summary>
