@@ -690,6 +690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackUpMultiplier: 2
   SlowDownTimeScale: 0
+  InvincibilitySpeedMultiplier: 1.5
+  InvincibilityJumpMultiplier: 1.5
   DefenseStrength: 0.5
   AttackUpTime: 15
   SlowDownUnscaledTime: 15
@@ -751,6 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdf65f7856ead343b76e9dbebdf18e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnableItems: []
 --- !u!1 &8590704838378245131
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,9 +848,27 @@ MonoBehaviour:
   Seed: 4
   UseRandomSeed: 1
   RoomParameterBuilder: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
-  Backgrounds: []
-  EnemyHealthUpFrequency: 5
-  EnemyDamageUpFrequency: 5
+  Backgrounds:
+  - Theme: 9
+    Background: {fileID: 6700715351123667358, guid: 942a331eedafe0d45aacb52ac9e5623b, type: 3}
+  - Theme: 7
+    Background: {fileID: 6700715351123667358, guid: 8c088e51ab70b3f4a9a5b0797b73733f, type: 3}
+  - Theme: 1
+    Background: {fileID: 6700715351123667358, guid: 3103c6cd4b664c241b7e40f8281773d1, type: 3}
+  - Theme: 2
+    Background: {fileID: 6700715351123667358, guid: 30acec0d462f0c644a74f842e710e4fc, type: 3}
+  - Theme: 3
+    Background: {fileID: 6700715351123667358, guid: 05374ec9f662bd4418c3c7f277181c25, type: 3}
+  - Theme: 6
+    Background: {fileID: 6700715351123667358, guid: 3dac66a8b1e894a4c83c24c029b44aba, type: 3}
+  - Theme: 4
+    Background: {fileID: 6700715351123667358, guid: a9fafa577552c5a408476a5605e01799, type: 3}
+  - Theme: 5
+    Background: {fileID: 6700715351123667358, guid: 2b41dee0ddd6b9446b749224be4d2753, type: 3}
+  - Theme: 8
+    Background: {fileID: 6700715351123667358, guid: ac7843fc32e45ef4e90bae5f3f29313c, type: 3}
+  EnemyHealthUpFrequency: 10
+  EnemyDamageUpFrequency: 10
 --- !u!114 &2390164727809682978
 MonoBehaviour:
   m_ObjectHideFlags: 0

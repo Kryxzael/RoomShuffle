@@ -1423,15 +1423,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0001409
+      value: 0.9991327
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0001409
+      value: 0.9991327
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0001409
+      value: 0.9991327
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1876,6 +1876,14 @@ PrefabInstance:
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Backgrounds.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: EnemyDamageUpFrequency
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
+      propertyPath: EnemyHealthUpFrequency
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Backgrounds.Array.data[0].Theme
