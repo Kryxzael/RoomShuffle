@@ -39,7 +39,7 @@ public class SoftKillHurtbox : Hurtbox
         }
 
         //Anything else should just be killed
-        return 9999999f;
+        return 9999999;
     }
 
     /// <summary>
