@@ -33,7 +33,9 @@ public class EnemyHitbox : Hitbox
 
         _health = GetComponentInParent<HealthController>();
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
-        _spotPlayer = GetComponentInChildren<SpotPlayer>();
+        _spotPlayer = transform.parent.transform.Cast<Transform>().FirstOrDefault(x => x.name.Equals("Body"))
+            ?.gameObject
+            .GetComponent<SpotPlayer>();
     }
 
     /// <summary>
