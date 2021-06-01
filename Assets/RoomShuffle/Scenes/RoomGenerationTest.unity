@@ -1423,15 +1423,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9991327
+      value: 0.9998708
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9991327
+      value: 0.9998708
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9991327
+      value: 0.9998708
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1872,7 +1872,7 @@ PrefabInstance:
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: RoomParameterBuilder
       value: 
-      objectReference: {fileID: 11400000, guid: ffcb8b74f48e65f4ca1f973bfc47b829, type: 2}
+      objectReference: {fileID: 11400000, guid: 66fb283c9f3fabd489204a00c9d2bff7, type: 2}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Backgrounds.Array.size
       value: 9

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4fd92fc886d3da4fbedf75b1be7d14c, type: 3}
-  m_Name: Demo
+  m_Name: Test
   m_EditorClassIdentifier: 
   Rooms: {fileID: 0}
   WeaponTemplates:
@@ -54,7 +54,8 @@ MonoBehaviour:
   - Enemy: {fileID: 2136839923881057966, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
     SpawnRate: 1
   DemoRoomProgression:
-  - Room: {fileID: 0}
+  - Class: 0
+    Room: {fileID: 0}
     Effects: 0
     Theme: 0
     FlipHorizontal: 0
