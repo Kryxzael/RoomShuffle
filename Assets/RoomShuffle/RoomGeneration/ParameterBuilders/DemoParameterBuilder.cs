@@ -8,9 +8,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Room Parameter Builders/Demo")]
 public class DemoParameterBuilder : ParameterBuilder
 {
-    private IEnumerator<RoomLayout> _currentRoom;
+    private IEnumerator<DemoRoomConfig> _currentRoom;
 
-    public List<RoomLayout> DemoRoomProgression;
+    [Header("The list of demo rooms")]
+    public List<DemoRoomConfig> DemoRoomProgression;
 
     public override RoomParameters GetInitialParameters(System.Random random)
     {
@@ -30,16 +31,12 @@ public class DemoParameterBuilder : ParameterBuilder
 
         output.GroundEnemies = GroundEnemies;
         output.AirEnemies = AirEnemies;
-        output.Class = RoomClass.Platforming;
-        output.Layout = _currentRoom.Current;
-        output.Theme = typeof(RoomTheme).GetEnumValues() //Absolutely disgusting, but it's for testing so it's ok
-            .Cast<RoomTheme>()
-            .Where(i => i != RoomTheme.Edit)
-            .OrderBy(i => random.Next())
-            .First();
+        output.Class = _currentRoom.Current.Class;
+        output.Layout = _currentRoom.Current.Room;
+        output.Theme = _currentRoom.Current.Theme;
 
-        //output.Effect = RoomEffects.Timer;
-        output.FlipHorizontal = random.Next(2) == 0;
+        output.Effect = _currentRoom.Current.Effects;
+        output.FlipHorizontal = _currentRoom.Current.FlipHorizontal;
         output.WeaponEnumerator = WeaponTemplates.OrderBy(i => random.Next()).GetEnumerator();
         output.Entrance = output.Layout.GetRandomEntrance(random);
 
@@ -49,5 +46,15 @@ public class DemoParameterBuilder : ParameterBuilder
         } while (output.Entrance == output.Exit && output.Layout.EntranceSides != output.Layout.ExitSides);
 
         return output;
+    }
+
+    [Serializable]
+    public class DemoRoomConfig
+    {
+        public RoomClass Class;
+        public RoomLayout Room;
+        public RoomEffects Effects;
+        public RoomTheme Theme;
+        public bool FlipHorizontal;
     }
 }

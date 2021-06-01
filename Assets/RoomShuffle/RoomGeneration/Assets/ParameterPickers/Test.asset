@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fd92fc886d3da4fbedf75b1be7d14c, type: 3}
+  m_Name: Demo
+  m_EditorClassIdentifier: 
+  Rooms: {fileID: 0}
+  WeaponTemplates:
+  - {fileID: 11400000, guid: 7e7d8dead0594514dabd4e4d6d705bde, type: 2}
+  - {fileID: 11400000, guid: f6ddb48003c69e44fabc7c70bf617929, type: 2}
+  - {fileID: 11400000, guid: c878a595ac9800144842ef9e0c03626b, type: 2}
+  - {fileID: 11400000, guid: a3559cde01dc3e74fa3f952a09a93590, type: 2}
+  - {fileID: 11400000, guid: fd1a131832bf7f44a9752e544cbbca9a, type: 2}
+  - {fileID: 11400000, guid: 17b56f0b50be04c4ba4cd5d28d4417b7, type: 2}
+  - {fileID: 11400000, guid: c70dee4eb6b31834195948122e9ef357, type: 2}
+  - {fileID: 11400000, guid: afed0919e9673fc45ab076c2e8a4290b, type: 2}
+  - {fileID: 11400000, guid: 7117c17053a4cd44693e3fbcfdbbb465, type: 2}
+  - {fileID: 11400000, guid: 51ca7c5344304694d98926e0301eec93, type: 2}
+  - {fileID: 11400000, guid: bcd2b937be6baf042a8fab9760cbdddf, type: 2}
+  - {fileID: 11400000, guid: 3e8762ed8794ee84a9442f7546483e2b, type: 2}
+  - {fileID: 11400000, guid: 32aeae76919aa164bb2e8cbb0cc196fd, type: 2}
+  - {fileID: 11400000, guid: 211df4ec553c3b54a95d0d6e0b59b65c, type: 2}
+  - {fileID: 11400000, guid: c7c295582b5f22f4ca623b94087792ce, type: 2}
+  - {fileID: 11400000, guid: 3c36fda6ac86db042bd3405d371eb7cc, type: 2}
+  - {fileID: 11400000, guid: 5b6d8505b3db46546a96502416e708b4, type: 2}
+  - {fileID: 11400000, guid: 95afc9c2c64ffcd4cb15ea69ddff2e37, type: 2}
+  - {fileID: 11400000, guid: 0544561747a65704b95712315e4c0454, type: 2}
+  - {fileID: 11400000, guid: 2bfe0c177a3c4b14694ab2fab7a79caa, type: 2}
+  - {fileID: 11400000, guid: 7af8f01efb9dd214e90d0286de47878c, type: 2}
+  - {fileID: 11400000, guid: 5723cdb6867861a40bef4c415bc307c4, type: 2}
+  - {fileID: 11400000, guid: e7ce13acbeeab124394584ba57176d75, type: 2}
+  - {fileID: 11400000, guid: a2d05d1c496c5aa4ebe980ae68389cc3, type: 2}
+  - {fileID: 11400000, guid: 5bba5275d3c44fb4da96eeb7142fe5c5, type: 2}
+  - {fileID: 11400000, guid: bbf7d0b5328358f43b6f07d63f23f94f, type: 2}
+  - {fileID: 11400000, guid: 9ee6ead2bdc23474c858274c1809e94a, type: 2}
+  - {fileID: 11400000, guid: f9bd0ca89c09d2548b38ac6d59c81e43, type: 2}
+  - {fileID: 11400000, guid: 9940781dcd963024d9b4f4b25e5091e6, type: 2}
+  - {fileID: 11400000, guid: b733ed6c187418b4b89b6e79886bc89f, type: 2}
+  - {fileID: 11400000, guid: 7056b3696f4971645942bf04bab34b7c, type: 2}
+  - {fileID: 11400000, guid: 1dc29f38168bf3149921990212b067d6, type: 2}
+  - {fileID: 11400000, guid: 0a048bc2d1ce7f84cbc540a3b06cf5eb, type: 2}
+  GroundEnemies:
+  - Enemy: {fileID: 1951632956595313075, guid: 73eb61f525868204baeecca8c4929458, type: 3}
+    SpawnRate: 1
+  AirEnemies:
+  - Enemy: {fileID: 2136839923881057966, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
+    SpawnRate: 1
+  DemoRoomProgression:
+  - Room: {fileID: 0}
+    Effects: 0
+    Theme: 0
+    FlipHorizontal: 0
