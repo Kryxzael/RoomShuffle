@@ -13,6 +13,9 @@ public class LockedDoor : MonoBehaviour
 
     private MultiSoundPlayer _multiSoundPlayer;
 
+    [Tooltip("If enabled, the door will always spawn")]
+    public bool WillAlwaysSpawn = false;
+
     [Tooltip("The room parameter override object that will generate the secret room")]
     public ParameterBuilderOverride GeneratorOverride;
 
@@ -20,7 +23,7 @@ public class LockedDoor : MonoBehaviour
     {
         _multiSoundPlayer = GetComponent<MultiSoundPlayer>();
 
-        if (UnityEngine.Random.value <= 0.5f)
+        if (UnityEngine.Random.value <= 0.5f && !WillAlwaysSpawn)
             Destroy(gameObject);
     }
 
