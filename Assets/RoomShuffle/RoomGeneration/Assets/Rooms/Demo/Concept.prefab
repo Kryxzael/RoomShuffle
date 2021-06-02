@@ -963,7 +963,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: "Unity and C#\n\nTilfeldigheter\n\nKom s\xE5 lnagt du kan"
+      value: "Unity og C#\n\nTilfeldigheter\n\nKom s\xE5 langt du kan"
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_margin.z
