@@ -55,16 +55,9 @@ MonoBehaviour:
     SpawnRate: 1
   DemoRoomProgression:
   - Class: 0
-    Room: {fileID: 2984549855192065283, guid: 0d58173fb14f9ab49932a76bb08a2c2f, type: 3}
-    Effects: 0
-    Theme: 1
-    FlipHorizontal: 0
-    MuteMusic: 1
-    HideUI: -1
-  - Class: 0
-    Room: {fileID: 2984549855192065283, guid: 98ea6eeb670a82145af4087d0e701afb, type: 3}
+    Room: {fileID: 2984549855192065283, guid: 93e00908493989d40aa5351f4e6bfad2, type: 3}
     Effects: 0
     Theme: 1
     FlipHorizontal: 0
     MuteMusic: 0
-    HideUI: -1
+    HideUI: 4027
