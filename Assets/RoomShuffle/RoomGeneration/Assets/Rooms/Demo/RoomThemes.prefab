@@ -29947,6 +29947,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8676cb9dc94824d9c2109a77437af6, type: 3}
+--- !u!1001 &8890934706898909755
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6119934799722506451}
+    m_Modifications:
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 76.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974948736311200584, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573411307234604180, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
+      propertyPath: m_Name
+      value: LavaBubble
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f7d3913d8674b444a916e0df688817d, type: 3}
 --- !u!1001 &9002644849838161612
 PrefabInstance:
   m_ObjectHideFlags: 0
