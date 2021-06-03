@@ -37,9 +37,7 @@ public class RoomGenerationDebugPage : DebugPage
 
                 Commons.RoomGenerator.CurrentRoomConfig.Theme = (RoomTheme)((current + 1) % max);
 
-                //Reload the tilemap
-                foreach (Tilemap i in Object.FindObjectsOfType<Tilemap>())
-                    i.RefreshAllTiles();
+                Commons.RoomGenerator.ReloadTheme(Commons.RoomGenerator.CurrentRoomConfig.Theme, Commons.RoomGenerator.CurrentRoomConfig.Effect.HasFlag(RoomEffects.Darkness));
             }
 
             if (Button("Room Effects"))

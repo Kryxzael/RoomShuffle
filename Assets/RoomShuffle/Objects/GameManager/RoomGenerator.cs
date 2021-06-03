@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -108,10 +109,9 @@ public class RoomGenerator : MonoBehaviour
     public void GenerateNext()
     {
         /*
-         * Destroy current room and background
+         * Destroy current room
          */
         DestroyImmediate(CurrentRoomObject);
-        Destroy(CurrentBackgroundObject);
 
 
         /*
@@ -151,23 +151,10 @@ public class RoomGenerator : MonoBehaviour
         History.RegisterHistory(parameters);
 
         /*
-         * Spawn background
-         */
-        if (!parameters.Effect.HasFlag(RoomEffects.Darkness))
-        {
-            var background = Backgrounds.SingleOrDefault(i => i.Theme == parameters.Theme);
-            
-            if (background != null)
-                CurrentBackgroundObject = Instantiate(background.Background);
-        }
-
-        /*
          * Post-generation setup
          */
 
-        //Reload tilesets
-        foreach (Tilemap i in FindObjectsOfType<Tilemap>())
-            i.RefreshAllTiles();
+        ReloadTheme(parameters.Theme, parameters.Effect.HasFlag(RoomEffects.Darkness));
 
         //Clear puzzle keys
         Commons.Inventory.PuzzleKeys = 0;
@@ -199,16 +186,6 @@ public class RoomGenerator : MonoBehaviour
         //Spawn the player
         FindObjectOfType<Entrance>().SpawnPlayer();
 
-        //Set light level
-        if (parameters.Theme == RoomTheme.Cave || parameters.Theme == RoomTheme.Volcano || parameters.Theme == RoomTheme.Snow)
-        {
-            FindObjectsOfType<Light>().Single(i => i.type == LightType.Directional).intensity = 0.25f;
-        }
-        else
-        {
-            FindObjectsOfType<Light>().Single(i => i.type == LightType.Directional).intensity = 1f;
-        }
-
         /*
          *  Add to seconds to speedrun timer
          */
@@ -224,6 +201,35 @@ public class RoomGenerator : MonoBehaviour
 
             Commons.CountdownTimer.AddTime(add);
         }
+    }
+
+    public void ReloadTheme(RoomTheme theme, bool dark)
+    {
+        //Set background
+        if (CurrentBackgroundObject != null)
+            Destroy(CurrentBackgroundObject);
+
+        if (!dark)
+        {
+            var background = Backgrounds.SingleOrDefault(i => i.Theme == theme);
+
+            if (background != null)
+                CurrentBackgroundObject = Instantiate(background.Background);
+        }
+
+        //Set light level
+        if (theme == RoomTheme.Cave || theme == RoomTheme.Volcano || theme == RoomTheme.Snow)
+        {
+            FindObjectsOfType<Light>().Single(i => i.type == LightType.Directional).intensity = 0.25f;
+        }
+        else
+        {
+            FindObjectsOfType<Light>().Single(i => i.type == LightType.Directional).intensity = 1f;
+        }
+
+        //Reload tilesets
+        foreach (Tilemap i in FindObjectsOfType<Tilemap>())
+            i.RefreshAllTiles();
     }
 
 

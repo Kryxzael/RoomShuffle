@@ -59,7 +59,7 @@ public class Button : MonoBehaviour
     /// <summary>
     /// Sets the button to be pressed if it isn't already
     /// </summary>
-    public void Press()
+    public virtual void Press()
     {
         if (Pressed)
             return;
@@ -75,7 +75,7 @@ public class Button : MonoBehaviour
     /// <summary>
     /// Sets the button to unpressed if it isn't already
     /// </summary>
-    public void DePress()
+    public virtual void DePress()
     {
         if (!Pressed)
             return;

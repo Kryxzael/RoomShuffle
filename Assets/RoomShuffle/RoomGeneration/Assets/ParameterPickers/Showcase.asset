@@ -55,7 +55,7 @@ MonoBehaviour:
     SpawnRate: 1
   DemoRoomProgression:
   - Class: 0
-    Room: {fileID: 4928483466949914506, guid: 8ea1bcbc613a077479020656f634335e, type: 3}
+    Room: {fileID: 3809425605124879164, guid: fe0ce4b601ccf4b4ca75f30795df826c, type: 3}
     Effects: 0
     Theme: 2
     FlipHorizontal: 0
