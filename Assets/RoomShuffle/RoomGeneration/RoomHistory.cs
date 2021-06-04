@@ -68,6 +68,16 @@ public class RoomHistory : IEnumerable<RoomParameters>
     }
 
     /// <summary>
+    /// Clears the history
+    /// </summary>
+    public void Clear()
+    {
+        var first = _history.First();
+        _history.Clear();
+        _history.Push(first);
+    }
+
+    /// <summary>
     /// <inheritdoc />
     /// </summary>
     /// <returns></returns>

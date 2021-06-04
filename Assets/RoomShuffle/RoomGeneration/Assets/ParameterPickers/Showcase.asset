@@ -54,10 +54,101 @@ MonoBehaviour:
   - Enemy: {fileID: 2136839923881057966, guid: fddb3b3f6c7ce2d4db38e51d7a54385f, type: 3}
     SpawnRate: 1
   DemoRoomProgression:
-  - Class: 0
-    Room: {fileID: 3809425605124879164, guid: fe0ce4b601ccf4b4ca75f30795df826c, type: 3}
+  - Class: 1
+    Room: {fileID: 2984549855192065283, guid: 0d58173fb14f9ab49932a76bb08a2c2f, type: 3}
+    Effects: 0
+    Theme: 1
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: -1
+  - Class: 2
+    Room: {fileID: 2984549855192065283, guid: 2b20798a490945b429644b1b799427cf, type: 3}
     Effects: 0
     Theme: 2
     FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: -1
+  - Class: 2
+    Room: {fileID: 2984549855192065283, guid: 98ea6eeb670a82145af4087d0e701afb, type: 3}
+    Effects: 0
+    Theme: 7
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: -1
+  - Class: 0
+    Room: {fileID: 2984549855192065283, guid: 93e00908493989d40aa5351f4e6bfad2, type: 3}
+    Effects: 0
+    Theme: 9
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 4027
+  - Class: 2
+    Room: {fileID: 2984549855192065283, guid: 78bd3743cb5dbe541a9ec9604d571897, type: 3}
+    Effects: 0
+    Theme: 8
+    FlipHorizontal: 0
     MuteMusic: 0
+    HideUI: 4017
+  - Class: 2
+    Room: {fileID: 6026251753484923945, guid: 9c5bb5e76c2639f409fef1cc66441828, type: 3}
+    Effects: 0
+    Theme: 6
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 1980
+  - Class: 2
+    Room: {fileID: 2984549855192065283, guid: c2b2f7186bb74e046a7c11c4e1e44482, type: 3}
+    Effects: 0
+    Theme: 2
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 3633
+  - Class: 2
+    Room: {fileID: 175062878375977997, guid: 4f7f75ed677406a4cad92123e90e9e85, type: 3}
+    Effects: 0
+    Theme: 3
+    FlipHorizontal: 0
+    MuteMusic: 1
     HideUI: 4093
+  - Class: 2
+    Room: {fileID: 4928483466949914506, guid: 8ea1bcbc613a077479020656f634335e, type: 3}
+    Effects: 0
+    Theme: 4
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: -1
+  - Class: 0
+    Room: {fileID: 2984549855192065283, guid: b67d0800d1e7baf488e58ffbbbf5449d, type: 3}
+    Effects: 256
+    Theme: 1
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 2047
+  - Class: 2
+    Room: {fileID: 2984549855192065283, guid: c2b4d0c6bc9ff824ea1eb760d1a52dc4, type: 3}
+    Effects: 1
+    Theme: 1
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 2047
+  - Class: 0
+    Room: {fileID: 2984549855192065283, guid: cdaf9c31c5068bb4d927eee754b72ee5, type: 3}
+    Effects: 2
+    Theme: 1
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 2047
+  - Class: 2
+    Room: {fileID: 3809425605124879164, guid: fe0ce4b601ccf4b4ca75f30795df826c, type: 3}
+    Effects: 0
+    Theme: 0
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: -1
+  - Class: 2
+    Room: {fileID: 2984549855192065283, guid: 3191679196cad7945b4bd3e7541e9e4c, type: 3}
+    Effects: 0
+    Theme: 3
+    FlipHorizontal: 0
+    MuteMusic: 1
+    HideUI: 0
