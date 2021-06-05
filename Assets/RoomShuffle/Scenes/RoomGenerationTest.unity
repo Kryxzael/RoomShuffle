@@ -1222,15 +1222,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9998708
+      value: 0.9992136
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9998708
+      value: 0.9992136
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9998708
+      value: 0.9992136
       objectReference: {fileID: 0}
     - target: {fileID: 2595672063792507724, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1658,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Seed
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: Background
@@ -1666,7 +1666,7 @@ PrefabInstance:
       objectReference: {fileID: 6700715351123667358, guid: 942a331eedafe0d45aacb52ac9e5623b, type: 3}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: UseRandomSeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8590704838524601615, guid: e36caeee739765844bcf00cd2fea136b, type: 3}
       propertyPath: RoomParameterBuilder

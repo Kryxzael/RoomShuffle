@@ -123,21 +123,21 @@ MonoBehaviour:
     Theme: 1
     FlipHorizontal: 0
     MuteMusic: 1
-    HideUI: 2047
+    HideUI: 1983
   - Class: 2
     Room: {fileID: 2984549855192065283, guid: c2b4d0c6bc9ff824ea1eb760d1a52dc4, type: 3}
     Effects: 1
     Theme: 1
     FlipHorizontal: 0
     MuteMusic: 1
-    HideUI: 2047
+    HideUI: 1983
   - Class: 0
     Room: {fileID: 2984549855192065283, guid: cdaf9c31c5068bb4d927eee754b72ee5, type: 3}
     Effects: 2
     Theme: 1
     FlipHorizontal: 0
     MuteMusic: 1
-    HideUI: 2047
+    HideUI: 1983
   - Class: 2
     Room: {fileID: 3809425605124879164, guid: fe0ce4b601ccf4b4ca75f30795df826c, type: 3}
     Effects: 0
@@ -145,10 +145,10 @@ MonoBehaviour:
     FlipHorizontal: 0
     MuteMusic: 1
     HideUI: -1
-  - Class: 2
-    Room: {fileID: 2984549855192065283, guid: 3191679196cad7945b4bd3e7541e9e4c, type: 3}
+  - Class: 1
+    Room: {fileID: 6667954375096041687, guid: 71569c83818cf9d41b446f8f9e38ba9a, type: 3}
     Effects: 0
-    Theme: 3
+    Theme: 1
     FlipHorizontal: 0
-    MuteMusic: 1
-    HideUI: 0
+    MuteMusic: 0
+    HideUI: 512
