@@ -77,7 +77,7 @@ public class JumpController : MonoBehaviour
          * Update last grounded position
          */
         if (onGround)
-            _lastGroundedPosition = PositionSnapshot.FromObject(_flippable);
+            _lastGroundedPosition = PositionSnapshot.FromObjects(_flippable);
 
         DebugScreenDrawer.Enable("onground", "onground: " + onGround);
         DebugScreenDrawer.Enable("mayjump", "mayjump: " + mayJump);
@@ -87,7 +87,7 @@ public class JumpController : MonoBehaviour
          */
         if (Input.GetButtonDown("Jump"))
         {
-            _lastAttemptedJumpPosition = PositionSnapshot.FromObject(_flippable);
+            _lastAttemptedJumpPosition = PositionSnapshot.FromObjects(_flippable);
 
             if (mayJump)
             {
@@ -208,7 +208,7 @@ public class JumpController : MonoBehaviour
     
     public void CaptureSuccessfulJumpSnapshot()
     {
-        _lastSuccessfulJumpPosition = PositionSnapshot.FromObject(_flippable);
+        _lastSuccessfulJumpPosition = PositionSnapshot.FromObjects(_flippable);
         _lastAttemptedJumpPosition = _lastSuccessfulJumpPosition;
     }
 }

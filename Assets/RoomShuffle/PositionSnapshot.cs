@@ -27,20 +27,31 @@ public struct PositionSnapshot
     /// </summary>
     public DateTime Time { get; }
 
-    private PositionSnapshot(Vector2 pos, Direction1D dir, DateTime time)
+    /// <summary>
+    /// Gets the animation the player was in when the snapshot was taken
+    /// </summary>
+	public SpriteAnimation Animation { get; }
+
+	private PositionSnapshot(Vector2 pos, Direction1D dir, DateTime time, SpriteAnimation animation)
     {
         Position = pos;
         Direction = dir;
         Time = time;
-    }
+		Animation = animation;
+	}
 
     /// <summary>
     /// Extracts a new position snapshot from the provided object
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public static PositionSnapshot FromObject(Flippable obj)
+    public static PositionSnapshot FromObjects(Flippable obj, SpriteAnimator animator = null)
     {
-        return new PositionSnapshot(obj.transform.position, obj.Direction, DateTime.Now);
+        SpriteAnimation animation = null;
+
+        if (animator)
+            animation = animator.Animation;
+
+        return new PositionSnapshot(obj.transform.position, obj.Direction, DateTime.Now, animation);
     }
 }
