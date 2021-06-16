@@ -49,11 +49,14 @@ public class RoomEffectController : MonoBehaviour
     public float IcyGroundMaxSpeedMultiplier = 1.2f;
 
     [Header("Mimics")]
-    [Tooltip("The list of mimicker intervals that will be spawned when Mimic is enabled")]
+    [Tooltip("The list of mimicker intervals that will be spawned when mimic is enabled")]
     public List<float> MimickerDelays = new List<float>() { 1 };
 
-    [Tooltip("The mimick object to spawn when Mimic is enabled")]
-    public Mimicker MimickerPrefab;
+    [Tooltip("The mimicker object to spawn as the first mimicker when mimic is enabled")]
+    public Mimicker FirstMimickerPrefab;
+
+    [Tooltip("The mimicker object to spawn as the second, third, etc. mimic when mimic is enabled")]
+    public Mimicker RemainingMimickerPrefab;
 
     /// <summary>
     /// Runs when a new room is generated
@@ -185,8 +188,12 @@ public class RoomEffectController : MonoBehaviour
 
             var playerHitbox = this.GetPlayer().GetComponentInChildren<Hitbox>();
 
+            var mimic = FirstMimickerPrefab;
             foreach (float i in MimickerDelays)
-                Commons.InstantiateInCurrentLevel(MimickerPrefab, playerHitbox.transform.position).Delay = i;
+			{
+                Commons.InstantiateInCurrentLevel(mimic, playerHitbox.transform.position).Delay = i;
+                mimic = RemainingMimickerPrefab;
+			}
 
             playerHitbox.GrantInvincibilityFrames();
         }
