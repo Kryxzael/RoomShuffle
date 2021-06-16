@@ -47,6 +47,13 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("By how much the player's maximum ground speed will be multiplied when icy is enabled")]
     public float IcyGroundMaxSpeedMultiplier = 1.2f;
 
+    [Header("Mimics")]
+    [Tooltip("The list of mimicker intervals that will be spawned when Mimic is enabled")]
+    public List<float> MimickerDelays = new List<float>() { 1 };
+
+    [Tooltip("The mimick object to spawn when Mimic is enabled")]
+    public Mimicker MimickerPrefab;
+
     /// <summary>
     /// Runs when a new room is generated
     /// </summary>
@@ -58,6 +65,7 @@ public class RoomEffectController : MonoBehaviour
         Darkness(fx.HasFlag(RoomEffects.Darkness));
         LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
         Timer(fx.HasFlag(RoomEffects.Timer), room);
+        Mimickers(fx.HasFlag(RoomEffects.Mimic));
     }
 
     private void Update()
@@ -157,6 +165,22 @@ public class RoomEffectController : MonoBehaviour
         {
             Commons.CountdownTimer.StopCountdown();
             Commons.CountdownTimer.HideTimer();
+        }
+    }
+
+    /// <summary>
+    /// Setsd the mimic effect
+    /// </summary>
+    private void Mimickers(bool enabled)
+	{
+        if (enabled)
+		{
+            var playerHitbox = this.GetPlayer().GetComponentInChildren<Hitbox>();
+
+            foreach (float i in MimickerDelays)
+                Commons.InstantiateInCurrentLevel(MimickerPrefab, playerHitbox.transform.position).Delay = i;
+
+            playerHitbox.GrantInvincibilityFrames();
         }
     }
 }

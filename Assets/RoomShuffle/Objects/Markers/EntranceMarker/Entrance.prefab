@@ -109,3 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 7829438793687919276, guid: d2452234a9bcedc498a60b2720ebe8ca, type: 3}
+  Mimicker: {fileID: 3095460254914944617, guid: 5aab7e8ac1bf2ec4ea039085a26710d5, type: 3}

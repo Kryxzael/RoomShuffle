@@ -889,6 +889,9 @@ MonoBehaviour:
   IcyGroundAccelerationMultiplier: 0.5
   IcyGroundDecelerationMultiplier: 0.1
   IcyGroundMaxSpeedMultiplier: 1.2
+  MimickerDelays:
+  - 1
+  MimickerPrefab: {fileID: 3095460254914944617, guid: 5aab7e8ac1bf2ec4ea039085a26710d5, type: 3}
 --- !u!114 &7945820380264407300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,15 +1049,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1356627622781255366, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0000044
+      value: 0.9991022
       objectReference: {fileID: 0}
     - target: {fileID: 1356627622781255366, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0000044
+      value: 0.9991022
       objectReference: {fileID: 0}
     - target: {fileID: 1356627622781255366, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0000044
+      value: 0.9991022
       objectReference: {fileID: 0}
     - target: {fileID: 2273225430703054338, guid: efdc6662052df5b499c2f33dbbe5f9ec, type: 3}
       propertyPath: m_fontSize

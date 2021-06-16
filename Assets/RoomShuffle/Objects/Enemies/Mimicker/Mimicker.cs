@@ -30,6 +30,8 @@ public class Mimicker : MonoBehaviour
 		var animator = GetComponent<SpriteAnimator>();
 		var flippable = GetComponent<Flippable>();
 
+		Commons.SoundtrackPlayer.AddAdrenalineTrigger(this);
+
 		/*
 		 * Get player info and begin pulse
 		 */
@@ -125,5 +127,11 @@ public class Mimicker : MonoBehaviour
 
 		if (KeyFrames.Count > 500)
 			KeyFrames.Dequeue();
+	}
+
+	private void OnDestroy()
+	{
+		if (Commons.SoundtrackPlayer)
+			Commons.SoundtrackPlayer.RemoveTrigger(this);
 	}
 }

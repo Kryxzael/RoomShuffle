@@ -58,5 +58,10 @@ public enum RoomEffects
     /// <summary>
     /// The room will have a time limit that the player must complete the room within
     /// </summary>
-    Timer = 0x200
+    Timer = 0x200,
+
+    /// <summary>
+    /// The room will spawn enemies that follow the player
+    /// </summary>
+    Mimic = 0x400,
 }

@@ -44,6 +44,7 @@ public class RoomEffectText : MonoBehaviour
             RoomEffects.ReverseControls => "Reversed Controls",
             RoomEffects.Icy => "Slippery",
             RoomEffects.Timer => "Time Limit",
+            RoomEffects.Mimic => "Mimic",
             _ => "Multiple",
         };
 
