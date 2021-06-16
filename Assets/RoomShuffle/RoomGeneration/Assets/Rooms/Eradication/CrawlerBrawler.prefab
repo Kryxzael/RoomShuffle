@@ -6311,7 +6311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: ExcludedEffects
-      value: 128
+      value: 1152
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: TimerEffectSeconds

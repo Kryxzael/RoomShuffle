@@ -1303,6 +1303,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
+      propertyPath: ExcludedEffects
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: TimerEffectSeconds
       value: 15
       objectReference: {fileID: 0}

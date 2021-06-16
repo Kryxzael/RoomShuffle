@@ -845,7 +845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1246828547724021540, guid: efaa56dc965cce54283e011688d18bb4, type: 3}
       propertyPath: m_SortingLayer
-      value: -3
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 2317758100567776970, guid: efaa56dc965cce54283e011688d18bb4, type: 3}
       propertyPath: m_Name
@@ -4622,6 +4622,10 @@ PrefabInstance:
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: EntranceSides
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
+      propertyPath: ExcludedEffects
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: TimerEffectSeconds

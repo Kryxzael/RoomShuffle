@@ -1,21 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4570341571296924553
+--- !u!114 &4225606166259768564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6833034016219740353}
+  m_GameObject: {fileID: 1251797857086513944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e3c9d7502d803a43bb180ff549e0146, type: 3}
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChainGroup: 0
-  ChainStep: 0
-  ReverseAnimation: 0
-  AnimationDelay: 0.1
+  Horizontal: 1
+  BobHeight: 2
+  BobSpeed: 2
+  MaxOffset: 1
+  UseRandomBobbing: 1
 --- !u!1 &2338696957186134754
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +70,55 @@ MonoBehaviour:
   BobSpeed: 2
   MaxOffset: 1
   UseRandomBobbing: 0
+--- !u!114 &7847914754985249983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3418945754254004298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3c9d7502d803a43bb180ff549e0146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainGroup: 0
+  ChainStep: 1
+  ReverseAnimation: 0
+  AnimationDelay: 0.1
+--- !u!114 &6199152541176310069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139771663735522518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  BobHeight: 2
+  BobSpeed: 1
+  MaxOffset: 1
+  UseRandomBobbing: 1
+--- !u!114 &4570341571296924553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833034016219740353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3c9d7502d803a43bb180ff549e0146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChainGroup: 0
+  ChainStep: 0
+  ReverseAnimation: 0
+  AnimationDelay: 0.1
 --- !u!114 &7928509039322369267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,39 +163,6 @@ MonoBehaviour:
   PlayOnDestroy: 0
   PlayOnUpdate: 0
   ClipIndex: 0
---- !u!114 &6199152541176310069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6139771663735522518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Horizontal: 0
-  BobHeight: 2
-  BobSpeed: 1
-  MaxOffset: 1
-  UseRandomBobbing: 1
---- !u!114 &7847914754985249983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3418945754254004298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e3c9d7502d803a43bb180ff549e0146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChainGroup: 0
-  ChainStep: 1
-  ReverseAnimation: 0
-  AnimationDelay: 0.1
 --- !u!1 &8838932926902051774
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,23 +211,6 @@ MonoBehaviour:
   ChainStep: 2
   ReverseAnimation: 0
   AnimationDelay: 0.1
---- !u!114 &4225606166259768564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251797857086513944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c869f63167465cb43889176b17524e02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Horizontal: 1
-  BobHeight: 2
-  BobSpeed: 2
-  MaxOffset: 1
-  UseRandomBobbing: 1
 --- !u!1001 &137627170977184046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14582,7 +14582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: ExcludedEffects
-      value: 384
+      value: 1408
       objectReference: {fileID: 0}
     - target: {fileID: 6026251753484923945, guid: edbaaa850dbf96647b75412358c74dcc, type: 3}
       propertyPath: TimerEffectSeconds
