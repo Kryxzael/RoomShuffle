@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -169,12 +170,19 @@ public class RoomEffectController : MonoBehaviour
     }
 
     /// <summary>
-    /// Setsd the mimic effect
+    /// Sets the mimic effect
     /// </summary>
     private void Mimickers(bool enabled)
 	{
         if (enabled)
 		{
+            StartCoroutine(WaitForPlayerSpawn());
+        }
+
+        IEnumerator WaitForPlayerSpawn()
+		{
+            yield return new WaitUntil(() => this.GetPlayer());
+
             var playerHitbox = this.GetPlayer().GetComponentInChildren<Hitbox>();
 
             foreach (float i in MimickerDelays)
