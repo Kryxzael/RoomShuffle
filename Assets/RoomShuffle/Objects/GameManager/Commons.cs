@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// </summary>
 public static class Commons
 {
-
     private static RenewableLazy<RoomGenerator> _roomGenerator { get; } = new RenewableLazy<RoomGenerator>(
         () => Object.FindObjectOfType<RoomGenerator>()
     );

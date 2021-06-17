@@ -12,7 +12,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteAnimator))]
 public class Mimicker : MonoBehaviour
 {
-	private const float KEYFRAME_INTERVAL_SECONDS = 0.1f;
+	private const float KEYFRAME_INTERVAL_SECONDS = 0.05f;
 
 	/* *** */
 
@@ -24,13 +24,20 @@ public class Mimicker : MonoBehaviour
 
 	public Queue<PositionSnapshot> KeyFrames = new Queue<PositionSnapshot>();
 	public float Delay = 1f;
+	public bool ActivatesAdrenaline;
 
-	private IEnumerator Start()
+	private void OnEnable()
+	{
+		StartCoroutine(PerformMimic());
+	}
+
+	private IEnumerator PerformMimic()
 	{
 		var animator = GetComponent<SpriteAnimator>();
 		var flippable = GetComponent<Flippable>();
 
-		Commons.SoundtrackPlayer.AddAdrenalineTrigger(this);
+		if (ActivatesAdrenaline)
+			Commons.SoundtrackPlayer.AddAdrenalineTrigger(this);
 
 		/*
 		 * Get player info and begin pulse

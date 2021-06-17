@@ -42,6 +42,7 @@ public class CharacterAnimator : MonoBehaviour
     private WallJump _wallJump;
     private Flippable _flippable;
     private SpriteRenderer _spriteRenderer;
+    private TrailController _trail;
 
     private RenewableLazy<PlayerWeaponShooter> _playerShooter = new RenewableLazy<PlayerWeaponShooter>(() => FindObjectOfType<PlayerWeaponShooter>());
 
@@ -52,11 +53,34 @@ public class CharacterAnimator : MonoBehaviour
         _flippable = GetComponent<Flippable>();
         _wallJump = GetComponent<WallJump>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _trail = GetComponentInChildren<TrailController>();
     }
 
     void Update()
     {
         const float MIN_MOTION = 0.5f;
+
+        /*
+         * Set trail
+         */
+
+        if (Commons.PowerUpManager.HasPowerUp(PowerUp.AttackUp))
+            _trail.SetTrail(Color.red, 0f, 0.1f);
+
+        else if (Commons.PowerUpManager.HasPowerUp(PowerUp.DefenseUp))
+            _trail.SetTrail(Color.blue, 0f, 0.1f);
+
+        else if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
+            _trail.SetTrail(Color.black, 0f, 2f);
+
+        else if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
+            _trail.SetTrail(_spriteRenderer.color, 0.025f, 0.15f);
+
+        else if (Water.IsSubmerged(_rigid))
+            _trail.SetTrail(Color.black, 0f, 0.1f);
+
+        else
+            _trail.DisableTrail();
 
         /*
          * Override animation is noclip is enabled

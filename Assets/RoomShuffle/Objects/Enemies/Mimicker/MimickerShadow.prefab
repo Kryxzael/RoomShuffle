@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MimickerShadow
       objectReference: {fileID: 0}
+    - target: {fileID: 3095460254914944617, guid: 5aab7e8ac1bf2ec4ea039085a26710d5, type: 3}
+      propertyPath: ActivatesAdrenaline
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3247148967285645709, guid: 5aab7e8ac1bf2ec4ea039085a26710d5, type: 3}
       propertyPath: m_Color.a
       value: 0.2901961

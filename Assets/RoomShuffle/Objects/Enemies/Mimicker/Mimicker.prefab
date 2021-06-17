@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Delay: 2.5
+  ActivatesAdrenaline: 1
 --- !u!114 &5214097860110143568
 MonoBehaviour:
   m_ObjectHideFlags: 0
