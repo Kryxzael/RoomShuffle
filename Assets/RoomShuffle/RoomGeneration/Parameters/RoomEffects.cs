@@ -64,4 +64,9 @@ public enum RoomEffects
     /// The room will spawn enemies that follow the player
     /// </summary>
     Mimic = 0x400,
+
+    /// <summary>
+    /// The room will be flooded
+    /// </summary>
+    Flood = 0x800
 }

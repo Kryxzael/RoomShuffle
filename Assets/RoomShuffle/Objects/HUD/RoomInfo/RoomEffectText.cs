@@ -45,6 +45,7 @@ public class RoomEffectText : MonoBehaviour
             RoomEffects.Icy => "Slippery",
             RoomEffects.Timer => "Time Limit",
             RoomEffects.Mimic => "Mimic",
+            RoomEffects.Flood => "Flood",
             _ => "Multiple",
         };
 

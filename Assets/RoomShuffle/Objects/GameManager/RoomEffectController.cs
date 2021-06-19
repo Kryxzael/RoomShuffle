@@ -58,6 +58,9 @@ public class RoomEffectController : MonoBehaviour
     [Tooltip("The mimicker object to spawn as the second, third, etc. mimic when mimic is enabled")]
     public Mimicker RemainingMimickerPrefab;
 
+    [Header("Flood")]
+    public GameObject FloodPrefab;
+
     /// <summary>
     /// Runs when a new room is generated
     /// </summary>
@@ -70,6 +73,7 @@ public class RoomEffectController : MonoBehaviour
         LargeEnemies(fx.HasFlag(RoomEffects.LargeEnemies));
         Timer(fx.HasFlag(RoomEffects.Timer), room);
         Mimickers(fx.HasFlag(RoomEffects.Mimic));
+        Flood(fx.HasFlag(RoomEffects.Flood));
     }
 
     private void Update()
@@ -198,4 +202,34 @@ public class RoomEffectController : MonoBehaviour
             playerHitbox.GrantInvincibilityFrames();
         }
     }
+
+    private void Flood(bool enabled)
+	{
+        if (enabled)
+		{
+            foreach (var i in FindObjectsOfType<Water>())
+                Destroy(i.gameObject);
+
+            Rect levelArea = new Rect();
+            var topLeft = FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.TopLeft);
+            var bottomRight = FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.BottomRight);
+
+            if (!(topLeft && bottomRight))
+			{
+                Debug.LogWarning("Cannot use flood effect because room lacks camera locks");
+                return;
+            }
+
+            levelArea.xMin = topLeft.transform.position.x;
+            levelArea.xMax = bottomRight.transform.position.x;
+
+            levelArea.yMin = bottomRight.transform.position.y;
+            levelArea.yMax = topLeft.transform.position.y + 2;
+
+
+            var obj = Commons.InstantiateInCurrentLevel(FloodPrefab, levelArea.center);
+            obj.GetComponent<SpriteRenderer>().size = levelArea.size;
+		}
+
+	}
 }
