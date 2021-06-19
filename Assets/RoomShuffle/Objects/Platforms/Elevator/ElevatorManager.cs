@@ -24,6 +24,9 @@ public class ElevatorManager : MonoBehaviour
     [Tooltip("Sets the number of elevator carts that should spawn. 0 or less = infinite")]
     public int NumberOfCarts;
 
+    [Tooltip("If enabled, the manager will be disabled if the room is flooded")]
+    public bool DoNotSpawnWhenFlood;
+
     [Header("Cart Settings")]
     [Tooltip("The elevator cart prefab")]
     public Elevator CartPrefab;
@@ -102,6 +105,12 @@ public class ElevatorManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (DoNotSpawnWhenFlood && Commons.CurrentRoomEffects.HasFlag(RoomEffects.Flood))
+		{
+            gameObject.SetActive(false);
+            yield break;
+        }
+
         //Sets the amount of elevators to spawn
         int numberOfElevators = NumberOfCarts;
 

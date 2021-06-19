@@ -23,6 +23,9 @@ public class FerrisWheel : MonoBehaviour
     [Tooltip("The radius of the ferris wheel")]
     public float Radius;
 
+    [Tooltip("If enabled, the manager will be disabled if the room is flooded")]
+    public bool DoNotSpawnWhenFlood;
+
     [Header("Platform")]
     [Tooltip("The platform(s) that circles around")]
     public GameObject Platform;
@@ -54,6 +57,12 @@ public class FerrisWheel : MonoBehaviour
 
     void Start()
     {
+        if (DoNotSpawnWhenFlood && Commons.CurrentRoomEffects.HasFlag(RoomEffects.Flood))
+		{
+            gameObject.SetActive(false);
+            return;
+        }
+            
 
         for (int i = 0; i < NumberOfPlatforms; i++)
         {

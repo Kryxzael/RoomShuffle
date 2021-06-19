@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Frequency: 0
   NumberOfCarts: 5
+  DoNotSpawnWhenFlood: 1
   CartPrefab: {fileID: 4043712400652429371, guid: 87aa2bf7bd496cb46a57921f8b1484dd, type: 3}
   EOLOption: 1
   CartSpeed: 5
@@ -73105,6 +73106,10 @@ PrefabInstance:
     - target: {fileID: 8745711018509690392, guid: 222a61de25ba34f4eab163f2aa5c6849, type: 3}
       propertyPath: NumberOfPlatforms
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745711018509690392, guid: 222a61de25ba34f4eab163f2aa5c6849, type: 3}
+      propertyPath: DoNotSpawnWhenFlood
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8745711018509690393, guid: 222a61de25ba34f4eab163f2aa5c6849, type: 3}
       propertyPath: m_Name
