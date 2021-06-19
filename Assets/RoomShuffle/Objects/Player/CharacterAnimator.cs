@@ -68,16 +68,13 @@ public class CharacterAnimator : MonoBehaviour
             _trail.SetTrail(Color.red, 0f, 0.1f);
 
         else if (Commons.PowerUpManager.HasPowerUp(PowerUp.DefenseUp))
-            _trail.SetTrail(Color.blue, 0f, 0.1f);
+            _trail.SetTrail(new Color(28f / 0xFF, 129f / 0xFF, 217f / 0xff), 0f, 0.1f);
 
         else if (Commons.PowerUpManager.HasPowerUp(PowerUp.SlowDown))
             _trail.SetTrail(Color.black, 0f, 2f);
 
         else if (Commons.PowerUpManager.HasPowerUp(PowerUp.Invincibility))
             _trail.SetTrail(_spriteRenderer.color, 0.025f, 0.15f);
-
-        else if (Water.IsSubmerged(_rigid))
-            _trail.SetTrail(Color.black, 0f, 0.1f);
 
         else
             _trail.DisableTrail();
