@@ -208,7 +208,12 @@ public class RoomEffectController : MonoBehaviour
         if (enabled)
 		{
             foreach (var i in FindObjectsOfType<Water>())
+			{
+                if (i.GetComponent<SoftKillHurtbox>())
+                    continue;
+
                 Destroy(i.gameObject);
+			}
 
             Rect levelArea = new Rect();
             var topLeft = FindObjectsOfType<CameraStopPoint>().SingleOrDefault(i => i.Corner == CameraStopPoint.CamStopCorner.TopLeft);
