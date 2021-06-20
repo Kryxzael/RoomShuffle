@@ -39,7 +39,7 @@ public class PriorityTextLabel : MonoBehaviour
 		bool hpLow = Commons.PlayerHealth.Health <= Commons.PlayerHealth.GetSoftDeathDamage();
 
 		if (!_lastKnownHealthNeed && hpLow)
-			Set($"WARNING:{Environment.NewLine}Low Health", 3f);
+			Set($"WARNING{Environment.NewLine}Low Health", 3f);
 
 		_lastKnownHealthNeed = hpLow;
 
@@ -49,7 +49,7 @@ public class PriorityTextLabel : MonoBehaviour
 		int enemyLevel = Commons.EnemyProgression.DamageLevel;
 
 		if (enemyLevel > _lastKnownEnemyLevel && enemyLevel > Commons.PlayerProgression.DamageLevel)
-			Set($"CAUTION:{Environment.NewLine}Underleveled", 3f);
+			Set($"CAUTION{Environment.NewLine}Underleveled", 3f);
 
 		_lastKnownEnemyLevel = enemyLevel;
 
@@ -59,7 +59,7 @@ public class PriorityTextLabel : MonoBehaviour
 		bool needsAmmo = RequiredItemLootTable.InNeedOfWeapons();
 
 		if (!_lastKnownAmmoNeed && needsAmmo)
-			Set($"WARNING:{Environment.NewLine}Low Ammo", 3f);
+			Set($"WARNING{Environment.NewLine}Low Ammo", 3f);
 
 		_lastKnownAmmoNeed = needsAmmo;
 	}
