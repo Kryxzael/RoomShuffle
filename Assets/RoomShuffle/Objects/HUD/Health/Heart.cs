@@ -39,8 +39,6 @@ public class Heart : MonoBehaviour
 
     private void Update()
     {
-        Commons.PlayerHealth.Health = 100;
-
         //if the player is near death, set the container images to the "danger" variant
         if (Commons.PlayerHealth.Health - Commons.PlayerHealth.GetSoftDeathDamage() <= 0)
         {
