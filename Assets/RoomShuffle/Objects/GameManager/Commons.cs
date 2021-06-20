@@ -81,6 +81,10 @@ public static class Commons
         () => GameObject.Find("ScreenSpacePlayer").GetComponent<Image>()
     );
 
+    private static RenewableLazy<PriorityTextLabel> _priorityTextLabel { get; } = new RenewableLazy<PriorityTextLabel>(
+        () => Object.FindObjectOfType<PriorityTextLabel>()
+    );
+
     /*
      * Room Generation
      */
@@ -178,6 +182,11 @@ public static class Commons
     /// Gets the screen space player image
     /// </summary>
     public static Image ScreenSpacePlayer => _screenSpacePlayer.Value;
+
+    /// <summary>
+    /// Gets the text that displays warnings
+    /// </summary>
+    public static PriorityTextLabel PriorityTextLabel => _priorityTextLabel.Value;
 
 
     /*

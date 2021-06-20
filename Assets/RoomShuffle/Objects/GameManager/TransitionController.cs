@@ -18,12 +18,6 @@ public class TransitionController : MonoBehaviour
 {
     //Has the player died before?
     private bool _playerDied = false;
-
-    /* *** */
-
-    [Tooltip("The text label that shows the GAME OVER text")]
-    public TextMeshProUGUI GameOverText;
-
     private void Update()
     {
         //Player has died
@@ -51,7 +45,7 @@ public class TransitionController : MonoBehaviour
         yield return new WaitForSecondsRealtime(GAME_OVER_WAIT_TIME);
 
         //Show game over text
-        GameOverText.gameObject.SetActive(true);
+        Commons.PriorityTextLabel.SetIndefinite($"Critical Power Loss{Environment.NewLine}{Environment.NewLine}Game Over", true);
 
         yield return new WaitUntil(() => Input.anyKeyDown);
 

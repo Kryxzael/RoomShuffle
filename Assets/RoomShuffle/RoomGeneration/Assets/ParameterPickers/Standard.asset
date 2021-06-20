@@ -93,5 +93,5 @@ MonoBehaviour:
     Minimum: 3
     Maximum: 10
   RoomEffectFrequency:
-    Minimum: 4
-    Maximum: 6
+    Minimum: 2
+    Maximum: 5
