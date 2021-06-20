@@ -39,16 +39,25 @@ public class Heart : MonoBehaviour
 
     private void Update()
     {
-        //if the player is near death, set the container images to the "danger" -variant
+        Commons.PlayerHealth.Health = 100;
+
+        //if the player is near death, set the container images to the "danger" variant
         if (Commons.PlayerHealth.Health - Commons.PlayerHealth.GetSoftDeathDamage() <= 0)
         {
             containerImage.sprite = ContainerImageDanger;
             cakeImage.sprite = FillImageDanger;
+
+
+            const float PULSE_SPEED = 10f;
+            const float PULSE_DEPTH = 0.7f;
+            containerImage.color = cakeImage.color = Color.Lerp(Color.white, new Color(PULSE_DEPTH, PULSE_DEPTH, PULSE_DEPTH), Mathf.Sin(Time.unscaledTime * PULSE_SPEED));
         }
         else
         {
             containerImage.sprite = ContainerImageNormal;
             cakeImage.sprite = FillImageNormal;
+
+            containerImage.color = cakeImage.color = Color.white;
         }
     }
 
