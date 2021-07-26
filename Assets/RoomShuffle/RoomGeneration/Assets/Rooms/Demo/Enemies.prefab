@@ -206,12 +206,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: 'Angrip Fienden
+      value: 'Attack the enemy
 
 
-        Dynamisk Musikk
+        Dynamic music
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
+      propertyPath: m_margin.x
+      value: -2.0931168
       objectReference: {fileID: 0}
     - target: {fileID: 1516624083889325281, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_Name
@@ -312,13 +316,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: 'Hoved Hinder
+      value: 'Primary obsticles
 
 
-        Passive / Aktive
+        Passive / Active
 
 
-        Slipper "items"'
+        Drops items'
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_margin.z
@@ -679,9 +683,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_text
-      value: 'Fiender
-
-'
+      value: Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 3745449973390625784, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_Name
@@ -1246,7 +1248,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: Mister Batteri ved kontakt
+      value: Loses battery on contact
       objectReference: {fileID: 0}
     - target: {fileID: 1516624083889325281, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_Name
@@ -1523,7 +1525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Gir en midlertidlig "boost"
+      value: Grants a temporary boost
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
@@ -2400,11 +2402,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Fyller opp spillerens batteri
+      value: Restores some of the player's battery
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Liv
+      value: Health
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name

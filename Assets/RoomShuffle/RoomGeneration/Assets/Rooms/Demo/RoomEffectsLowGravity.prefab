@@ -408,7 +408,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: 'Effekt: Lav Gravitasjon'
+      value: 'Effect: Low Gravity'
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_VerticalAlignment

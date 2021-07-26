@@ -1028,7 +1028,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: "Unity og C#\n\n\n\nKom s\xE5 langt du kan\n\nTilfeldigheter"
+      value: 'Unity & C#
+
+
+
+
+        Get as far as you can
+
+
+        Randomness'
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_margin.z
@@ -1311,7 +1319,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: Inspirasjon
+      value: Inspiration
       objectReference: {fileID: 0}
     - target: {fileID: 1516624083889325281, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_Name
@@ -1619,7 +1627,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_text
-      value: Konsept
+      value: Concept
       objectReference: {fileID: 0}
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -2315,7 +2323,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_text
-      value: "* Struktur\n* Tema\n* Effekt\n* Fiender\n* V\xE5pen\n* Annet...?"
+      value: '* Level Layour
+
+        * Theme
+
+        * Effects
+
+        * Enemies
+
+        *
+        Weapons
+
+        * Etc...?'
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_HorizontalAlignment

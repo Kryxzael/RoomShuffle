@@ -408,7 +408,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: 'Effekt: Is'
+      value: 'Effect: Slippery'
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_VerticalAlignment
@@ -488,11 +488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548026767801681767, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 55.5
+      value: 55.07
       objectReference: {fileID: 0}
     - target: {fileID: 8548026767801681767, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 25.02
       objectReference: {fileID: 0}
     - target: {fileID: 8548026767801681767, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1025,7 +1025,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_text
-      value: Romeffekter
+      value: Room effects
       objectReference: {fileID: 0}
     - target: {fileID: 3745449973390625784, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_Name

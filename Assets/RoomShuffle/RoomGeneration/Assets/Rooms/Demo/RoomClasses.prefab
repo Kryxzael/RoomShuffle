@@ -519,7 +519,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_text
-      value: Romklasser
+      value: Room classes
       objectReference: {fileID: 0}
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -867,12 +867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Om du finner en gylden n\xF8kkel kan du bruke den til \xE5 \xE5pne
-        d\xF8rer"
+      value: If the player finds a golden key, they can use it to unlock these doors
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Hemmelige rom
+      value: Secret rooms
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -998,11 +997,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Du m\xE5 bekjempe alle fiendene for \xE5 fortsette"
+      value: The player must defeat all enemies to progress
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Utryddelse
+      value: Eradication
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -1067,12 +1066,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Spilleren m\xE5 l\xF8se et problem, som \xE5 legge en boks p\xE5 en
-        knapp"
+      value: "The player must solve a problem, \nlike putting a box on a button"
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Probleml\xF8sning"
+      value: Puzzle
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -1312,7 +1310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "En hinderl\xF8ype som krever presisjonerte hopp og bevegelse"
+      value: A gauntlet that requires precise jumps and movement
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text

@@ -13,9 +13,9 @@ PrefabInstance:
       objectReference: {fileID: 3933581563958626510, guid: 6ac65813fa7ed5f46bc2f1b8874b6419, type: 2}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: 'Av Kasper Ramskjell
+      value: 'By  Kasper Ramskjell
 
-        Og Tormod Kvitberg'
+        And Tormod Kvitberg'
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_fontSize
@@ -148,9 +148,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_text
-      value: '2D Spillutvikling i Unity
+      value: '2D Gamedevelopment in Unity
 
-        Bacheloroppgave'
+        Bachelor thesis'
       objectReference: {fileID: 0}
     - target: {fileID: 880090134844251484, guid: 258961353c6f9e54e9123f9b94e6f8cd, type: 3}
       propertyPath: m_VerticalAlignment

@@ -138,7 +138,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Du kan sv\xF8mme fritt i vann"
+      value: You can freely swim in water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_margin.x
+      value: 1.1026993
       objectReference: {fileID: 0}
     - target: {fileID: 5016352127366957290, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_SizeDelta.x
@@ -158,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Vann
+      value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -389,7 +393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_text
-      value: "Bruk hoppeknappen til \xE5 sv\xF8mme oppover..."
+      value: Press the jump button to swim towards the surface...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
+      propertyPath: m_margin.z
+      value: -3.1393738
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_fontColor.b
@@ -510,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_text
-      value: "...og for \xE5 hoppe ut av vannet."
+      value: ...and to jump out of the water
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_fontColor.b
@@ -587,11 +595,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Du kan holde inne hoppeknappen for \xE5 hoppe h\xF8yere"
+      value: Hold the jump button to jump higher
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Stort Hopp
+      value: Large Jump
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -656,11 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Du kan hoppe over sm\xE5 hindre"
+      value: Jump to clear obsticles
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Hopp
+      value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -1440,11 +1448,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Du kan sl\xE5 for \xE5 knuse vegger og annet knuselig"
+      value: Attack to break fragile  things
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_margin.x
+      value: 2.047882
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_margin.z
+      value: 2.441681
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Angrep
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -1667,11 +1683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Du kan hoppe fra en vegg til en annen
+      value: Jump off of walls to reach higher places
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Vegghopp
+      value: Wall jump
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -1688,7 +1704,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_text
-      value: Bevegelse
+      value: Movement
       objectReference: {fileID: 0}
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -1845,7 +1861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Hopp for \xE5 Ung\xE5 \xE5 falle ned"
+      value: Jump to avoid falling into gaps
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_fontAsset

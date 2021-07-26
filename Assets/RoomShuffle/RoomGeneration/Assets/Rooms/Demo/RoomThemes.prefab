@@ -224,11 +224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: "Ting som forgrunn og lava kan ogs\xE5 endres av temaet"
+      value: Things like the foreground, weather and lava may also be affected
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Andre endringer
+      value: Other changes
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
@@ -606,7 +606,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2326269083177967978, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.7
+      value: 3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326269083177967978, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: 4433625378456608831, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Mesh
@@ -614,7 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Hvert rom har et tilfeldig tema
+      value: Every room has a random theme
       objectReference: {fileID: 0}
     - target: {fileID: 5016352127366957290, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -622,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Forskjellige temaer
+      value: Different themes
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_margin.z
@@ -754,7 +758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Noen temaer endrer belysning
+      value: Some themes change up the lighting
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -762,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Belysning
+      value: Lighting
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -30013,11 +30017,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_text
-      value: RomTema
+      value: Room Themes
       objectReference: {fileID: 0}
     - target: {fileID: 3080486511012008517, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_margin.z
-      value: 24.901335
+      value: 18.830723
       objectReference: {fileID: 0}
     - target: {fileID: 3745449973390625784, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_Name
@@ -30089,11 +30093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5788834677111310462, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.447906
+      value: 7.09
       objectReference: {fileID: 0}
     - target: {fileID: 5788834677111310462, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 7.6
+      value: 7.73
       objectReference: {fileID: 0}
     - target: {fileID: 5788834677111310462, guid: 13d6ab5b5c52bf34288a162db0ec1eb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

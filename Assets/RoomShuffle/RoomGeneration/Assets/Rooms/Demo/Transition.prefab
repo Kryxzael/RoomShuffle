@@ -13273,7 +13273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196372534260922747, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
       propertyPath: m_text
-      value: Spillet vil lage overgangsrom om to rom ikke kobles sammen riktig
+      value: The game will create transitions when needed to connect rooms
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
@@ -13338,7 +13338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Overgangsrom
+      value: Transitions
       objectReference: {fileID: 0}
     - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_Name
