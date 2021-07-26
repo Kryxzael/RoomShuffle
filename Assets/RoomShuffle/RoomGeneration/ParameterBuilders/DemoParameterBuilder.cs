@@ -17,13 +17,12 @@ public class DemoParameterBuilder : ParameterBuilder
 
     public override RoomParameters GetInitialParameters(System.Random random)
     {
-        _currentRoom = DemoRoomProgression.GetEnumerator();
         return GetNextParameters(null, random);
     }
 
     public override RoomParameters GetNextParameters(RoomHistory history, System.Random random)
     {
-        if (!_currentRoom.MoveNext())
+        if (_currentRoom == null || !_currentRoom.MoveNext())
         {
             _currentRoom = DemoRoomProgression.GetEnumerator();
             _currentRoom.MoveNext();
