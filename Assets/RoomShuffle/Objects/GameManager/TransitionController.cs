@@ -68,10 +68,10 @@ public class TransitionController : MonoBehaviour
     /// </summary>
     /// <param name="fade"></param>
     /// <returns></returns>
-    private IEnumerator CoGenerateAndMoveScreenPlayerPre(FadeAnimation fade)
+    public static IEnumerator CoGenerateAndMoveScreenPlayerPre(FadeAnimation fade)
     {
         //The world-space player
-        SpriteRenderer worldSpacePlayerRenderer = this.GetPlayer().GetComponent<SpriteRenderer>();
+        SpriteRenderer worldSpacePlayerRenderer = CommonExtensions.GetPlayer().GetComponent<SpriteRenderer>();
 
         //The player that is rendered on the canvas
         Image screenSpacePlayer = Commons.ScreenSpacePlayer;

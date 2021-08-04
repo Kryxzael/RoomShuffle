@@ -42,6 +42,8 @@ public class SoundtrackPlayer : MonoBehaviour
 
     public MusicChannels OverrideChannels;
 
+    public bool MuteMaster { get; set; }
+
     private IEnumerator Start()
     {
         Level1Player.clip.LoadAudioData();
@@ -126,6 +128,18 @@ public class SoundtrackPlayer : MonoBehaviour
     /// </summary>
     private void SetChannelsVolumes()
     {
+        if (MuteMaster)
+        {
+            Level1Player.volume = LerpVolume(Level1Player.volume, 0f);
+            Level2Player.volume = LerpVolume(Level1Player.volume, 0f);
+            Level1AdrenalinePlayer.volume = LerpVolume(Level1AdrenalinePlayer.volume, 0f);
+            Level2AdrenalinePlayer.volume = LerpVolume(Level2AdrenalinePlayer.volume, 0f);
+            Level1UnderwaterPlayer.volume = LerpVolume(Level1UnderwaterPlayer.volume, 0f);
+            Level2UnderwaterPlayer.volume = LerpVolume(Level2UnderwaterPlayer.volume, 0f);
+
+            return;
+        }
+
         if (OverrideChannels != MusicChannels.None)
         {
             Level1Player.volume = LerpVolume(Level1Player.volume, OverrideChannels.HasFlag(MusicChannels.Level1) ? 1f : 0f);

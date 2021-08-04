@@ -25,7 +25,7 @@ public class RoomClassText : MonoBehaviour
     {
         _label.text = Commons.RoomGenerator.CurrentRoomConfig.Class switch
         {
-            RoomClass.Inaccessible => "Unknown",
+            RoomClass.Inaccessible => "",
             RoomClass.Starting => "",
             RoomClass.Platforming => "",
             RoomClass.Respite => "",

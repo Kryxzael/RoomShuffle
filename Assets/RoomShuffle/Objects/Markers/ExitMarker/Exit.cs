@@ -12,21 +12,22 @@ public class Exit : MonoBehaviour
 
     [Tooltip("If the exit should enable speedrun mode")]
     public bool EnableSpeedRunMode = false;
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (EnableSpeedRunMode)
-        {
-            Commons.SpeedRunMode = true;
-            Commons.CountdownTimer.ResetCountdown(SPEEDRUN_START_TIME);
-        }
-
-        //Increase room number
-        if (!Commons.RoomGenerator.CurrentRoomConfig.Class.IsSafeRoom())
-            Commons.RoomGenerator.CurrentRoomNumber++;
-
         //The player has reached the room's exit
         if (collision.gameObject.IsPlayer())
         {
+            //Sets speedrun mode
+            if (EnableSpeedRunMode)
+            {
+                Commons.SpeedRunMode = true;
+                Commons.CountdownTimer.ResetCountdown(SPEEDRUN_START_TIME);
+            }
+
+            //Increase room number
+            if (!Commons.RoomGenerator.CurrentRoomConfig.Class.IsSafeRoom())
+                Commons.RoomGenerator.CurrentRoomNumber++;
+
             //Fade out and generate a new room
             Commons.TransitionController.CreateTransitionToNextRoom();
         }

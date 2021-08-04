@@ -101,7 +101,7 @@ public class HealthController : MonoBehaviour
                 case Cheats.HealthCheatType.Godmode:
                     return;
                 case Cheats.HealthCheatType.BuddhaMode:
-                    Health = Mathf.Max(1, Health - rawDamage);
+                    Health = Mathf.Max(50, Health - rawDamage);
                     return;
             }
         }
