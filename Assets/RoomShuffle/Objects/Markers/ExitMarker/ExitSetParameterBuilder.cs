@@ -13,6 +13,8 @@ public class ExitSetParameterBuilder : Exit
     [Tooltip("The builder to set")]
     public ParameterBuilder Builder;
 
+    public bool ReloadLevel;
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.IsPlayer())

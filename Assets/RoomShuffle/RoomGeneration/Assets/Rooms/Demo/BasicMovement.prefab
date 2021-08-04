@@ -421,6 +421,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c725a8bd60182b94da43eefd8c406f4e, type: 3}
+--- !u!1001 &2080778591173389444
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5285234089049636588}
+    m_Modifications:
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8789015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802419580143330761, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433625378456608831, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_text
+      value: Walk with [A] and [D] or (Left Stick)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_text
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726544457760664657, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
+      propertyPath: m_Name
+      value: DescriptionText (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
 --- !u!1001 &2478586639058610709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Jump to clear obsticles
+      value: Press [Space]/(A) to jump
       objectReference: {fileID: 0}
     - target: {fileID: 6547834981130304337, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
@@ -1448,7 +1517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_text
-      value: Attack to break fragile  things
+      value: Press [Enter]/(B) to attack fragile things
       objectReference: {fileID: 0}
     - target: {fileID: 4542915896965173969, guid: 063bdbf5eee149146b0394bc238dc3ad, type: 3}
       propertyPath: m_margin.x

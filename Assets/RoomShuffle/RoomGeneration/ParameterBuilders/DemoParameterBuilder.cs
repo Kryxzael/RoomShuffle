@@ -49,6 +49,7 @@ public class DemoParameterBuilder : ParameterBuilder
         //Override gameplay settings
         FindObjectOfType<DemoHUDManager>().SetUIFlags(_currentRoom.Current.HideUI);
         Commons.SoundtrackPlayer.MuteMaster = _currentRoom.Current.MuteMusic;
+        Cheats.HealthCheat = _currentRoom.Current.HealthCheat;
 
         return output;
     }
@@ -62,6 +63,7 @@ public class DemoParameterBuilder : ParameterBuilder
         public RoomTheme Theme;
         public bool FlipHorizontal;
         public bool MuteMusic;
+        public Cheats.HealthCheatType HealthCheat;
         public UIHideFlags HideUI;
 
         [Flags]
